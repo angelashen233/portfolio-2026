@@ -3,43 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angela Shen | Designer & Communicator</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Angela Shen | Portfolio 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Essential inline styles for the Expand/Lightbox feature */
+        #lightbox {
+            position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 4px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        .close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans">
+<body>
 
-    <nav class="p-6 flex justify-between items-center bg-white shadow-sm sticky top-0 z-50">
-        <span class="text-xl font-bold text-orange-600">✨ Angela Shen</span>
-        <div class="space-x-6 hidden md:block">
-            <a href="#work" class="hover:text-orange-500">Work</a>
-            <a href="#about" class="hover:text-orange-500">About</a>
-            <a href="mailto:contact@angela.design" class="bg-slate-900 text-white px-4 py-2 rounded-full">Contact</a>
+    <nav class="nav-container">
+        <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="logo" style="font-weight:800; font-size:1.4rem;">✨ Angela Shen</span>
+            <div style="display: flex; gap: 20px; align-items: center;">
+                <a href="#work" style="text-decoration:none; color:inherit; font-weight:600;">Work</a>
+                <a href="mailto:contact@angela.design" style="text-decoration:none; background:black; color:white; padding:10px 20px; border-radius:30px; font-weight:600;">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <header class="max-w-4xl mx-auto text-center py-20 px-6">
-        <span class="bg-orange-100 text-orange-700 px-4 py-1 rounded-full text-sm font-medium">✦ Open to Full-Time & Co-op</span>
-        <h1 class="text-6xl font-bold mt-6 mb-4">Designer & <span class="text-orange-500">Communicator</span></h1>
-        <p class="text-xl text-slate-600">5th-year SFU IAT & Communications student. Bringing visual clarity and cultural care to Indigenous community reports, blockchain startups, and student journalism.</p>
-    </header>
+    <div class="container">
+        <header style="padding: 80px 0; text-align:center;">
+            <span class="badge">✦ 5th Year SFU IAT & Communications</span>
+            <h1 style="font-size: 4rem; margin:15px 0;">Designer & <span style="color:var(--orange)">Communicator</span></h1>
+            <p style="font-size: 1.2rem; color: #64748b; max-width: 700px; margin: 0 auto; line-height: 1.6;">
+                I bring visual clarity and cultural care to Indigenous community reports, blockchain startups, and student journalism. Based in Vancouver, BC.
+            </p>
+        </header>
 
-    <section id="work" class="max-w-6xl mx-auto px-6 py-12">
-        <h2 class="text-3xl font-bold mb-8">Selected Work</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <h2 class="section-title">Case Studies & UI/UX</h2>
+        <section id="work" class="work-grid">
             
-            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
-                <div class="h-48 bg-slate-200">
-                    <img src="https://the-peak.ca/wp-content/uploads/2024/10/Angela_Shen_Queer-Dating.png" class="w-full h-full object-cover" alt="The Peak Illustration">
-                </div>
-                <div class="p-6">
-                    <span class="text-orange-600 text-xs font-bold uppercase">Graphic Design</span>
-                    <h3 class="text-xl font-bold mt-1">VACFSS Annual Reports</h3>
-                    <p class="text-slate-600 text-sm mt-2">Design lead for 2022-2023 reports, ensuring cultural relevance for Coast Salish communities.</p>
+            <div class="card">
+                <div class="card-image clickable-img" style="background-image: url('https://the-peak.ca/wp-content/uploads/2024/10/Angela_Shen_Queer-Dating.png');"></div>
+                <div class="card-content">
+                    <span class="tag tag-vacfss">Graphic Design</span>
+                    <h3>VACFSS Annual Reports</h3>
+                    <p>Lead designer for 2022-2023 reports. Collaborated with Elders and the CEO to ensure cultural safety for Coast Salish communities.</p>
                 </div>
             </div>
 
+            <div class="card">
+                <div class="card-image clickable-img" style="background-color: #f3e8ff; display:flex; align-items:center; justify-content:center; font-size:3rem;">🛡️</div>
+                <div class="card-content">
+                    <span class="tag tag-solidguard">UI/UX Design</span>
+                    <h3>Solidguard Blockchain</h3>
+                    <p>Designed the landing page and brand assets for a blockchain security platform protecting smart contracts.</p>
+                </div>
             </div>
-    </section>
+
+            <div class="card">
+                <div class="card-image clickable-img" style="background-color: #f0fdf4; display:flex; align-items:center; justify-content:center; font-size:3rem;">☕</div>
+                <div class="card-content">
+                    <span class="tag tag-byo">App Design</span>
+                    <h3>BYO Sustainability App</h3>
+                    <p>Visual lead for an SFU-born app that diverted 400+ single-use cups. Managed rewards UI and marketing assets.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image clickable-img" style="background-color: #fff7ed; display:flex; align-items:center; justify-content:center; font-size:3rem;">🏺</div>
+                <div class="card-content">
+                    <span class="tag tag-vacfss">Marketing</span>
+                    <h3>Luv the Grub Branding</h3>
+                    <p>Social media content, infographics, and tent cards for local specialty chutney brand featured on Amazon.</p>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="section-title">Editorial: The Peak (SFU)</h2>
+        <section class="editorial-grid">
+            <div class="card">
+                <div class="card-image clickable-img" style="background-image: url('https://the-peak.ca/wp-content/uploads/2025/01/AngelaShen_Skiing.png'); height: 180px;"></div>
+                <div class="card-content"><h4>"Can't Ski, Too Broke"</h4></div>
+            </div>
+            <div class="card">
+                <div class="card-image clickable-img" style="background-image: url('https://the-peak.ca/wp-content/uploads/2025/01/AngelaShen_-Escaping-the-social-media-echo-chamber.png'); height: 180px;"></div>
+                <div class="card-content"><h4>Internet Echo Chambers</h4></div>
+            </div>
+            <div class="card">
+                <div class="card-image clickable-img" style="background-image: url('https://the-peak.ca/wp-content/uploads/2025/07/ops.png'); height: 180px;"></div>
+                <div class="card-content"><h4>Economic Reconciliation</h4></div>
+            </div>
+        </section>
+
+        <h2 class="section-title">Photography & Fine Art</h2>
+        <section class="photo-gallery">
+            <div class="photo-item"><img class="clickable-img" src="https://www.angelashen.ca/wp-content/uploads/2025/06/IMG00063-1024x681.jpg" alt="Foggy Forest"></div>
+            <div class="photo-item"><img class="clickable-img" src="https://www.angelashen.ca/wp-content/uploads/2025/06/IMG00727-681x1024.jpg" alt="Highway Roadway"></div>
+            <div class="photo-item"><img class="clickable-img" src="https://www.angelashen.ca/wp-content/uploads/2025/06/IMG00436-1024x681.jpg" alt="Merrit Hills"></div>
+            <div class="photo-item"><img class="clickable-img" src="https://www.angelashen.ca/wp-content/uploads/2025/06/peace_girl_illustration-1-1024x1024.png" alt="Personal Illustration"></div>
+        </section>
+    </div>
+
+    <footer style="text-align: center; padding: 60px 20px; color: #94a3b8; font-size: 0.9rem;">
+        <p>© 2026 Angela Shen • Joint Major: CMNS & SIAT @ SFU</p>
+    </footer>
+
+    <div id="lightbox">
+        <span class="close-btn">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const images = document.querySelectorAll('.clickable-img');
+
+        images.forEach(image => {
+            image.addEventListener('click', () => {
+                lightbox.style.display = 'flex';
+                let src = "";
+                if (image.tagName === 'IMG') {
+                    src = image.src;
+                } else {
+                    // Extract URL from background-image style
+                    src = image.style.backgroundImage.slice(5, -2);
+                }
+                lightboxImg.src = src;
+            });
+        });
+
+        lightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+    </script>
 
 </body>
 </html>
