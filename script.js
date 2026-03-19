@@ -1,46 +1,90 @@
 /* --- 1. BUTTERFLY ANIMATION --- */
-const butterfly = document.getElementById('hero-butterfly');
+document.addEventListener('DOMContentLoaded', () => {
+    const trigger = document.getElementById('trigger-area');
+    const butterfly = document.getElementById('butterfly-art');
+    const caseStudies = document.getElementById('work');
+    
+    if (!trigger || !butterfly) return;
 
-// Start the butterfly in the middle of the screen
-let mouseX = window.innerWidth / 2;
-let mouseY = window.innerHeight / 2;
-let posX = window.innerWidth / 2;
-let posY = window.innerHeight / 2;
+    let isFollowing = false;
+    let isVisible = true;
+    let mouseX = 0, mouseY = 0;
+    let butterflyX = 0, butterflyY = 0;
+    let time = 0; 
 
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
+    // Pin butterfly to 'C' when not following
+    const pinToC = () => {
+        if (!isFollowing && trigger && butterfly) {
+            const rect = trigger.getBoundingClientRect();
+            butterflyX = rect.left - 5;
+            butterflyY = rect.top - 20;
+            
+            butterfly.style.left = `${butterflyX}px`;
+            butterfly.style.top = `${butterflyY}px`;
+            butterfly.style.opacity = '1';
+        }
+    };
 
-// Fade on scroll logic
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        butterfly.classList.add('bfly-fade');
-    } else {
-        butterfly.classList.remove('bfly-fade');
+    // Keep pinned during scroll/resize
+    window.addEventListener('scroll', pinToC);
+    window.addEventListener('resize', pinToC);
+    window.addEventListener('load', () => setTimeout(pinToC, 100));
+    pinToC(); 
+
+    // Animation loop
+    function animate() {
+        if (isVisible) {
+            if (isFollowing) {
+                time += 0.02; 
+                butterflyX += (mouseX - butterflyX) * 0.02;
+                butterflyY += (mouseY - butterflyY) * 0.02;
+
+                const sway = Math.sin(time) * 3; 
+                let targetTilt = (mouseX - butterflyX) * 0.05;
+                const maxTilt = 15; 
+                const clampedTilt = Math.max(-maxTilt, Math.min(maxTilt, targetTilt));
+
+                butterfly.style.left = `${butterflyX}px`;
+                butterfly.style.top = `${butterflyY + sway}px`; 
+                butterfly.style.transform = `rotate(${clampedTilt}deg)`;
+            }
+            requestAnimationFrame(animate);
+        }
     }
+
+    // NEW: Trigger the flight when mouse enters the 'C' area
+    trigger.addEventListener('mouseenter', () => {
+        if (!isFollowing) {
+            isFollowing = true;
+            butterfly.classList.remove('butterfly-rest');
+            butterfly.classList.add('butterfly-following');
+            // Stop pinning to the 'C' once it's flying
+            window.removeEventListener('scroll', pinToC);
+        }
+    });
+
+    // Track mouse movement (Always update coordinates so it's ready)
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX + 35; 
+        mouseY = e.clientY - 35;
+    });
+
+    // Hide when case studies section visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                isVisible = false;
+                butterfly.style.opacity = '0';
+                setTimeout(() => butterfly.style.display = 'none', 500);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    if (caseStudies) observer.observe(caseStudies);
+
+    // START the loop
+    animate();
 });
-
-function animateButterfly() {
-    if (!butterfly) return;
-
-    // Calculate the new position with a "Lag" (0.05 = slow/floaty)
-    posX += (mouseX - posX) * 0.05;
-    posY += (mouseY - posY) * 0.05;
-
-    // Apply the coordinates directly to the style
-    butterfly.style.left = posX + 'px';
-    butterfly.style.top = posY + 'px';
-
-    // Add a tilt based on movement direction
-    const tilt = (mouseX - posX) * 0.15;
-    butterfly.style.transform = `translate(-50%, -50%) rotate(${tilt}deg)`;
-
-    requestAnimationFrame(animateButterfly);
-}
-
-// Start the loop
-animateButterfly();
 
 
 /* --- 2. PROJECT MODAL & LIGHTBOX --- */
@@ -102,84 +146,5 @@ document.querySelectorAll('.project-trigger').forEach(card => {
     
     if (imgPath && imgDiv) {
         imgDiv.style.backgroundImage = `url('${imgPath}')`;
-    }
-});
-
-
-//butterfuly animation
-document.addEventListener('DOMContentLoaded', () => {
-    const trigger = document.getElementById('trigger-area');
-    const butterfly = document.getElementById('butterfly-art');
-    const caseStudiesSection = document.getElementById('work'); // Targeting your ID: work
-    
-    let isFollowing = false;
-    let isVisible = true; // To track if it should still be seen
-    let mouseX = 0, mouseY = 0;
-    let butterflyX = 0, butterflyY = 0;
-    let opacityValue = 1;
-    const delay = 0.07;
-
-    // 1. Initial Position logic
-    const alignButterfly = () => {
-        if (!isFollowing && trigger && butterfly) {
-            const rect = trigger.getBoundingClientRect();
-            butterflyX = rect.left - 10;
-            butterflyY = rect.top - 25;
-            butterfly.style.left = `${butterflyX}px`;
-            butterfly.style.top = `${butterflyY}px`;
-        }
-    };
-    alignButterfly();
-    window.addEventListener('resize', alignButterfly);
-
-    // 2. The Intersection Observer (The "Case Study" Trigger)
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // If the user reaches 'Case Studies', hide the butterfly
-                isVisible = false;
-                butterfly.classList.add('butterfly-hidden');
-            }
-        });
-    }, { threshold: 0.1 }); // Triggers when 10% of the section is visible
-
-    if (caseStudiesSection) {
-        observer.observe(caseStudiesSection);
-    }
-
-    // 3. Animation Loop
-    function animate() {
-        if (isFollowing && isVisible) {
-            butterflyX += (mouseX - butterflyX) * delay;
-            butterflyY += (mouseY - butterflyY) * delay;
-            
-            // Optional: Keep your slow 5s fade-out or let the Observer handle it
-            // if (opacityValue > 0) opacityValue -= 0.002; 
-
-            butterfly.style.left = `${butterflyX}px`;
-            butterfly.style.top = `${butterflyY}px`;
-            butterfly.style.opacity = opacityValue;
-
-            const tilt = (mouseX - butterflyX) * 0.1;
-            butterfly.style.transform = `rotate(${tilt}deg)`;
-            
-            requestAnimationFrame(animate);
-        }
-    }
-
-    // 4. Mouse Logic
-    if (trigger && butterfly) {
-        trigger.addEventListener('mouseenter', () => {
-            if (isFollowing || !isVisible) return;
-            isFollowing = true;
-            butterfly.classList.remove('butterfly-rest');
-            butterfly.classList.add('butterfly-following');
-            animate();
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX + 25;
-            mouseY = e.clientY - 25;
-        });
     }
 });

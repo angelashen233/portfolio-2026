@@ -411,18 +411,12 @@ body {
 
 #butterfly-art {
     width: 45px;
-    height: auto;
-    position: fixed; 
-    /* Default starting spot (middle-ish) so it's visible */
-    top: 20%; 
-    left: 20%;
-    
-    z-index: 9999; /* Ensure it's on top of everything */
-    pointer-events: none;
-    opacity: 1;
-    display: block; /* Ensure it's not hidden by default */
+    position: fixed;
+    pointer-events: none !important;
+    z-index: 9999;
+    opacity: 0; /* Starts hidden to prevent the "jump" */
+    transition: opacity 0.5s ease-in;
 }
-
 .butterfly-rest {
     animation: breathe 3s infinite ease-in-out;
 }
@@ -444,5 +438,5 @@ body {
 
 @keyframes flutter {
     from { transform: scaleX(1); }
-    to { transform: scaleX(0.2); }
+    to { transform: scaleX(0.5); }
 }
