@@ -1,0 +1,29 @@
+<svg id="butterfly" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <style>
+    .wing { transform-origin: 50px 55px; transition: transform 0.2s; }
+    .butterfly-rest { animation: slow-breathe 4s infinite ease-in-out; }
+    @keyframes slow-breathe {
+      0%, 100% { transform: scaleX(1); }
+      50% { transform: scaleX(0.85); }
+    }
+    @keyframes active-flutter {
+      from { transform: scaleX(1); }
+      to { transform: scaleX(0.15); }
+    }
+  </style>
+  <g id="body-group">
+    <ellipse cx="50" cy="55" rx="3.5" ry="20" fill="#4a3121" />
+    <path d="M47 37 Q40 20 35 15" stroke="#4a3121" fill="none" stroke-width="0.7"/>
+    <path d="M53 37 Q60 20 65 15" stroke="#4a3121" fill="none" stroke-width="0.7"/>
+  </g>
+  <g id="right-wings" class="wing">
+    <path d="M50 55 Q95 30 95 60 T60 95 L50 55Z" fill="#f89c33" stroke="#000" stroke-width="0.5"/>
+    <g fill="#000"><path d="M58 60 Q65 65 60 70 M63 73 Q70 78 65 83" /><ellipse cx="70" cy="58" rx="1.5" ry="3" /></g>
+    <g fill="#fff9e0"><circle cx="75" cy="80" r="3" /><circle cx="85" cy="72" r="2.5" /></g>
+  </g>
+  <g id="left-wings" class="wing" style="transform: scale(-1, 1)">
+    <path d="M50 55 Q95 30 95 60 T60 95 L50 55Z" fill="#f89c33" stroke="#000" stroke-width="0.5"/>
+    <g fill="#000"><path d="M58 60 Q65 65 60 70 M63 73 Q70 78 65 83" /><ellipse cx="70" cy="58" rx="1.5" ry="3" /></g>
+    <g fill="#fff9e0"><circle cx="75" cy="80" r="3" /><circle cx="85" cy="72" r="2.5" /></g>
+  </g>
+</svg>

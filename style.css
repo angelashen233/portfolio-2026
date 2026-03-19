@@ -403,29 +403,46 @@ body {
   transform: scale(1.1); /* Subtle zoom effect on the image */
 }
 
-.butterfly-container {
-    position: fixed;
-    z-index: 9999;
+/*butterfly animation stuff*/
+#trigger-area {
+    position: relative;
+    display: inline-block;
+}
+
+#butterfly-art {
+    width: 45px;
+    height: auto;
+    position: fixed; 
+    /* Default starting spot (middle-ish) so it's visible */
+    top: 20%; 
+    left: 20%;
+    
+    z-index: 9999; /* Ensure it's on top of everything */
     pointer-events: none;
-    width: 30px;
-    height: 30px;
-    /* We handle top and left purely in JS now */
     opacity: 1;
-    transition: opacity 0.8s ease;
+    display: block; /* Ensure it's not hidden by default */
 }
 
-.bfly-fade {
-    opacity: 0 !important;
+.butterfly-rest {
+    animation: breathe 3s infinite ease-in-out;
 }
 
-/* Wing Flapping (Fast & Fluttery) */
-.wing-l { transform-origin: 25px 25px; animation: flap-l 0.12s infinite alternate; }
-.wing-r { transform-origin: 25px 25px; animation: flap-r 0.12s infinite alternate; }
+.butterfly-following {
+    animation: flutter 0.12s infinite alternate ease-in-out !important;
+}
 
-@keyframes flap-l { from { transform: rotateY(0deg); } to { transform: rotateY(80deg); } }
-@keyframes flap-r { from { transform: rotateY(0deg); } to { transform: rotateY(-80deg); } }
-
-/* Class to trigger the fade */
 .butterfly-hidden {
     opacity: 0 !important;
+    transition: opacity 0.4s ease-out !important;
+    pointer-events: none;
+}
+
+@keyframes breathe {
+    0%, 100% { transform: scaleX(1); }
+    50% { transform: scaleX(0.8); }
+}
+
+@keyframes flutter {
+    from { transform: scaleX(1); }
+    to { transform: scaleX(0.2); }
 }

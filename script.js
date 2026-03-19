@@ -104,3 +104,82 @@ document.querySelectorAll('.project-trigger').forEach(card => {
         imgDiv.style.backgroundImage = `url('${imgPath}')`;
     }
 });
+
+
+//butterfuly animation
+document.addEventListener('DOMContentLoaded', () => {
+    const trigger = document.getElementById('trigger-area');
+    const butterfly = document.getElementById('butterfly-art');
+    const caseStudiesSection = document.getElementById('work'); // Targeting your ID: work
+    
+    let isFollowing = false;
+    let isVisible = true; // To track if it should still be seen
+    let mouseX = 0, mouseY = 0;
+    let butterflyX = 0, butterflyY = 0;
+    let opacityValue = 1;
+    const delay = 0.07;
+
+    // 1. Initial Position logic
+    const alignButterfly = () => {
+        if (!isFollowing && trigger && butterfly) {
+            const rect = trigger.getBoundingClientRect();
+            butterflyX = rect.left - 10;
+            butterflyY = rect.top - 25;
+            butterfly.style.left = `${butterflyX}px`;
+            butterfly.style.top = `${butterflyY}px`;
+        }
+    };
+    alignButterfly();
+    window.addEventListener('resize', alignButterfly);
+
+    // 2. The Intersection Observer (The "Case Study" Trigger)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // If the user reaches 'Case Studies', hide the butterfly
+                isVisible = false;
+                butterfly.classList.add('butterfly-hidden');
+            }
+        });
+    }, { threshold: 0.1 }); // Triggers when 10% of the section is visible
+
+    if (caseStudiesSection) {
+        observer.observe(caseStudiesSection);
+    }
+
+    // 3. Animation Loop
+    function animate() {
+        if (isFollowing && isVisible) {
+            butterflyX += (mouseX - butterflyX) * delay;
+            butterflyY += (mouseY - butterflyY) * delay;
+            
+            // Optional: Keep your slow 5s fade-out or let the Observer handle it
+            // if (opacityValue > 0) opacityValue -= 0.002; 
+
+            butterfly.style.left = `${butterflyX}px`;
+            butterfly.style.top = `${butterflyY}px`;
+            butterfly.style.opacity = opacityValue;
+
+            const tilt = (mouseX - butterflyX) * 0.1;
+            butterfly.style.transform = `rotate(${tilt}deg)`;
+            
+            requestAnimationFrame(animate);
+        }
+    }
+
+    // 4. Mouse Logic
+    if (trigger && butterfly) {
+        trigger.addEventListener('mouseenter', () => {
+            if (isFollowing || !isVisible) return;
+            isFollowing = true;
+            butterfly.classList.remove('butterfly-rest');
+            butterfly.classList.add('butterfly-following');
+            animate();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX + 25;
+            mouseY = e.clientY - 25;
+        });
+    }
+});
