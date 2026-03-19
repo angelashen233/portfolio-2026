@@ -410,12 +410,18 @@ body {
 }
 
 #butterfly-art {
-    width: 45px;
-    position: fixed;
-    pointer-events: none !important;
-    z-index: 9999;
-    opacity: 0; /* Starts hidden to prevent the "jump" */
-    transition: opacity 0.5s ease-in;
+    /* MUST include 'px' for live deployment */
+    width: 45px !important; 
+    height: auto;
+    
+    /* Ensure it's not restricted by the paragraph text */
+    position: fixed; 
+    z-index: 99999; 
+    pointer-events: none;
+    
+    /* Initial state */
+    opacity: 0; 
+    transition: opacity 0.5s ease;
 }
 .butterfly-rest {
     animation: breathe 3s infinite ease-in-out;

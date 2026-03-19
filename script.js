@@ -12,19 +12,23 @@ document.addEventListener('DOMContentLoaded', () => {
     let butterflyX = 0, butterflyY = 0;
     let time = 0; 
 
-    // Pin butterfly to 'C' when not following
     const pinToC = () => {
-        if (!isFollowing && trigger && butterfly) {
-            const rect = trigger.getBoundingClientRect();
-            butterflyX = rect.left - 5;
-            butterflyY = rect.top - 20;
-            
-            butterfly.style.left = `${butterflyX}px`;
-            butterfly.style.top = `${butterflyY}px`;
-            butterfly.style.opacity = '1';
-        }
-    };
-
+    const trigger = document.getElementById('trigger-area');
+    const butterfly = document.getElementById('butterfly-art');
+    
+    if (!isFollowing && trigger && butterfly) {
+        const rect = trigger.getBoundingClientRect();
+        
+        // Since it's fixed, we use the viewport coordinates directly
+        butterflyX = rect.left - 5;
+        butterflyY = rect.top - 20;
+        
+        butterfly.style.left = `${butterflyX}px`;
+        butterfly.style.top = `${butterflyY}px`;
+        butterfly.style.width = "45px"; // Force width in JS as a backup
+        butterfly.style.opacity = "1";
+    }
+};
     // Keep pinned during scroll/resize
     window.addEventListener('scroll', pinToC);
     window.addEventListener('resize', pinToC);
