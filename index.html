@@ -5,136 +5,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Angela Shen | Portfolio 2026</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        /* Essential inline styles for the Expand/Lightbox feature */
-        #lightbox {
-            position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center;
-            cursor: zoom-out;
-        }
-        #lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 4px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
-        .close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav class="nav-container">
-        <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
-            <span class="logo" style="font-weight:800; font-size:1.4rem;">✨ Angela Shen</span>
-            <div style="display: flex; gap: 20px; align-items: center;">
-                <a href="#work" style="text-decoration:none; color:inherit; font-weight:600;">Work</a>
-                <a href="mailto:contact@angela.design" style="text-decoration:none; background:black; color:white; padding:10px 20px; border-radius:30px; font-weight:600;">Contact</a>
+    <nav class="nav-bar">
+        <div class="container nav-content">
+            <span class="logo">✨ Angela Shen</span>
+            <div class="nav-links">
+                <a href="#work">Work</a>
+                <a href="mailto:angelashen.ca@gmail.com" class="btn-primary">Get in Touch</a>
             </div>
         </div>
     </nav>
 
-    <div class="container">
-        <header style="padding: 80px 0; text-align:center;">
-            <span class="badge">✦ 5th Year SFU IAT & Communications</span>
-            <h1 style="font-size: 4rem; margin:15px 0;">Designer & <span style="color:var(--orange)">Communicator</span></h1>
-            <p style="font-size: 1.2rem; color: #64748b; max-width: 700px; margin: 0 auto; line-height: 1.6;">
-                I bring visual clarity and cultural care to Indigenous community reports, blockchain startups, and student journalism. Based in Vancouver, BC.
-            </p>
-        </header>
+    <header class="hero">
+        <div id="hero-butterfly" class="butterfly-container">
+            <svg class="butterfly" viewBox="0 0 50 50">
+                <path class="wing-l" d="M25 25 Q10 10 5 25 Q10 40 25 25" fill="var(--orange)" opacity="0.9"/>
+                <path class="wing-r" d="M25 25 Q40 10 45 25 Q40 40 25 25" fill="var(--rose)" opacity="0.9"/>
+                <path d="M24 22 L26 22 L26 28 L24 28 Z" fill="#0f172a"/>
+            </svg>
+        </div>
+        <span class="status-badge">✦ SFU IAT & CMNS</span>
+        <h1>Designer & <span class="gradient-text">Communicator</span></h1>
+        <p class="hero-text">Bringing visual clarity and cultural care to high-impact projects. Graduating Spring 2026.</p>
+    </header>
 
-        <h2 class="section-title">Case Studies & UI/UX</h2>
-        <section id="work" class="work-grid">
-            
-            <div class="card">
-                <div class="card-image clickable-img" style="background-image: url('https://the-peak.ca/wp-content/uploads/2024/10/Angela_Shen_Queer-Dating.png');"></div>
-                <div class="card-content">
-                    <span class="tag tag-vacfss">Graphic Design</span>
-                    <h3>VACFSS Annual Reports</h3>
-                    <p>Lead designer for 2022-2023 reports. Collaborated with Elders and the CEO to ensure cultural safety for Coast Salish communities.</p>
-                </div>
-            </div>
+    <main class="container">
+        <section id="work">
+            <h2 class="section-title">Case Studies</h2>
+            <div class="project-grid">
+                
+                <article class="card project-trigger" 
+                    data-title="Winter Solstice Card — 2022"
+                    data-category="Graphic Design"
+                    data-org="VACFSS"
+                    data-year="2022"
+                    data-desc="Designed the 2022 Winter Solstice appreciation card for VACFSS. Inspired by Coast Salish Indigenous art, featuring spirits (The Raven, The Thunderbird, The Eagle) dancing."
+                    data-img="images/WinterSolsticeCard_2022_FINAL_DESIGN_Both-Front-smaller.webp">
+                    <div class="card-img-container">
+                        <div class="card-img vacfss-img"></div>
+                        <div class="card-overlay"><span class="overlay-text">Click to learn more</span></div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag orange">Graphic Design</span>
+                        <h3>Winter Solstice Card 2022</h3>
+                        <p>Cultural storytelling through print media.</p>
+                    </div>
+                </article>
 
-            <div class="card">
-                <div class="card-image clickable-img" style="background-color: #f3e8ff; display:flex; align-items:center; justify-content:center; font-size:3rem;">🛡️</div>
-                <div class="card-content">
-                    <span class="tag tag-solidguard">UI/UX Design</span>
-                    <h3>Solidguard Blockchain</h3>
-                    <p>Designed the landing page and brand assets for a blockchain security platform protecting smart contracts.</p>
-                </div>
-            </div>
+                <article class="card project-trigger" 
+                    data-title="Winter Solstice Card — 2023"
+                    data-category="Graphic Design"
+                    data-org="VACFSS"
+                    data-year="2023"
+                    data-desc="A continuation of the Solstice series for 2023, focusing on community warmth and Coast Salish visual narratives."
+                    data-img="images/WinterSolsticeCard_2023_COVER_FINAL-02_With_Intials_YRS_FRONT.webp">
+                    <div class="card-img-container">
+                        <div class="card-img vacfss23-img"></div>
+                        <div class="card-overlay"><span class="overlay-text">Click to learn more</span></div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag orange">Graphic Design</span>
+                        <h3>Winter Solstice Card 2023</h3>
+                        <p>Expanding the visual identity for community outreach.</p>
+                    </div>
+                </article>
 
-            <div class="card">
-                <div class="card-image clickable-img" style="background-color: #f0fdf4; display:flex; align-items:center; justify-content:center; font-size:3rem;">☕</div>
-                <div class="card-content">
-                    <span class="tag tag-byo">App Design</span>
-                    <h3>BYO Sustainability App</h3>
-                    <p>Visual lead for an SFU-born app that diverted 400+ single-use cups. Managed rewards UI and marketing assets.</p>
-                </div>
-            </div>
+                <article class="card project-trigger"
+                    data-title="VACFSS Annual Reports"
+                    data-category="Graphic Design"
+                    data-org="VACFSS"
+                    data-year="2024"
+                    data-desc="Collaborative design work to support Indigenous community transparency and reporting. Focused on making complex data accessible and culturally grounded."
+                    data-img="images/VACFSS_Annual_Report.webp">
+                    <div class="card-img-container">
+                        <div class="card-img annual-img"></div>
+                        <div class="card-overlay"><span class="overlay-text">Click to learn more</span></div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag orange">Graphic Design</span>
+                        <h3>VACFSS Annual Reports</h3>
+                        <p>Design for community transparency.</p>
+                    </div>
+                </article>
 
-            <div class="card">
-                <div class="card-image clickable-img" style="background-color: #fff7ed; display:flex; align-items:center; justify-content:center; font-size:3rem;">🏺</div>
-                <div class="card-content">
-                    <span class="tag tag-vacfss">Marketing</span>
-                    <h3>Luv the Grub Branding</h3>
-                    <p>Social media content, infographics, and tent cards for local specialty chutney brand featured on Amazon.</p>
-                </div>
+                <article class="card project-trigger"
+                    data-title="Philosophy Student Union Logo"
+                    data-category="Branding"
+                    data-org="SFU PSU"
+                    data-year="2025"
+                    data-desc="Visual identity system designed for the SFU Philosophy Student Union, balancing academic tradition with modern student life."
+                    data-img="images/Philosophy_Student_Union_logo_Guide_Main_1.webp">
+                    <div class="card-img-container">
+                        <div class="card-img philos-img"></div>
+                        <div class="card-overlay"><span class="overlay-text">Click to learn more</span></div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag orange">Branding</span>
+                        <h3>Philosophy Student Union Logo</h3>
+                        <p>Identity design for SFU student life.</p>
+                    </div>
+                </article>
+
             </div>
         </section>
 
-        <h2 class="section-title">Editorial: The Peak (SFU)</h2>
-        <section class="editorial-grid">
-            <div class="card">
-                <div class="card-image clickable-img" style="background-image: url('https://the-peak.ca/wp-content/uploads/2025/01/AngelaShen_Skiing.png'); height: 180px;"></div>
-                <div class="card-content"><h4>"Can't Ski, Too Broke"</h4></div>
-            </div>
-            <div class="card">
-                <div class="card-image clickable-img" style="background-image: url('https://the-peak.ca/wp-content/uploads/2025/01/AngelaShen_-Escaping-the-social-media-echo-chamber.png'); height: 180px;"></div>
-                <div class="card-content"><h4>Internet Echo Chambers</h4></div>
-            </div>
-            <div class="card">
-                <div class="card-image clickable-img" style="background-image: url('https://the-peak.ca/wp-content/uploads/2025/07/ops.png'); height: 180px;"></div>
-                <div class="card-content"><h4>Economic Reconciliation</h4></div>
+        <section id="photography">
+            <h2 class="section-title">Photography</h2>
+            <div class="photo-masonry">
+                <img src="https://www.angelashen.ca/wp-content/uploads/2025/06/IMG00063-1024x681.jpg" alt="Forest">
+                <img src="https://www.angelashen.ca/wp-content/uploads/2025/06/IMG00727-681x1024.jpg" alt="Highway">
+                <img src="https://www.angelashen.ca/wp-content/uploads/2025/06/IMG00436-1024x681.jpg" alt="Hills">
             </div>
         </section>
+    </main>
 
-        <h2 class="section-title">Photography & Fine Art</h2>
-        <section class="photo-gallery">
-            <div class="photo-item"><img class="clickable-img" src="https://www.angelashen.ca/wp-content/uploads/2025/06/IMG00063-1024x681.jpg" alt="Foggy Forest"></div>
-            <div class="photo-item"><img class="clickable-img" src="https://www.angelashen.ca/wp-content/uploads/2025/06/IMG00727-681x1024.jpg" alt="Highway Roadway"></div>
-            <div class="photo-item"><img class="clickable-img" src="https://www.angelashen.ca/wp-content/uploads/2025/06/IMG00436-1024x681.jpg" alt="Merrit Hills"></div>
-            <div class="photo-item"><img class="clickable-img" src="https://www.angelashen.ca/wp-content/uploads/2025/06/peace_girl_illustration-1-1024x1024.png" alt="Personal Illustration"></div>
-        </section>
-    </div>
-
-    <footer style="text-align: center; padding: 60px 20px; color: #94a3b8; font-size: 0.9rem;">
+    <footer class="footer">
         <p>© 2026 Angela Shen • Joint Major: CMNS & SIAT @ SFU</p>
     </footer>
+
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header-img" id="modal-hero"></div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span id="modal-cat" class="status-badge"></span>
+                    <span class="status-badge" style="background:#fff7ed; color:#f97316;">Featured</span>
+                </div>
+                <h2 id="modal-title"></h2>
+                <div class="modal-sub-info">
+                    <span>🏢 <span id="modal-org"></span></span>
+                    <span>📅 <span id="modal-year"></span></span>
+                </div>
+                <p id="modal-desc" class="modal-description"></p>
+                <h4 class="gallery-label">PROJECT GALLERY</h4>
+                <div class="modal-gallery" id="modal-gallery"></div>
+            </div>
+        </div>
+    </div>
 
     <div id="lightbox">
         <span class="close-btn">&times;</span>
         <img id="lightbox-img" src="">
     </div>
 
-    <script>
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const images = document.querySelectorAll('.clickable-img');
-
-        images.forEach(image => {
-            image.addEventListener('click', () => {
-                lightbox.style.display = 'flex';
-                let src = "";
-                if (image.tagName === 'IMG') {
-                    src = image.src;
-                } else {
-                    // Extract URL from background-image style
-                    src = image.style.backgroundImage.slice(5, -2);
-                }
-                lightboxImg.src = src;
-            });
-        });
-
-        lightbox.addEventListener('click', () => {
-            lightbox.style.display = 'none';
-        });
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>

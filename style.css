@@ -1,0 +1,431 @@
+/* --- ANGELA'S PRO DESIGN SYSTEM V3 --- */
+:root {
+  --orange: #f97316;
+  --rose: #fb7185;
+  --slate-900: #0f172a;
+  --slate-600: #475569;
+  --slate-200: #e2e8f0;
+  --slate-50: #f8fafc;
+  
+  /* The "Tailwind Shadow" Scale */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+* { 
+  box-sizing: border-box; 
+  transition: all 0.3s ease; /* Makes everything feel smooth */
+}
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--slate-900);
+  background: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* --- GLASS NAVIGATION --- */
+.nav-bar {
+  position: fixed;
+  top: 0; 
+  width: 100%;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--slate-200);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; }
+
+.nav-links { display: flex; gap: 32px; align-items: center; }
+
+.nav-links a { 
+  text-decoration: none; 
+  color: inherit; 
+  font-weight: 600; 
+  font-size: 0.9rem; 
+}
+
+.btn-primary {
+  background: #000;
+  color: #fff !important;
+  padding: 12px 28px;
+  border-radius: 99px;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, var(--orange), var(--rose));
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.3);
+}
+
+/* --- HERO SECTION WITH GRADIENT --- */
+.hero {
+  padding: 180px 24px 120px;
+  text-align: center;
+  /* Fixed: Visible gradient from soft peach to white */
+  background: linear-gradient(180deg, #fff7ed 0%, #ffffff 100%);
+}
+
+.hero h1 { 
+  font-size: 4.5rem; 
+  font-weight: 800; 
+  letter-spacing: -0.04em; 
+  margin: 24px 0; 
+  line-height: 1.1;
+}
+
+/* FIXED: Gradient Text that actually shows up */
+.gradient-text {
+  background: linear-gradient(90deg, var(--orange) 0%, var(--rose) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.status-badge {
+  background: #ffedd5;
+  color: #9a3412;
+  padding: 8px 18px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero-text {
+  max-width: 650px;
+  margin: 0 auto;
+  color: var(--slate-600);
+  font-size: 1.25rem;
+}
+
+/* --- CARDS & GRID --- */
+.section-title { 
+  font-size: 2.25rem; 
+  font-weight: 800; 
+  margin-top: 100px;
+  margin-bottom: 48px; 
+  letter-spacing: -0.02em;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 40px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 32px;
+  border: 1px solid var(--slate-200);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover { 
+  transform: translateY(-12px); 
+  box-shadow: var(--shadow-xl);
+  border-color: rgba(249, 115, 22, 0.2);
+}
+
+.card-img { 
+  height: 280px; 
+  background-size: cover; 
+  background-position: center;
+  background-color: var(--slate-50);
+}
+
+/* --- MODAL (POP-UP PAGE) STYLES --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(8px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    border-radius: 24px;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: var(--shadow-xl);
+    animation: modalSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes modalSlide {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-header-img {
+    width: 100%;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+}
+
+.modal-body {
+    padding: 40px;
+}
+
+.modal-sub-info {
+    display: flex;
+    gap: 20px;
+    color: var(--slate-600);
+    font-size: 0.9rem;
+    margin: 15px 0 25px;
+}
+
+.modal-description {
+    font-size: 1.1rem;
+    color: var(--slate-600);
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.gallery-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--slate-600);
+    border-bottom: 1px solid var(--slate-200);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    z-index: 100;
+    
+    /* THE FIX: Fixed dimensions and ratio */
+    width: 40px;
+    height: 40px;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0; /* Prevents the modal from squishing it */
+
+    /* Centering the X */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Visual Style */
+    background: white;
+    border-radius: 50%; /* Perfect circle */
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    color: #0f172a;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.close-modal:hover {
+    transform: scale(1.1);
+    background: #f8fafc;
+}
+/* Project Image Classes */
+.vacfss-img { background-image: url('https://the-peak.ca/wp-content/uploads/2024/10/Angela_Shen_Queer-Dating.png'); }
+.solidguard-img { background-color: #f3e8ff; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+
+.card-body { padding: 32px; }
+
+.tag { 
+  font-weight: 800; 
+  font-size: 0.7rem; 
+  text-transform: uppercase; 
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  display: block;
+}
+.orange { color: var(--orange); }
+.purple { color: #a855f7; }
+
+/* --- PHOTO MASONRY --- */
+.photo-masonry {
+  column-count: 3;
+  column-gap: 24px;
+}
+
+.photo-masonry img {
+  width: 100%;
+  margin-bottom: 24px;
+  border-radius: 24px;
+  box-shadow: var(--shadow-sm);
+  cursor: zoom-in;
+}
+
+.photo-masonry img:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 3rem; }
+  .project-grid { grid-template-columns: 1fr; }
+  .photo-masonry { column-count: 2; }
+}
+
+.footer { 
+  padding: 80px 0; 
+  text-align: center; 
+  color: var(--slate-600); 
+  border-top: 1px solid var(--slate-200); 
+  margin-top: 120px; 
+}
+
+/* --- LIGHTBOX (EXPAND) STYLES --- */
+#lightbox {
+  position: fixed;
+  z-index: 2000; /* Higher than the nav bar */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.95); /* Deep slate blurred background */
+  backdrop-filter: blur(8px);
+  display: none; /* Hidden by default */
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  padding: 40px;
+}
+
+#lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* THE FIX: Ensures the whole image fits without cropping */
+  border-radius: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: zoomIn 0.3s ease-out;
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.close-btn {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: white;
+  font-size: 3rem;
+  font-weight: 200;
+  line-height: 1;
+}
+
+
+/* Container for the image */
+.card-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+
+/* --- HOVER OVERLAY SYSTEM --- */
+.card-img-container {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+}
+
+
+
+/* The "Click to learn more" overlay */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6); /* Dark tint */
+  backdrop-filter: blur(4px); /* Blur effect */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease;
+}
+
+.overlay-text {
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  border: 2px solid white;
+  padding: 10px 20px;
+  border-radius: 99px;
+  transform: translateY(10px);
+  transition: transform 0.3s ease;
+}
+
+/* Hover Actions */
+.card:hover .card-overlay {
+  opacity: 1;
+}
+
+.card:hover .overlay-text {
+  transform: translateY(0);
+}
+
+.card:hover .card-img {
+  transform: scale(1.1); /* Subtle zoom effect on the image */
+}
+
+.butterfly-container {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    width: 30px;
+    height: 30px;
+    /* We handle top and left purely in JS now */
+    opacity: 1;
+    transition: opacity 0.8s ease;
+}
+
+.bfly-fade {
+    opacity: 0 !important;
+}
+
+/* Wing Flapping (Fast & Fluttery) */
+.wing-l { transform-origin: 25px 25px; animation: flap-l 0.12s infinite alternate; }
+.wing-r { transform-origin: 25px 25px; animation: flap-r 0.12s infinite alternate; }
+
+@keyframes flap-l { from { transform: rotateY(0deg); } to { transform: rotateY(80deg); } }
+@keyframes flap-r { from { transform: rotateY(0deg); } to { transform: rotateY(-80deg); } }
+
+/* Class to trigger the fade */
+.butterfly-hidden {
+    opacity: 0 !important;
+}
