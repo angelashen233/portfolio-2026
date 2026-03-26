@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winter Solstice 2022 — Angela Shen</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Case Study Specific Styles */
+        .case-hero {
+            padding: 140px 24px 80px;
+            text-align: center;
+            background: linear-gradient(to bottom, #fff7ed, #ffffff);
+        }
+
+        .case-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin: 24px 0;
+            line-height: 1.1;
+        }
+
+        .case-meta {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .case-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .case-meta-label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--slate-600);
+        }
+
+        .case-meta-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--slate-900);
+        }
+
+        .case-section {
+            padding: 80px 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .case-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .case-section h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin: 48px 0 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .case-section h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 32px 0 12px;
+            color: var(--orange);
+        }
+
+        .case-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--slate-600);
+            margin-bottom: 16px;
+        }
+
+        .case-img {
+            width: 100%;
+            border-radius: 24px;
+            margin: 40px 0;
+            box-shadow: 0 12px 24px -5px rgb(0 0 0 / 0.1);
+        }
+
+        .spirit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin: 48px 0;
+        }
+
+        .spirit-card {
+            text-align: center;
+            padding: 24px;
+            background: white;
+            border-radius: 24px;
+            border: 1px solid var(--slate-200);
+        }
+
+        .spirit-card h4 {
+            margin-top: 16px;
+            color: var(--slate-900);
+        }
+
+        .spirit-card p {
+            font-size: 0.95rem;
+            margin-top: 8px;
+        }
+
+        .spirit-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 48px 0;
+        }
+
+        .highlight-box {
+            background: #fff7ed;
+            border-left: 4px solid var(--orange);
+            padding: 24px;
+            border-radius: 12px;
+            margin: 32px 0;
+        }
+
+        .highlight-box h3 {
+            margin-top: 0;
+            color: var(--orange);
+        }
+
+        @media (max-width: 768px) {
+            .case-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+
+            .spirit-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="nav-bar">
+        <div class="container nav-content">
+            <span class="logo">✨ Angela Shen</span>
+            <div class="nav-links">
+                <a href="index.html">Work</a>
+                <a href="mailto:angelashen.ca@gmail.com" class="btn-primary">Get in Touch</a>
+            </div>
+        </div>
+    </nav>
+
+                <header class="case-hero">
+            <span class="status-badge">NARRATIVE DESIGN • 2D PUZZLE ADVENTURE</span>
+            <h1>Meddlesome <span class="gradient-text">Company</span></h1>
+            <p style="max-width: 700px; margin: 0 auto; font-size: 1.25rem; color: var(--slate-600);">
+                A side-scrolling puzzle adventure exploring miscommunication and corporate espionage through multi-perspective gameplay.
+            </p>
+            <div class="case-meta">
+                <div class="case-meta-item">
+                    <span class="case-meta-label">Course</span>
+                    <span class="case-meta-value">IAT 313: Narrative & New Media</span>
+                </div>
+                <div class="case-meta-item">
+                    <span class="case-meta-label">Collaborators</span>
+                    <span class="case-meta-value">Jillian Li, Michelle Lin, Keith Law</span>
+                </div>
+                <div class="case-meta-item">
+                    <span class="case-meta-label">Platform</span>
+                    <span class="case-meta-value">2D Side-Scroller</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="container">
+            <section class="case-section">
+                <div class="highlight-box">
+                    <h3>The Concept</h3>
+                    <p>In <em>Meddlesome Company</em>, players infiltrate the technological giant <strong>Melon Corp</strong>. The narrative hook relies on an information gap: two high-achieving employees from a rival firm are sent on the same mission, both believing they are working solo.</p>
+                    <p>My role focused on translating this original script into a playable <strong>User Experience</strong>, ensuring the environmental puzzles complemented the theme of secrecy and accidental collaboration.</p>
+                </div>
+
+                <h2>Narrative Architecture</h2>
+                <p>The game is structured into three distinct chapters. Players experience the mission first through Anthony’s perspective, then Theo’s, before the perspectives converge in a high-stakes finale. This structure required careful <strong>Level Design</strong> to ensure that clues discovered in one chapter felt rewarding when resolved in another.</p>
+                
+                <div class="two-col">
+                    <div>
+                        <h4>Character: Anthony</h4>
+                        <p>Focused on stealth and technical infiltration. His path highlights the high-pressure environment of Berry Inc.</p>
+                    </div>
+                    <div>
+                        <h4>Character: Theo</h4>
+                        <p>Focused on environmental navigation and puzzle-solving. His journey reveals the inner workings of Melon Corp.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="case-section">
+                <h2>Visual World-Building</h2>
+                <p>As a 2D adventure, the aesthetic needed to balance the sterile corporate vibe of a tech giant with the playful tension of a puzzle game. I worked on ensuring the <strong>Visual Assets</strong> maintained a cohesive style that signaled different "security tiers" within the corporate office.</p>
+                
+                <img class="case-img" src="images/meddlesome/level-design-preview.png" alt="Level design showing Melon Corp interior">
+
+                <h3>Interactive Mechanics</h3>
+                <p>The puzzles were designed to be "meddlesome"—requiring players to think about how their solo actions might be affecting the unseen teammate. This was a direct application of my **Communications (CMNS)** background, exploring how "non-verbal storytelling" works in a digital space.</p>
+            </section>
+
+            <section class="case-section" style="text-align: center;">
+                <a href="https://www.sfu.ca/siat/showcase/fall-2024-project-showcase/iat-313-meddlesome-company.html" target="_blank" class="btn-primary" style="display: inline-block; text-decoration: none;">
+                    View SIAT Showcase ↗
+                </a>
+            </section>
+        </main>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2026 Angela Shen • Joint Major: CMNS & SIAT @ SFU</p>
+    </footer>
+
+</body>
+</html>

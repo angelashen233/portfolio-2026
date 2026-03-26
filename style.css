@@ -65,6 +65,34 @@ body {
   font-size: 0.9rem; 
 }
 
+.nav-links a {
+    position: relative;
+    text-decoration: none;
+    color: #333; /* Your default text color */
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+/* The Underline (Hidden by default) */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f89c33; /* Matching your butterfly orange */
+    transition: width 0.3s ease;
+}
+
+/* The Active State (The underline grows to 100%) */
+.nav-links a.active::after {
+    width: 100%;
+}
+
+
+
+
 .btn-primary {
   background: #000;
   color: #fff !important;
@@ -431,6 +459,13 @@ body {
     animation: flutter 0.12s infinite alternate ease-in-out !important;
 }
 
+#butterfly-art.hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+    transition: opacity 0.4s ease, visibility 0.4s;
+}
+
 .butterfly-hidden {
     opacity: 0 !important;
     transition: opacity 0.4s ease-out !important;
@@ -446,3 +481,271 @@ body {
     from { transform: scaleX(1); }
     to { transform: scaleX(0.5); }
 }
+
+/*modal - page` transition*/
+
+/* When this class is added, the modal fills the whole screen and removes the "pop-up" shadow */
+.modal-overlay.full-page-mode {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #fff; /* Or your portfolio's background color */
+    overflow-y: auto; /* Allow the user to scroll down the "new page" */
+    z-index: 100000;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hide the close button if you want it to feel like a real new page */
+.full-page-mode .close-modal {
+    display: none;
+}
+
+
+/*bloging style*/
+
+/* Blog Page Specific Styles */
+.blog-header {
+    padding: 100px 0 50px;
+    text-align: center;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.blog-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.blog-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.blog-img {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #eee;
+}
+
+.blog-content {
+    padding: 25px;
+}
+
+.blog-date {
+    font-size: 0.8rem;
+    color: #f89c33; /* Matching your butterfly orange */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.blog-content h3 {
+    margin: 10px 0;
+    font-size: 1.5rem;
+}
+
+/* Container to keep tags tidy */
+.tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+/* Base Tag Style */
+.tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 12px;
+    border-radius: 50px;
+    border: 1px solid transparent;
+}
+
+/* Category-Specific Colors */
+.tag-tech {
+    background: #f0f4f8; /* Soft blue */
+    color: #1a3a5a;
+}
+
+.tag-impact {
+    background: #fff8f0; /* Soft orange (Matches your butterfly) */
+    color: #d44d1e;
+    border-color: #f89c33;
+}
+
+.tag-skill {
+    background: #f3f0f7; /* Soft purple */
+    color: #5a1a5a;
+}
+
+
+/* --- JOURNAL CONTAINER --- */
+#journal-book {
+    width: 800px;
+    height: 500px;
+    position: relative;
+    perspective: 1500px; /* REQUIRED for depth */
+    margin: 50px auto;
+    font-family: 'Inter', sans-serif; /* Your portfolio font */
+    color:black
+}
+
+/* --- BASE PAGE STYLE (Acts as a container for front/back) --- */
+.page-container {
+    width: 50%; /* Book occupies half the parent width */
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform-origin: left center;
+    transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-style: preserve-3d; /* CRITICAL: Allows 3D faces */
+    z-index: 1;
+}
+
+/* --- THE FLIP ACTION (Controlled by JS) --- */
+.page-container.flipped {
+    transform: rotateY(-180deg);
+}
+
+/* --- SHARED STYLING FOR FRONTS & BACKS --- */
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* CRITICAL: Hides the mirrored side */
+    padding: 40px;
+    background: #fffcf5; /* Paper texture */
+    box-shadow: inset 3px 0px 20px rgba(0,0,0,0.1);
+    border: 1px solid #e0ddd5;
+    overflow: hidden;
+}
+
+/* --- STYLING THE FRONT FACES --- */
+.front {
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+/* --- STYLING THE BACK FACES (THE FIX!) --- */
+.back {
+    z-index: 1;
+    transform: rotateY(180deg); /* Counter-rotates so text is correct */
+    background: #fdfaf3; /* Slightly darker "aged" paper look */
+}
+
+/* --- SPECIAL COVER STYLE --- */
+.cover-page {
+    background: #000;
+    color: #fff;
+}
+.cover-page .back {
+    background: #325; /* Back of black cover */
+}
+
+.journal-controls {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 20px !important;
+    
+    /* Absolute positioning relative to the journal-book */
+    position: absolute;
+    left: 50%;
+    bottom: -100px; /* Adjust this to move them further down if needed */
+    transform: translateX(-50%);
+    
+    /* Force it to stay on the very top layer */
+    z-index: 9999; 
+    width: 400px; /* Give it a fixed width so it can't collapse */
+}
+
+.journal-controls button {
+    flex: 1; /* Makes both buttons equal width */
+    max-width: 160px;
+    height: 48px;
+    
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 90px; /* Matches your 'Get in Touch' button */
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+/* responsiveness for the blog page simluatoin  */
+@media (max-width: 768px) {
+    /* 1. Make the container fill the screen width */
+    .journal-wrapper { 
+        width: 95vw; 
+        perspective: 1000px;
+    }
+
+    /* 2. Disable the "spread" look—stack pages on top of each other */
+    .page-container {
+        width: 100%;
+        left: 0;
+    }
+
+    /* 3. Adjust the flip animation for a single-page feel */
+    .page-container.flipped {
+        transform: rotateY(-180deg) translateX(-100%); /* Moves it out of view */
+        opacity: 0; /* Optional: fades out so it doesn't overlap mobile edges */
+        pointer-events: none;
+    }
+
+    /* 4. Ensure the paper texture and padding don't cramp the text */
+    .front, .back {
+        padding: 20px;
+        box-shadow: none; /* Shadow looks weird on single pages */
+    }
+}
+
+/* This targets the headings specifically within your journal pages */
+.front h1, .front h2, .back h1, .back h2 {
+    color: #1a1a1a; /* A deep charcoal/black */
+    z-index: 10;
+    position: relative;
+}
+
+/* If you want the cover titles to stay white on the black background */
+.cover-page .front h1, .cover-page .front h2 {
+    color: #ffffff;
+}
+
+/* 1. Set a base dark color for all journal text */
+.front, .back {
+    color: #1a1a1a !important;
+}
+
+/* 2. Specifically ensure headers inside pages are dark */
+.front h2, .back h2, .front h3, .back h3 {
+    color: #1a1a1a !important;
+}
+
+/* 3. ONLY the cover page title should stay white */
+.cover-page .front .portfolio-title {
+    color: #ffffff !important;
+}
+/* --- END OF ANGELA'S PRO DESIGN SYSTEM V3 --- */

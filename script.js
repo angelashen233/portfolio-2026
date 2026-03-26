@@ -1,95 +1,89 @@
-/* --- 1. BUTTERFLY ANIMATION --- */
 document.addEventListener('DOMContentLoaded', () => {
     const trigger = document.getElementById('trigger-area');
     const butterfly = document.getElementById('butterfly-art');
-    const caseStudies = document.getElementById('work');
-    
+    const workSection = document.getElementById('work');
+
     if (!trigger || !butterfly) return;
 
     let isFollowing = false;
     let isVisible = true;
+    let time = 0;
     let mouseX = 0, mouseY = 0;
     let butterflyX = 0, butterflyY = 0;
-    let time = 0; 
+    const driftSpeed = 0.02; // That slow, elegant drift you wanted
 
+    // 1. PIN TO 'C' (Forces it to stay stuck while scrolling)
     const pinToC = () => {
-    const trigger = document.getElementById('trigger-area');
-    const butterfly = document.getElementById('butterfly-art');
-    
-    if (!isFollowing && trigger && butterfly) {
-        const rect = trigger.getBoundingClientRect();
-        
-        // Since it's fixed, we use the viewport coordinates directly
-        butterflyX = rect.left - 5;
-        butterflyY = rect.top - 20;
-        
-        butterfly.style.left = `${butterflyX}px`;
-        butterfly.style.top = `${butterflyY}px`;
-        butterfly.style.width = "45px"; // Force width in JS as a backup
-        butterfly.style.opacity = "1";
-    }
-};
-    // Keep pinned during scroll/resize
+        if (!isFollowing && isVisible) {
+            const rect = trigger.getBoundingClientRect();
+            // We use fixed positioning math:
+            butterflyX = rect.left - 5;
+            butterflyY = rect.top - 20;
+            
+            butterfly.style.left = `${butterflyX}px`;
+            butterfly.style.top = `${butterflyY}px`;
+            butterfly.style.opacity = "1";
+        }
+    };
+
+    // Run pinning on scroll/resize/load
     window.addEventListener('scroll', pinToC);
     window.addEventListener('resize', pinToC);
     window.addEventListener('load', () => setTimeout(pinToC, 100));
     pinToC(); 
 
-    // Animation loop
+    // 2. THE ANIMATION LOOP
     function animate() {
-        if (isVisible) {
-            if (isFollowing) {
-                time += 0.02; 
-                butterflyX += (mouseX - butterflyX) * 0.02;
-                butterflyY += (mouseY - butterflyY) * 0.02;
+        if (isVisible && isFollowing) {
+            time += 0.02;
 
-                const sway = Math.sin(time) * 3; 
-                let targetTilt = (mouseX - butterflyX) * 0.05;
-                const maxTilt = 15; 
-                const clampedTilt = Math.max(-maxTilt, Math.min(maxTilt, targetTilt));
+            // Slow-motion catch up
+            butterflyX += (mouseX - butterflyX) * driftSpeed;
+            butterflyY += (mouseY - butterflyY) * driftSpeed;
 
-                butterfly.style.left = `${butterflyX}px`;
-                butterfly.style.top = `${butterflyY + sway}px`; 
-                butterfly.style.transform = `rotate(${clampedTilt}deg)`;
-            }
+            const sway = Math.sin(time) * 3;
+            const targetTilt = (mouseX - butterflyX) * 0.05;
+            const clampedTilt = Math.max(-15, Math.min(15, targetTilt));
+
+            butterfly.style.left = `${butterflyX}px`;
+            butterfly.style.top = `${butterflyY + sway}px`; 
+            butterfly.style.transform = `rotate(${clampedTilt}deg)`;
+            
             requestAnimationFrame(animate);
         }
     }
 
-    // NEW: Trigger the flight when mouse enters the 'C' area
+    // 3. MOUSE TRACKING & WAKE UP
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX + 35;
+        mouseY = e.clientY - 35;
+    });
+
     trigger.addEventListener('mouseenter', () => {
         if (!isFollowing) {
             isFollowing = true;
             butterfly.classList.remove('butterfly-rest');
             butterfly.classList.add('butterfly-following');
-            // Stop pinning to the 'C' once it's flying
+            // Stop the pinning listener so it can fly away
             window.removeEventListener('scroll', pinToC);
+            animate();
         }
     });
 
-    // Track mouse movement (Always update coordinates so it's ready)
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX + 35; 
-        mouseY = e.clientY - 35;
-    });
-
-    // Hide when case studies section visible
-    const observer = new IntersectionObserver((entries) => {
+    // 4. THE DISAPPEAR OBSERVER (The "Work" Trigger)
+    const hideObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 isVisible = false;
-                butterfly.style.opacity = '0';
-                setTimeout(() => butterfly.style.display = 'none', 500);
+                butterfly.classList.add('hidden');
+                // Force it away from the screen entirely
+                setTimeout(() => butterfly.style.display = 'none', 400);
             }
         });
     }, { threshold: 0.1 });
 
-    if (caseStudies) observer.observe(caseStudies);
-
-    // START the loop
-    animate();
+    if (workSection) hideObserver.observe(workSection);
 });
-
 
 /* --- 2. PROJECT MODAL & LIGHTBOX --- */
 const modal = document.getElementById('project-modal');
@@ -151,4 +145,106 @@ document.querySelectorAll('.project-trigger').forEach(card => {
     if (imgPath && imgDiv) {
         imgDiv.style.backgroundImage = `url('${imgPath}')`;
     }
+});
+
+
+//modal expanding after the gallery - point of contact
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('project-modal');
+    const galleryLabel = document.querySelector('.gallery-label');
+
+    // Create the Observer
+    const pageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // If the modal is open and the user scrolls PAST the gallery label
+            if (!entry.isIntersecting && modal.style.display === 'flex') {
+                // entry.boundingClientRect.top < 0 means it's above the screen
+                if (entry.boundingClientRect.top < 0) {
+                    modal.classList.add('full-page-mode');
+                    
+                    // Optional: Change the URL hash so it feels like a new page
+                    // window.location.hash = "project-details";
+                }
+            }
+        });
+    }, {
+        threshold: 0, // Trigger as soon as the last pixel leaves the screen
+        rootMargin: "-50px 0px 0px 0px" // Optional offset
+    });
+
+    if (galleryLabel) {
+        pageObserver.observe(galleryLabel);
+    }
+});
+/* --- SMART NAV HIGHLIGHTER --- */
+document.addEventListener('DOMContentLoaded', () => {
+    const currentPath = window.location.pathname.toLowerCase();
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    navLinks.forEach(link => {
+        const linkHref = link.getAttribute('href').toLowerCase();
+        link.classList.remove('active');
+
+        // 1. Logic for HOME
+        if (linkHref.includes("index.html") || linkHref === "/" || linkHref === "./") {
+            if (currentPath.endsWith('/') || currentPath.endsWith('index.html')) {
+                link.classList.add('active');
+            }
+        } 
+        
+        // 2. Logic for BLOG (Stay active if on blog.html OR inside any /posts/ file)
+        else if (linkHref.includes("blog")) {
+            if (currentPath.includes("blog") || currentPath.includes("/posts/")) {
+                link.classList.add('active');
+            }
+        }
+
+        // 3. Logic for any other pages (Work, Photography, etc.)
+        else if (currentPath.includes(linkHref.replace('.html', ''))) {
+            link.classList.add('active');
+        }
+    });
+});
+
+//READING EXPERIENCE FOR BLOG
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Get the containers (the actual "sheets" of paper that flip)
+    const pageContainers = document.querySelectorAll('.page-container');
+    const nextBtn = document.getElementById('next-page');
+    const prevBtn = document.getElementById('prev-page');
+    let currentPage = 0;
+
+    // 2. Handle Page Numbering (targets the faces inside the containers)
+    const allFaces = document.querySelectorAll('.front, .back');
+    allFaces.forEach((face, index) => {
+        const numSpan = face.querySelector('.page-number');
+        if (numSpan) {
+            numSpan.innerText = index + 1;
+        }
+    });
+
+    // 3. Initialize z-index for the containers
+    pageContainers.forEach((container, index) => {
+        container.style.zIndex = pageContainers.length - index;
+    });
+
+    // 4. Navigation Logic
+    nextBtn.addEventListener('click', () => {
+        if (currentPage < pageContainers.length) {
+            pageContainers[currentPage].classList.add('flipped');
+            pageContainers[currentPage].style.zIndex = currentPage + 1;
+            currentPage++;
+        }
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentPage > 0) {
+            currentPage--;
+            pageContainers[currentPage].classList.remove('flipped');
+            pageContainers[currentPage].style.zIndex = pageContainers.length - currentPage;
+        }
+    });
 });
