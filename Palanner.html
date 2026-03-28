@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palanner — Angela Shen</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .img-caption {
+            font-size: 0.85rem;
+            color: var(--slate-500);
+            text-align: center;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        .screen-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+        .screen-grid img {
+            width: 100%;
+            border-radius: 16px;
+            border: 1px solid var(--slate-200);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .screen-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--slate-500);
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+        .process-step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        .step-number {
+            flex-shrink: 0;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            font-weight: 800;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.2rem;
+        }
+        @media (max-width: 640px) {
+            .screen-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="nav-bar">
+        <div class="container nav-content">
+            <a class="logo" href="index.html">✨ Angela Shen</a>
+            <div class="nav-links">
+                <a href="index.html">Work</a>
+                <a href="images/Angela-Shen-Resume-2026-Feb_Lab-Submission.pdf" class="btn-primary" target="_blank">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="case-hero">
+        <span class="status-badge">UX / UI DESIGN • COGNITIVE ACCESSIBILITY • MOBILE APP</span>
+        <h1>Pal<span class="gradient-text">anner</span></h1>
+        <p style="max-width: 700px; margin: 0 auto; font-size: 1.25rem; color: var(--slate-600);">
+            A planner designed for users who struggle with standard productivity tools — combining calendar, tasks, and ambient context in a low-friction environment built around reducing cognitive overload.
+        </p>
+        <div class="case-meta">
+            <div class="case-meta-item">
+                <span class="case-meta-label">Platform</span>
+                <span class="case-meta-value">Mobile App</span>
+            </div>
+            <div class="case-meta-item">
+                <span class="case-meta-label">Disciplines</span>
+                <span class="case-meta-value">UX Design, Visual Design, Illustration</span>
+            </div>
+            <div class="case-meta-item">
+                <span class="case-meta-label">Audience</span>
+                <span class="case-meta-value">ADHD users, cognitively diverse audiences</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Problem -->
+        <section class="case-section">
+            <div class="highlight-box">
+                <h3>The Problem</h3>
+                <p>Most productivity apps are designed for people who are already organized. For users with ADHD, the clinical UI of a standard to-do app creates friction rather than reducing it — the visual noise, context-switching between tools, and lack of emotional reward make it hard to build consistent habits.</p>
+                <p style="margin-bottom: 0;">Palanner's answer: turn your planner into a place you <em>want</em> to visit. By framing productivity inside a cozy, personalized room — one with a pet, ambient warmth, and rewards for showing up — the app makes daily organization feel like coming home.</p>
+            </div>
+        </section>
+
+        <!-- Prototype -->
+        <section class="case-section">
+            <h2>Interactive Prototype</h2>
+            <p>The full prototype walks through every core flow — from choosing your pet on first launch, through daily to-do management, notes, and the weather screen.</p>
+            <div style="margin: 1.5rem 0;">
+                <iframe
+                    style="border: 1px solid rgba(0,0,0,0.1); width: 100%; height: 600px; border-radius: 12px;"
+                    src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FTKXBoi6yVE6m4PpI8QFvp2%2FPalanner%3Fnode-id%3D101-160%26t%3DbqQTCglUD28geRVd-1%26scaling%3Dcontain%26content-scaling%3Dfixed%26page-id%3D101%253A41%26starting-point-node-id%3D101%253A42"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- App Screens -->
+        <section class="case-section">
+            <h2>The App</h2>
+            <p>Each screen is built around a single task, keeping cognitive load low. The warm terracotta and cream palette, rounded corners, and hand-drawn icon style all signal "this is a safe, low-pressure space."</p>
+
+            <div class="screen-grid">
+                <div>
+                    <img src="images/Palanner_Home page.png" alt="Palanner home screen — isometric room with pet, calendar, and to-do previews">
+                    <p class="screen-label">Home — your room</p>
+                </div>
+                <div>
+                    <img src="images/Palanner_To_dos_page.png" alt="Palanner to-dos screen — today's actions, weekly tasks, and just reminders">
+                    <p class="screen-label">To-Dos</p>
+                </div>
+                <div>
+                    <img src="images/Palanner_Notes_Journal.png" alt="Palanner notes and journal screen — pinnable cards with dated entries">
+                    <p class="screen-label">Notes / Journal</p>
+                </div>
+                <div>
+                    <img src="images/Palanner_Weather.png" alt="Palanner weather screen — temperature, humidity, wind, sunrise, and recommended items">
+                    <p class="screen-label">Weather</p>
+                </div>
+                <div>
+                    <img src="images/Palanner_To_dos_page (2).png" alt="Palanner open note showing project proposal with feature list">
+                    <p class="screen-label">Note detail view</p>
+                </div>
+                <div>
+                    <img src="images/Palanner_pet_design.png" alt="Palanner pet selection screen — choose your dog companion">
+                    <p class="screen-label">Pet selection</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Design Decisions -->
+        <section class="case-section">
+            <h2>Key Design Decisions</h2>
+
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div>
+                    <h3 style="margin-top: 0;">The Room as a Home Screen</h3>
+                    <p>Rather than opening to a list, Palanner opens to an isometric room — your personal space that reflects your day. The room persists as a visual anchor; all features are accessible from it, so users always know where they are. This reduces the disorientation that ADHD users often experience when navigating between tabs and menus.</p>
+                </div>
+            </div>
+
+            <img class="case-img" src="images/Palanner_Home page.png" alt="The isometric home room — calm, personalized, with ambient morning greeting">
+            <p class="img-caption">The home room — a personal space that greets you by name and shows what needs your attention today</p>
+
+            <div class="process-step" style="margin-top: 2.5rem;">
+                <div class="step-number">2</div>
+                <div>
+                    <h3 style="margin-top: 0;">Pet Companion</h3>
+                    <p>The pet is more than decoration — it's the emotional core of the app. Users choose their companion on first launch, and the pet lives in the home room. This light gamification gives the app a reason to return to daily: not just to check tasks, but to see your pet. For ADHD users who struggle with intrinsic motivation, the pet provides a low-stakes external cue.</p>
+                </div>
+            </div>
+
+            <img class="case-img" src="images/Palanner_pet_design.png" alt="Pet selection screen showing a set of illustrated dogs to choose from">
+            <p class="img-caption">Pet selection — illustrated dog companions designed in a flat, warm style consistent with the rest of the app</p>
+
+            <div class="process-step" style="margin-top: 2.5rem;">
+                <div class="step-number">3</div>
+                <div>
+                    <h3 style="margin-top: 0;">Tiered To-Dos</h3>
+                    <p>Tasks are grouped into three explicit tiers: <strong>Actions for today</strong>, <strong>For this week</strong>, and <strong>Just reminder</strong>. This reduces the overwhelm of a flat list where everything feels equally urgent — a common pain point for ADHD. Users can process one tier at a time without losing sight of the larger picture.</p>
+                </div>
+            </div>
+
+            <div class="two-col" style="gap: 1.5rem; margin: 1.5rem 0;">
+                <div>
+                    <img class="case-img" src="images/Palanner_To_dos_page.png" alt="To-dos screen showing tiered task groups" style="margin: 0; border-radius: 16px; border: 1px solid var(--slate-200);">
+                    <p class="img-caption">Tiered task view — today, this week, reminders</p>
+                </div>
+                <div>
+                    <img class="case-img" src="images/Palanner_To_dos_page (2).png" alt="Open note detail showing project proposal content" style="margin: 0; border-radius: 16px; border: 1px solid var(--slate-200);">
+                    <p class="img-caption">Note detail — task context without leaving the app</p>
+                </div>
+            </div>
+
+            <div class="process-step" style="margin-top: 1rem;">
+                <div class="step-number">4</div>
+                <div>
+                    <h3 style="margin-top: 0;">Notes as Journal</h3>
+                    <p>Notes are dated and pinnable — designed to double as a journal. The large card format and muted colours invite reflection without demanding it. For users who benefit from externalizing thoughts to manage mental load, this blurs the line between task management and emotional processing in a useful way.</p>
+                </div>
+            </div>
+
+            <img class="case-img" src="images/Palanner_Notes_Journal.png" alt="Notes and journal screen with pinned cards and dated entries">
+            <p class="img-caption">Notes / Journal — pinnable, dated, soft enough to feel like a diary rather than a database</p>
+
+            <div class="process-step" style="margin-top: 2.5rem;">
+                <div class="step-number">5</div>
+                <div>
+                    <h3 style="margin-top: 0;">Contextual Weather</h3>
+                    <p>The weather screen goes beyond temperature — it ends with a <strong>Recommended item</strong> list (sunscreen, an umbrella, your favourite outfit). This small detail makes planning tangible and reduces the micro-decisions of getting ready, which can be disproportionately draining for ADHD users.</p>
+                </div>
+            </div>
+
+            <img class="case-img" src="images/Palanner_Weather.png" alt="Weather screen showing temperature, humidity, wind, sunrise time, and a list of recommended items to bring">
+            <p class="img-caption">Weather with recommended items — context that converts a data point into an actionable suggestion</p>
+        </section>
+
+        <!-- IA -->
+        <section class="case-section">
+            <h2>Information Architecture</h2>
+            <p>The navigation structure is deliberately flat — four tabs (Calendar, To-dos, Photos, Notes) are always visible at the bottom of the screen. No hidden menus, no nested settings. Every feature is reachable in one tap from anywhere in the app.</p>
+
+            <img class="case-img" src="images/Palanner_Flowchart-basic.png" alt="Palanner user flow — login through home to all core features">
+            <p class="img-caption">Core user flow — from login through the home room to every feature, with no dead ends</p>
+        </section>
+
+        <!-- Reflection -->
+        <section class="case-section">
+            <div class="highlight-box">
+                <h3>Reflection</h3>
+                <p>Palanner taught me that good UX for neurodivergent users isn't about adding accommodations — it's about stripping away everything that doesn't need to be there. The visual warmth, the pet, the tiered tasks, and the persistent room are all ways of reducing friction without reducing capability.</p>
+                <p>Reducing friction for ADHD users turned out to mean reducing friction for <em>every</em> user under cognitive load — the same flat navigation, single-task screens, and tiered urgency that help a student with ADHD are exactly what help a clinician mid-shift.</p>
+                <p style="margin-bottom: 0;">The biggest challenge was resisting feature creep. Every proposed addition was tested against one question: <em>does this help someone show up for their day, or does it give them one more thing to manage?</em></p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2026 Angela Shen • Joint Major: CMNS & SIAT @ SFU</p>
+    </footer>
+
+</body>
+</html>

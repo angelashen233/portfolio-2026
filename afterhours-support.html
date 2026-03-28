@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFUSnap VictimSupport | Angela Shen</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .img-caption {
+            font-size: 0.85rem;
+            color: var(--slate-500);
+            text-align: center;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        .finding-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+        .finding-card {
+            padding: 1.5rem;
+            background: var(--slate-50);
+            border-radius: 12px;
+            border: 1px solid var(--slate-200);
+            border-left: 4px solid #ef4444;
+        }
+        .finding-card.good {
+            border-left-color: #22c55e;
+        }
+        .finding-card h4 {
+            margin-top: 0;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--slate-500);
+        }
+        .finding-card p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+        .validation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+        .validation-card {
+            padding: 1.5rem;
+            background: var(--slate-50);
+            border-radius: 12px;
+            border: 1px solid var(--slate-200);
+        }
+        .validation-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            background: #dcfce7;
+            color: #15803d;
+            border-radius: 99px;
+            padding: 3px 10px;
+            margin-bottom: 0.75rem;
+        }
+        .validation-badge.amber {
+            background: #fef3c7;
+            color: #b45309;
+        }
+        .validation-card h4 {
+            margin-top: 0;
+            font-size: 1rem;
+        }
+        .validation-card p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            color: var(--slate-600);
+        }
+        .quote-block {
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.5rem;
+            background: var(--slate-50);
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--slate-700);
+        }
+        .quote-block cite {
+            display: block;
+            margin-top: 0.5rem;
+            font-style: normal;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--slate-500);
+        }
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+        .compare-table th {
+            text-align: left;
+            padding: 0.75rem 1rem;
+            background: var(--slate-100);
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--slate-600);
+        }
+        .compare-table th:first-child { border-radius: 8px 0 0 0; }
+        .compare-table th:last-child { border-radius: 0 8px 0 0; }
+        .compare-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--slate-200);
+            vertical-align: top;
+        }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table .col-bad { color: #b91c1c; }
+        .compare-table .col-good { color: #15803d; font-weight: 600; }
+        @media (max-width: 640px) {
+            .finding-grid, .validation-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <div class="container nav-content">
+            <a class="logo" href="index.html">✨ Angela Shen</a>
+            <div class="nav-links">
+                <a href="index.html">Work</a>
+                <a href="images/Angela-Shen-Resume-2026-Feb_Lab-Submission.pdf" class="btn-primary" target="_blank">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="case-hero">
+        <span class="status-badge">SOCIAL IMPACT • MEDTECH • TRAUMA-INFORMED UX</span>
+        <h1>SFUSnap — <span class="gradient-text">VictimSupport</span></h1>
+        <p style="max-width: 700px; margin: 0 auto; font-size: 1.25rem; color: var(--slate-600);">
+            Bridging the gap in after-hours crisis support for survivors — because the hardest moments don't follow a 9-to-5 schedule.
+        </p>
+        <div class="case-meta">
+            <div class="case-meta-item">
+                <span class="case-meta-label">Platform</span>
+                <span class="case-meta-value">Mobile App (React)</span>
+            </div>
+            <div class="case-meta-item">
+                <span class="case-meta-label">Context</span>
+                <span class="case-meta-value">SFU Hackathon</span>
+            </div>
+            <div class="case-meta-item">
+                <span class="case-meta-label">Focus</span>
+                <span class="case-meta-value">Trauma-Informed UX</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- THE PROBLEM -->
+        <section class="case-section">
+            <div class="highlight-box">
+                <h3>The Problem</h3>
+                <p>After an assault, students often face a hard cutoff — support services close, and survivors are left without anywhere to turn. The friction of downloading a separate crisis app in that moment is a real barrier. We built directly into existing university infrastructure to remove it.</p>
+                <p style="margin-bottom: 0;">But the problem runs deeper than a missing app. To understand what survivors actually encounter after hours, I tested the existing support landscape myself — calling services at different times across multiple days to document exactly where the system breaks down.</p>
+            </div>
+        </section>
+
+        <!-- FIELD RESEARCH -->
+        <section class="case-section">
+            <h2>Field Research — Testing the Existing System</h2>
+            <p>Before designing anything, I called real crisis and support lines at different times of day and night to map the actual gaps. What I found revealed that the problem isn't just access — it's the quality and speed of that access when it matters most.</p>
+
+            <h3 style="margin-top: 2rem;">Finding 1 — The 9 PM Chat Cutoff (United Way)</h3>
+            <p>The United Way's chat-based crisis support closes at 9 PM. A survivor reaching out late at night hits a dead end immediately — not because help doesn't exist, but because the chat interface presents no alternative when it closes.</p>
+
+            <img class="case-img" src="images/Unitedway-proof-chat-closes-at-9PM.png" alt="Screenshot showing the United Way chat support service is closed after 9PM">
+            <p class="img-caption">United Way chat — confirmed closed after 9 PM, with no warm handoff to available alternatives</p>
+
+            <h3 style="margin-top: 2.5rem;">Finding 2 — BC Victims Line: One Person, All of BC, After Midnight</h3>
+            <p>The BC Victims Line operates after midnight — but with a single counsellor covering the entire province. I called at different times to understand the real experience:</p>
+
+            <div class="finding-grid">
+                <div class="finding-card">
+                    <h4>Capacity after midnight</h4>
+                    <p>One counsellor handles all of BC. If someone else is already on the line when you call, you wait — for as long as it takes. There is no queue estimate, no callback system.</p>
+                </div>
+                <div class="finding-card">
+                    <h4>Resource lookup time: 1–2 minutes</h4>
+                    <p>When I asked about specific local resources, the counsellor had to search a database in real time — taking 1 to 2 minutes to locate and read back information a caller might urgently need.</p>
+                </div>
+                <div class="finding-card">
+                    <h4>Write it down yourself</h4>
+                    <p>Resources are provided verbally. The caller is responsible for writing them down. For someone in crisis, at midnight, this places an unreasonable cognitive burden at exactly the wrong moment.</p>
+                </div>
+                <div class="finding-card">
+                    <h4>No wait time visibility</h4>
+                    <p>You have no way of knowing if you'll wait 30 seconds or 30 minutes. For a survivor already in distress, uncertainty compounds the harm.</p>
+                </div>
+            </div>
+
+            <div class="quote-block">
+                "If you happen to call when another person in all of BC also needs help, you'll just have to wait."
+                <cite>— Research finding from field testing, BC Victims Line</cite>
+            </div>
+        </section>
+
+        <!-- COMPARISON TABLE -->
+        <section class="case-section">
+            <h2>Current System vs. SFUSnap VictimSupport</h2>
+            <p>The field research gave us a clear benchmark. Every feature decision maps directly to a real gap that was documented through testing.</p>
+
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Current System</th>
+                        <th>SFUSnap VictimSupport</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>After 9 PM</td>
+                        <td class="col-bad">United Way chat closes. No warm handoff.</td>
+                        <td class="col-good">Available 24/7 — no cutoff.</td>
+                    </tr>
+                    <tr>
+                        <td>After midnight in BC</td>
+                        <td class="col-bad">One counsellor for all of BC. Unknown wait time.</td>
+                        <td class="col-good">AI triage responds immediately. Local hospital wait times surfaced in real time.</td>
+                    </tr>
+                    <tr>
+                        <td>Finding specific resources</td>
+                        <td class="col-bad">Counsellor searches database live: 1–2 minute lookup. Caller writes it down.</td>
+                        <td class="col-good">Specific resources surfaced instantly. No lookup. No writing required.</td>
+                    </tr>
+                    <tr>
+                        <td>Wait time visibility</td>
+                        <td class="col-bad">None — caller has no information.</td>
+                        <td class="col-good">Live hospital and service wait times displayed before the user commits to a path.</td>
+                    </tr>
+                    <tr>
+                        <td>Cognitive load on the caller</td>
+                        <td class="col-bad">High — must listen, retain, and transcribe information under stress.</td>
+                        <td class="col-good">Low — information is presented visually, persistently, and one step at a time.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- DESIGN APPROACH -->
+        <section class="case-section">
+            <h2>Design Approach</h2>
+            <p>We implemented <strong>Trauma-Informed Design</strong> principles throughout — prioritizing high-contrast, low-stress UI that reduces cognitive load during a crisis. Every interaction was designed to feel calm, direct, and trustworthy.</p>
+
+            <div class="spirit-grid">
+                <div class="spirit-card">
+                    <h4 style="margin-top: 0; color: var(--orange);">Real-time Wait Times</h4>
+                    <p>Live data on local hospital and campus support availability — so survivors can make an informed decision without a phone call.</p>
+                </div>
+                <div class="spirit-card">
+                    <h4 style="margin-top: 0; color: var(--orange);">Secure Evidence Logs</h4>
+                    <p>Zero-friction export system for timestamped documentation to support future legal action — no writing required.</p>
+                </div>
+                <div class="spirit-card">
+                    <h4 style="margin-top: 0; color: var(--orange);">Gemini AI Triage</h4>
+                    <p>Sensitive AI guidance that surfaces factual hotline data and specific resources instantly — no database lookup, no wait.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DESIGN ITERATIONS -->
+        <section class="case-section">
+            <h2>Design Iterations</h2>
+            <p>The UI went through rapid iteration cycles to ensure the interface remained calm and directive under high-stress conditions. Every screen decision was weighed against one question: <em>would a survivor in crisis be able to act on this immediately?</em></p>
+
+            <div class="two-col">
+                <div>
+                    <img class="case-img" src="images/AI-afterhour-agent-UI-design-drafts.png" alt="Early UI design drafts for the SFUSnap VictimSupport agent" style="margin: 0;">
+                    <p class="img-caption">Early UI drafts — establishing tone, hierarchy, and crisis-mode clarity</p>
+                </div>
+                <div>
+                    <img class="case-img" src="images/AI-afterhour-agent-Ux-design-drafts.png" alt="UX flow and interaction design drafts for the afterhour support agent" style="margin: 0;">
+                    <p class="img-caption">UX flow drafts — mapping the survivor journey from arrival to support access</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECHNICAL BUILD -->
+        <section class="case-section">
+            <h2>Technical Build</h2>
+            <p>Built in <strong>React & JavaScript</strong> over a 36-hour hackathon sprint. The multi-agent AI system was designed specifically to avoid the pattern of open-ended AI conversation — survivors needed facts and phone numbers, not a chatbot experience.</p>
+
+            <div class="two-col">
+                <div>
+                    <h4>Gemini API Integration</h4>
+                    <p>Intelligent, context-sensitive guidance constrained to factual crisis resources — no hallucination risk on critical information.</p>
+                </div>
+                <div>
+                    <h4>Offline-First Database</h4>
+                    <p>A local emergency contact database ensures 100% offline access to phone numbers when cellular data is unavailable or cut off.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- VALIDATION -->
+        <section class="case-section">
+            <h2>Expert Review & User Testing</h2>
+            <p>Before and after the build, the application was reviewed by professionals in clinical care, machine learning, and direct user testing.</p>
+
+            <div class="validation-grid">
+                <div class="validation-card">
+                    <span class="validation-badge">Approved</span>
+                    <h4>2 Certified Counsellors</h4>
+                    <p>Two certified counsellors reviewed the application and approved it — confirming the AI guidance approach and resource surfacing was appropriate for trauma-affected users.</p>
+                </div>
+                <div class="validation-card">
+                    <span class="validation-badge">Promising</span>
+                    <h4>ML Researcher</h4>
+                    <p>One ML researcher considered it a strong application, noting that more testing is needed before broader deployment — the right call for any tool operating in a clinical-adjacent space.</p>
+                </div>
+                <div class="validation-card">
+                    <span class="validation-badge">Positive</span>
+                    <h4>User: Useful & Resilient</h4>
+                    <p>One user found it genuinely useful and noted it was "rather difficult to corrupt" — a critical quality for a tool that must remain reliable under adversarial or distressed use conditions.</p>
+                </div>
+                <div class="validation-card">
+                    <span class="validation-badge amber">Open Question</span>
+                    <h4>User: Night-time View</h4>
+                    <p>One user raised an important flag: survivors are most likely to reach for this at night, when most interfaces are blinding. The question — how to differentiate a dark, calm, and easy-to-navigate night mode — is an open design problem for the next iteration.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DESIGN PHILOSOPHY -->
+        <section class="case-section">
+            <div class="highlight-box">
+                <h3>Design Philosophy</h3>
+                <p>My approach here — and across all my work — is to take what's already working, improve it, test it, and repeat. The BC Victims Line exists and provides real value. United Way's chat matters. The answer isn't to replace those systems — it's to fill the gaps they leave, informed by direct evidence of where they fall short.</p>
+                <p style="margin-bottom: 0;">The night-time UI feedback is a good example of this: a user surfaced a real friction point grounded in how people actually use the tool. That becomes the starting point for the next iteration — not a critique, a spec.</p>
+            </div>
+        </section>
+
+        <!-- OUTCOME -->
+        <section class="case-section">
+            <h2>Outcome</h2>
+            <p>The prototype demonstrated that integrating crisis tools into existing university infrastructure removes the most common barrier: "I didn't know where to go." The evidence export feature received particular recognition for its thoughtful approach to supporting survivors through legal processes.</p>
+
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="https://devpost.com/software/sfusnap-victimsupport" class="btn-primary" target="_blank">View on Devpost ↗</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 Angela Shen • Joint Major: CMNS & SIAT @ SFU</p>
+    </footer>
+
+</body>
+</html>

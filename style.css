@@ -54,21 +54,19 @@ body {
   width: 100%;
 }
 
-.logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; }
+.logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em;
+  text-decoration: none; 
+  color: inherit; 
+}
 
 .nav-links { display: flex; gap: 32px; align-items: center; }
 
-.nav-links a { 
-  text-decoration: none; 
-  color: inherit; 
-  font-weight: 600; 
-  font-size: 0.9rem; 
-}
-
 .nav-links a {
-    position: relative;
     text-decoration: none;
-    color: #333; /* Your default text color */
+    color: #333;
+    font-weight: 600;
+    font-size: 0.9rem;
+    position: relative;
     padding-top: 10px;
     padding-bottom: 5px;
 }
@@ -86,15 +84,22 @@ body {
 }
 
 /* The Active State (The underline grows to 100%) */
-.nav-links a.active::after {
+.nav-links a.active::after,
+.nav-links a:hover::after {
     width: 100%;
+}
+
+/* Logo link */
+a.logo {
+    text-decoration: none;
+    color: inherit;
 }
 
 
 
 
 .btn-primary {
-  background: #000;
+  background: #da6e30;
   color: #fff !important;
   padding: 12px 28px;
   border-radius: 99px;
@@ -179,11 +184,13 @@ body {
   border-color: rgba(249, 115, 22, 0.2);
 }
 
-.card-img { 
-  height: 280px; 
-  background-size: cover; 
+.card-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
   background-position: center;
   background-color: var(--slate-50);
+  transition: transform 0.5s ease;
 }
 
 /* --- MODAL (POP-UP PAGE) STYLES --- */
@@ -289,13 +296,16 @@ body {
 
 .card-body { padding: 32px; }
 
-.tag { 
-  font-weight: 800; 
-  font-size: 0.7rem; 
-  text-transform: uppercase; 
-  letter-spacing: 0.05em;
+.tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   margin-bottom: 12px;
   display: block;
+  padding: 4px 12px;
+  border-radius: 50px;
+  border: 1px solid transparent;
 }
 .orange { color: var(--orange); }
 .purple { color: #a855f7; }
@@ -375,15 +385,6 @@ body {
   line-height: 1;
 }
 
-
-/* Container for the image */
-.card-img {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.5s ease;
-}
 
 /* --- HOVER OVERLAY SYSTEM --- */
 .card-img-container {
@@ -568,17 +569,6 @@ body {
     margin-bottom: 12px;
 }
 
-/* Base Tag Style */
-.tag {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 4px 12px;
-    border-radius: 50px;
-    border: 1px solid transparent;
-}
-
 /* Category-Specific Colors */
 .tag-tech {
     background: #f0f4f8; /* Soft blue */
@@ -747,5 +737,147 @@ body {
 /* 3. ONLY the cover page title should stay white */
 .cover-page .front .portfolio-title {
     color: #ffffff !important;
+}
+
+
+/* --- CASE STUDY PAGES --- */
+.case-hero {
+    padding: 140px 24px 80px;
+    text-align: center;
+    background: linear-gradient(to bottom, #fff7ed, #ffffff);
+}
+
+.case-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin: 24px 0;
+    line-height: 1.1;
+}
+
+.case-meta {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+.case-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.case-meta-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--slate-600);
+}
+
+.case-meta-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--slate-900);
+}
+
+.case-section {
+    padding: 80px 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.case-section h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+}
+
+.case-section h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 48px 0 20px;
+    letter-spacing: -0.5px;
+}
+
+.case-section h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 32px 0 12px;
+    color: var(--orange);
+}
+
+.case-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--slate-600);
+    margin-bottom: 16px;
+}
+
+.case-img {
+    width: 100%;
+    border-radius: 24px;
+    margin: 40px 0;
+    box-shadow: 0 12px 24px -5px rgb(0 0 0 / 0.1);
+}
+
+.spirit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px;
+    margin: 48px 0;
+}
+
+.spirit-card {
+    text-align: center;
+    padding: 24px;
+    background: white;
+    border-radius: 24px;
+    border: 1px solid var(--slate-200);
+}
+
+.spirit-card h4 {
+    margin-top: 16px;
+    color: var(--slate-900);
+}
+
+.spirit-card p {
+    font-size: 0.95rem;
+    margin-top: 8px;
+}
+
+.spirit-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+}
+
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 48px 0;
+}
+
+.highlight-box {
+    background: #fff7ed;
+    border-left: 4px solid var(--orange);
+    padding: 24px;
+    border-radius: 12px;
+    margin: 32px 0;
+}
+
+.highlight-box h3 {
+    margin-top: 0;
+    color: var(--orange);
+}
+
+@media (max-width: 768px) {
+    .case-hero h1 { font-size: 2.5rem; }
+    .two-col { grid-template-columns: 1fr; }
+    .spirit-grid { grid-template-columns: 1fr; }
 }
 /* --- END OF ANGELA'S PRO DESIGN SYSTEM V3 --- */

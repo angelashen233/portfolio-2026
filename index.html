@@ -6,63 +6,330 @@
     <title>Angela Shen | Portfolio 2026</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .featured-grid .card-img-container {
+            height: 340px;
+        }
+        .featured-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            background: #fef3c7;
+            color: #b45309;
+            border-radius: 99px;
+            padding: 3px 10px;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+        @media (max-width: 768px) {
+            .featured-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
     <nav class="nav-bar">
         <div class="container nav-content">
-            <span class="logo">✨ Angela Shen</span>
+            <a class="logo" href="index.html">✨ Angela Shen</a>
             <div class="nav-links">
                 <a href="index.html">Work</a>
-                <!-- <a href="blog.html">Blog</a> -->
-                <a href="mailto:angelashen.ca@gmail.com" class="btn-primary">Get in Touch</a>
+                <a href="byo.html">BYO</a>
+                <a href="bluread.html">BluRead</a>
+                <a href="images/Angela-Shen-Resume-2026-Feb_Lab-Submission.pdf" class="btn-primary" target="_blank">Resume</a>
             </div>
         </div>
     </nav>
-        <header class="hero">
-            <div class="hero-content">
-                <span class="status-badge">✦ SFU IAT & CMNS</span>
-                
-                <h1 class="portfolio-title">
-                    <span class="designer-title">Designer & 
-                        <span id="trigger-area">
-                            <span class="gradient-text">Communicator</span>
-                        </span>
-                    </span>
-                </h1>
 
-                <p class="hero-text">Bringing visual clarity and cultural care to high-impact projects. Graduating Spring 2026.<img src="images/butterfly.svg" id="butterfly-art" class="butterfly-rest" alt="Fritillary Butterfly" width="45" style="width: 45px !important; height: auto !important;"></p>
-            </div>
-        </header>
+    <header class="hero">
+        <div class="hero-content">
+            <span class="status-badge">✦ SFU IAT & CMNS</span>
+            <h1 class="portfolio-title">
+                <span class="designer-title">Designer &
+                    <span id="trigger-area">
+                        <span class="gradient-text">Communicator</span>
+                    </span>
+                </span>
+            </h1>
+            <p class="hero-text">Designing accessible, empathy-driven interfaces for users who depend on clarity — from mental health tools to social services software. Graduating Spring 2026.<img src="images/butterfly.svg" id="butterfly-art" class="butterfly-rest" alt="Fritillary Butterfly" width="45"></p>
+        </div>
+    </header>
 
     <main class="container">
         <section id="work">
             <h2 class="section-title">Case Studies</h2>
-            <div class="project-grid">
+
+            <!-- FEATURED: Top 2 most detailed case studies -->
+            <div class="featured-grid">
+
                 <article class="card project-trigger"
-                data-img="images/ws-2022/WinterSolsticeCard_2022_FINAL_DESIGN_Both-Front-smaller.webp">
-                    <a href="2022_Wintersolstice.html" class="card-link-wrapper">
+                    data-title="Bring Your Own Cup"
+                    data-category="UX / UI • Graphic Design"
+                    data-org="SFU Course Project"
+                    data-year="2022"
+                    data-desc="A sustainability app that turned reusable cup habits into a reward — 397 single-use cups kept out of landfill, 100+ Play Store downloads, and 75 trees planted through the rewards program."
+                    data-link="byo.html"
+                    data-link-text="Full Case Study ↗"
+                    data-img="images/BYO_tree_graphics.png">
+                    <a href="byo.html" class="card-link-wrapper">
                         <div class="card-img-container">
-                            <div class="card-img vacfss-img"></div>
+                            <div class="card-img" style="background-image: url('images/BYO_tree_graphics.png'); background-size: cover; background-position: center;"></div>
                             <div class="card-overlay">
                                 <span class="overlay-text">Full Process ↗</span>
                             </div>
                         </div>
                     </a>
-
                     <div class="card-body">
-                        <span class="tag orange">Graphic Design</span>
-                            <h3>Winter Solstice Card 2022</h3>
-                        <p>Cultural storytelling through print media.</p>
+                        <span class="featured-badge">Featured</span><span class="tag orange">UX / UI • Graphic Design</span>
+                        <h3>Bring Your Own Cup</h3>
+                        <p>A sustainability app that turned reusable cup habits into a reward — preventing 397 single-use cups from landfill.</p>
                     </div>
                 </article>
 
-                <article class="card project-trigger" 
-                    data-title="Winter Solstice Card — 2023"
+                <article class="card project-trigger"
+                    data-title="SFUSnap — VictimSupport"
+                    data-category="MedTech • Trauma-Informed UX"
+                    data-org="SFU Hackathon"
+                    data-year="2025"
+                    data-desc="Trauma-informed crisis care tool for assault survivors — AI-guided triage, offline-first emergency access, and a UI designed to reduce cognitive load under extreme stress. Built in React over a 36-hour hackathon sprint."
+                    data-link="afterhours-support.html"
+                    data-link-text="Full Case Study ↗"
+                    data-img="images/AI-afterhour-agent-UI-design-drafts.png">
+                    <a href="afterhours-support.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('images/AI-afterhour-agent-UI-design-drafts.png'); background-size: cover; background-position: center;"></div>
+                            <div class="card-overlay">
+                                <span class="overlay-text">Full Process ↗</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="featured-badge">Featured</span><span class="tag orange">MedTech • Trauma-Informed UX</span>
+                        <h3>SFUSnap — VictimSupport</h3>
+                        <p>Trauma-informed crisis care tool for assault survivors — AI-guided triage, offline-first emergency access, and a UI designed to reduce cognitive load under extreme stress.</p>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- ALL OTHER CASE STUDIES — ordered: leadership/stats → full case studies → design work → single articles -->
+            <div class="project-grid">
+
+                <!-- 1. CPRS — leadership role with the most breadth -->
+                <article class="card project-trigger"
+                    data-title="CPRS Vancouver — Board of Directors"
+                    data-category="Leadership • Publication Design • Video"
+                    data-org="CPRS Vancouver"
+                    data-year="2024–2026"
+                    data-desc="Board member overseeing the volunteer portfolio — recruited 6 volunteers for events in 2026, designed the annual report for two consecutive years, and produced all chapter event videos for the CPRS Vancouver Instagram."
+                    data-img="images/CPRS-Vancouver-Women's day.png">
+                    <div class="card-img-container">
+                        <div class="card-img" style="background-image: url('images/CPRS-Vancouver-Women\'s day.png'); background-size: cover; background-position: center;"></div>
+                        <div class="card-overlay"><span class="overlay-text">Click to learn more</span></div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag orange">Leadership • Publication Design • Video</span>
+                        <h3>CPRS Vancouver — Board of Directors</h3>
+                        <p>Board member overseeing the volunteer portfolio — recruited 6 volunteers for events in 2026, designed the annual report for two consecutive years, and produced all chapter event videos for the CPRS Vancouver Instagram.</p>
+                        <a href="images/CPRS-AGM-Report-2024-25_FINAL_Tobeposted.pdf" target="_blank" onclick="event.stopPropagation()" style="font-size: 0.8rem; font-weight: 600; color: var(--accent); text-decoration: none; margin-top: 0.5rem; display: inline-block;">View Annual Report ↗</a>
+                    </div>
+                </article>
+
+                <!-- 2. VACFSS Recruitment Campaign — biggest measurable stats -->
+                <article class="card project-trigger"
+                    data-title="VACFSS Recruitment Campaign"
+                    data-category="Paid Media • Meta & Google Ads"
+                    data-org="VACFSS"
+                    data-year="2023–2025"
+                    data-desc="4M+ results on a $15K budget — beating the $0.80 industry CPC with campaigns as low as $0.21 per click across Meta and Google."
+                    data-link="2022_marketing.html"
+                    data-link-text="Full Case Study ↗"
+                    data-img="images/Jan-2025  to Dec 31 - VACFSS-ADS.jpg">
+                    <a href="2022_marketing.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('images/Jan-2025  to Dec 31 - VACFSS-ADS.jpg'); background-size: cover; background-position: center top;"></div>
+                            <div class="card-overlay"><span class="overlay-text">Full Case Study ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Paid Media • Meta & Google Ads</span>
+                        <h3>VACFSS Recruitment Campaign</h3>
+                        <p>4M+ results on a $15K budget — beating the $0.80 industry CPC with campaigns as low as $0.21 per click.</p>
+                    </div>
+                </article>
+
+                <!-- 3. VACFSS UX Research — multi-year, measurable UX outcomes -->
+                <article class="card project-trigger"
+                    data-title="VACFSS UX Research"
+                    data-category="UX Research • Accessibility"
+                    data-org="VACFSS"
+                    data-year="2024–2026"
+                    data-desc="UX research and redesign that produced a 50% increase in caregiver information inquiries on the same ad budget — through navigation testing, staff interviews, content restructuring, and a shift from stock to on-site photography."
+                    data-link="vacfss_ux.html"
+                    data-link-text="Full Case Study ↗"
+                    data-img="images/MicrosoftTeams-image (20).png">
+                    <a href="vacfss_ux.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('images/MicrosoftTeams-image (20).png'); background-size: cover; background-position: center;"></div>
+                            <div class="card-overlay"><span class="overlay-text">Full Case Study ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">UX Research • Accessibility</span>
+                        <h3>VACFSS UX Research</h3>
+                        <p>Accessibility-led UX research for a social services organization — improving digital workflows for non-technical users navigating sensitive, high-stakes service interactions.</p>
+                    </div>
+                </article>
+
+                <!-- 4. Palanner — full UX case study, cognitive accessibility -->
+                <article class="card project-trigger"
+                    data-title="Palanner"
+                    data-category="Cognitive Accessibility • UX Design"
+                    data-org="SFU Course Project"
+                    data-year="2024"
+                    data-desc="Accessibility-first mobile UX built around cognitive load reduction — tiered task architecture and single-purpose screens designed so that neurodiverse users (and anyone under pressure) never feel lost."
+                    data-link="Palanner.html"
+                    data-link-text="Full Case Study ↗"
+                    data-img="images/Palanner_Flowchart-basic.png">
+                    <a href="Palanner.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('images/Palanner_Flowchart-basic.png'); background-size: cover; background-position: center; background-color: #e8f4f8;"></div>
+                            <div class="card-overlay"><span class="overlay-text">Full Process ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Cognitive Accessibility • UX Design</span>
+                        <h3>Palanner</h3>
+                        <p>Accessibility-first mobile UX built around cognitive load reduction — tiered task architecture and single-purpose screens designed so that neurodiverse users (and anyone under pressure) never feel lost.</p>
+                    </div>
+                </article>
+
+                <!-- 5. BluRead — full UX case study, mental wellness -->
+                <article class="card project-trigger"
+                    data-title="BluRead"
+                    data-category="Mental Wellness • Privacy-First UX"
+                    data-org="SFU Hackathon"
+                    data-year="2024"
+                    data-desc="A mental wellness tool giving users granular, privacy-first control over their digital environment — all preferences stored locally, zero data sent to any server. AI-assisted keyword suggestion without compromising browsing data."
+                    data-link="bluread.html"
+                    data-link-text="Full Case Study ↗"
+                    data-img="images/Bluread_ux_test_6.png">
+                    <a href="bluread.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('images/Bluread_ux_test_6.png'); background-size: cover; background-position: center;"></div>
+                            <div class="card-overlay"><span class="overlay-text">Full Process ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Mental Wellness • Privacy-First UX</span>
+                        <h3>BluRead</h3>
+                        <p>A mental wellness tool giving users granular, privacy-first control over their digital environment — all preferences stored locally, zero data sent to any server.</p>
+                    </div>
+                </article>
+
+                <!-- 6. Meddlesome — full case study, game/narrative design -->
+                <article class="card project-trigger"
+                    data-title="Meddlesome Company"
+                    data-category="Narrative Design • 2D Puzzle Adventure"
+                    data-org="SFU IAT 313"
+                    data-year="2024"
+                    data-desc="A side-scrolling puzzle adventure where two corporate spies unknowingly work the same mission. I designed the UX and visual assets, translating a multi-perspective script into a playable experience."
+                    data-link="2024_middlesome.html"
+                    data-link-text="Full Case Study ↗"
+                    data-img="images/IAT-313-2026-design-characters-report-screenshoot.png">
+                    <a href="2024_middlesome.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img meddlesome-img"></div>
+                            <div class="card-overlay"><span class="overlay-text">Full Process ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Narrative Design • Game</span>
+                        <h3>Meddlesome Company</h3>
+                        <p>Level design and visual assets for a 2D corporate espionage puzzle game.</p>
+                    </div>
+                </article>
+
+                <!-- 7. Philosophy Student Union — branding, modal only -->
+                <article class="card project-trigger"
+                    data-title="Philosophy Student Union — Visual Identity"
+                    data-category="Branding"
+                    data-org="SFU Philosophy Student Union"
+                    data-year="2025"
+                    data-desc="Full visual identity system designed for the SFU Philosophy Student Union — balancing academic tradition with modern student culture across logo, typography, and merchandise applications."
+                    data-img="images/Philosophy_Student_Union_logo_Guide_Main_1.webp">
+                    <div class="card-img-container">
+                        <div class="card-img philos-img"></div>
+                        <div class="card-overlay"><span class="overlay-text">Click to learn more</span></div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag orange">Branding</span>
+                        <h3>Philosophy Student Union Logo</h3>
+                        <p>Identity system for SFU student life — logo, type, and merchandise guidelines.</p>
+                    </div>
+                </article>
+
+                <!-- 8. Winter Solstice 2022 — graphic design, full page -->
+                <article class="card project-trigger"
+                    data-title="Winter Solstice Card 2022"
+                    data-category="Graphic Design"
+                    data-org="VACFSS"
+                    data-year="2022"
+                    data-desc="Coast Salish-inspired illustration navigating cultural research, corporate review, and print production for 500+ recipients."
+                    data-link="2022_Wintersolstice.html"
+                    data-link-text="Full Process ↗"
+                    data-img="images/ws-2022/WinterSolsticeCard_2022_FINAL_DESIGN_Both-Front-smaller.webp">
+                    <a href="2022_Wintersolstice.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img vacfss-img"></div>
+                            <div class="card-overlay"><span class="overlay-text">Full Process ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Graphic Design</span>
+                        <h3>Winter Solstice Card 2022</h3>
+                        <p>Coast Salish-inspired illustration navigating cultural research, corporate review, and print production for 500+ recipients.</p>
+                    </div>
+                </article>
+
+                <!-- 9. VACFSS Annual Reports — publication design -->
+                <article class="card project-trigger"
+                    data-title="VACFSS Annual Reports"
+                    data-category="Publication Design"
+                    data-org="VACFSS"
+                    data-year="2023–2024"
+                    data-desc="Collaborative publication design making complex organizational data accessible and culturally grounded for Indigenous community stakeholders and funders."
+                    data-link="https://www.vacfss.com/annual-reports-publications/2023-annual-report/?sp=2023%20annual%20report"
+                    data-link-text="View 2023 Report ↗"
+                    data-img="images/2023-Annual-report-cover.jpg">
+                    <a href="https://www.vacfss.com/annual-reports-publications/2023-annual-report/?sp=2023%20annual%20report" class="card-link-wrapper" target="_blank">
+                        <div class="card-img-container">
+                            <div class="card-img annual-img"></div>
+                            <div class="card-overlay"><span class="overlay-text">View Report ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Publication Design</span>
+                        <h3>VACFSS Annual Reports</h3>
+                        <p>Design for community transparency and accountability.</p>
+                        <a href="images/2023-Annual-Report-FINAL_Back-page37.pdf" target="_blank" onclick="event.stopPropagation()" style="font-size: 0.8rem; font-weight: 600; color: var(--accent); text-decoration: none; margin-top: 0.5rem; display: inline-block;">Download PDF ↗</a>
+                    </div>
+                </article>
+
+                <!-- 10. Winter Solstice 2023 — graphic design, modal only -->
+                <article class="card project-trigger"
+                    data-title="Winter Solstice Card 2023"
                     data-category="Graphic Design"
                     data-org="VACFSS"
                     data-year="2023"
-                    data-desc="A continuation of the Solstice series for 2023, focusing on community warmth and Coast Salish visual narratives."
+                    data-desc="A continuation of the Solstice series for 2023, deepening the visual identity with warm Coast Salish narratives and expanding distribution to new community partners."
                     data-img="images/WinterSolsticeCard_2023_COVER_FINAL-02_With_Intials_YRS_FRONT.webp">
                     <div class="card-img-container">
                         <div class="card-img vacfss23-img"></div>
@@ -75,95 +342,81 @@
                     </div>
                 </article>
 
+                <!-- 11. Cedar Headband Video — single VACFSS content piece -->
                 <article class="card project-trigger"
-                    data-title="VACFSS Annual Reports"
-                    data-category="Graphic Design"
+                    data-title="Cedar Headband Making Workshop"
+                    data-category="Video Production • Cultural Content"
                     data-org="VACFSS"
                     data-year="2024"
-                    data-desc="Collaborative design work to support Indigenous community transparency and reporting. Focused on making complex data accessible and culturally grounded."
-                    data-img="images/2023-Annual-report-cover.jpg">
-                    <div class="card-img-container">
-                        <div class="card-img annual-img"></div>
-                        <div class="card-overlay"><span class="overlay-text">Click to learn more</span></div>
-                    </div>
-                    <div class="card-body">
-                        <span class="tag orange">Graphic Design</span>
-                        <h3>VACFSS Annual Reports</h3>
-                        <p>Design for community transparency.</p>
-                    </div>
-                </article>
-                
-                <article class="card project-trigger"
-                    data-title="VACFSS Marketing Campaign"
-                    data-category="Meta-Ad-Suite"
-                    data-org="VACFSS"
-                    data-year="2022-now"
-                    data-desc="Collaborative design work to support Indigenous community transparency and reporting. Focused on making complex data accessible and culturally grounded."
-                    data-img="images/2023-Annual-report-cover.jpg">
-                    <div class="card-img-container">
-                        <div class="card-img annual-img"></div>
-                        <div class="card-overlay"><span class="overlay-text">Click to learn more</span></div>
-                    </div>
-                    <div class="card-body">
-                        <span class="tag orange">Graphic Design, marketing, video editing</span>
-                        <h3>VACFSS Recruitment Campaign</h3>
-                        <p>Design for outreach and community engagement.</p>
-                    </div>
-                </article>
-
-                               
-                <article class="card project-trigger"
-                    data-title="Middlesome Game company"
-                    data-category="Pixel art"
-                    data-org="SFU_IAT_313"
-                    data-year="2024"
-                    data-desc="Collaborative design work to support Indigenous community transparency and reporting. Focused on making complex data accessible and culturally grounded."
-                    data-img="images/IAT-313-2026-design-characters-report-screenshoot.png">
-                    <a href="2024_middlesome.html" class="card-link-wrapper">
+                    data-desc="Short video produced for VACFSS documenting the annual cedar headband making workshop — filmed, edited, and published as part of the communications role."
+                    data-link="https://www.vacfss.com/news/annual-ceder-headband-making-workshop/"
+                    data-link-text="View Article ↗"
+                    data-img="https://img.youtube.com/vi/q1W6Q3zj5D4/maxresdefault.jpg">
+                    <a href="https://www.vacfss.com/news/annual-ceder-headband-making-workshop/" class="card-link-wrapper" target="_blank">
                         <div class="card-img-container">
-                            <div class="card-img meddlesome-img"></div>
-                            <div class="card-overlay"><span class="overlay-text">Full Process ↗</span></div>
+                            <div class="card-img" style="background-image: url('https://img.youtube.com/vi/q1W6Q3zj5D4/maxresdefault.jpg'); background-size: cover; background-position: center;"></div>
+                            <div class="card-overlay"><span class="overlay-text">View Article ↗</span></div>
                         </div>
                     </a>
                     <div class="card-body">
-                        <span class="tag orange">Graphic Design</span>
-                        <h3>Middlesome Game Company</h3>
-                        <p>Design for fun.</p>
+                        <span class="tag orange">Video Production • Cultural Content</span>
+                        <h3>Cedar Headband Making Workshop</h3>
+                        <p>Short video produced for VACFSS documenting the annual cedar headband making workshop — filmed, edited, and published as part of the communications role.</p>
                     </div>
                 </article>
 
+                <!-- 12. Elder April Bennett interview — single article -->
                 <article class="card project-trigger"
-                    data-title="Philosophy Student Union Logo"
-                    data-category="Branding"
-                    data-org="SFU PSU"
-                    data-year="2025"
-                    data-desc="Visual identity system designed for the SFU Philosophy Student Union, balancing academic tradition with modern student life."
-                    data-img="images/Philosophy_Student_Union_logo_Guide_Main_1.webp">
-                    <div class="card-img-container">
-                        <div class="card-img philos-img"></div>
-                        <div class="card-overlay"><span class="overlay-text">Click to learn more</span></div>
-                    </div>
+                    data-title="28th Anniversary of Elder April Bennett"
+                    data-category="Editorial • Interview"
+                    data-org="VACFSS"
+                    data-year="2024"
+                    data-desc="Staff spotlight interview with Elder April Bennett — honouring 28 years of restorative practice and community leadership at VACFSS."
+                    data-link="https://www.vacfss.com/restorative-practice/28th-anniversary-of-april-bennett-staff-spotlight/"
+                    data-link-text="Read the Interview ↗"
+                    data-img="images/MicrosoftTeams-image (39).png">
+                    <a href="https://www.vacfss.com/restorative-practice/28th-anniversary-of-april-bennett-staff-spotlight/" class="card-link-wrapper" target="_blank">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('images/MicrosoftTeams-image (39).png'); background-size: cover; background-position: center;"></div>
+                            <div class="card-overlay"><span class="overlay-text">Read Article ↗</span></div>
+                        </div>
+                    </a>
                     <div class="card-body">
-                        <span class="tag orange">Branding</span>
-                        <h3>Philosophy Student Union Logo</h3>
-                        <p>Identity design for SFU student life.</p>
+                        <span class="tag orange">Editorial • Interview</span>
+                        <h3>28th Anniversary of Elder April Bennett</h3>
+                        <p>Staff spotlight interview with Elder April Bennett — honouring 28 years of restorative practice and community leadership at VACFSS.</p>
+                    </div>
+                </article>
+
+                <!-- 13. Honouring Youth — single article -->
+                <article class="card project-trigger"
+                    data-title="Honouring the Journey of Our Youth"
+                    data-category="Editorial • Content Writing"
+                    data-org="VACFSS"
+                    data-year="2024"
+                    data-desc="Published article covering VACFSS's annual youth transition ceremony — written and photographed on-site as Communications and PR Assistant."
+                    data-link="https://www.vacfss.com/news/honouring-the-journey-of-our-youth/"
+                    data-link-text="Read the Article ↗"
+                    data-img="images/MicrosoftTeams-image (31).png">
+                    <a href="https://www.vacfss.com/news/honouring-the-journey-of-our-youth/" class="card-link-wrapper" target="_blank">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('images/MicrosoftTeams-image (31).png'); background-size: cover; background-position: center;"></div>
+                            <div class="card-overlay"><span class="overlay-text">Read Article ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Editorial • Content Writing</span>
+                        <h3>Honouring the Journey of Our Youth</h3>
+                        <p>Published article for VACFSS covering the annual youth transition ceremony — written and photographed on-site as part of the communications role.</p>
                     </div>
                 </article>
 
             </div>
         </section>
 
-        <section id="photography">
-            <h2 class="section-title">Photography</h2>
-            <div class="photo-masonry">
-                <img src="https://www.angelashen.ca/wp-content/uploads/2025/06/IMG00063-1024x681.jpg" alt="Forest">
-                <img src="https://www.angelashen.ca/wp-content/uploads/2025/06/IMG00727-681x1024.jpg" alt="Highway">
-                <img src="images/MicrosoftTeams-image (20).png" alt="Cargivers">
-                <img src="images/MicrosoftTeams-image (27).png" alt="Taidaishirt-coloring">
-                <img src="images/MicrosoftTeams-image (31).png" alt="cultural dance-summer">
-                <img src="images/IMG00377-2.jpg" alt="cultural dance-summer">
-        
-            </div>
+        <section id="Getintouch">
+            <h2 class="section-title">Thank you for visiting my portfolio!</h2>
+            <a href="mailto:angelashen.ca@gmail.com" class="btn-primary">Get in Touch</a>
         </section>
     </main>
 
@@ -186,6 +439,7 @@
                     <span>📅 <span id="modal-year"></span></span>
                 </div>
                 <p id="modal-desc" class="modal-description"></p>
+                <a id="modal-cta" class="btn-primary" target="_blank" style="display:none; margin: 1.5rem 0; text-decoration: none; display: none;"></a>
                 <h4 class="gallery-label">PROJECT GALLERY</h4>
                 <div class="modal-gallery" id="modal-gallery"></div>
             </div>

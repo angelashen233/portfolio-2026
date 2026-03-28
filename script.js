@@ -92,18 +92,32 @@ const lightboxImg = document.getElementById('lightbox-img');
 
 // Handle Project Card Clicks (The Pop-up "Page")
 document.querySelectorAll('.project-trigger').forEach(trigger => {
-    trigger.addEventListener('click', () => {
+    trigger.addEventListener('click', (e) => {
+        // Don't open modal if the click was on a direct link inside the card
+        if (e.target.closest('a')) return;
         if (modal) {
             // Fill Modal with Data from the HTML attributes
-            document.getElementById('modal-title').innerText = trigger.dataset.title;
-            document.getElementById('modal-cat').innerText = trigger.dataset.category;
-            document.getElementById('modal-org').innerText = trigger.dataset.org;
-            document.getElementById('modal-year').innerText = trigger.dataset.year;
-            document.getElementById('modal-desc').innerText = trigger.dataset.desc;
+            document.getElementById('modal-title').innerText = trigger.dataset.title || '';
+            document.getElementById('modal-cat').innerText = trigger.dataset.category || '';
+            document.getElementById('modal-org').innerText = trigger.dataset.org || '';
+            document.getElementById('modal-year').innerText = trigger.dataset.year || '';
+            document.getElementById('modal-desc').innerText = trigger.dataset.desc || '';
             document.getElementById('modal-hero').style.backgroundImage = `url('${trigger.dataset.img}')`;
-            
+
+            // Show CTA button if a link is provided
+            const cta = document.getElementById('modal-cta');
+            if (cta) {
+                if (trigger.dataset.link) {
+                    cta.href = trigger.dataset.link;
+                    cta.innerText = trigger.dataset.linkText || 'View Full Process ↗';
+                    cta.style.display = 'inline-block';
+                } else {
+                    cta.style.display = 'none';
+                }
+            }
+
             modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Stop background scroll
+            document.body.style.overflow = 'hidden';
         }
     });
 });
