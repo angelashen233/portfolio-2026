@@ -880,4 +880,35 @@ a.logo {
     .two-col { grid-template-columns: 1fr; }
     .spirit-grid { grid-template-columns: 1fr; }
 }
+/* --- SCROLL HINT ARROW --- */
+.hero,
+.case-hero {
+    position: relative;
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 1.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 52px;
+    height: 32px;
+    background-image: url("data:image/svg+xml,%3Csvg width='52' height='32' viewBox='0 0 52 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6 L26 26 L48 6' stroke='%23f97316' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.3;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    animation: scroll-bounce 3.5s ease-in-out infinite;
+}
+
+.scroll-hint:hover { opacity: 0.6; }
+
+.scroll-hint span { display: none; }
+
+@keyframes scroll-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(9px); }
+}
+
 /* --- END OF ANGELA'S PRO DESIGN SYSTEM V3 --- */
