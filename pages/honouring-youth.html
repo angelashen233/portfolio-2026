@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/Profile_Discord.webp" type="image/webp">
+    <title>Honouring the Journey of Our Youth | Angela Shen</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 1.5rem 0;
+        }
+        .photo-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .photo-grid img {
+            width: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+            aspect-ratio: 4/3;
+            display: block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: zoom-in;
+        }
+        .photo-grid img:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+        .photo-grid img.portrait {
+            aspect-ratio: 3/4;
+        }
+        .img-caption {
+            font-size: 0.85rem;
+            color: var(--slate-500);
+            text-align: center;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        .hero-photo {
+            width: 100%;
+            max-height: 520px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin: 1.5rem 0;
+        }
+        @media (max-width: 640px) {
+            .photo-grid { grid-template-columns: repeat(2, 1fr); }
+            .photo-grid.two-col { grid-template-columns: 1fr; }
+        }
+
+        /* Lightbox */
+        .lb-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15,23,42,0.92);
+            backdrop-filter: blur(12px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            padding: 24px;
+        }
+        .lb-overlay.open { display: flex; }
+        .lb-img {
+            max-width: 90vw;
+            max-height: 88vh;
+            border-radius: 12px;
+            object-fit: contain;
+        }
+        .lb-close {
+            position: fixed;
+            top: 20px; right: 24px;
+            background: rgba(255,255,255,0.12);
+            border: none; color: #fff;
+            font-size: 1.4rem;
+            width: 44px; height: 44px;
+            border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .lb-close:hover { background: rgba(255,255,255,0.25); }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <div class="container nav-content">
+            <a class="logo" href="../index.html">✨ Angela Shen</a>
+            <div class="nav-links">
+                <a href="../index.html">Work</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="../index.html#Getintouch">About</a>
+                <a href="../images/Angela-Shen-Resume-2026-Feb_Lab-Submission.pdf" class="nav-cta" target="_blank">Resume ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="case-hero">
+        <span class="status-badge">EDITORIAL • PHOTOGRAPHY • VACFSS</span>
+        <h1>Honouring the <span class="gradient-text">Journey of Our Youth</span></h1>
+        <p style="max-width: 700px; margin: 0 auto; font-size: 1.25rem; color: var(--slate-600);">
+            Documenting VACFSS's annual youth transition ceremony — written and photographed on-site as Communications and PR Assistant.
+        </p>
+        <div class="case-meta">
+            <div class="case-meta-item">
+                <span class="case-meta-label">Role</span>
+                <span class="case-meta-value">Photography & Writing</span>
+            </div>
+            <div class="case-meta-item">
+                <span class="case-meta-label">Organization</span>
+                <span class="case-meta-value">VACFSS</span>
+            </div>
+            <div class="case-meta-item">
+                <span class="case-meta-label">Year</span>
+                <span class="case-meta-value">2024</span>
+            </div>
+        </div>
+        <div class="scroll-hint" aria-hidden="true"><span></span><span></span></div>
+    </header>
+
+    <main class="container">
+
+        <!-- OVERVIEW -->
+        <section class="case-section">
+            <div class="highlight-box">
+                <h3>About this piece</h3>
+                <p>Each year, VACFSS holds a ceremony honouring youth who are transitioning out of care — celebrating their resilience and connecting them to their cultural roots. As Communications and PR Assistant, I photographed the full event and wrote the published article covering the ceremony for the VACFSS website.</p>
+                <p style="margin-bottom: 0;">The challenge was capturing the weight and warmth of the occasion with sensitivity — documenting cultural ceremony, community, and personal milestones for an audience of stakeholders, families, and the broader public.</p>
+            </div>
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <a href="https://www.vacfss.com/news/honouring-the-journey-of-our-youth/" class="btn-primary" target="_blank">Read the Published Article ↗</a>
+            </div>
+        </section>
+
+        <!-- HERO PHOTO -->
+        <section class="case-section">
+            <img class="hero-photo" src="../images/honouring-youth/IMG00416-scaled.jpg" alt="Youth and community gathered at the honouring ceremony">
+            <p class="img-caption">Youth wrapped in cultural blankets, gathered with community at the ceremony venue</p>
+        </section>
+
+        <!-- THE CEREMONY -->
+        <section class="case-section">
+            <h2>The Ceremony</h2>
+            <p>The event brought together youth transitioning out of care, their families, Elders, cultural knowledge keepers, and VACFSS staff. The ceremony included traditional drumming, dancing, the gifting of hand-painted cedar boxes, and the presentation of cultural blankets — each one a symbol of identity and belonging carried forward.</p>
+
+            <div class="photo-grid">
+                <img src="../images/honouring-youth/IMG00168.jpg" alt="Youth in cultural blankets walking in procession">
+                <img src="../images/honouring-youth/IMG00244-scaled.jpg" alt="Drumming circle at the ceremony">
+                <img src="../images/honouring-youth/IMG00079-scaled.jpg" alt="Community gathering at the ceremony">
+            </div>
+
+            <div class="photo-grid two-col" style="margin-top: 12px;">
+                <img src="../images/honouring-youth/Group-1Edited_Blur-1.png" alt="Traditional drummers performing">
+                <img src="../images/honouring-youth/IMG00360-scaled.jpg" alt="Traditional dancer performing at the ceremony">
+            </div>
+        </section>
+
+        <!-- CULTURAL GIFTS -->
+        <section class="case-section">
+            <h2>Cultural Gifts &amp; Ceremony Details</h2>
+            <p>Each youth received hand-painted cedar boxes and eagle feathers — gifts chosen to honour their journey and connect them to their heritage. The program materials, smudge bowl, and handmade items on display reflected the depth of preparation and cultural care that went into the event.</p>
+
+            <div class="photo-grid">
+                <img src="../images/honouring-youth/IMG00033-1-scaled.jpg" alt="Painted cedar boxes and eagle feathers on display">
+                <img src="../images/honouring-youth/IMG00383-scaled.jpg" alt="Ceremony program with smudge bowl">
+                <img src="../images/honouring-youth/IMG00040-scaled.jpg" alt="Cultural blanket folded on the steps">
+            </div>
+        </section>
+
+        <!-- COMMUNITY -->
+        <section class="case-section">
+            <h2>Community &amp; Connection</h2>
+            <p>What made this event powerful to document was the intergenerational presence — toddlers, Elders, youth, and community members all in the same space. The ceremony was as much about those who showed up as it was about those being honoured.</p>
+
+            <div class="photo-grid">
+                <img src="../images/honouring-youth/IMG00292-scaled.jpg" alt="Elder presenting a gift to a youth">
+                <img src="../images/honouring-youth/IMG00209-scaled.jpg" alt="Youth receiving ceremonial gifts">
+                <img src="../images/honouring-youth/IMG00269-scaled.jpg" alt="Youth Advisory Council hoodie worn at the ceremony">
+            </div>
+
+            <div class="photo-grid">
+                <img src="../images/honouring-youth/IMG00205-scaled-e1718138208678.jpg" alt="Elders seated at the ceremony">
+                <img src="../images/honouring-youth/IMG00185-1-scaled-e1718138034264.jpg" alt="Moment from the ceremony">
+                <img src="../images/honouring-youth/IMG00261-scaled.jpg" alt="Cultural blankets on display">
+            </div>
+        </section>
+
+        <!-- REMAINING PHOTOS -->
+        <section class="case-section">
+            <div class="photo-grid">
+                <img src="../images/honouring-youth/IMG00363-scaled.jpg" alt="Community celebration">
+                <img src="../images/honouring-youth/IMG00112-scaled.jpg" alt="Photography from the ceremony">
+            </div>
+        </section>
+
+        <!-- REFLECTION -->
+        <section class="case-section">
+            <div class="highlight-box">
+                <h3>On documenting ceremony</h3>
+                <p>Photography in this context is an act of care. Every shot involved reading the room — understanding when to be present and visible, and when to step back. The goal was to produce a record that the community would recognize as true to their experience, not a document made for outside eyes.</p>
+                <p style="margin-bottom: 0;">The published article was written the same way — grounded in what I observed and heard on the day, with language that honoured the significance of the milestone rather than flattening it into an announcement.</p>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="case-section">
+            <div style="text-align: center; margin-top: 16px;">
+                <a href="https://www.vacfss.com/news/honouring-the-journey-of-our-youth/" class="btn-primary" target="_blank">Read the Published Article ↗</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lb-overlay" id="lb">
+        <button class="lb-close" id="lb-close">✕</button>
+        <img class="lb-img" id="lb-img" src="" alt="">
+    </div>
+
+        <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <span class="footer-name">Angela Shen</span>
+                <span class="footer-copy">Joint Major: CMNS &amp; SIAT @ SFU &nbsp;&middot;&nbsp; Graduating Spring 2026</span>
+                <span class="footer-copy">&copy; 2026 Angela Shen. All photography, illustrations, and design work are the original work of Angela Shen. All rights reserved.</span>
+            </div>
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="../index.html">Work</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="mailto:angelashen.ca@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/angelashenca/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/angelashen233" target="_blank" rel="noopener">GitHub</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="nav.js"></script>
+    <script>
+        // Lightbox for photo grids
+        document.querySelectorAll('.photo-grid img, .hero-photo').forEach(img => {
+            img.addEventListener('click', () => {
+                document.getElementById('lb-img').src = img.src;
+                document.getElementById('lb-img').alt = img.alt;
+                document.getElementById('lb').classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        document.getElementById('lb-close').addEventListener('click', () => {
+            document.getElementById('lb').classList.remove('open');
+            document.body.style.overflow = '';
+        });
+        document.getElementById('lb').addEventListener('click', e => {
+            if (e.target === document.getElementById('lb')) {
+                document.getElementById('lb').classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                document.getElementById('lb').classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,12 +1,13 @@
 (function () {
     const PROJECTS = [
         { title: 'Bring Your Own Cup',          href: 'byo.html' },
-        { title: 'SFUSnap — VictimSupport',     href: 'afterhours-support.html' },
+        { title: 'afterhours — resources chat',  href: 'afterhours-support.html' },
         { title: 'VACFSS Recruitment Campaign', href: '2022_marketing.html' },
         { title: 'VACFSS UX Research',          href: 'vacfss_ux.html' },
         { title: 'Palanner',                    href: 'Palanner.html' },
         { title: 'BluRead',                     href: 'bluread.html' },
         { title: 'Meddlesome Company',          href: '2024_middlesome.html' },
+        { title: 'Honouring the Journey of Our Youth', href: 'honouring-youth.html' },
         { title: 'Winter Solstice Card 2022',   href: '2022_Wintersolstice.html' },
     ];
 

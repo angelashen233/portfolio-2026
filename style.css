@@ -35,12 +35,12 @@ body {
 /* --- GLASS NAVIGATION --- */
 .nav-bar {
   position: fixed;
-  top: 0; 
+  top: 0;
   width: 100%;
-  height: 80px;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  height: 68px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--slate-200);
   z-index: 1000;
   display: flex;
@@ -54,45 +54,92 @@ body {
   width: 100%;
 }
 
-.logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em;
-  text-decoration: none; 
-  color: inherit; 
+.logo {
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: var(--slate-900);
 }
 
-.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
 
 .nav-links a {
     text-decoration: none;
-    color: #333;
+    color: var(--slate-600);
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     position: relative;
-    padding-top: 10px;
-    padding-bottom: 5px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: color 0.2s ease, background 0.2s ease;
 }
 
-/* The Underline (Hidden by default) */
+.nav-links a:hover {
+    color: var(--slate-900);
+    background: var(--slate-100);
+}
+
+.nav-links a.active {
+    color: var(--slate-900);
+}
+
+/* Underline for active state */
 .nav-links a::after {
     content: '';
     position: absolute;
     width: 0;
     height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #f89c33; /* Matching your butterfly orange */
-    transition: width 0.3s ease;
+    bottom: 2px;
+    left: 12px;
+    right: 12px;
+    background-color: #da6e30;
+    transition: width 0.25s ease;
+    border-radius: 2px;
 }
 
-/* The Active State (The underline grows to 100%) */
-.nav-links a.active::after,
-.nav-links a:hover::after {
-    width: 100%;
+.nav-links a.active::after {
+    width: calc(100% - 24px);
 }
+
+.nav-links a:hover::after {
+    width: calc(100% - 24px);
+}
+
+/* Resume CTA — outlined style */
+.nav-links a.nav-cta {
+    color: var(--slate-900);
+    border: 1.5px solid var(--slate-300);
+    border-radius: 99px;
+    padding: 6px 16px;
+    font-weight: 700;
+    background: transparent;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a.nav-cta:hover {
+    background: var(--slate-900);
+    color: #fff;
+    border-color: var(--slate-900);
+}
+
+.nav-links a.nav-cta::after { display: none; }
 
 /* Logo link */
 a.logo {
     text-decoration: none;
     color: inherit;
+}
+
+/* Mobile nav */
+@media (max-width: 600px) {
+    .nav-links { gap: 4px; }
+    .nav-links a { padding: 6px 8px; font-size: 0.8rem; }
+    .nav-links a.nav-cta { padding: 5px 12px; }
 }
 
 
@@ -336,12 +383,62 @@ a.logo {
   .photo-masonry { column-count: 2; }
 }
 
-.footer { 
-  padding: 80px 0; 
-  text-align: center; 
-  color: var(--slate-600); 
-  border-top: 1px solid var(--slate-200); 
-  margin-top: 120px; 
+.footer {
+  padding: 48px 0 40px;
+  color: var(--slate-500);
+  border-top: 1px solid var(--slate-200);
+  margin-top: 120px;
+  font-size: 0.85rem;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-name {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--slate-900);
+  letter-spacing: -0.01em;
+}
+
+.footer-copy {
+  color: var(--slate-500);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.footer-links a {
+  color: var(--slate-500);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--slate-900);
+}
+
+@media (max-width: 600px) {
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer-links { gap: 16px; }
 }
 
 /* --- LIGHTBOX (EXPAND) STYLES --- */
