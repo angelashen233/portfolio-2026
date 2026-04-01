@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/Profile_Discord.webp" type="image/webp">
+    <title>Design System — Angela Shen</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ─── DS page-specific layout ─── */
+        .ds-section {
+            padding: 60px 0 0;
+        }
+        .ds-section h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin: 0 0 8px;
+        }
+        .ds-section-desc {
+            color: var(--slate-600);
+            font-size: 0.95rem;
+            margin: 0 0 32px;
+        }
+        .ds-divider {
+            border: none;
+            border-top: 1px solid var(--slate-200);
+            margin: 64px 0 0;
+        }
+        .ds-label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--slate-600);
+            margin-bottom: 12px;
+        }
+
+        /* ─── Token tables ─── */
+        .token-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .token-table th {
+            text-align: left;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--slate-600);
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--slate-200);
+        }
+        .token-table td {
+            padding: 10px 12px;
+            vertical-align: middle;
+            border-bottom: 1px solid var(--slate-200);
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+        }
+        .token-table tr:last-child td { border-bottom: none; }
+        .token-swatch {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            border: 1px solid rgba(0,0,0,0.08);
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .token-name-cell { color: var(--slate-900); font-weight: 600; }
+        .token-value-cell { color: var(--slate-600); }
+        .token-usage-cell { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--slate-600); font-size: 0.82rem; }
+
+        /* ─── Color palette grid ─── */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
+            margin-bottom: 2rem;
+        }
+        .color-card {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--slate-200);
+        }
+        .color-swatch-large {
+            height: 80px;
+        }
+        .color-card-label {
+            padding: 10px 12px;
+            background: #fff;
+        }
+        .color-card-name {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            display: block;
+        }
+        .color-card-hex {
+            font-size: 0.75rem;
+            color: var(--slate-600);
+            font-family: 'Courier New', monospace;
+        }
+
+        /* ─── Type scale ─── */
+        .type-row {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--slate-200);
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            align-items: baseline;
+            gap: 24px;
+        }
+        .type-row:last-child { border-bottom: none; }
+        .type-meta {
+            font-size: 0.75rem;
+            color: var(--slate-600);
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+        }
+        .type-meta strong {
+            display: block;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--slate-600);
+            margin-bottom: 4px;
+        }
+
+        /* ─── Spacing scale ─── */
+        .spacing-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .spacing-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .spacing-bar-label {
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: var(--slate-600);
+            width: 80px;
+            flex-shrink: 0;
+        }
+        .spacing-bar {
+            height: 24px;
+            background: linear-gradient(90deg, #da6e30, #fb7185);
+            border-radius: 4px;
+            opacity: 0.7;
+        }
+        .spacing-usage {
+            font-size: 0.8rem;
+            color: var(--slate-600);
+        }
+
+        /* ─── Component preview cards ─── */
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 2rem;
+        }
+        .component-preview {
+            border: 1px solid var(--slate-200);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .component-stage {
+            padding: 32px 24px;
+            background: var(--slate-50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .component-info {
+            padding: 16px 20px;
+            background: #fff;
+            border-top: 1px solid var(--slate-200);
+        }
+        .component-info-name {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            font-family: 'Courier New', monospace;
+        }
+        .component-info-desc {
+            font-size: 0.78rem;
+            color: var(--slate-600);
+            margin-top: 4px;
+        }
+
+        /* ─── Shadow demo ─── */
+        .shadow-demo {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .shadow-box {
+            width: 140px;
+            height: 80px;
+            background: #fff;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-family: 'Courier New', monospace;
+            color: var(--slate-600);
+            gap: 6px;
+        }
+
+        /* ─── Animation demo ─── */
+        .anim-demo-row {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--slate-200);
+        }
+        .anim-demo-row:last-child { border-bottom: none; }
+        .anim-label-block { width: 200px; flex-shrink: 0; }
+        .anim-label-block strong {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            font-family: 'Courier New', monospace;
+        }
+        .anim-label-block span {
+            font-size: 0.78rem;
+            color: var(--slate-600);
+        }
+
+        /* ─── Gradient demo ─── */
+        .gradient-demo-strip {
+            height: 56px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        /* ─── Code snippets ─── */
+        .code-block {
+            background: var(--slate-900);
+            color: #e2e8f0;
+            border-radius: 12px;
+            padding: 20px 24px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.82rem;
+            line-height: 1.7;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+        .code-keyword { color: #fb7185; }
+        .code-property { color: #93c5fd; }
+        .code-value { color: #86efac; }
+        .code-comment { color: #64748b; }
+
+        /* ─── Border radius demo ─── */
+        .radius-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .radius-box {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ffedd5, #fde68a);
+            border: 2px solid #da6e30;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Courier New', monospace;
+            font-size: 0.7rem;
+            color: #9a3412;
+            font-weight: 700;
+            text-align: center;
+            gap: 4px;
+        }
+
+        /* Tag variants */
+        .tag { display: inline-block; font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 99px; }
+        .tag.orange { background: #ffedd5; color: #9a3412; }
+        .tag.blue   { background: #dbeafe; color: #1d4ed8; }
+        .tag.green  { background: #dcfce7; color: #15803d; }
+        .tag.purple { background: #ede9fe; color: #6d28d9; }
+
+        @media (max-width: 640px) {
+            .type-row { grid-template-columns: 1fr; gap: 8px; }
+            .anim-label-block { width: 100%; }
+            .component-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="nav-bar">
+        <div class="container nav-content">
+            <a class="logo" href="../index.html">✨ Angela Shen</a>
+            <div class="nav-links">
+                <a href="../index.html">Work</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="about.html">About</a>
+                <a href="../images/Angela-Shen-Resume-2026-Feb_Lab-Submission.pdf" class="nav-cta" target="_blank">Resume ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="case-hero">
+        <span class="status-badge">DESIGN SYSTEM • VISUAL LANGUAGE • TOKENS & COMPONENTS</span>
+        <h1>Portfolio <span class="gradient-text">Design System</span></h1>
+        <p style="max-width: 660px; margin: 0 auto; font-size: 1.2rem; color: var(--slate-600);">
+            The living design system behind this portfolio — every color token, typographic scale, component, and animation used across all pages.
+        </p>
+        <div class="case-meta">
+            <div class="case-meta-item">
+                <span class="case-meta-label">Typeface</span>
+                <span class="case-meta-value">Plus Jakarta Sans</span>
+            </div>
+            <div class="case-meta-item">
+                <span class="case-meta-label">Base Color</span>
+                <span class="case-meta-value">#da6e30 Ember Orange</span>
+            </div>
+            <div class="case-meta-item">
+                <span class="case-meta-label">Built With</span>
+                <span class="case-meta-value">Vanilla CSS Custom Properties</span>
+            </div>
+        </div>
+        <div class="scroll-hint" aria-hidden="true"><span></span><span></span></div>
+    </header>
+
+    <main class="container" style="padding-bottom: 100px;">
+
+        <!-- ── INTRODUCTION ── -->
+        <section class="ds-section" style="padding-top: 32px;">
+            <div class="highlight-box">
+                <h3>Why a design system?</h3>
+                <p>Every element on this site was designed intentionally — not assembled from a template. This page documents the full visual language: tokens, components, and the reasoning behind each decision. It reflects the same discipline I bring to client work — consistency, accessibility, and a clear hierarchy of purpose.</p>
+                <p style="margin-bottom: 0;">All components are rendered live from <code style="background: var(--slate-200); padding: 2px 6px; border-radius: 4px; font-size: 0.85em;">style.css</code> — the single source of truth for the portfolio.</p>
+            </div>
+        </section>
+
+        <!-- ── COLOR ── -->
+        <hr class="ds-divider">
+        <section class="ds-section">
+            <h2>Color</h2>
+            <p class="ds-section-desc">Palette rooted in warm ember tones, grounded by a neutral slate scale. Every color is a CSS custom property for consistent theming.</p>
+
+            <p class="ds-label">Brand & Accent</p>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-swatch-large" style="background: #da6e30;"></div>
+                    <div class="color-card-label">
+                        <span class="color-card-name">Ember — Accent</span>
+                        <span class="color-card-hex">#da6e30</span>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch-large" style="background: #f97316;"></div>
+                    <div class="color-card-label">
+                        <span class="color-card-name">--orange</span>
+                        <span class="color-card-hex">#f97316</span>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch-large" style="background: #fb7185;"></div>
+                    <div class="color-card-label">
+                        <span class="color-card-name">--rose</span>
+                        <span class="color-card-hex">#fb7185</span>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch-large" style="background: linear-gradient(90deg, #f97316, #fb7185);"></div>
+                    <div class="color-card-label">
+                        <span class="color-card-name">Gradient — Text & CTA</span>
+                        <span class="color-card-hex">orange → rose</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="ds-label">Slate Neutral Scale</p>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-swatch-large" style="background: #0f172a;"></div>
+                    <div class="color-card-label">
+                        <span class="color-card-name">--slate-900</span>
+                        <span class="color-card-hex">#0f172a · Headings</span>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch-large" style="background: #475569;"></div>
+                    <div class="color-card-label">
+                        <span class="color-card-name">--slate-600</span>
+                        <span class="color-card-hex">#475569 · Body text</span>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch-large" style="background: #e2e8f0;"></div>
+                    <div class="color-card-label">
+                        <span class="color-card-name">--slate-200</span>
+                        <span class="color-card-hex">#e2e8f0 · Borders</span>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch-large" style="background: #f8fafc; border: 1px solid #e2e8f0;"></div>
+                    <div class="color-card-label">
+                        <span class="color-card-name">--slate-50</span>
+                        <span class="color-card-hex">#f8fafc · Backgrounds</span>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch-large" style="background: #ffffff; border: 1px solid #e2e8f0;"></div>
+                    <div class="color-card-label">
+                        <span class="color-card-name">White</span>
+                        <span class="color-card-hex">#ffffff · Cards</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="ds-label">Semantic / Contextual</p>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-swatch-large" style="background: #ffedd5;"></div>
+                    <div class="color-card-label">
+                        <span class="color-card-name">Badge Background</span>
+                        <span class="color-card-hex">#ffedd5 · Tags, badges</span>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch-large" style="background: #9a3412;"></div>
+                    <div class="color-card-label">
+                        <span class="color-card-name">Badge Text</span>
+                        <span class="color-card-hex">#9a3412 · Tags, badges</span>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch-large" style="background: #fff7ed;"></div>
+                    <div class="color-card-label">
+                        <span class="color-card-name">Hero Background</span>
+                        <span class="color-card-hex">#fff7ed → #ffffff</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── TYPOGRAPHY ── -->
+        <hr class="ds-divider">
+        <section class="ds-section">
+            <h2>Typography</h2>
+            <p class="ds-section-desc">Single typeface — Plus Jakarta Sans — across all weights. The scale is intentionally small: five sizes, maximum contrast between hierarchy levels.</p>
+
+            <div style="margin-bottom: 2rem;">
+                <div class="type-row">
+                    <div class="type-meta">
+                        <strong>Display</strong>
+                        4.5rem · 800<br>−0.04em tracking<br>line-height 1.1
+                    </div>
+                    <div>
+                        <h1 style="font-size: 4.5rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; margin: 0;">Designer &amp; <span class="gradient-text">Communicator</span></h1>
+                    </div>
+                </div>
+                <div class="type-row">
+                    <div class="type-meta">
+                        <strong>H1 — Case title</strong>
+                        3rem · 800<br>−0.04em tracking
+                    </div>
+                    <div>
+                        <h1 style="font-size: 3rem; font-weight: 800; letter-spacing: -0.04em; margin: 0;">Bring Your <span class="gradient-text">Own Cup</span></h1>
+                    </div>
+                </div>
+                <div class="type-row">
+                    <div class="type-meta">
+                        <strong>H2 — Section</strong>
+                        2.25rem · 800<br>−0.02em tracking
+                    </div>
+                    <div>
+                        <h2 style="font-size: 2.25rem; font-weight: 800; letter-spacing: -0.02em; margin: 0;">Real-World Impact</h2>
+                    </div>
+                </div>
+                <div class="type-row">
+                    <div class="type-meta">
+                        <strong>H3 — Subheading</strong>
+                        1.25rem · 700
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; margin: 0;">Design Process</h3>
+                    </div>
+                </div>
+                <div class="type-row">
+                    <div class="type-meta">
+                        <strong>Body</strong>
+                        1rem · 400<br>line-height 1.6
+                    </div>
+                    <div>
+                        <p style="font-size: 1rem; font-weight: 400; line-height: 1.6; margin: 0; color: var(--slate-600);">Designing accessible, empathy-driven interfaces for users who depend on clarity — from mental health tools to social services software. Consistency across every page, every component.</p>
+                    </div>
+                </div>
+                <div class="type-row">
+                    <div class="type-meta">
+                        <strong>Label / Overline</strong>
+                        0.7rem · 800<br>0.12em tracking<br>ALL CAPS
+                    </div>
+                    <div>
+                        <span style="font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate-600);">UX / UI Design · Graphic Design · Sustainability App</span>
+                    </div>
+                </div>
+                <div class="type-row">
+                    <div class="type-meta">
+                        <strong>Caption</strong>
+                        0.85rem · 400<br>italic · centered
+                    </div>
+                    <div>
+                        <p style="font-size: 0.85rem; color: var(--slate-500); font-style: italic; margin: 0;">Early drafting — from rough sketches to initial color explorations · © Angela Shen</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── SPACING ── -->
+        <hr class="ds-divider">
+        <section class="ds-section">
+            <h2>Spacing Scale</h2>
+            <p class="ds-section-desc">Based on a 4px base unit. All margins, paddings, and gaps snap to this scale.</p>
+
+            <div class="spacing-grid">
+                <div class="spacing-row">
+                    <span class="spacing-bar-label">4px</span>
+                    <div class="spacing-bar" style="width: 4px;"></div>
+                    <span class="spacing-usage">Micro gap — icon to text</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-bar-label">8px</span>
+                    <div class="spacing-bar" style="width: 8px;"></div>
+                    <span class="spacing-usage">Tight spacing — tag padding</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-bar-label">12px</span>
+                    <div class="spacing-bar" style="width: 12px;"></div>
+                    <span class="spacing-usage">Nav link padding, small gaps</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-bar-label">16px</span>
+                    <div class="spacing-bar" style="width: 16px;"></div>
+                    <span class="spacing-usage">Button padding, card gaps</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-bar-label">24px</span>
+                    <div class="spacing-bar" style="width: 24px;"></div>
+                    <span class="spacing-usage">Container padding, grid gap</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-bar-label">40px</span>
+                    <div class="spacing-bar" style="width: 40px;"></div>
+                    <span class="spacing-usage">Project grid gap, section intro</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-bar-label">48px</span>
+                    <div class="spacing-bar" style="width: 48px;"></div>
+                    <span class="spacing-usage">Section-title margin-bottom</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-bar-label">60px</span>
+                    <div class="spacing-bar" style="width: 60px;"></div>
+                    <span class="spacing-usage">Case section padding</span>
+                </div>
+                <div class="spacing-row">
+                    <span class="spacing-bar-label">100px</span>
+                    <div class="spacing-bar" style="width: 100px;"></div>
+                    <span class="spacing-usage">Section-title margin-top</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── BORDER RADIUS ── -->
+        <hr class="ds-divider">
+        <section class="ds-section">
+            <h2>Border Radius</h2>
+            <p class="ds-section-desc">Consistent roundness across every component — from pill-shaped tags to card corners.</p>
+            <div class="radius-grid">
+                <div class="radius-box" style="border-radius: 4px;">4px<br>inputs</div>
+                <div class="radius-box" style="border-radius: 6px;">6px<br>nav links</div>
+                <div class="radius-box" style="border-radius: 12px;">12px<br>highlight box</div>
+                <div class="radius-box" style="border-radius: 16px;">16px<br>case images</div>
+                <div class="radius-box" style="border-radius: 24px;">24px<br>modals</div>
+                <div class="radius-box" style="border-radius: 32px;">32px<br>cards</div>
+                <div class="radius-box" style="border-radius: 99px; width: 120px;">99px<br>pills / buttons</div>
+            </div>
+        </section>
+
+        <!-- ── SHADOWS ── -->
+        <hr class="ds-divider">
+        <section class="ds-section">
+            <h2>Shadow Scale</h2>
+            <p class="ds-section-desc">Two tokens — default resting state and elevated hover state.</p>
+            <div class="shadow-demo">
+                <div class="shadow-box" style="box-shadow: var(--shadow-sm);">
+                    --shadow-sm<br><span style="font-family: 'Plus Jakarta Sans'; font-size: 0.7rem;">Resting card</span>
+                </div>
+                <div class="shadow-box" style="box-shadow: var(--shadow-xl);">
+                    --shadow-xl<br><span style="font-family: 'Plus Jakarta Sans'; font-size: 0.7rem;">Hover elevated</span>
+                </div>
+                <div class="shadow-box" style="box-shadow: 0 10px 15px -3px rgba(249,115,22,0.3);">
+                    Orange glow<br><span style="font-family: 'Plus Jakarta Sans'; font-size: 0.7rem;">Btn primary hover</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── COMPONENTS ── -->
+        <hr class="ds-divider">
+        <section class="ds-section">
+            <h2>Components</h2>
+            <p class="ds-section-desc">Every reusable UI pattern rendered live. Click or hover to see interaction states.</p>
+
+            <p class="ds-label">Buttons & Actions</p>
+            <div class="component-grid">
+                <div class="component-preview">
+                    <div class="component-stage">
+                        <a href="#" class="btn-primary" style="text-decoration: none;">View Case Study ↗</a>
+                    </div>
+                    <div class="component-info">
+                        <div class="component-info-name">.btn-primary</div>
+                        <div class="component-info-desc">Primary CTA — ember fill, pill shape. Hover: gradient + lift + orange glow shadow.</div>
+                    </div>
+                </div>
+                <div class="component-preview">
+                    <div class="component-stage">
+                        <a href="#" class="nav-cta" style="text-decoration: none; color: var(--slate-900); border: 1.5px solid var(--slate-300); border-radius: 99px; padding: 6px 16px; font-weight: 700; font-size: 0.875rem;">Resume ↗</a>
+                    </div>
+                    <div class="component-info">
+                        <div class="component-info-name">.nav-cta</div>
+                        <div class="component-info-desc">Nav CTA — outlined pill. Hover: fills to slate-900 with white text.</div>
+                    </div>
+                </div>
+                <div class="component-preview">
+                    <div class="component-stage" style="gap: 8px;">
+                        <button class="work-filter-btn active" style="pointer-events: none;">All</button>
+                        <button class="work-filter-btn" style="pointer-events: none;">UX &amp; Product</button>
+                        <button class="work-filter-btn" style="pointer-events: none;">Design</button>
+                    </div>
+                    <div class="component-info">
+                        <div class="component-info-name">.work-filter-btn</div>
+                        <div class="component-info-desc">Filter pills — active state fills ember. Hover: warm peach tint.</div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="ds-label">Labels & Tags</p>
+            <div class="component-grid">
+                <div class="component-preview">
+                    <div class="component-stage">
+                        <span class="status-badge">UX / UI Design · Graphic Design</span>
+                    </div>
+                    <div class="component-info">
+                        <div class="component-info-name">.status-badge</div>
+                        <div class="component-info-desc">Case study hero label — warm orange tint, ALL CAPS, wide tracking.</div>
+                    </div>
+                </div>
+                <div class="component-preview">
+                    <div class="component-stage" style="gap: 8px; flex-wrap: wrap;">
+                        <span class="tag orange">UX / UI</span>
+                        <span class="tag blue">Research</span>
+                        <span class="tag green">Sustainability</span>
+                        <span class="tag purple">Editorial</span>
+                    </div>
+                    <div class="component-info">
+                        <div class="component-info-name">.tag</div>
+                        <div class="component-info-desc">Inline category label — four colour variants: orange, blue, green, purple.</div>
+                    </div>
+                </div>
+                <div class="component-preview">
+                    <div class="component-stage">
+                        <h3 class="work-section-label" style="margin: 0; padding-bottom: 8px; border-bottom: 1px solid var(--slate-200); width: 100%;">UX &amp; Product Design</h3>
+                    </div>
+                    <div class="component-info">
+                        <div class="component-info-name">.work-section-label</div>
+                        <div class="component-info-desc">Grid section divider — uppercase overline with bottom rule.</div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="ds-label">Content Blocks</p>
+            <div class="component-grid">
+                <div class="component-preview">
+                    <div class="component-stage" style="padding: 0; align-items: stretch;">
+                        <div class="highlight-box" style="margin: 0; border-radius: 0; border: none; width: 100%;">
+                            <h3>Project Objective</h3>
+                            <p style="margin: 0;">A sustainability-focused app that rewards users for choosing reusable cups.</p>
+                        </div>
+                    </div>
+                    <div class="component-info">
+                        <div class="component-info-name">.highlight-box</div>
+                        <div class="component-info-desc">Left-bordered callout — ember left border, warm slate background, used for key context.</div>
+                    </div>
+                </div>
+                <div class="component-preview">
+                    <div class="component-stage" style="flex-direction: column; gap: 4px; align-items: flex-start;">
+                        <div class="case-meta-item">
+                            <span class="case-meta-label">My Role</span>
+                            <span class="case-meta-value">Color System, UI/UX Iteration</span>
+                        </div>
+                        <div class="case-meta-item">
+                            <span class="case-meta-label">Platform</span>
+                            <span class="case-meta-value">Mobile App (Android)</span>
+                        </div>
+                    </div>
+                    <div class="component-info">
+                        <div class="component-info-name">.case-meta / .case-meta-item</div>
+                        <div class="component-info-desc">Case study header metadata — label + value pairs in a flex row.</div>
+                    </div>
+                </div>
+                <div class="component-preview">
+                    <div class="component-stage">
+                        <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+                            <div style="flex-shrink: 0; width: 2rem; height: 2rem; border-radius: 50%; background: #da6e30; color: white; font-weight: 800; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; margin-top: 0.2rem;">1</div>
+                            <div>
+                                <h3 style="margin: 0 0 4px; font-size: 1rem;">Idealization Mapping</h3>
+                                <p style="margin: 0; font-size: 0.85rem; color: var(--slate-600);">We mapped every page and decision point before visual design began.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-info">
+                        <div class="component-info-name">.process-step / .step-number</div>
+                        <div class="component-info-desc">Numbered process step — ember circle + content block.</div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="ds-label">Navigation</p>
+            <div class="component-preview" style="max-width: 100%;">
+                <div class="component-stage" style="padding: 0; background: rgba(255,255,255,0.85); backdrop-filter: blur(16px);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 0 24px; height: 68px;">
+                        <a style="font-weight: 800; font-size: 1rem; letter-spacing: -0.02em; text-decoration: none; color: var(--slate-900);">✨ Angela Shen</a>
+                        <div style="display: flex; gap: 8px;">
+                            <a style="text-decoration: none; color: var(--slate-600); font-weight: 600; font-size: 0.875rem; padding: 6px 12px; border-radius: 6px;">Work</a>
+                            <a style="text-decoration: none; color: var(--slate-600); font-weight: 600; font-size: 0.875rem; padding: 6px 12px; border-radius: 6px;">Gallery</a>
+                            <a style="text-decoration: none; color: var(--slate-600); font-weight: 600; font-size: 0.875rem; padding: 6px 12px; border-radius: 6px;">About</a>
+                            <a style="text-decoration: none; color: var(--slate-900); border: 1.5px solid #cbd5e1; border-radius: 99px; padding: 6px 16px; font-weight: 700; font-size: 0.875rem;">Resume ↗</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="component-info">
+                    <div class="component-info-name">.nav-bar · glass nav</div>
+                    <div class="component-info-desc">Fixed, frosted glass — <code style="font-family:'Courier New'; font-size:0.8em;">backdrop-filter: blur(16px)</code> + rgba(255,255,255,0.85) background. Underline hover via ::after pseudo-element.</div>
+                </div>
+            </div>
+
+            <p class="ds-label" style="margin-top: 2rem;">Cards</p>
+            <div class="component-grid">
+                <div class="component-preview">
+                    <div class="component-stage" style="padding: 0; background: #f1f5f9; min-height: 160px; position: relative; overflow: hidden;">
+                        <div style="width: 100%; height: 160px; background: linear-gradient(135deg, #ffedd5, #fde68a); position: relative; overflow: hidden;">
+                            <div style="position: absolute; inset: 0; background: rgba(15,23,42,0.45); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 0.9rem; opacity: 0; transition: opacity 0.3s;" class="ds-overlay-demo">Full Process ↗</div>
+                        </div>
+                    </div>
+                    <div style="padding: 20px;">
+                        <span class="tag orange" style="margin-bottom: 8px; display: inline-block;">UX / UI</span>
+                        <h3 style="margin: 0 0 8px; font-size: 1.1rem;">Project Title</h3>
+                        <p style="margin: 0; font-size: 0.9rem; color: var(--slate-600);">Short project description goes here — two lines max.</p>
+                    </div>
+                    <div class="component-info">
+                        <div class="component-info-name">.card</div>
+                        <div class="component-info-desc">32px radius, 1px border, shadow-sm rest. Hover: −12px translateY, shadow-xl, orange border tint. Overlay fades in on hover.</div>
+                    </div>
+                </div>
+                <div class="component-preview">
+                    <div class="component-stage" style="flex-direction: column; align-items: flex-start; gap: 16px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; width: 100%;">
+                            <div style="text-align: center; padding: 1.5rem 1rem; background: var(--slate-50); border-radius: 12px; border: 1px solid var(--slate-200);">
+                                <p style="font-size: 2rem; font-weight: 800; color: #da6e30; margin: 0; line-height: 1;">−397</p>
+                                <p style="font-size: 0.8rem; font-weight: 600; color: var(--slate-600); margin: 6px 0 0;">cups saved</p>
+                            </div>
+                            <div style="text-align: center; padding: 1.5rem 1rem; background: var(--slate-50); border-radius: 12px; border: 1px solid var(--slate-200);">
+                                <p style="font-size: 2rem; font-weight: 800; color: #da6e30; margin: 0; line-height: 1;">100+</p>
+                                <p style="font-size: 0.8rem; font-weight: 600; color: var(--slate-600); margin: 6px 0 0;">downloads</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-info">
+                        <div class="component-info-name">.stat-card / .stat-grid</div>
+                        <div class="component-info-desc">Impact metric blocks — ember number, slate label. 3-column grid (1-column on mobile).</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── GRADIENTS ── -->
+        <hr class="ds-divider">
+        <section class="ds-section">
+            <h2>Gradients</h2>
+            <p class="ds-section-desc">Three named gradients used across the portfolio.</p>
+
+            <p class="ds-label">Hero background</p>
+            <div class="gradient-demo-strip" style="background: linear-gradient(180deg, #fff7ed 0%, #ffffff 100%);"></div>
+            <p style="font-family:'Courier New'; font-size: 0.8rem; color: var(--slate-600); margin: 0 0 1.5rem;">linear-gradient(180deg, #fff7ed 0%, #ffffff 100%)</p>
+
+            <p class="ds-label">Gradient text / CTA hover</p>
+            <div class="gradient-demo-strip" style="background: linear-gradient(90deg, #f97316 0%, #fb7185 100%);"></div>
+            <p style="font-family:'Courier New'; font-size: 0.8rem; color: var(--slate-600); margin: 0 0 1.5rem;">linear-gradient(90deg, --orange, --rose)</p>
+
+            <p class="ds-label">About page — budgie callout</p>
+            <div class="gradient-demo-strip" style="background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);"></div>
+            <p style="font-family:'Courier New'; font-size: 0.8rem; color: var(--slate-600); margin: 0 0 1.5rem;">linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%)</p>
+
+            <p class="ds-label">Gradient text — live example</p>
+            <h2 style="font-size: 2.5rem; font-weight: 800; margin: 0 0 8px;"><span class="gradient-text">Angela Shen</span></h2>
+            <div class="code-block"><span class="code-property">.gradient-text</span> {<br>  <span class="code-keyword">background</span>: <span class="code-value">linear-gradient(90deg, var(--orange) 0%, var(--rose) 100%)</span>;<br>  <span class="code-keyword">background-clip</span>: <span class="code-value">text</span>;<br>  <span class="code-keyword">-webkit-text-fill-color</span>: <span class="code-value">transparent</span>;<br>  <span class="code-keyword">display</span>: <span class="code-value">inline-block</span>;<br>}</div>
+        </section>
+
+        <!-- ── ANIMATIONS ── -->
+        <hr class="ds-divider">
+        <section class="ds-section">
+            <h2>Animations</h2>
+            <p class="ds-section-desc">Six named keyframe animations — all subtle, purposeful, never decorative for its own sake.</p>
+
+            <div>
+                <div class="anim-demo-row">
+                    <div class="anim-label-block">
+                        <strong>breathe</strong>
+                        <span>Hero ambient pulse — infinite scale 1 → 1.02 → 1, 4s ease-in-out</span>
+                    </div>
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #ffedd5, #fde68a); border-radius: 16px; animation: breathe 4s ease-in-out infinite; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">✨</div>
+                </div>
+
+                <div class="anim-demo-row">
+                    <div class="anim-label-block">
+                        <strong>scroll-bounce</strong>
+                        <span>Scroll hint arrow — translateY 0 → 8px, 1.4s ease-in-out infinite</span>
+                    </div>
+                    <div class="scroll-hint" aria-hidden="true" style="position: relative; margin: 0; opacity: 1;"><span></span><span></span></div>
+                </div>
+
+                <div class="anim-demo-row">
+                    <div class="anim-label-block">
+                        <strong>modalSlide</strong>
+                        <span>Modal entrance — opacity 0 + translateY(50px) → natural, 0.4s cubic-bezier</span>
+                    </div>
+                    <div style="background: #fff; border: 1px solid var(--slate-200); border-radius: 16px; padding: 16px 24px; box-shadow: var(--shadow-xl); animation: modalSlide 1.5s cubic-bezier(0.4,0,0.2,1) infinite alternate; font-size: 0.9rem; color: var(--slate-600);">Modal panel</div>
+                </div>
+
+                <div class="anim-demo-row">
+                    <div class="anim-label-block">
+                        <strong>zoomIn</strong>
+                        <span>Lightbox image entrance — scale(0.92) → scale(1), 0.3s ease</span>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-radius: 12px; width: 80px; height: 60px; animation: zoomIn 1.2s ease infinite alternate;"></div>
+                </div>
+
+                <div class="anim-demo-row">
+                    <div class="anim-label-block">
+                        <strong>flutter</strong>
+                        <span>Butterfly SVG — skewX + scaleX alternation, 0.6s ease-in-out infinite. Triggered on hover of hero text.</span>
+                    </div>
+                    <img src="../images/butterfly.svg" alt="Fritillary Butterfly" width="45" style="animation: flutter 0.6s ease-in-out infinite;">
+                </div>
+
+                <div class="anim-demo-row">
+                    <div class="anim-label-block">
+                        <strong>Card hover transition</strong>
+                        <span>translateY(−12px) + shadow-xl + orange border tint — 0.5s cubic-bezier(0.4,0,0.2,1)</span>
+                    </div>
+                    <div class="card" style="width: 180px; padding: 16px; cursor: default;">
+                        <div style="font-size: 0.85rem; font-weight: 700; color: var(--slate-900);">Hover me</div>
+                        <div style="font-size: 0.8rem; color: var(--slate-600); margin-top: 4px;">Card lift effect</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CSS TOKENS REFERENCE ── -->
+        <hr class="ds-divider">
+        <section class="ds-section">
+            <h2>Token Reference</h2>
+            <p class="ds-section-desc">All CSS custom properties defined in <code style="background: var(--slate-200); padding: 2px 6px; border-radius: 4px; font-size: 0.85em;">:root</code> — copy-paste ready.</p>
+
+            <div class="code-block">
+<span class="code-comment">/* style.css :root — Angela Shen Portfolio Design System */</span>
+<span class="code-property">:root</span> {
+  <span class="code-comment">/* Brand */</span>
+  <span class="code-keyword">--orange</span>: <span class="code-value">#f97316</span>;       <span class="code-comment">/* Tailwind orange-500 */</span>
+  <span class="code-keyword">--rose</span>: <span class="code-value">#fb7185</span>;         <span class="code-comment">/* Tailwind rose-400 */</span>
+  <span class="code-comment">/* Accent (not a variable — used direct) */</span>
+  <span class="code-comment">/* #da6e30  Ember — nav underline, btn-primary, step circles */</span>
+
+  <span class="code-comment">/* Neutral scale */</span>
+  <span class="code-keyword">--slate-900</span>: <span class="code-value">#0f172a</span>;   <span class="code-comment">/* Headings, body text */</span>
+  <span class="code-keyword">--slate-600</span>: <span class="code-value">#475569</span>;   <span class="code-comment">/* Secondary text */</span>
+  <span class="code-keyword">--slate-200</span>: <span class="code-value">#e2e8f0</span>;   <span class="code-comment">/* Borders, dividers */</span>
+  <span class="code-keyword">--slate-50</span>: <span class="code-value">#f8fafc</span>;    <span class="code-comment">/* Card backgrounds, stat-card */</span>
+
+  <span class="code-comment">/* Shadows */</span>
+  <span class="code-keyword">--shadow-sm</span>: <span class="code-value">0 1px 2px 0 rgb(0 0 0 / 0.05)</span>;
+  <span class="code-keyword">--shadow-xl</span>: <span class="code-value">0 20px 25px -5px rgb(0 0 0 / 0.1),
+               0 8px 10px -6px rgb(0 0 0 / 0.1)</span>;
+}
+            </div>
+
+            <table class="token-table">
+                <thead>
+                    <tr>
+                        <th>Token</th>
+                        <th>Value</th>
+                        <th>Used For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="token-name-cell"><span class="token-swatch" style="background: #f97316;"></span>--orange</td>
+                        <td class="token-value-cell">#f97316</td>
+                        <td class="token-usage-cell">Gradient text start, btn-primary hover</td>
+                    </tr>
+                    <tr>
+                        <td class="token-name-cell"><span class="token-swatch" style="background: #fb7185;"></span>--rose</td>
+                        <td class="token-value-cell">#fb7185</td>
+                        <td class="token-usage-cell">Gradient text end, btn-primary hover</td>
+                    </tr>
+                    <tr>
+                        <td class="token-name-cell"><span class="token-swatch" style="background: #da6e30;"></span>Accent</td>
+                        <td class="token-value-cell">#da6e30</td>
+                        <td class="token-usage-cell">Nav underline, btn fill, step numbers, filter active</td>
+                    </tr>
+                    <tr>
+                        <td class="token-name-cell"><span class="token-swatch" style="background: #0f172a;"></span>--slate-900</td>
+                        <td class="token-value-cell">#0f172a</td>
+                        <td class="token-usage-cell">Headings, logo, body color</td>
+                    </tr>
+                    <tr>
+                        <td class="token-name-cell"><span class="token-swatch" style="background: #475569;"></span>--slate-600</td>
+                        <td class="token-value-cell">#475569</td>
+                        <td class="token-usage-cell">Body text, nav links, captions</td>
+                    </tr>
+                    <tr>
+                        <td class="token-name-cell"><span class="token-swatch" style="background: #e2e8f0; border: 1px solid #cbd5e1;"></span>--slate-200</td>
+                        <td class="token-value-cell">#e2e8f0</td>
+                        <td class="token-usage-cell">Card borders, dividers, nav border</td>
+                    </tr>
+                    <tr>
+                        <td class="token-name-cell"><span class="token-swatch" style="background: #f8fafc; border: 1px solid #e2e8f0;"></span>--slate-50</td>
+                        <td class="token-value-cell">#f8fafc</td>
+                        <td class="token-usage-cell">Card backgrounds, stat cards, highlight box</td>
+                    </tr>
+                    <tr>
+                        <td class="token-name-cell">--shadow-sm</td>
+                        <td class="token-value-cell">0 1px 2px…</td>
+                        <td class="token-usage-cell">Resting card elevation</td>
+                    </tr>
+                    <tr>
+                        <td class="token-name-cell">--shadow-xl</td>
+                        <td class="token-value-cell">0 20px 25px…</td>
+                        <td class="token-usage-cell">Hover card elevation, modals</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ── LAYOUT ── -->
+        <hr class="ds-divider">
+        <section class="ds-section">
+            <h2>Layout</h2>
+            <p class="ds-section-desc">Single-column content container with responsive grid for cards.</p>
+
+            <table class="token-table">
+                <thead>
+                    <tr><th>Name</th><th>Value</th><th>Context</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="token-name-cell">.container</td>
+                        <td class="token-value-cell">max-width: 1200px; padding: 0 24px</td>
+                        <td class="token-usage-cell">All page-level content</td>
+                    </tr>
+                    <tr>
+                        <td class="token-name-cell">.project-grid</td>
+                        <td class="token-value-cell">auto-fit, minmax(400px, 1fr); gap: 40px</td>
+                        <td class="token-usage-cell">Index work cards</td>
+                    </tr>
+                    <tr>
+                        <td class="token-name-cell">.featured-grid</td>
+                        <td class="token-value-cell">repeat(2, 1fr); gap: 1.5rem</td>
+                        <td class="token-usage-cell">Top two featured case studies</td>
+                    </tr>
+                    <tr>
+                        <td class="token-name-cell">.two-col</td>
+                        <td class="token-value-cell">repeat(2, 1fr); gap: 3rem</td>
+                        <td class="token-usage-cell">Case study split sections</td>
+                    </tr>
+                    <tr>
+                        <td class="token-name-cell">.spirit-grid</td>
+                        <td class="token-value-cell">repeat(3, 1fr); gap: 1.5rem</td>
+                        <td class="token-usage-cell">About page principles</td>
+                    </tr>
+                    <tr>
+                        <td class="token-name-cell">.stat-grid</td>
+                        <td class="token-value-cell">repeat(3, 1fr); gap: 1.5rem</td>
+                        <td class="token-usage-cell">Impact metric blocks</td>
+                    </tr>
+                    <tr>
+                        <td class="token-name-cell">Nav height</td>
+                        <td class="token-value-cell">68px fixed</td>
+                        <td class="token-usage-cell">All pages — scroll-behind glass</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ── DESIGN PRINCIPLES ── -->
+        <hr class="ds-divider">
+        <section class="ds-section" style="padding-bottom: 60px;">
+            <h2>Design Principles</h2>
+            <p class="ds-section-desc">The reasoning that shaped every token and pattern choice.</p>
+
+            <div class="spirit-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1rem;">
+                <div class="spirit-card highlight-box">
+                    <h3>Warmth over neutrality</h3>
+                    <p style="margin: 0;">Ember orange grounds the palette in warmth without aggression. It signals energy and craft — not corporate polish.</p>
+                </div>
+                <div class="spirit-card highlight-box">
+                    <h3>Hierarchy through weight</h3>
+                    <p style="margin: 0;">One typeface, four weights. Contrast comes from size and weight — not colour — keeping the system legible and accessible.</p>
+                </div>
+                <div class="spirit-card highlight-box">
+                    <h3>Motion with purpose</h3>
+                    <p style="margin: 0;">Every animation has a semantic reason: breathe signals life, card lift signals clickability, scroll bounce signals more content below.</p>
+                </div>
+                <div class="spirit-card highlight-box">
+                    <h3>Consistent roundness</h3>
+                    <p style="margin: 0;">From 6px nav links to 32px cards, the radius scale is deliberate — softer on larger surfaces, tighter on small interactive elements.</p>
+                </div>
+                <div class="spirit-card highlight-box">
+                    <h3>Single-source CSS</h3>
+                    <p style="margin: 0;">All 12+ pages share one <code style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;">style.css</code>. Changing a token changes the whole portfolio — no duplication, no drift.</p>
+                </div>
+                <div class="spirit-card highlight-box">
+                    <h3>Against Corporate Memphis</h3>
+                    <p style="margin: 0;">Assets are grounded in narrative meaning — growth, motion, environment — not decorative cheerfulness. Every illustration reinforces content.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <span class="footer-name">Angela Shen</span>
+                <span class="footer-copy">Joint Major: CMNS &amp; IAT @ SFU &nbsp;&middot;&nbsp; Graduating Spring 2026 &nbsp;&middot;&nbsp; *Incoming IAT Masters Student, SFU &mdash; Fall 2026</span>
+                <span class="footer-copy">&copy; 2026 Angela Shen. All photography, illustrations, and design work are the original work of Angela Shen. All rights reserved.</span>
+            </div>
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="../index.html">Work</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="mailto:angelashen.ca@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/angelashenca/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/angelashen233" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.instagram.com/lollypuddn/" target="_blank" rel="noopener">Instagram ↗</a>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+</html>

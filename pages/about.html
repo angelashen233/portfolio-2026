@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/Profile_Discord.webp" type="image/webp">
+    <title>About — Angela Shen</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+
+        /* ── Hero intro ── */
+        .about-hero {
+            padding: 140px 24px 72px;
+            background: linear-gradient(160deg, #fff7ed 0%, #ffffff 60%);
+        }
+        .about-hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .about-photo-wrap {
+            position: relative;
+        }
+        .about-photo {
+            width: 100%;
+            border-radius: 20px;
+            object-fit: cover;
+            aspect-ratio: 4/5;
+            display: block;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+        }
+        .about-photo-tag {
+            position: absolute;
+            bottom: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            border: 1.5px solid var(--slate-200);
+            border-radius: 99px;
+            padding: 6px 16px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--slate-600);
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+        }
+        .about-intro h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 1.25rem;
+        }
+        .about-intro p {
+            font-size: 1.15rem;
+            color: var(--slate-600);
+            line-height: 1.75;
+            max-width: 580px;
+        }
+        .about-intro .highlight {
+            color: var(--slate-900);
+            font-weight: 700;
+        }
+
+        /* ── Pill tags ── */
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 1.75rem;
+        }
+        .tag-pill {
+            background: #f1f5f9;
+            color: var(--slate-700);
+            border-radius: 99px;
+            padding: 6px 16px;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+        .tag-pill.orange {
+            background: #fff7ed;
+            color: #c2410c;
+        }
+
+        /* ── Sections ── */
+        .about-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            border-top: 1px solid var(--slate-200);
+        }
+        .about-section:first-of-type { border-top: none; }
+
+        .about-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .about-split.reverse { direction: rtl; }
+        .about-split.reverse > * { direction: ltr; }
+
+        .about-split-text h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+        .about-split-text p {
+            color: var(--slate-600);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .about-split-text p:last-child { margin-bottom: 0; }
+
+        .about-split-img {
+            border-radius: 16px;
+            width: 100%;
+            object-fit: cover;
+            aspect-ratio: 4/3;
+            display: block;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.09);
+        }
+        .about-split-img.tall { aspect-ratio: 3/4; }
+
+        /* ── Quote pull ── */
+        .about-quote {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 64px 24px;
+            text-align: center;
+        }
+        .about-quote blockquote {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.35;
+            color: var(--slate-900);
+            margin: 0 0 1rem;
+        }
+        .about-quote cite {
+            font-size: 0.85rem;
+            color: var(--slate-500);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* ── Budgies callout ── */
+        .budgie-box {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border: 1.5px solid #bbf7d0;
+            border-radius: 20px;
+            padding: 40px 48px;
+            max-width: 1100px;
+            margin: 0 auto 80px;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .budgie-emoji {
+            font-size: 3.5rem;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+        .budgie-box h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin: 0 0 0.4rem;
+            color: #166534;
+        }
+        .budgie-box p {
+            margin: 0;
+            color: #15803d;
+            font-size: 0.95rem;
+            line-height: 1.65;
+        }
+
+        /* ── Art strip ── */
+        .art-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            max-width: 1100px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+        }
+        .art-strip-item {
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            background: var(--slate-100);
+        }
+        .art-strip-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .art-strip-item:hover img { transform: scale(1.05); }
+
+        /* ── CTA ── */
+        .about-cta {
+            text-align: center;
+            padding: 72px 24px 100px;
+            border-top: 1px solid var(--slate-200);
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .about-cta h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.75rem;
+        }
+        .about-cta p {
+            color: var(--slate-600);
+            margin-bottom: 2rem;
+        }
+        .cta-row {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 860px) {
+            .about-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+            .about-photo-wrap { max-width: 220px; }
+            .about-intro h1 { font-size: 2.2rem; }
+            .about-split { grid-template-columns: 1fr; gap: 32px; }
+            .about-split.reverse { direction: ltr; }
+            .budgie-box { flex-direction: column; padding: 32px 24px; gap: 16px; }
+            .art-strip { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <div class="container nav-content">
+            <a class="logo" href="../index.html">✨ Angela Shen</a>
+            <div class="nav-links">
+                <a href="../index.html">Work</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="about.html" class="active">About</a>
+                <a href="../images/Angela-Shen-Resume-2026-Feb_Lab-Submission.pdf" class="nav-cta" target="_blank">Resume ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="about-hero">
+        <div class="about-hero-inner">
+            <div class="about-photo-wrap">
+                <img class="about-photo" src="../images/Angela_Shen-peronal_profile-image-2026-CPRS.png" alt="Angela Shen">
+                <span class="about-photo-tag">✦ Angela Shen</span>
+            </div>
+            <div class="about-intro">
+                <span class="status-badge" style="margin-bottom: 1rem; display: inline-block;">SFU CMNS &amp; IAT · Incoming IAT Masters Student, SFU — Fall 2026</span>
+                <h1>Designer,<br>communicator,<br><span class="gradient-text">and artist.</span></h1>
+                <p>I've spent my whole life making things for people — paintings, interfaces, campaigns, stories. The thread running through all of it is the same: <span class="highlight">the moment someone feels something because of what you made.</span></p>
+                <div class="tag-row">
+                    <span class="tag-pill orange">UX Design</span>
+                    <span class="tag-pill orange">Visual Communication</span>
+                    <span class="tag-pill orange">Paid Media</span>
+                    <span class="tag-pill">Chinese Brush Painting</span>
+                    <span class="tag-pill">Editorial</span>
+                    <span class="tag-pill">Illustration</span>
+                    <span class="tag-pill">Photography</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PULL QUOTE -->
+    <div class="about-quote">
+        <blockquote>"I perhaps do too many things — but I love everything I have done."</blockquote>
+        <cite>— Angela Shen</cite>
+    </div>
+
+    <!-- ART & CONNECTION -->
+    <section class="about-section">
+        <div class="about-split">
+            <div class="about-split-text">
+                <h2>Art as a way of connecting with people</h2>
+                <p>I've loved making art for as long as I can remember. Growing up, I discovered that it was less about the object itself and more about what happened in the space between the work and the person looking at it.</p>
+                <p>My favourite thing is the look on someone's face when I show them a sketch or portrait I've made of them — that small, genuine surprise. That flicker of being seen. I chased that feeling for years before I understood what it meant: art is fundamentally a conversation.</p>
+                <p>I still paint whenever I can. Chinese brush painting especially — the discipline of it, the irreversibility of the mark, and the quiet it requires all give me something that no other medium does.</p>
+            </div>
+            <img class="about-split-img tall" src="../images/Chinese-brush-painting-watercolor.webp" alt="Chinese brush painting in progress">
+        </div>
+    </section>
+
+    <!-- PEACE IN MAKING -->
+    <section class="about-section">
+        <div class="about-split reverse">
+            <div class="about-split-text">
+                <h2>The peace you give and receive when making</h2>
+                <p>There's something specific that happens when I'm deep in a painting — a kind of stillness that is both the cause and the product of the work. I make art partly because it gives me peace, and I've noticed that people who receive it often feel something similar.</p>
+                <p>That feeling — of giving and experiencing calm through making — is something I carry into every other kind of work. Good design should reduce anxiety, not produce it. Good writing should make someone feel less alone with a problem, not more overwhelmed by it.</p>
+            </div>
+            <img class="about-split-img" src="../images/Journal-short-film-conceptart-writing.png" alt="Sketchbook open with watercolour and writing">
+        </div>
+    </section>
+
+    <!-- SYSTEMS & DESIGN -->
+    <section class="about-section">
+        <div class="about-split">
+            <div class="about-split-text">
+                <h2>How designing systems changes what organizations can do</h2>
+                <p>The further I got into design work, the more I understood that the real impact isn't in the visual — it's in how the system behind it works. A well-designed navigation means a caregiver finds what they need before they give up. A clear UX flow means a survivor in crisis doesn't hit a dead end.</p>
+                <p>Working at VACFSS taught me this concretely. The decisions I made about information architecture and content hierarchy directly affected how many people inquired about becoming caregivers. Design at that scale isn't decoration — it's infrastructure.</p>
+                <p>I'm drawn to work where the stakes are real and the audience is underserved — social services, healthcare, education. Places where thoughtful design can shift outcomes.</p>
+            </div>
+            <img class="about-split-img" src="../images/peace_girl_illustration_illutrator.webp" alt="Peace girl digital illustration">
+        </div>
+    </section>
+
+    <!-- STORYTELLING -->
+    <section class="about-section">
+        <div class="about-split reverse">
+            <div class="about-split-text">
+                <h2>Storytelling in the outreach and advertising space</h2>
+                <p>Running VACFSS's recruitment campaigns — 4M+ results on a $15K budget — taught me that the most effective advertising is the one that feels least like advertising. It's a story someone wants to be part of, not a message being pushed at them.</p>
+                <p>I studied communications because I was always more interested in <em>why</em> something resonates than in the mechanics of making it. What makes someone stop scrolling? What makes a reader feel seen in a headline? What earns trust before you've even asked for anything?</p>
+                <p>Those questions sit underneath all my work — in every campaign, every case study, every article I've published.</p>
+            </div>
+            <img class="about-split-img" src="../images/AngelaShen_Weather_Yes_1.png" alt="Weather Yes But — storyboard illustration">
+        </div>
+    </section>
+
+    <!-- BUDGIES -->
+    <div class="budgie-box container">
+        <div class="budgie-emoji">🐦🐦🐦</div>
+        <div>
+            <h3>On the subject of the most important members of my household</h3>
+            <p>I have three adopted budgies. They are loud, opinionated, and deeply convinced that whatever I am working on is less interesting than them. They are correct. Caring for animals that needed a home is something I feel strongly about — there's an obvious throughline to the rest of my work.</p>
+        </div>
+    </div>
+
+    <!-- ART STRIP -->
+    <div class="art-strip">
+        <div class="art-strip-item">
+            <img src="../images/Lollpuddn-Chinese-watercolor-Mychildhoodpet-feifei-themoltese.png" alt="Chinese watercolour portrait of Feifei">
+        </div>
+        <div class="art-strip-item">
+            <img src="../images/w10-teenwitch-angelashen-The Peak.png" alt="Teen Witch editorial illustration for The Peak">
+        </div>
+        <div class="art-strip-item">
+            <img src="../images/WinterSolsticeCard_2023_COVER_FINAL-02_With_Intials_YRS_FRONT.webp" alt="Winter Solstice Card 2023">
+        </div>
+        <div class="art-strip-item">
+            <img src="../images/peace_girl_illustration_illutrator.webp" alt="Peace Girl illustration">
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="about-cta">
+        <h2>Let's work together</h2>
+        <p>Open to UX, communications, and design roles — graduating Spring 2026.</p>
+        <div class="cta-row">
+            <a href="mailto:angelashen.ca@gmail.com" class="btn-primary">Get in Touch</a>
+            <a href="https://www.linkedin.com/in/angelashenca/" target="_blank" rel="noopener" class="nav-cta" style="display:inline-flex; align-items:center; padding: 12px 24px; border-radius: 99px; border: 1.5px solid var(--slate-300); font-weight: 700; text-decoration: none; color: var(--slate-900); font-family: inherit; font-size: 1rem; transition: all 0.2s ease;">LinkedIn ↗</a>
+            <a href="https://www.instagram.com/lollypuddn/" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; padding: 12px 24px; border-radius: 99px; border: 1.5px solid var(--slate-300); font-weight: 700; text-decoration: none; color: var(--slate-900); font-family: inherit; font-size: 1rem; transition: all 0.2s ease;">Art Instagram ↗</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <span class="footer-name">Angela Shen</span>
+                <span class="footer-copy">Joint Major: CMNS &amp; IAT @ SFU &nbsp;&middot;&nbsp; Graduating Spring 2026 &nbsp;&middot;&nbsp; *Incoming IAT Masters Student, SFU &mdash; Fall 2026</span>
+                <span class="footer-copy">&copy; 2026 Angela Shen. All photography, illustrations, and design work are the original work of Angela Shen. All rights reserved.</span>
+            </div>
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="../index.html">Work</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="mailto:angelashen.ca@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/angelashenca/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/angelashen233" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.instagram.com/lollypuddn/" target="_blank" rel="noopener">Instagram ↗</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="nav.js"></script>
+</body>
+</html>
