@@ -104,10 +104,37 @@
         <div class="scroll-hint" aria-hidden="true"><span></span><span></span></div>
     </header>
 
+    <!-- Progress sidebar -->
+    <nav class="cs-progress" aria-label="Page sections">
+        <a class="cs-progress-dot" href="#s-impact"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Impact</span></a>
+        <a class="cs-progress-dot" href="#s-product"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Final Product</span></a>
+        <a class="cs-progress-dot" href="#s-process"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Design Process</span></a>
+    </nav>
+
     <main class="container">
 
+        <!-- Role strip -->
+        <div class="cs-role-strip" style="margin-top: 48px;">
+            <div class="cs-role-item">
+                <span class="cs-role-label">My Role</span>
+                <span class="cs-role-value">Color System · Graphic Assets · UI/UX Iteration · Focus Group Testing</span>
+            </div>
+            <div class="cs-role-item">
+                <span class="cs-role-label">Platform</span>
+                <span class="cs-role-value">Mobile App · Android (Google Play)</span>
+            </div>
+            <div class="cs-role-item">
+                <span class="cs-role-label">Tools</span>
+                <span class="cs-role-value">Figma · Adobe Illustrator</span>
+            </div>
+            <div class="cs-role-item">
+                <span class="cs-role-label">Key Outcome</span>
+                <span class="cs-role-value">−397 cups from landfill · 100+ downloads · 75 trees planted</span>
+            </div>
+        </div>
+
         <!-- Mobile Interface Hero -->
-        <section class="case-section" style="padding-top: 0;">
+        <section class="case-section" style="padding-top: 24px;" id="s-impact">
             <img class="case-img" src="../images/byo_Mobile-interface-image.png" alt="BYO mobile app interface — full screen showcase of core app screens" style="border-radius: 16px;">
         </section>
 
@@ -140,8 +167,10 @@
             </div>
         </section>
 
+        <div class="cs-phase"><span class="cs-phase-label">Final Product</span></div>
+
         <!-- Final Product -->
-        <section class="case-section">
+        <section class="case-section" id="s-product">
             <h2>Final Product</h2>
             <p>The prototype walks through the full app experience — from onboarding and scanning at a café, through the rewards redemption flow and tree-planting milestones.</p>
             <div style="margin: 1.5rem 0;">
@@ -161,8 +190,10 @@
             </div>
         </section>
 
+        <div class="cs-phase"><span class="cs-phase-label">Design Process</span></div>
+
         <!-- Process -->
-        <section class="case-section">
+        <section class="case-section" id="s-process">
             <h2>Design Process</h2>
 
             <!-- Step 1: UX Mapping -->
@@ -237,6 +268,20 @@
         </section>
 
     </main>
+
+    <script>
+    (function() {
+        const dots = Array.from(document.querySelectorAll('.cs-progress-dot'));
+        const sections = dots.map(d => document.getElementById(d.getAttribute('href').slice(1))).filter(Boolean);
+        function update() {
+            let active = 0;
+            sections.forEach((s, i) => { if (s.getBoundingClientRect().top <= window.innerHeight * 0.5) active = i; });
+            dots.forEach((d, i) => d.classList.toggle('active', i === active));
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    })();
+    </script>
 
     <!-- FOOTER -->
         <footer class="footer">

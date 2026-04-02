@@ -29,7 +29,8 @@
             width: 100%;
             border-radius: 20px;
             object-fit: cover;
-            aspect-ratio: 4/5;
+            aspect-ratio: 4/3;
+            object-position: center top;
             display: block;
             box-shadow: 0 20px 60px rgba(0,0,0,0.12);
         }
@@ -228,6 +229,112 @@
             flex-wrap: wrap;
         }
 
+        /* ── Resume section ── */
+        .resume-stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 2.5rem 0 3rem;
+        }
+        .resume-stat {
+            background: #fff7ed;
+            border: 1.5px solid #fed7aa;
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+        }
+        .resume-stat-num {
+            display: block;
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: #c2410c;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+        .resume-stat-label {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--slate-600);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .resume-section-heading {
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--slate-500);
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1.5px solid var(--slate-200);
+        }
+        .resume-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .resume-entry {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 24px;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--slate-100);
+        }
+        .resume-entry:last-child { border-bottom: none; }
+        .resume-entry-meta {
+            padding-top: 3px;
+        }
+        .resume-date {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--slate-500);
+            line-height: 1.5;
+        }
+        .resume-location {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--slate-400);
+            margin-top: 2px;
+        }
+        .resume-entry-title {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            margin-bottom: 2px;
+        }
+        .resume-entry-org {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #c2410c;
+            margin-bottom: 0.75rem;
+        }
+        .resume-entry-body ul {
+            margin: 0;
+            padding-left: 1.1rem;
+            color: var(--slate-600);
+            font-size: 0.9rem;
+            line-height: 1.75;
+        }
+        .resume-entry-body ul li { margin-bottom: 0.3rem; }
+        .resume-entry-body ul li:last-child { margin-bottom: 0; }
+        .resume-awards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 0.75rem;
+        }
+        .resume-award-pill {
+            background: var(--slate-100);
+            border-radius: 99px;
+            padding: 5px 14px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--slate-700);
+        }
+
         @media (max-width: 860px) {
             .about-hero-inner { grid-template-columns: 1fr; gap: 40px; }
             .about-photo-wrap { max-width: 220px; }
@@ -236,6 +343,10 @@
             .about-split.reverse { direction: ltr; }
             .budgie-box { flex-direction: column; padding: 32px 24px; gap: 16px; }
             .art-strip { grid-template-columns: repeat(2, 1fr); }
+            .resume-stats-row { grid-template-columns: repeat(2, 1fr); }
+            .resume-entry { grid-template-columns: 1fr; gap: 4px; }
+            .resume-date { display: inline; }
+            .resume-location { display: inline; margin-left: 6px; }
         }
     </style>
 </head>
@@ -257,7 +368,7 @@
     <section class="about-hero">
         <div class="about-hero-inner">
             <div class="about-photo-wrap">
-                <img class="about-photo" src="../images/Angela_Shen-peronal_profile-image-2026-CPRS.png" alt="Angela Shen">
+                <img class="about-photo" src="../images/Angela_Shen_Photo_b.c-lake.jpeg" alt="Angela Shen by the lake in British Columbia">
                 <span class="about-photo-tag">✦ Angela Shen</span>
             </div>
             <div class="about-intro">
@@ -283,54 +394,180 @@
         <cite>— Angela Shen</cite>
     </div>
 
-    <!-- ART & CONNECTION -->
+    <!-- DUAL CULTURE -->
     <section class="about-section">
         <div class="about-split">
             <div class="about-split-text">
-                <h2>Art as a way of connecting with people</h2>
-                <p>I've loved making art for as long as I can remember. Growing up, I discovered that it was less about the object itself and more about what happened in the space between the work and the person looking at it.</p>
-                <p>My favourite thing is the look on someone's face when I show them a sketch or portrait I've made of them — that small, genuine surprise. That flicker of being seen. I chased that feeling for years before I understood what it meant: art is fundamentally a conversation.</p>
-                <p>I still paint whenever I can. Chinese brush painting especially — the discipline of it, the irreversibility of the mark, and the quiet it requires all give me something that no other medium does.</p>
+                <h2>Shanghainese by origin, British Columbian by half a lifetime</h2>
+                <p>I grew up in Shanghai and have lived in B.C. as a permanent resident for over half my life. Two cities, two languages — I speak Mandarin at native level and English as the language I think and make in. Neither place is a background detail; both are active parts of how I read situations, communicate across difference, and design for people who aren't like me.</p>
+                <p>Growing up between cultures taught me early that most communication problems are really translation problems — not just of language, but of assumption, reference, and context. That's a lens I carry into every project.</p>
+                <div class="tag-row">
+                    <span class="tag-pill orange">Shanghai, China</span>
+                    <span class="tag-pill orange">British Columbia, Canada</span>
+                    <span class="tag-pill">Native Mandarin</span>
+                    <span class="tag-pill">Permanent Resident</span>
+                </div>
             </div>
-            <img class="about-split-img tall" src="../images/Chinese-brush-painting-watercolor.webp" alt="Chinese brush painting in progress">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div>
+                    <img class="about-split-img tall" src="../images/Vancouverisawesome-angela-shen-the-forever-chase-news-interview.jpg" alt="Angela interviewed by Vancouver Is Awesome, age 17" style="aspect-ratio: 3/4; border-radius: 16px; margin-bottom: 8px;">
+                    <p style="font-size: 0.78rem; font-weight: 600; color: var(--slate-500); text-align: center; margin: 0;">Vancouver, B.C. · Age 17</p>
+                </div>
+                <div>
+                    <img class="about-split-img tall" src="../images/Angela-Shen-Selfi-Nandan Road-shanghai.jpeg" alt="Angela on Nandan Road, Shanghai, age 22" style="aspect-ratio: 3/4; border-radius: 16px; margin-bottom: 8px;">
+                    <p style="font-size: 0.78rem; font-weight: 600; color: var(--slate-500); text-align: center; margin: 0;">Nandan Road, Shanghai · Age 22</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- PEACE IN MAKING -->
-    <section class="about-section">
-        <div class="about-split reverse">
-            <div class="about-split-text">
-                <h2>The peace you give and receive when making</h2>
-                <p>There's something specific that happens when I'm deep in a painting — a kind of stillness that is both the cause and the product of the work. I make art partly because it gives me peace, and I've noticed that people who receive it often feel something similar.</p>
-                <p>That feeling — of giving and experiencing calm through making — is something I carry into every other kind of work. Good design should reduce anxiety, not produce it. Good writing should make someone feel less alone with a problem, not more overwhelmed by it.</p>
-            </div>
-            <img class="about-split-img" src="../images/Journal-short-film-conceptart-writing.png" alt="Sketchbook open with watercolour and writing">
-        </div>
-    </section>
-
-    <!-- SYSTEMS & DESIGN -->
+    <!-- ABOUT / MAKING -->
     <section class="about-section">
         <div class="about-split">
             <div class="about-split-text">
-                <h2>How designing systems changes what organizations can do</h2>
-                <p>The further I got into design work, the more I understood that the real impact isn't in the visual — it's in how the system behind it works. A well-designed navigation means a caregiver finds what they need before they give up. A clear UX flow means a survivor in crisis doesn't hit a dead end.</p>
-                <p>Working at VACFSS taught me this concretely. The decisions I made about information architecture and content hierarchy directly affected how many people inquired about becoming caregivers. Design at that scale isn't decoration — it's infrastructure.</p>
-                <p>I'm drawn to work where the stakes are real and the audience is underserved — social services, healthcare, education. Places where thoughtful design can shift outcomes.</p>
+                <h2>Making things that make people feel something</h2>
+                <p>I've been making things — paintings, interfaces, campaigns, stories — for as long as I can remember. The thread is always the same: the moment between the work and the person receiving it. That small, genuine surprise. That flicker of being seen.</p>
+                <p>Chinese brush painting taught me the discipline of irreversibility — every mark is final. I carry that into design: good systems reduce anxiety rather than produce it, and good advertising is a story someone wants to be part of, not a message pushed at them.</p>
+                <p>At VACFSS, running 4M+ impression campaigns on a $15K budget made it concrete — design at that scale isn't decoration, it's infrastructure. I'm drawn to work where the stakes are real and the audience is underserved.</p>
             </div>
-            <img class="about-split-img" src="../images/peace_girl_illustration_illutrator.webp" alt="Peace girl digital illustration">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                <img class="about-split-img tall" src="../images/Chinese-brush-painting-watercolor.webp" alt="Chinese brush painting in progress" style="aspect-ratio:3/4;">
+                <img class="about-split-img tall" src="../images/AngelaShen_Weather_Yes_1.png" alt="Weather Yes But — storyboard illustration" style="aspect-ratio:3/4;">
+            </div>
         </div>
     </section>
 
-    <!-- STORYTELLING -->
-    <section class="about-section">
-        <div class="about-split reverse">
-            <div class="about-split-text">
-                <h2>Storytelling in the outreach and advertising space</h2>
-                <p>Running VACFSS's recruitment campaigns — 4M+ results on a $15K budget — taught me that the most effective advertising is the one that feels least like advertising. It's a story someone wants to be part of, not a message being pushed at them.</p>
-                <p>I studied communications because I was always more interested in <em>why</em> something resonates than in the mechanics of making it. What makes someone stop scrolling? What makes a reader feel seen in a headline? What earns trust before you've even asked for anything?</p>
-                <p>Those questions sit underneath all my work — in every campaign, every case study, every article I've published.</p>
+    <!-- RESUME / CREDENTIALS -->
+    <section class="about-section" id="s-resume">
+        <h2 style="font-size:1.75rem; font-weight:800; letter-spacing:-0.03em; margin-bottom:0.25rem;">Experience &amp; Credentials</h2>
+        <p style="color:var(--slate-500); margin:0 0 0.25rem;">A summary of my work — full PDF available below.</p>
+
+        <!-- Key stats -->
+        <div class="resume-stats-row">
+            <div class="resume-stat">
+                <span class="resume-stat-num">331%</span>
+                <span class="resume-stat-label">Increase in web traffic</span>
             </div>
-            <img class="about-split-img" src="../images/AngelaShen_Weather_Yes_1.png" alt="Weather Yes But — storyboard illustration">
+            <div class="resume-stat">
+                <span class="resume-stat-num">4M</span>
+                <span class="resume-stat-label">Impressions in one year</span>
+            </div>
+            <div class="resume-stat">
+                <span class="resume-stat-num">80K</span>
+                <span class="resume-stat-label">Landing page views</span>
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <p class="resume-section-heading">Work Experience</p>
+        <div class="resume-timeline">
+
+            <div class="resume-entry">
+                <div class="resume-entry-meta">
+                    <span class="resume-date">July 2025 – Present</span>
+                    <span class="resume-location">Vancouver, B.C.</span>
+                </div>
+                <div class="resume-entry-body">
+                    <div class="resume-entry-title">Communications &amp; Recruitment Specialist, UX Designer</div>
+                    <div class="resume-entry-org">Vancouver Aboriginal Child and Family Services Society</div>
+                    <ul>
+                        <li>Spearheaded strategic initiatives aligned with organizational policy, resulting in optimized and more efficient recruitment solutions.</li>
+                        <li>Achieved a 331% increase in web traffic by launching high-impact campaigns and overseeing UX improvements over two years, generating 4M impressions and 80,000 landing page views within a single year.</li>
+                        <li>Directed end-to-end creative and media strategy for recruitment, managing all design assets and multi-channel execution across Meta and Google Ads.</li>
+                        <li>Provided data-driven insights to leadership on advertising performance and conversion trends, directly influencing shifts in applicant traffic.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="resume-entry">
+                <div class="resume-entry-meta">
+                    <span class="resume-date">Sept 2023 – July 2025</span>
+                    <span class="resume-location">Vancouver, B.C.</span>
+                </div>
+                <div class="resume-entry-body">
+                    <div class="resume-entry-title">Communications &amp; Public Relations Assistant</div>
+                    <div class="resume-entry-org">Vancouver Aboriginal Child and Family Services Society</div>
+                    <ul>
+                        <li>Produced annual reports and designed visual assets, including event banners, community greeting cards, and a complete re-brand of New Employee Orientation materials.</li>
+                        <li>Coordinated agency events for 200+ attendees over two years; managed end-to-end logistics including invitations, on-site photography, and reporting.</li>
+                        <li>Maintained the primary website and managed social media accounts, scheduling posts based on engagement data and event sponsorships.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="resume-entry">
+                <div class="resume-entry-meta">
+                    <span class="resume-date">July – Dec 2025</span>
+                    <span class="resume-location">Surrey, B.C.</span>
+                </div>
+                <div class="resume-entry-body">
+                    <div class="resume-entry-title">Motion Director &amp; Technician</div>
+                    <div class="resume-entry-org">StudioIAT</div>
+                    <ul>
+                        <li>Directed 12 high-fidelity motion capture shoots, overseeing set direction and approval of takes to ensure data integrity for animation production.</li>
+                        <li>Executed post-capture data cleanup, refining raw motion data for seamless integration into animation pipelines.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="resume-entry">
+                <div class="resume-entry-meta">
+                    <span class="resume-date">July – Sept 2022</span>
+                    <span class="resume-location">Surrey, B.C.</span>
+                </div>
+                <div class="resume-entry-body">
+                    <div class="resume-entry-title">UX Designer, Graphics Artist &amp; Illustrator</div>
+                    <div class="resume-entry-org">Luv the Grub / Hey Girl</div>
+                    <ul>
+                        <li>Led the design of new packaging, labeling, and a product microsite, utilizing product testing to ensure an optimal user experience.</li>
+                        <li>Created custom brand mascots to drive engagement across infographics, posters, and social media.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Education -->
+        <p class="resume-section-heading">Education</p>
+        <div class="resume-timeline">
+            <div class="resume-entry">
+                <div class="resume-entry-meta">
+                    <span class="resume-date">Graduating April 2026</span>
+                    <span class="resume-location">Burnaby, B.C.</span>
+                </div>
+                <div class="resume-entry-body">
+                    <div class="resume-entry-title">B.A. Joint Major — Communication &amp; Interactive Arts &amp; Technology</div>
+                    <div class="resume-entry-org">Simon Fraser University</div>
+                    <p style="font-size:0.875rem; color:var(--slate-600); margin:0.5rem 0 0.75rem; line-height:1.6;"><strong>Leadership:</strong> Director of Volunteering (CPRS Vancouver) · Representative (Dean's Advisory Council) · Member (BC Youth Council) · Executive (SFU Surge &amp; SFU Artist Club)</p>
+                    <div class="resume-awards">
+                        <span class="resume-award-pill">🥈 Chinese Brush Painting — Silver 2024</span>
+                        <span class="resume-award-pill">🥉 Chinese Brush Painting — Bronze 2025</span>
+                        <span class="resume-award-pill">🏆 SFU Opportunity Fest — 2nd Place 2022</span>
+                        <span class="resume-award-pill">🎬 VCFF Short Film Nomination 2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <p class="resume-section-heading">Skills &amp; Tools</p>
+        <div class="tag-row" style="margin-top:0.75rem;">
+            <span class="tag-pill orange">UX Design</span>
+            <span class="tag-pill orange">Brand Marketing</span>
+            <span class="tag-pill orange">Paid Media (Meta &amp; Google)</span>
+            <span class="tag-pill orange">Strategic Planning</span>
+            <span class="tag-pill orange">Copywriting</span>
+            <span class="tag-pill">Adobe Creative Cloud</span>
+            <span class="tag-pill">HTML / CSS / JavaScript</span>
+            <span class="tag-pill">Google Analytics</span>
+            <span class="tag-pill">Meta Ad Suite</span>
+            <span class="tag-pill">Maya</span>
+            <span class="tag-pill">Illustration</span>
+            <span class="tag-pill">Graphic Design</span>
+        </div>
+
+        <div style="margin-top:2.5rem;">
+            <a href="../images/Angela-Shen-Resume-2026-Feb_Lab-Submission.pdf" class="btn-primary" target="_blank">Download Resume PDF ↗</a>
         </div>
     </section>
 
@@ -365,8 +602,8 @@
         <p>Open to UX, communications, and design roles — graduating Spring 2026.</p>
         <div class="cta-row">
             <a href="mailto:angelashen.ca@gmail.com" class="btn-primary">Get in Touch</a>
-            <a href="https://www.linkedin.com/in/angelashenca/" target="_blank" rel="noopener" class="nav-cta" style="display:inline-flex; align-items:center; padding: 12px 24px; border-radius: 99px; border: 1.5px solid var(--slate-300); font-weight: 700; text-decoration: none; color: var(--slate-900); font-family: inherit; font-size: 1rem; transition: all 0.2s ease;">LinkedIn ↗</a>
-            <a href="https://www.instagram.com/lollypuddn/" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; padding: 12px 24px; border-radius: 99px; border: 1.5px solid var(--slate-300); font-weight: 700; text-decoration: none; color: var(--slate-900); font-family: inherit; font-size: 1rem; transition: all 0.2s ease;">Art Instagram ↗</a>
+            <a href="#s-resume" class="nav-cta" style="display:inline-flex; align-items:center; padding: 12px 24px; border-radius: 99px; border: 1.5px solid var(--slate-300); font-weight: 700; text-decoration: none; color: var(--slate-900); font-family: inherit; font-size: 1rem; transition: all 0.2s ease;">View Experience</a>
+            <a href="https://www.linkedin.com/in/angelashenca/" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; padding: 12px 24px; border-radius: 99px; border: 1.5px solid var(--slate-300); font-weight: 700; text-decoration: none; color: var(--slate-900); font-family: inherit; font-size: 1rem; transition: all 0.2s ease;">LinkedIn ↗</a>
         </div>
     </div>
 

@@ -165,14 +165,48 @@
         <div class="scroll-hint" aria-hidden="true"><span></span><span></span></div>
     </header>
 
+    <!-- Progress sidebar -->
+    <nav class="cs-progress" aria-label="Page sections">
+        <a class="cs-progress-dot" href="#s-problem"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Problem</span></a>
+        <a class="cs-progress-dot" href="#s-research"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Field Research</span></a>
+        <a class="cs-progress-dot" href="#s-comparison"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Comparison</span></a>
+        <a class="cs-progress-dot" href="#s-design"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Design Approach</span></a>
+        <a class="cs-progress-dot" href="#s-iterations"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Iterations</span></a>
+        <a class="cs-progress-dot" href="#s-build"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Technical Build</span></a>
+        <a class="cs-progress-dot" href="#s-validation"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Validation</span></a>
+        <a class="cs-progress-dot" href="#s-outcome"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Outcome</span></a>
+    </nav>
+
     <main class="container">
 
+        <!-- Role strip -->
+        <div class="cs-role-strip" style="margin-top: 48px;">
+            <div class="cs-role-item">
+                <span class="cs-role-label">My Role</span>
+                <span class="cs-role-value">UX Research · UI Design · Field Testing · React Build</span>
+            </div>
+            <div class="cs-role-item">
+                <span class="cs-role-label">Context</span>
+                <span class="cs-role-value">SFU Hackathon · 36-hour sprint</span>
+            </div>
+            <div class="cs-role-item">
+                <span class="cs-role-label">Stack</span>
+                <span class="cs-role-value">React · Gemini AI · Offline-first DB</span>
+            </div>
+            <div class="cs-role-item">
+                <span class="cs-role-label">Key Outcome</span>
+                <span class="cs-role-value">Approved by 2 certified counsellors · Devpost submission</span>
+            </div>
+        </div>
+
         <!-- DEMO VIDEO -->
-        <section class="case-section" style="padding-top: 0;">
+        <section class="case-section" style="padding-top: 24px;" id="s-problem">
             <video
                 controls
-                style="width: 100%; border-radius: 16px; display: block; background: #000;"
-                preload="metadata">
+                muted
+                playsinline
+                preload="metadata"
+                style="width: 100%; border-radius: 16px; display: block; background: #000;">
                 <source src="../images/afterhours/Draft-testing-2- 2026-03-29 014146 - Gemini2.5.-need to lessen number of resources. .mp4" type="video/mp4">
             </video>
             <p style="font-size: 0.85rem; color: var(--slate-500); text-align: center; margin-top: 0.5rem; font-style: italic;">Demo — afterhours resources chat, Gemini 2.5 draft testing</p>
@@ -190,8 +224,10 @@
             </div>
         </section>
 
+        <div class="cs-phase"><span class="cs-phase-label">Discovery</span></div>
+
         <!-- FIELD RESEARCH -->
-        <section class="case-section">
+        <section class="case-section" id="s-research">
             <h2>Field Research — Testing the Existing System</h2>
             <p>Before designing anything, I called real crisis and support lines at different times of day and night to map the actual gaps. What I found revealed that the problem isn't just access — it's the quality and speed of that access when it matters most.</p>
 
@@ -229,8 +265,10 @@
             </div>
         </section>
 
+        <div class="cs-phase"><span class="cs-phase-label">Define</span></div>
+
         <!-- COMPARISON TABLE -->
-        <section class="case-section">
+        <section class="case-section" id="s-comparison">
             <h2>Current System vs. afterhours — resources chat</h2>
             <p>The field research gave us a clear benchmark. Every feature decision maps directly to a real gap that was documented through testing.</p>
 
@@ -272,8 +310,10 @@
             </table>
         </section>
 
+        <div class="cs-phase"><span class="cs-phase-label">Design</span></div>
+
         <!-- DESIGN APPROACH -->
-        <section class="case-section">
+        <section class="case-section" id="s-design">
             <h2>Design Approach</h2>
             <p>We implemented <strong>Trauma-Informed Design</strong> principles throughout — prioritizing high-contrast, low-stress UI that reduces cognitive load during a crisis. Every interaction was designed to feel calm, direct, and trustworthy.</p>
 
@@ -294,7 +334,7 @@
         </section>
 
         <!-- DESIGN ITERATIONS -->
-        <section class="case-section">
+        <section class="case-section" id="s-iterations">
             <h2>Design Iterations</h2>
             <p>The UI went through rapid iteration cycles to ensure the interface remained calm and directive under high-stress conditions. Every screen decision was weighed against one question: <em>would a survivor in crisis be able to act on this immediately?</em></p>
 
@@ -310,8 +350,10 @@
             </div>
         </section>
 
+        <div class="cs-phase"><span class="cs-phase-label">Build</span></div>
+
         <!-- TECHNICAL BUILD -->
-        <section class="case-section">
+        <section class="case-section" id="s-build">
             <h2>Technical Build</h2>
             <p>Built in <strong>React & JavaScript</strong> over a 36-hour hackathon sprint. The multi-agent AI system was designed specifically to avoid the pattern of open-ended AI conversation — survivors needed facts and phone numbers, not a chatbot experience.</p>
 
@@ -327,8 +369,10 @@
             </div>
         </section>
 
+        <div class="cs-phase"><span class="cs-phase-label">Validation</span></div>
+
         <!-- VALIDATION -->
-        <section class="case-section">
+        <section class="case-section" id="s-validation">
             <h2>Expert Review & User Testing</h2>
             <p>Before and after the build, the application was reviewed by professionals in clinical care, machine learning, and direct user testing.</p>
 
@@ -365,8 +409,10 @@
             </div>
         </section>
 
+        <div class="cs-phase"><span class="cs-phase-label">Outcome</span></div>
+
         <!-- OUTCOME -->
-        <section class="case-section">
+        <section class="case-section" id="s-outcome">
             <h2>Outcome</h2>
             <p>The prototype demonstrated that integrating crisis tools into existing university infrastructure removes the most common barrier: "I didn't know where to go." The evidence export feature received particular recognition for its thoughtful approach to supporting survivors through legal processes.</p>
 
@@ -395,5 +441,27 @@
         </div>
     </footer>
 
+    <script>
+    // Progress sidebar
+    (function() {
+        const dots = Array.from(document.querySelectorAll('.cs-progress-dot'));
+        const sections = dots.map(d => document.getElementById(d.getAttribute('href').slice(1))).filter(Boolean);
+        function update() {
+            let active = 0;
+            sections.forEach((s, i) => { if (s.getBoundingClientRect().top <= window.innerHeight * 0.5) active = i; });
+            dots.forEach((d, i) => d.classList.toggle('active', i === active));
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    })();
+
+    // Autoplay native videos on scroll into view
+    document.querySelectorAll('video').forEach(vid => {
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { e.isIntersecting ? vid.play() : vid.pause(); });
+        }, { threshold: 0.4 });
+        obs.observe(vid);
+    });
+    </script>
 </body>
 </html>

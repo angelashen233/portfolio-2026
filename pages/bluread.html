@@ -159,5 +159,13 @@
         </div>
     </footer>
 
+    <script>
+    document.querySelectorAll('video').forEach(vid => {
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { e.isIntersecting ? vid.play() : vid.pause(); });
+        }, { threshold: 0.4 });
+        obs.observe(vid);
+    });
+    </script>
 </body>
 </html>

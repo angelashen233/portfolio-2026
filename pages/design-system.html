@@ -757,8 +757,50 @@
                 </div>
                 <div class="component-info">
                     <div class="component-info-name">.nav-bar · glass nav</div>
-                    <div class="component-info-desc">Fixed, frosted glass — <code style="font-family:'Courier New'; font-size:0.8em;">backdrop-filter: blur(16px)</code> + rgba(255,255,255,0.85) background. Underline hover via ::after pseudo-element.</div>
+                    <div class="component-info-desc">Fixed, frosted glass — <code style="font-family:'Courier New'; font-size:0.8em;">backdrop-filter: blur(16px)</code> + rgba(255,255,255,0.85) background.</div>
                 </div>
+            </div>
+
+            <!-- Nav link states -->
+            <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+
+                <!-- Default -->
+                <div class="component-preview">
+                    <div class="component-stage" style="justify-content: center;">
+                        <a style="text-decoration: none; color: var(--slate-600); font-weight: 600; font-size: 0.875rem; padding: 6px 12px; border-radius: 6px; position: relative; display: inline-block;">Work</a>
+                    </div>
+                    <div class="component-info">
+                        <div class="component-info-name">Default</div>
+                        <div class="component-info-desc">slate-600 · no underline</div>
+                    </div>
+                </div>
+
+                <!-- Hover / Active — live demo using .nav-links styles -->
+                <div class="component-preview">
+                    <div class="component-stage" style="justify-content: center;">
+                        <nav class="nav-links" style="gap: 0; background: none;">
+                            <a class="active" href="#" onclick="return false;" style="font-size: 0.875rem;">Gallery</a>
+                        </nav>
+                    </div>
+                    <div class="component-info">
+                        <div class="component-info-name">Active state · .active</div>
+                        <div class="component-info-desc">slate-900 · ember <code style="font-family:'Courier New';font-size:0.8em;">#da6e30</code> 2px underline animates in via <code style="font-family:'Courier New';font-size:0.8em;">::after</code> width 0 → calc(100% − 24px) over 0.25s ease</div>
+                    </div>
+                </div>
+
+                <!-- Resume CTA -->
+                <div class="component-preview">
+                    <div class="component-stage" style="justify-content: center;">
+                        <nav class="nav-links" style="gap: 0; background: none;">
+                            <a class="nav-cta" href="#" onclick="return false;" style="font-size: 0.875rem;">Resume ↗</a>
+                        </nav>
+                    </div>
+                    <div class="component-info">
+                        <div class="component-info-name">.nav-cta · pill CTA</div>
+                        <div class="component-info-desc">Outlined pill — 99px radius, slate-300 border. Hover: fills slate-900 with white text. <code style="font-family:'Courier New';font-size:0.8em;">::after</code> suppressed (<code style="font-family:'Courier New';font-size:0.8em;">display: none</code>).</div>
+                    </div>
+                </div>
+
             </div>
 
             <p class="ds-label" style="margin-top: 2rem;">Cards</p>
