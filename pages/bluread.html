@@ -7,6 +7,10 @@
     <title>Bluread Case Study | Angela Shen</title>
     <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .three-col-imgs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 1.5rem 0; }
+        @media (max-width: 640px) { .three-col-imgs { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
 
@@ -23,7 +27,7 @@
     </nav>
 
     <header class="case-hero">
-        <span class="status-badge">MENTAL WELLNESS • PRIVACY</span>
+        <span class="status-badge">MENTAL WELLNESS • PRIVACY • 🏆 CMD-F 2026 WINNER</span>
         <h1><span class="gradient-text">Bluread</span></h1>
         <p style="max-width: 700px; margin: 0 auto; font-size: 1.25rem; color: var(--slate-600);">
             A mental wellness tool that puts users in control of their digital environment — filtering harmful content without filtering the news, with zero data leaving the device.
@@ -78,19 +82,20 @@
             <img class="case-img" src="../images/Bluread_ux_test_1_toolight.png" alt="First prototype showing the extension popup on a live news site — too light, low contrast">
             <p style="font-size: 0.85rem; color: var(--slate-600); text-align: center; margin-top: -24px; margin-bottom: 40px;">Iteration 1 — too light, poor contrast on real news pages · © Angela Shen</p>
 
-            <div class="two-col">
+            <div class="three-col-imgs">
                 <div>
-                    <img class="case-img" src="../images/Bluread_ux_test_1_lightblue_darkblue.png" alt="Light blue / dark blue color exploration" style="margin: 0;">
+                    <img class="case-img" src="../images/Bluread_ux_test_1_lightblue_darkblue.png" alt="Light blue / dark blue color exploration" style="margin: 0; width: 100%; height: 40vh; object-fit: contain; object-position: center;">
                     <p style="font-size: 0.85rem; color: var(--slate-600); text-align: center; margin-top: 12px;">Light blue / dark blue palette test · © Angela Shen</p>
                 </div>
                 <div>
-                    <img class="case-img" src="../images/Bluread_ux_test_1_lightblue_darkblue_2.png" alt="Settings panel with content filter toggles" style="margin: 0;">
+                    <img class="case-img" src="../images/Bluread_ux_test_1_lightblue_darkblue_2.png" alt="Settings panel with content filter toggles" style="margin: 0; width: 100%; height: 40vh; object-fit: contain; object-position: center;">
                     <p style="font-size: 0.85rem; color: var(--slate-600); text-align: center; margin-top: 12px;">Settings panel — content category toggles · © Angela Shen</p>
                 </div>
+                <div>
+                    <img class="case-img" src="../images/Bluread_ux_test_1_lightblue_darkblue_3.png" alt="Detection sensitivity slider and custom trigger words panel" style="margin: 0; width: 100%; height: 40vh; object-fit: contain; object-position: center;">
+                    <p style="font-size: 0.85rem; color: var(--slate-600); text-align: center; margin-top: 12px;">Detection sensitivity + custom keyword input · © Angela Shen</p>
+                </div>
             </div>
-
-            <img class="case-img" src="../images/Bluread_ux_test_1_lightblue_darkblue_3.png" alt="Detection sensitivity slider and custom trigger words panel">
-            <p style="font-size: 0.85rem; color: var(--slate-600); text-align: center; margin-top: -24px; margin-bottom: 40px;">Detection sensitivity + custom keyword input · © Angela Shen</p>
         </section>
 
         <section class="case-section">
@@ -132,6 +137,11 @@
             <div class="highlight-box" style="margin-top: 48px;">
                 <h3>Key Outcomes</h3>
                 <p>Zero-latency filtering on news-heavy pages. Privacy-first architecture: all preferences stored locally, no browsing data transmitted to any server. AI-assisted keyword suggestion (OpenAI) helps users identify harmful patterns they hadn't thought to block — without compromising their data. A model for user-controlled mental wellness tools where privacy and capability aren't trade-offs.</p>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 1.5rem; background: #fefce8; border-color: #fde68a;">
+                <h3 style="color: #92400e;">🏆 cmd-f 2026 — Winner, UBC CS Project Hub</h3>
+                <p style="margin-bottom: 0;">BluRead was selected as a winner at cmd-f 2026, UBC's annual hackathon hosted by the CS student union. Recognition for the privacy-first approach to digital wellness and the technical execution of real-time content filtering.</p>
             </div>
 
             <div style="text-align: center; margin-top: 48px;">
