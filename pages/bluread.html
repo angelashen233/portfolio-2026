@@ -49,9 +49,18 @@
         <div class="scroll-hint" aria-hidden="true"><span></span><span></span></div>
     </header>
 
+    <!-- Progress sidebar -->
+    <nav class="cs-progress" aria-label="Page sections">
+        <a class="cs-progress-dot" href="#s-problem"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Problem</span></a>
+        <a class="cs-progress-dot" href="#s-ideation"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Ideation</span></a>
+        <a class="cs-progress-dot" href="#s-iterations"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Iterations</span></a>
+        <a class="cs-progress-dot" href="#s-refine"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Refining</span></a>
+        <a class="cs-progress-dot" href="#s-final"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Final Design</span></a>
+    </nav>
+
     <main class="container">
 
-        <section class="case-section">
+        <section class="case-section" id="s-problem">
             <img class="case-img" src="../images/Bluread_ux_test_6.png" alt="BluRead extension active on CNN showing blurred content and detection stats" style="border-radius: 16px;">
             <p style="font-size: 0.85rem; color: var(--slate-500); text-align: center; margin-top: 0.5rem; font-style: italic;">BluRead active on CNN — harmful content detected and blurred in real time · Screenshot for research/demo purposes</p>
 
@@ -75,7 +84,7 @@
             </div>
         </section>
 
-        <section class="case-section">
+        <section class="case-section" id="s-iterations">
             <h2>Design Iterations</h2>
             <p>The first prototype surfaced a critical issue immediately — the UI was far too light against busy news pages, making the extension feel invisible and untrustworthy. We ran a series of rapid color and contrast iterations to find a palette that felt calm but authoritative.</p>
 
@@ -98,7 +107,7 @@
             </div>
         </section>
 
-        <section class="case-section">
+        <section class="case-section" id="s-refine">
             <h2>Refining the Feature Set</h2>
             <p>As the interface stabilized, we shifted focus to the core filtering logic — ensuring flagged content was surfaced clearly, and that users had granular control without feeling overwhelmed. We tested on high-volume news sites (Fox News, BBC, CNN) to validate performance and readability.</p>
 
@@ -109,7 +118,7 @@
             <p style="font-size: 0.85rem; color: var(--slate-600); text-align: center; margin-top: -24px; margin-bottom: 40px;">Iteration 3 — live detection counts added to the dashboard · © Angela Shen</p>
         </section>
 
-        <section class="case-section">
+        <section class="case-section" id="s-final">
             <h2>Final Design</h2>
             <p>The final design consolidated everything into a clean, purple-accented "BluRead" brand. The extension sidebar now shows a live count of blurred items, a blur intensity slider, category toggles, and an AI-assisted keyword suggestion tool — all in a compact panel that never competes with the page content.</p>
 
@@ -170,6 +179,17 @@
     </footer>
 
     <script>
+    (function() {
+        const dots = Array.from(document.querySelectorAll('.cs-progress-dot'));
+        const sections = dots.map(d => document.getElementById(d.getAttribute('href').slice(1))).filter(Boolean);
+        function update() {
+            let active = 0;
+            sections.forEach((s, i) => { if (s.getBoundingClientRect().top <= window.innerHeight * 0.5) active = i; });
+            dots.forEach((d, i) => d.classList.toggle('active', i === active));
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    })();
     document.querySelectorAll('video').forEach(vid => {
         const obs = new IntersectionObserver(entries => {
             entries.forEach(e => { e.isIntersecting ? vid.play() : vid.pause(); });

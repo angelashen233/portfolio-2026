@@ -113,8 +113,18 @@
             </div>
         </div>
 
+    <!-- Progress sidebar -->
+    <nav class="cs-progress" aria-label="Page sections">
+        <a class="cs-progress-dot" href="#s-brief"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Brief</span></a>
+        <a class="cs-progress-dot" href="#s-logo"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Logo System</span></a>
+        <a class="cs-progress-dot" href="#s-colours"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Colours</span></a>
+        <a class="cs-progress-dot" href="#s-type"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Typography</span></a>
+        <a class="cs-progress-dot" href="#s-merch"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Merchandise</span></a>
+        <a class="cs-progress-dot" href="#s-proof"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">In Use</span></a>
+    </nav>
+
         <!-- Brief -->
-        <section class="case-section">
+        <section class="case-section" id="s-brief">
             <div class="highlight-box">
                 <h3>The Brief</h3>
                 <p>The SFU Philosophy Student Union needed a visual identity that could represent the department across student events, social media, and merchandise — without feeling generic. Philosophy as a discipline has strong visual traditions (classical type, academic weight) but a student union also needs to feel approachable and current.</p>
@@ -123,7 +133,7 @@
         </section>
 
         <!-- Logo system -->
-        <section class="case-section">
+        <section class="case-section" id="s-logo">
             <h2>The Logo System</h2>
             <p>The primary logo was designed to work across all formats — from small social media profile icons to large-format event banners. The system was built with three colourways from the start, ensuring consistency across different backgrounds and contexts without needing to redraw anything.</p>
 
@@ -135,7 +145,7 @@
         </section>
 
         <!-- Colour variations -->
-        <section class="case-section">
+        <section class="case-section" id="s-colours">
             <h2>Colour Variations</h2>
             <p>Three colour variants were created to cover the full range of use cases — light backgrounds, dark backgrounds, and neutral or printed contexts where full colour isn't viable.</p>
 
@@ -156,7 +166,7 @@
         </section>
 
         <!-- Typography & mark explanation -->
-        <section class="case-section">
+        <section class="case-section" id="s-type">
             <h2>Typography &amp; Mark</h2>
             <p>The brand guide includes detailed explanations of the typeface choices and the logic behind each element of the mark — ensuring anyone using the identity in future can apply it consistently without needing to consult a designer.</p>
 
@@ -173,7 +183,7 @@
         </section>
 
         <!-- Merchandise -->
-        <section class="case-section">
+        <section class="case-section" id="s-merch">
             <h2>Merchandise Applications</h2>
             <p>The identity was extended into merchandise mockups as part of the handoff — giving the union a ready-to-use set of applications for apparel, tote bags, and event swag without requiring additional design work.</p>
 
@@ -182,7 +192,7 @@
         </section>
 
         <!-- Proof of use -->
-        <section class="case-section">
+        <section class="case-section" id="s-proof">
             <h2>Still in Use — Proof of Adoption</h2>
             <p>The identity wasn't a one-time deliverable. The Philosophy Student Union continues to use the logo system across their active channels — Instagram posts, event booths, and promotional banners. The system has held up across contexts without needing modification, which was the original goal.</p>
 
@@ -207,6 +217,20 @@
         </section>
 
     </main>
+
+    <script>
+    (function() {
+        const dots = Array.from(document.querySelectorAll('.cs-progress-dot'));
+        const sections = dots.map(d => document.getElementById(d.getAttribute('href').slice(1))).filter(Boolean);
+        function update() {
+            let active = 0;
+            sections.forEach((s, i) => { if (s.getBoundingClientRect().top <= window.innerHeight * 0.5) active = i; });
+            dots.forEach((d, i) => d.classList.toggle('active', i === active));
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    })();
+    </script>
 
     <footer class="footer">
         <div class="container footer-inner">

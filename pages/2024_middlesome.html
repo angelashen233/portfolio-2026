@@ -53,8 +53,14 @@
             <div class="scroll-hint" aria-hidden="true"><span></span><span></span></div>
         </header>
 
+    <!-- Progress sidebar -->
+    <nav class="cs-progress" aria-label="Page sections">
+        <a class="cs-progress-dot" href="#s-concept"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Concept</span></a>
+        <a class="cs-progress-dot" href="#s-world"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">World-Building</span></a>
+    </nav>
+
         <main class="container">
-            <section class="case-section">
+            <section class="case-section" id="s-concept">
                 <div class="highlight-box">
                                     <img class="case-img" src="../images/2024-middlesome-cover-1.jpg" alt="Cover of the game design showing the two main characters, Anthony and Theo, standing back to back in a corporate office setting.">
                     <h3>The Concept</h3>
@@ -77,11 +83,11 @@
                 </div>
             </section>
 
-            <section class="case-section">
+            <section class="case-section" id="s-world">
                 <h2>Visual World-Building</h2>
                 <p>As a 2D adventure, the aesthetic needed to balance the sterile corporate vibe of a tech giant with the playful tension of a puzzle game. I worked on ensuring the <strong>Visual Assets</strong> maintained a cohesive style that signaled different "security tiers" within the corporate office.</p>
                 
-                <img class="case-img" src="images\IAT-313-2026-design-characters-report-screenshoot.png" alt="Level design showing Melon Corp interior">
+                <img class="case-img" src="../images/2024-middlesome-gameplay-scientist.jpg" alt="Close-up of a puzzle room in the game, showing a scientist character interacting with a control panel. The environment is sleek and modern, with subtle hints of corporate branding.">
 
                 <h3>Interactive Mechanics</h3>
                 <p>The puzzles were designed to be "meddlesome"—requiring players to think about how their solo actions might be affecting the unseen teammate. This was a direct application of my **Communications (CMNS)** background, exploring how "non-verbal storytelling" works in a digital space.</p>
@@ -93,6 +99,21 @@
                 </a>
             </section>
         </main>
+
+    <script>
+    (function() {
+        const dots = Array.from(document.querySelectorAll('.cs-progress-dot'));
+        const sections = dots.map(d => document.getElementById(d.getAttribute('href').slice(1))).filter(Boolean);
+        function update() {
+            let active = 0;
+            sections.forEach((s, i) => { if (s.getBoundingClientRect().top <= window.innerHeight * 0.5) active = i; });
+            dots.forEach((d, i) => d.classList.toggle('active', i === active));
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    })();
+    </script>
+
     <!-- FOOTER -->
         <footer class="footer">
         <div class="container footer-inner">

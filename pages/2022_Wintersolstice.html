@@ -46,7 +46,15 @@
             <div class="scroll-hint" aria-hidden="true"><span></span><span></span></div>
         </header>
 
-        <section class="case-section">
+    <!-- Progress sidebar -->
+    <nav class="cs-progress" aria-label="Page sections">
+        <a class="cs-progress-dot" href="#s-mandate"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Mandate</span></a>
+        <a class="cs-progress-dot" href="#s-methodology"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Methodology</span></a>
+        <a class="cs-progress-dot" href="#s-iconography"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Iconography</span></a>
+        <a class="cs-progress-dot" href="#s-outcome"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Outcome</span></a>
+    </nav>
+
+        <section class="case-section" id="s-mandate">
             <div class="highlight-box">
                 <h3>The Mandate</h3>
                 <p>As the Communications and Public Relations Assistant at VACFSS, I was tasked with developing the 2022 Winter Solstice greeting cards—a critical touchpoint for external stakeholder relations and community outreach.</p>
@@ -59,7 +67,7 @@
             <p>I managed the logistical planning and distribution requirements for three separate VACFSS locations, ensuring the messaging reached over 500 recipients, including community partners and caregivers.</p>
         </section>
 
-        <section class="case-section">
+        <section class="case-section" id="s-methodology">
             <h2>Design Methodology</h2>
 
             <h3>Primary Research & Inspiration</h3>
@@ -76,7 +84,7 @@
             <p><strong>Refinement:</strong> Based on stakeholder feedback during the review phase, I adjusted the central motifs to ensure the visual tone felt "welcoming and communal," removing elements that distracted from the core narrative of gathering.</p>
         </section>
 
-        <section class="case-section">
+        <section class="case-section" id="s-iconography">
             <h2>Iconography & Storytelling</h2>
             <p>Each figure in the final composition represents a distinct spirit dancing around a central fire—a visual metaphor for community and shared warmth.</p>
 
@@ -104,7 +112,7 @@
             </div>
         </section>
 
-        <section class="case-section">
+        <section class="case-section" id="s-outcome">
             <div class="highlight-box">
                 <h3>Performance Review</h3>
                 <p>This project was my first major illustration at VACFSS to undergo full-scale commercial printing. It represents a significant milestone in my ability to manage complex design pipelines under strict deadlines.</p>
@@ -119,6 +127,20 @@
             <img class="case-img" src="../images/ws-2022/WinterSolsticeCard_2022_FINAL_DESIGN_Both-Back.webp" alt="Curated reference board of Indigenous visual motifs">
         </section>  
     </main>
+
+    <script>
+    (function() {
+        const dots = Array.from(document.querySelectorAll('.cs-progress-dot'));
+        const sections = dots.map(d => document.getElementById(d.getAttribute('href').slice(1))).filter(Boolean);
+        function update() {
+            let active = 0;
+            sections.forEach((s, i) => { if (s.getBoundingClientRect().top <= window.innerHeight * 0.5) active = i; });
+            dots.forEach((d, i) => d.classList.toggle('active', i === active));
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    })();
+    </script>
 
     <!-- FOOTER -->
         <footer class="footer">

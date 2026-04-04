@@ -143,8 +143,19 @@
 
     <main class="container">
 
+    <!-- Progress sidebar -->
+    <nav class="cs-progress" aria-label="Page sections">
+        <a class="cs-progress-dot" href="#s-challenge"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Challenge</span></a>
+        <a class="cs-progress-dot" href="#s-results"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Results</span></a>
+        <a class="cs-progress-dot" href="#s-benchmark"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Benchmark</span></a>
+        <a class="cs-progress-dot" href="#s-performance"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Performance</span></a>
+        <a class="cs-progress-dot" href="#s-creative"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Creative</span></a>
+        <a class="cs-progress-dot" href="#s-organic"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Organic</span></a>
+        <a class="cs-progress-dot" href="#s-community"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Behind the Numbers</span></a>
+    </nav>
+
         <!-- The Challenge -->
-        <section class="case-section">
+        <section class="case-section" id="s-challenge">
             <div class="highlight-box">
                 <h3>The Challenge</h3>
                 <p>VACFSS — the Vancouver Aboriginal Child and Family Services Society — needed to recruit specialized social workers, caregivers, and support staff from a limited talent pool. As an Indigenous-serving nonprofit, the organization competes for the same candidates as larger government agencies and private firms, but with a fraction of the marketing budget.</p>
@@ -153,7 +164,7 @@
         </section>
 
         <!-- Top-line Results -->
-        <section class="case-section">
+        <section class="case-section" id="s-results">
             <h2>Results at a Glance</h2>
 
             <div class="stat-grid">
@@ -193,7 +204,7 @@
         </section>
 
         <!-- Beating the benchmark -->
-        <section class="case-section">
+        <section class="case-section" id="s-benchmark">
             <h2>Beating the Industry Benchmark</h2>
             <p>The average cost-per-click (CPC) on Meta Ads across industries sits at <strong>$0.80</strong>. For nonprofit and social services recruitment — where audiences are specific and competition for attention is high — this benchmark is a meaningful ceiling. The campaigns I ran consistently broke through it.</p>
 
@@ -231,7 +242,7 @@
         </section>
 
         <!-- 2025 Campaign Dashboard -->
-        <section class="case-section">
+        <section class="case-section" id="s-performance">
             <h2>2025 Campaign Performance</h2>
             <p>24 campaigns managed simultaneously across Meta's full placement suite — Feeds, Reels, Stories, and Search. $15,299 total spend. 4.1 million results.</p>
 
@@ -246,7 +257,7 @@
         </section>
 
         <!-- Creative -->
-        <section class="case-section">
+        <section class="case-section" id="s-creative">
             <h2>Creative Strategy</h2>
             <p>I owned the complete creative pipeline: concept, design, copy, and placement optimisation. Every ad was designed to work across Meta's three primary placement formats simultaneously — Feed (1:1 and horizontal), Stories and Reels (9:16 vertical), and Right Column search results — without losing visual clarity or message hierarchy at any size.</p>
 
@@ -266,7 +277,7 @@
         </section>
 
         <!-- Organic and web impact -->
-        <section class="case-section">
+        <section class="case-section" id="s-organic">
             <h2>Organic Reach & Web Traffic</h2>
             <p>Paid media drove discovery, but a parallel organic content strategy ensured that brand value compounded beyond the ad budget. LinkedIn and Facebook posts — timed around community events and cultural moments — built the kind of trust that a recruitment ad cannot buy outright.</p>
 
@@ -291,7 +302,7 @@
         </section>
 
         <!-- Community -->
-        <section class="case-section">
+        <section class="case-section" id="s-community">
             <h2>The Work Behind the Numbers</h2>
             <p>Effective recruitment marketing for an Indigenous services organisation is not just a performance media problem — it requires cultural fluency in every touchpoint. The campaigns needed to communicate safety, purpose, and community belonging to an audience that is rightly cautious about institutional messaging.</p>
 
@@ -315,6 +326,20 @@
         </section>
 
     </main>
+
+    <script>
+    (function() {
+        const dots = Array.from(document.querySelectorAll('.cs-progress-dot'));
+        const sections = dots.map(d => document.getElementById(d.getAttribute('href').slice(1))).filter(Boolean);
+        function update() {
+            let active = 0;
+            sections.forEach((s, i) => { if (s.getBoundingClientRect().top <= window.innerHeight * 0.5) active = i; });
+            dots.forEach((d, i) => d.classList.toggle('active', i === active));
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    })();
+    </script>
 
         <footer class="footer">
         <div class="container footer-inner">

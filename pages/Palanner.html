@@ -99,10 +99,20 @@
         <div class="scroll-hint" aria-hidden="true"><span></span><span></span></div>
     </header>
 
+    <!-- Progress sidebar -->
+    <nav class="cs-progress" aria-label="Page sections">
+        <a class="cs-progress-dot" href="#s-problem"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Problem</span></a>
+        <a class="cs-progress-dot" href="#s-prototype"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Prototype</span></a>
+        <a class="cs-progress-dot" href="#s-app"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">The App</span></a>
+        <a class="cs-progress-dot" href="#s-decisions"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Design Decisions</span></a>
+        <a class="cs-progress-dot" href="#s-ia"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Architecture</span></a>
+        <a class="cs-progress-dot" href="#s-reflection"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Reflection</span></a>
+    </nav>
+
     <main class="container">
 
         <!-- Problem -->
-        <section class="case-section">
+        <section class="case-section" id="s-problem">
             <div class="highlight-box">
                 <h3>The Problem</h3>
                 <p>Most productivity apps are designed for people who are already organized. For users with ADHD, the clinical UI of a standard to-do app creates friction rather than reducing it — the visual noise, context-switching between tools, and lack of emotional reward make it hard to build consistent habits.</p>
@@ -111,7 +121,7 @@
         </section>
 
         <!-- Prototype -->
-        <section class="case-section">
+        <section class="case-section" id="s-prototype">
             <h2>Interactive Prototype</h2>
             <p>The full prototype walks through every core flow — from choosing your pet on first launch, through daily to-do management, notes, and the weather screen.</p>
             <div style="margin: 1.5rem 0;">
@@ -124,7 +134,7 @@
         </section>
 
         <!-- App Screens -->
-        <section class="case-section">
+        <section class="case-section" id="s-app">
             <h2>The App</h2>
             <p>Each screen is built around a single task, keeping cognitive load low. The warm terracotta and cream palette, rounded corners, and hand-drawn icon style all signal "this is a safe, low-pressure space."</p>
 
@@ -157,7 +167,7 @@
         </section>
 
         <!-- Design Decisions -->
-        <section class="case-section">
+        <section class="case-section" id="s-decisions">
             <h2>Key Design Decisions</h2>
 
             <!-- 1 -->
@@ -244,7 +254,7 @@
         </section>
 
         <!-- IA -->
-        <section class="case-section">
+        <section class="case-section" id="s-ia">
             <h2>Information Architecture</h2>
             <p>The navigation structure is deliberately flat — four tabs (Calendar, To-dos, Photos, Notes) are always visible at the bottom of the screen. No hidden menus, no nested settings. Every feature is reachable in one tap from anywhere in the app.</p>
 
@@ -253,7 +263,7 @@
         </section>
 
         <!-- Reflection -->
-        <section class="case-section">
+        <section class="case-section" id="s-reflection">
             <div class="highlight-box">
                 <h3>Reflection</h3>
                 <p>Palanner taught me that good UX for neurodivergent users isn't about adding accommodations — it's about stripping away everything that doesn't need to be there. The visual warmth, the pet, the tiered tasks, and the persistent room are all ways of reducing friction without reducing capability.</p>
@@ -283,5 +293,18 @@
         </div>
     </footer>
 
+    <script>
+    (function() {
+        const dots = Array.from(document.querySelectorAll('.cs-progress-dot'));
+        const sections = dots.map(d => document.getElementById(d.getAttribute('href').slice(1))).filter(Boolean);
+        function update() {
+            let active = 0;
+            sections.forEach((s, i) => { if (s.getBoundingClientRect().top <= window.innerHeight * 0.5) active = i; });
+            dots.forEach((d, i) => d.classList.toggle('active', i === active));
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    })();
+    </script>
 </body>
 </html>
