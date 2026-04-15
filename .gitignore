@@ -1,3 +1,7 @@
+# Large media files — keep local, don't commit
+*.mp4
+images/health-ai/*.mp4
+
 # Logs
 logs
 *.log
