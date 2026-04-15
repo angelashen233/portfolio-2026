@@ -102,6 +102,133 @@
             .stat-grid { grid-template-columns: repeat(2, 1fr); }
             .benchmark-label { width: 120px; font-size: 0.75rem; }
         }
+
+        /* ── Landing Page Cost Chart ── */
+        .cpk-wrap {
+            margin: 2.5rem 0;
+            background: #fff;
+            border: 1px solid var(--slate-200);
+            border-radius: 16px;
+            padding: 2rem 2rem 1.5rem;
+        }
+        .cpk-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .cpk-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--slate-800);
+            margin: 0;
+        }
+        .cpk-tabs {
+            display: flex;
+            gap: 6px;
+        }
+        .cpk-tab {
+            background: #f1f5f9;
+            color: var(--slate-600);
+            border: none;
+            border-radius: 99px;
+            padding: 6px 16px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .cpk-tab:hover { background: #ffedd5; color: #9a3412; }
+        .cpk-tab.active { background: #da6e30; color: #fff; }
+
+        /* Horizontal bar rows */
+        .cpk-row { margin-bottom: 1.4rem; }
+        .cpk-row:last-child { margin-bottom: 0; }
+        .cpk-row-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 7px;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        .cpk-row-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--slate-700);
+        }
+        .cpk-row-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--slate-500);
+        }
+        .cpk-savings {
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 2px 9px;
+            border-radius: 99px;
+        }
+        .cpk-savings.green  { background: #dcfce7; color: #15803d; }
+        .cpk-savings.orange { background: #ffedd5; color: #9a3412; }
+        .cpk-savings.gray   { background: #f1f5f9; color: var(--slate-500); }
+
+        .cpk-track {
+            height: 40px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        .cpk-bar {
+            height: 100%;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding: 0 14px;
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #fff;
+            width: 0;
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .cpk-bar.industry { background: #94a3b8; }
+        .cpk-bar.good     { background: #22c55e; }
+        .cpk-bar.fair     { background: #f97316; }
+        .cpk-bar.yr-2024  { background: #94a3b8; }
+        .cpk-bar.yr-2025  { background: #da6e30; }
+        .cpk-bar.eff-2024 { background: #94a3b8; }
+        .cpk-bar.eff-2025 { background: #22c55e; }
+
+        .cpk-divider {
+            border: none;
+            border-top: 1px solid var(--slate-200);
+            margin: 1.5rem 0;
+        }
+        .cpk-footnote {
+            font-size: 0.75rem;
+            color: var(--slate-500);
+            margin-top: 1.25rem;
+            line-height: 1.6;
+        }
+        .cpk-view { display: none; }
+        .cpk-view.active { display: block; }
+
+        .cpk-group-label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--slate-500);
+            margin: 0 0 0.75rem;
+        }
     </style>
 </head>
 <body>
@@ -149,6 +276,7 @@
         <a class="cs-progress-dot" href="#s-results"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Results</span></a>
         <a class="cs-progress-dot" href="#s-benchmark"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Benchmark</span></a>
         <a class="cs-progress-dot" href="#s-performance"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Performance</span></a>
+        <a class="cs-progress-dot" href="#s-cpk"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Cost Analysis</span></a>
         <a class="cs-progress-dot" href="#s-creative"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Creative</span></a>
         <a class="cs-progress-dot" href="#s-organic"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Organic</span></a>
         <a class="cs-progress-dot" href="#s-community"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Behind the Numbers</span></a>
@@ -256,6 +384,161 @@
             <p class="img-caption">2024 Meta Ads Manager — 2,591,800 results across 24 campaigns on a $12,396 budget</p>
         </section>
 
+        <!-- Landing Page Cost per 1,000 Chart -->
+        <section class="case-section" id="s-cpk">
+            <h2>Landing Page Cost per 1,000 Clicks</h2>
+            <p>How much does it actually cost to drive 1,000 people to the caregiver recruitment landing page? Below compares each campaign against the $0.80 industry-standard CPC — and tracks how cost efficiency improved year over year.</p>
+
+            <div class="cpk-wrap">
+                <div class="cpk-header">
+                    <p class="cpk-title">Cost per 1,000 Landing Page Clicks — Interactive</p>
+                    <div class="cpk-tabs">
+                        <button class="cpk-tab active" data-view="campaigns">Campaign vs Benchmark</button>
+                        <button class="cpk-tab" data-view="yearly">Year-over-Year</button>
+                    </div>
+                </div>
+
+                <!-- VIEW 1: Campaign vs Benchmark -->
+                <div class="cpk-view active" id="cpk-view-campaigns">
+                    <p class="cpk-group-label">Cost per 1,000 link clicks — Max = $800 (industry avg)</p>
+
+                    <div class="cpk-row" data-target-width="100" data-bar-class="industry">
+                        <div class="cpk-row-header">
+                            <span class="cpk-row-label">Industry Average (Meta Ads)</span>
+                            <div class="cpk-row-meta">
+                                <span>$800 / 1,000 clicks</span>
+                                <span class="cpk-savings gray">Benchmark</span>
+                            </div>
+                        </div>
+                        <div class="cpk-track">
+                            <div class="cpk-bar industry" style="width:0">$800 per 1,000</div>
+                        </div>
+                    </div>
+
+                    <div class="cpk-row">
+                        <div class="cpk-row-header">
+                            <span class="cpk-row-label">July Caregiver AD — 2025</span>
+                            <div class="cpk-row-meta">
+                                <span>855,738 clicks · $2,999.87 spent</span>
+                                <span class="cpk-savings orange">−45% vs industry</span>
+                            </div>
+                        </div>
+                        <div class="cpk-track">
+                            <div class="cpk-bar fair" style="width:0">$440 per 1,000</div>
+                        </div>
+                        <div style="font-size:0.75rem; color:var(--slate-500); margin-top:5px;">$0.44 CPC × 1,000 = <strong style="color:#9a3412;">$440</strong> &nbsp;·&nbsp; saves <strong style="color:#15803d;">$360</strong> per 1,000 clicks vs benchmark</div>
+                    </div>
+
+                    <div class="cpk-row">
+                        <div class="cpk-row-header">
+                            <span class="cpk-row-label">HR Recruitment — General Augmented</span>
+                            <div class="cpk-row-meta">
+                                <span>108,440 clicks · $400 spent</span>
+                                <span class="cpk-savings green">−74% vs industry</span>
+                            </div>
+                        </div>
+                        <div class="cpk-track">
+                            <div class="cpk-bar good" style="width:0">$210 per 1,000</div>
+                        </div>
+                        <div style="font-size:0.75rem; color:var(--slate-500); margin-top:5px;">$0.21 CPC × 1,000 = <strong style="color:#15803d;">$210</strong> &nbsp;·&nbsp; saves <strong style="color:#15803d;">$590</strong> per 1,000 clicks vs benchmark</div>
+                    </div>
+
+                    <hr class="cpk-divider">
+                    <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:1rem; text-align:center;">
+                        <div>
+                            <div style="font-size:1.6rem; font-weight:800; color:#94a3b8;">$800</div>
+                            <div style="font-size:0.75rem; color:var(--slate-500); font-weight:600;">Industry per 1K</div>
+                        </div>
+                        <div>
+                            <div style="font-size:1.6rem; font-weight:800; color:#f97316;">$440</div>
+                            <div style="font-size:0.75rem; color:var(--slate-500); font-weight:600;">Caregiver AD per 1K</div>
+                        </div>
+                        <div>
+                            <div style="font-size:1.6rem; font-weight:800; color:#22c55e;">$210</div>
+                            <div style="font-size:0.75rem; color:var(--slate-500); font-weight:600;">HR Recruitment per 1K</div>
+                        </div>
+                    </div>
+                    <p class="cpk-footnote">Source: Meta Ads Manager · Jan 1 – Dec 31, 2025. Cost per 1,000 = CPC × 1,000. Industry CPC benchmark: $0.80 (Meta cross-industry average).</p>
+                </div>
+
+                <!-- VIEW 2: Year-over-Year -->
+                <div class="cpk-view" id="cpk-view-yearly">
+
+                    <p class="cpk-group-label">Total results — Max = 4,157,445 (2025)</p>
+                    <div class="cpk-row">
+                        <div class="cpk-row-header">
+                            <span class="cpk-row-label">2024 — Jan to Dec</span>
+                            <div class="cpk-row-meta">
+                                <span>2,591,800 results · $12,396.58 spent</span>
+                            </div>
+                        </div>
+                        <div class="cpk-track">
+                            <div class="cpk-bar yr-2024" style="width:0">2,591,800</div>
+                        </div>
+                    </div>
+                    <div class="cpk-row">
+                        <div class="cpk-row-header">
+                            <span class="cpk-row-label">2025 — Jan to Dec</span>
+                            <div class="cpk-row-meta">
+                                <span>4,157,445 results · $15,299.99 spent</span>
+                                <span class="cpk-savings green">+60% results</span>
+                            </div>
+                        </div>
+                        <div class="cpk-track">
+                            <div class="cpk-bar yr-2025" style="width:0">4,157,445</div>
+                        </div>
+                    </div>
+
+                    <hr class="cpk-divider">
+                    <p class="cpk-group-label">Cost per 1,000 results — Max = $4.78 (2024)</p>
+                    <div class="cpk-row">
+                        <div class="cpk-row-header">
+                            <span class="cpk-row-label">2024 cost efficiency</span>
+                            <div class="cpk-row-meta">
+                                <span>$12,396.58 ÷ 2,591.8K results</span>
+                            </div>
+                        </div>
+                        <div class="cpk-track">
+                            <div class="cpk-bar eff-2024" style="width:0">$4.78 per 1,000</div>
+                        </div>
+                    </div>
+                    <div class="cpk-row">
+                        <div class="cpk-row-header">
+                            <span class="cpk-row-label">2025 cost efficiency</span>
+                            <div class="cpk-row-meta">
+                                <span>$15,299.99 ÷ 4,157.4K results</span>
+                                <span class="cpk-savings green">−23% cost per result</span>
+                            </div>
+                        </div>
+                        <div class="cpk-track">
+                            <div class="cpk-bar eff-2025" style="width:0">$3.68 per 1,000</div>
+                        </div>
+                    </div>
+
+                    <hr class="cpk-divider">
+                    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; text-align:center;">
+                        <div>
+                            <div style="font-size:1.4rem; font-weight:800; color:#94a3b8;">2.59M</div>
+                            <div style="font-size:0.75rem; color:var(--slate-500); font-weight:600;">2024 results</div>
+                        </div>
+                        <div>
+                            <div style="font-size:1.4rem; font-weight:800; color:#da6e30;">4.16M</div>
+                            <div style="font-size:0.75rem; color:var(--slate-500); font-weight:600;">2025 results</div>
+                        </div>
+                        <div>
+                            <div style="font-size:1.4rem; font-weight:800; color:#94a3b8;">$4.78</div>
+                            <div style="font-size:0.75rem; color:var(--slate-500); font-weight:600;">2024 per 1K</div>
+                        </div>
+                        <div>
+                            <div style="font-size:1.4rem; font-weight:800; color:#22c55e;">$3.68</div>
+                            <div style="font-size:0.75rem; color:var(--slate-500); font-weight:600;">2025 per 1K</div>
+                        </div>
+                    </div>
+                    <p class="cpk-footnote">Source: Meta Ads Manager · 2024 and 2025 full-year totals across 24 campaigns each year. Cost per 1,000 = (total spend ÷ total results) × 1,000.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- Creative -->
         <section class="case-section" id="s-creative">
             <h2>Creative Strategy</h2>
@@ -307,12 +590,12 @@
             <p>Effective recruitment marketing for an Indigenous services organisation is not just a performance media problem — it requires cultural fluency in every touchpoint. The campaigns needed to communicate safety, purpose, and community belonging to an audience that is rightly cautious about institutional messaging.</p>
 
             <div class="two-col" style="gap: 1.25rem; margin: 1.5rem 0;">
-                <img class="case-img" src="../images/MicrosoftTeams-image (31).png" alt="Cultural community gathering event" style="margin: 0; border-radius: 12px;">
-                <img class="case-img" src="../images/MicrosoftTeams-image (20).png" alt="Community event with caregivers" style="margin: 0; border-radius: 12px;">
+                <img class="case-img" src="../images/MicrosoftTeams-image (39).png" alt="Elder April Bennett — community event" style="margin: 0; border-radius: 12px;">
+                <img class="case-img" src="../images/MicrosoftTeams-image (27).png" alt="Community gathering event" style="margin: 0; border-radius: 12px;">
             </div>
             <div class="two-col" style="gap: 1.25rem; margin: 1.5rem 0;">
-                <img class="case-img" src="../images/MicrosoftTeams-image (34).png" alt="Summer community activity event" style="margin: 0; border-radius: 12px;">
-                <img class="case-img" src="../images/MicrosoftTeams-image (29).png" alt="Outdoor community gathering" style="margin: 0; border-radius: 12px;">
+                <img class="case-img" src="../images/Caregiver-cultural-camp-2024.jpg" alt="Caregiver cultural camp 2024" style="margin: 0; border-radius: 12px;">
+                <img class="case-img" src="../images/Caregiver-summer-camp-cannoe-2024.jpg" alt="Caregiver summer camp canoe 2024" style="margin: 0; border-radius: 12px;">
             </div>
             <p class="img-caption">Community events I photographed and coordinated — imagery used across recruitment campaigns to show authentic organizational culture</p>
 
@@ -326,6 +609,65 @@
         </section>
 
     </main>
+
+    <script>
+    // ── COST CHART ──
+    (function () {
+        // Bar target widths (as % of track)
+        const BARS = {
+            campaigns: [
+                { selector: '#cpk-view-campaigns .cpk-bar.industry', width: 100 },
+                { selector: '#cpk-view-campaigns .cpk-bar.fair',     width: 55  },  // 440/800
+                { selector: '#cpk-view-campaigns .cpk-bar.good',     width: 26.25 }, // 210/800
+            ],
+            yearly: [
+                { selector: '#cpk-view-yearly .cpk-bar.yr-2024',  width: 62.3  }, // 2591800/4157445
+                { selector: '#cpk-view-yearly .cpk-bar.yr-2025',  width: 100   },
+                { selector: '#cpk-view-yearly .cpk-bar.eff-2024', width: 100   }, // 4.78 = max
+                { selector: '#cpk-view-yearly .cpk-bar.eff-2025', width: 77    }, // 3.68/4.78
+            ]
+        };
+
+        function animateBars(view) {
+            // Reset all bars first
+            document.querySelectorAll('.cpk-bar').forEach(b => b.style.width = '0');
+
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    (BARS[view] || []).forEach(({ selector, width }) => {
+                        const el = document.querySelector(selector);
+                        if (el) el.style.width = width + '%';
+                    });
+                });
+            });
+        }
+
+        // Tab switching
+        document.querySelectorAll('.cpk-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const view = tab.dataset.view;
+                document.querySelectorAll('.cpk-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                document.querySelectorAll('.cpk-view').forEach(v => v.classList.remove('active'));
+                document.getElementById('cpk-view-' + view).classList.add('active');
+                animateBars(view);
+            });
+        });
+
+        // Animate on scroll into view (IntersectionObserver)
+        let animated = false;
+        const section = document.getElementById('s-cpk');
+        if (section) {
+            const obs = new IntersectionObserver(entries => {
+                if (entries[0].isIntersecting && !animated) {
+                    animated = true;
+                    animateBars('campaigns');
+                }
+            }, { threshold: 0.2 });
+            obs.observe(section);
+        }
+    })();
+    </script>
 
     <script>
     (function() {

@@ -44,33 +44,82 @@
             border-bottom: 1px solid var(--slate-200);
         }
         .work-section-label:first-of-type { margin-top: 0; }
-        .work-filter-bar {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin: 0 0 40px;
+        /* ── Work prompt ── */
+        .work-prompt {
+            margin: 0 0 48px;
+            text-align: center;
         }
-        .work-filter-btn {
-            background: #f1f5f9;
-            color: var(--slate-600);
-            border: none;
+        .work-prompt-options {
+            justify-content: center;
+        }
+        .work-prompt-q {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--slate-800);
+            letter-spacing: -0.02em;
+            margin: 0 0 6px;
+        }
+        .work-prompt-sub {
+            font-size: 0.9rem;
+            color: var(--slate-500);
+            margin: 0 0 20px;
+            font-weight: 500;
+        }
+        .work-prompt-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+        .work-opt-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: #fff;
+            color: var(--slate-700);
+            border: 2px solid var(--slate-200);
             border-radius: 99px;
-            padding: 8px 20px;
+            padding: 10px 22px;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.2s ease;
             letter-spacing: 0.01em;
         }
-        .work-filter-btn:hover {
-            background: #ffedd5;
-            color: #9a3412;
+        .work-opt-btn .opt-icon {
+            font-size: 1rem;
+            line-height: 1;
         }
-        .work-filter-btn.active {
+        .work-opt-btn:hover {
+            border-color: #da6e30;
+            color: #da6e30;
+            background: #fff7ed;
+        }
+        .work-opt-btn.active {
             background: #da6e30;
+            border-color: #da6e30;
             color: #fff;
+            box-shadow: 0 4px 12px rgba(218,110,48,0.25);
         }
+        .work-opt-all {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--slate-400);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px 8px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s;
+        }
+        .work-opt-all:hover { color: var(--slate-700); }
+        .work-opt-all.active { color: var(--slate-700); font-weight: 800; }
+
+        /* hidden legacy bar — keep for JS compat */
+        .work-filter-bar { display: none; }
     </style>
 </head>
 <body>
@@ -104,21 +153,36 @@
 
     <main class="container">
         <section id="work">
-            <h2 class="section-title">Case Studies</h2>
 
-            <!-- FILTER BAR -->
-            <div class="work-filter-bar" id="work-filter-bar">
+            <!-- hidden legacy bar for JS -->
+            <div class="work-filter-bar" id="work-filter-bar" aria-hidden="true">
                 <button class="work-filter-btn active" data-filter="all">All</button>
                 <button class="work-filter-btn" data-filter="ux">UX &amp; Product Design</button>
                 <button class="work-filter-btn" data-filter="marketing">Digital Marketing</button>
                 <button class="work-filter-btn" data-filter="design">Graphic Design</button>
                 <button class="work-filter-btn" data-filter="editorial">Editorial &amp; Content</button>
+                <button class="work-filter-btn" data-filter="brand">Brand Design</button>
+                <button class="work-filter-btn" data-filter="ui">UI Design</button>
             </div>
 
+            <!-- Conversational prompt -->
+            <div class="work-prompt" id="work-prompt">
+                
+                <p class="work-prompt-q">What do you need support with?</p>
+                <div class="work-prompt-options">
+                    <button class="work-opt-btn" data-opt="ux"><span class="opt-icon">🔍</span> UX Research &amp; Design</button>
+                    <button class="work-opt-btn" data-opt="ui"><span class="opt-icon">📱</span> UI Design</button>
+                    <button class="work-opt-btn" data-opt="brand"><span class="opt-icon">✦</span> Brand Design</button>
+                    <button class="work-opt-btn" data-opt="design"><span class="opt-icon">🎨</span> Graphic Design</button>
+                    <button class="work-opt-btn" data-opt="marketing"><span class="opt-icon">📣</span> Marketing</button>
+                    <button class="work-opt-all active" data-opt="all">See all</button>
+                </div>
+            </div>
+            <h2 class="section-title" style="margin-bottom: 0.5rem;">Case Studies</h2>
             <!-- FEATURED -->
             <div class="featured-grid">
 
-                <article class="card project-trigger" data-filter-cat="ux"
+                <article class="card project-trigger" data-filter-cat="ux" data-extra-cats="ui"
                     data-title="Bring Your Own Cup"
                     data-category="UX / UI • Graphic Design"
                     data-org="SFU Course Project"
@@ -142,13 +206,13 @@
                     </div>
                 </article>
 
-                <article class="card project-trigger" data-filter-cat="ux"
+                <article class="card project-trigger" data-filter-cat="ux" data-extra-cats="ui"
                     data-title="afterhours — resources chat"
                     data-category="MedTech • Trauma-Informed UX"
                     data-org="SFU Hackathon"
                     data-year="2025"
                     data-desc="Trauma-informed crisis care tool for assault survivors — AI-guided triage, offline-first emergency access, and a UI designed to reduce cognitive load under extreme stress. Built in React over a 36-hour hackathon sprint."
-                    data-link="afterhours-support.html"
+                    data-link="pages/afterhours-support.html"
                     data-link-text="Full Case Study ↗"
                     data-img="images/afterhours/AI-afterhour-agent-UI-design-drafts.png">
                     <a href="pages/afterhours-support.html" class="card-link-wrapper">
@@ -178,7 +242,7 @@
                     data-org="VACFSS"
                     data-year="2024–2026"
                     data-desc="UX research and redesign that produced a 50% increase in caregiver information inquiries on the same ad budget — through navigation testing, staff interviews, content restructuring, and a shift from stock to on-site photography."
-                    data-link="vacfss_ux.html"
+                    data-link="pages/vacfss_ux.html"
                     data-link-text="Full Case Study ↗"
                     data-img="images/VACFSS-old-caregiver-site.png">
                     <a href="pages/vacfss_ux.html" class="card-link-wrapper">
@@ -194,13 +258,13 @@
                     </div>
                 </article>
 
-                <article class="card project-trigger" data-filter-cat="ux"
+                <article class="card project-trigger" data-filter-cat="ux" data-extra-cats="ui"
                     data-title="Angela Shen Portfolio Website - Design system"
                     data-category="UX Research • Accessibility"
                     data-org="VACFSS"
                     data-year="2024–2026"
                     data-desc="UX research and redesign that produced a 50% increase in caregiver information inquiries on the same ad budget — through navigation testing, staff interviews, content restructuring, and a shift from stock to on-site photography."
-                    data-link="vacfss_ux.html"
+                    data-link="pages/design-system.html"
                     data-link-text="Full Case Study ↗"
                     data-img="images/Angela-portfolio-screenshot.png">
                     <a href="pages\design-system.html" class="card-link-wrapper">
@@ -217,13 +281,13 @@
                 </article>
 
 
-                <article class="card project-trigger" data-filter-cat="ux"
+                <article class="card project-trigger" data-filter-cat="ux" data-extra-cats="ui"
                     data-title="Palanner"
                     data-category="Cognitive Accessibility • UX Design"
                     data-org="SFU Course Project"
                     data-year="2024"
                     data-desc="Accessibility-first mobile UX built around cognitive load reduction — tiered task architecture and single-purpose screens designed so that neurodiverse users (and anyone under pressure) never feel lost."
-                    data-link="Palanner.html"
+                    data-link="pages/Palanner.html"
                     data-link-text="Full Case Study ↗"
                     data-img="images/Palanner_To_dos_page.png">
                     <a href="pages/Palanner.html" class="card-link-wrapper">
@@ -239,7 +303,7 @@
                     </div>
                 </article>
 
-                <article class="card project-trigger" data-filter-cat="ux"
+                <article class="card project-trigger" data-filter-cat="ux" data-extra-cats="ui"
                     data-title="BluRead"
                     data-category="Mental Wellness • Privacy-First UX"
                     data-org="SFU Hackathon"
@@ -261,13 +325,13 @@
                     </div>
                 </article>
 
-                <article class="card project-trigger" data-filter-cat="ux"
+                <article class="card project-trigger" data-filter-cat="ux" data-extra-cats="ui"
                     data-title="Meddlesome Company"
                     data-category="Narrative Design • 2D Puzzle Adventure"
                     data-org="SFU IAT 313"
                     data-year="2024"
                     data-desc="A side-scrolling puzzle adventure where two corporate spies unknowingly work the same mission. I designed the UX and visual assets, translating a multi-perspective script into a playable experience."
-                    data-link="2024_middlesome.html"
+                    data-link="pages/2024_middlesome.html"
                     data-link-text="Full Case Study ↗"
                     data-img="images/Middlesome-company-main-digital-art.jpg">
                     <a href="pages/2024_middlesome.html" class="card-link-wrapper">
@@ -295,10 +359,10 @@
                     data-org="VACFSS"
                     data-year="2023–2025"
                     data-desc="4M+ results on a $15K budget — beating the $0.80 industry CPC with campaigns as low as $0.21 per click across Meta and Google."
-                    data-link="2022_marketing.html"
+                    data-link="pages/vacfss-marketing.html"
                     data-link-text="Full Case Study ↗"
                     data-img="images/Jan-2025  to Dec 31 - VACFSS-ADS.jpg">
-                    <a href="pages/2022_marketing.html" class="card-link-wrapper">
+                    <a href="pages/vacfss-marketing.html" class="card-link-wrapper">
                         <div class="card-img-container">
                             <div class="card-img" style="background-image: url('images/Jan-2025  to Dec 31 - VACFSS-ADS.jpg'); background-size: cover; background-position: center top;"></div>
                             <div class="card-overlay"><span class="overlay-text">Full Case Study ↗</span></div>
@@ -336,7 +400,7 @@
             <h3 class="work-section-label">Graphic Design &amp; Branding</h3>
             <div class="project-grid">
 
-                <article class="card project-trigger" data-filter-cat="design"
+                <article class="card project-trigger" data-filter-cat="design" data-extra-cats="brand"
                     data-title="Philosophy Student Union — Visual Identity"
                     data-category="Branding"
                     data-org="SFU Philosophy Student Union"
@@ -358,7 +422,7 @@
                     </div>
                 </article>
 
-                <article class="card project-trigger" data-filter-cat="design"
+                <article class="card project-trigger" data-filter-cat="design" data-extra-cats="brand"
                     data-title="VACFSS Annual Reports"
                     data-category="Publication Design"
                     data-org="VACFSS"
@@ -381,13 +445,13 @@
                     </div>
                 </article>
 
-                <article class="card project-trigger" data-filter-cat="design"
+                <article class="card project-trigger" data-filter-cat="design" data-extra-cats="brand"
                     data-title="Winter Solstice Card 2022"
                     data-category="Graphic Design"
                     data-org="VACFSS"
                     data-year="2022"
                     data-desc="Coast Salish-inspired illustration navigating cultural research, corporate review, and print production for 500+ recipients."
-                    data-link="2022_Wintersolstice.html"
+                    data-link="pages/2022_Wintersolstice.html"
                     data-link-text="Full Process ↗"
                     data-img="images/ws-2022/WinterSolsticeCard_2022_FINAL_DESIGN_Both-Front-smaller.webp">
                     <a href="pages/2022_Wintersolstice.html" class="card-link-wrapper">
@@ -403,7 +467,7 @@
                     </div>
                 </article>
 
-                <article class="card project-trigger" data-filter-cat="design"
+                <article class="card project-trigger" data-filter-cat="design" data-extra-cats="brand"
                     data-title="Winter Solstice Card 2023"
                     data-category="Graphic Design"
                     data-org="VACFSS"
@@ -549,39 +613,55 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+    // ── SCROLL HINT: down → scroll to work; up → scroll to top ──
+    (function () {
+        const hint = document.querySelector('.scroll-hint');
+        if (!hint) return;
+        const workSection = document.getElementById('work');
+        const heroEl = document.querySelector('.hero');
+
+        hint.addEventListener('click', () => {
+            if (hint.classList.contains('is-up')) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                workSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            const heroBottom = heroEl.getBoundingClientRect().bottom;
+            hint.classList.toggle('is-up', heroBottom < 0);
+        }, { passive: true });
+    })();
+    </script>
 
     <script>
-    // ── WORK FILTER ──
+    // ── WORK PROMPT + FILTER ──
     (function () {
-        const bar = document.getElementById('work-filter-bar');
-        if (!bar) return;
-
+        const allCards      = document.querySelectorAll('[data-filter-cat]');
         const featuredGrid  = document.querySelector('.featured-grid');
         const sectionLabels = document.querySelectorAll('.work-section-label');
-        const allCards      = document.querySelectorAll('[data-filter-cat]');
+        const prompt        = document.getElementById('work-prompt');
+        if (!prompt) return;
 
-        bar.addEventListener('click', (e) => {
-            const btn = e.target.closest('.work-filter-btn');
-            if (!btn) return;
+        function cardMatches(card, filter) {
+            if (filter === 'all') return true;
+            if (card.dataset.filterCat === filter) return true;
+            const extras = (card.dataset.extraCats || '').split(' ');
+            return extras.includes(filter);
+        }
 
-            const filter = btn.dataset.filter;
-
-            // Update active button
-            bar.querySelectorAll('.work-filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            // Show/hide cards
+        function applyFilter(filter) {
             allCards.forEach(card => {
-                const match = filter === 'all' || card.dataset.filterCat === filter;
-                card.style.display = match ? '' : 'none';
+                card.style.display = cardMatches(card, filter) ? '' : 'none';
             });
 
-            // Show/hide featured grid (only has 'ux' cards)
             if (featuredGrid) {
-                featuredGrid.style.display = (filter === 'all' || filter === 'ux') ? '' : 'none';
+                featuredGrid.style.display =
+                    ['all','ux','ui','brand'].includes(filter) ? '' : 'none';
             }
 
-            // Show/hide each section label based on whether its grid has visible cards
             sectionLabels.forEach(label => {
                 const grid = label.nextElementSibling;
                 if (!grid) return;
@@ -589,6 +669,18 @@
                     .some(c => c.style.display !== 'none');
                 label.style.display = hasVisible ? '' : 'none';
             });
+        }
+
+        prompt.addEventListener('click', e => {
+            const btn = e.target.closest('[data-opt]');
+            if (!btn) return;
+            const filter = btn.dataset.opt;
+
+            // update active state on all buttons
+            prompt.querySelectorAll('[data-opt]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            applyFilter(filter);
         });
     })();
     </script>

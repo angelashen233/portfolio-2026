@@ -1031,6 +1031,23 @@ a.logo {
     50%       { transform: translateX(-50%) translateY(9px); }
 }
 
+/* ── Scroll hint: fixed up-arrow state ── */
+.scroll-hint.is-up {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    opacity: 0.55;
+    background-image: url("data:image/svg+xml,%3Csvg width='52' height='32' viewBox='0 0 52 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 26 L26 6 L48 26' stroke='%23f97316' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    animation: scroll-bounce-up 3.5s ease-in-out infinite;
+    z-index: 100;
+}
+.scroll-hint.is-up:hover { opacity: 0.85; }
+
+@keyframes scroll-bounce-up {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(-9px); }
+}
+
 /* ─────────────────────────────────────────────────────────
    CASE STUDY LAYOUT ENHANCEMENTS
    ───────────────────────────────────────────────────────── */

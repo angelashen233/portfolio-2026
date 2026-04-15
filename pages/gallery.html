@@ -108,7 +108,8 @@
             z-index: 3000;
             padding: 24px;
         }
-        .lightbox-overlay.open { display: flex; }
+        .lightbox-overlay.open,
+        #lightbox.open { display: flex; }
         .lightbox-inner {
             position: relative;
             max-width: 90vw;
@@ -123,10 +124,9 @@
             to   { opacity: 1; transform: scale(1); }
         }
         .lightbox-img {
-            max-width: 90vw;
+            max-width: 80vw;
             max-height: 80vh;
             border-radius: 16px;
-            object-fit: contain;
             display: block;
         }
         .lightbox-caption {
@@ -659,10 +659,37 @@ function closeLightbox() {
 
 function updateLightbox() {
     const item = visibleItems[lbIndex];
-    document.getElementById('lb-img').src = item.src;
-    document.getElementById('lb-img').alt = item.title;
+    const img = document.getElementById('lb-img');
+
+    // Reset inline sizing before loading new image
+    img.style.width = '';
+    img.style.height = '';
+    img.src = item.src;
+    img.alt = item.title;
     document.getElementById('lb-title').textContent = item.title;
     document.getElementById('lb-sub').textContent = item.caption;
+
+    function sizeImage() {
+        if (!img.naturalWidth) return;
+        const vw80 = window.innerWidth * 0.8;
+        const vh80 = window.innerHeight * 0.8;
+        // Compare image aspect ratio to 80vw × 80vh box
+        if (img.naturalWidth / img.naturalHeight >= vw80 / vh80) {
+            // Landscape-dominant: fill width
+            img.style.width = '80vw';
+            img.style.height = 'auto';
+        } else {
+            // Portrait-dominant: fill height
+            img.style.height = '80vh';
+            img.style.width = 'auto';
+        }
+    }
+
+    if (img.complete && img.naturalWidth) {
+        sizeImage();
+    } else {
+        img.onload = sizeImage;
+    }
 }
 
 document.getElementById('lb-close').addEventListener('click', closeLightbox);
