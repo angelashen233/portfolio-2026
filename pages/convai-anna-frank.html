@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/Profile_Discord.webp" type="image/webp">
+    <title>Convai — Anna Frank</title>
+    <meta name="keywords" content="health, modeling, AI, research">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .page-hero { padding: 80px 24px; text-align: center; }
+        .tag-row { display:flex; gap:8px; justify-content:center; margin-top:12px; }
+        .tag-pill { background:#f1f5f9; padding:6px 14px; border-radius:99px; font-weight:700; color:var(--slate-700); }
+        .media-wrap { max-width:980px; margin: 36px auto; padding: 0 24px; }
+        .media-box { background: #fff; border-radius:12px; padding:18px; border:1px solid #eef2ff; box-shadow: 0 12px 40px rgba(2,6,23,0.06); }
+        .media-caption { margin-top:10px; color:var(--slate-600); font-size:0.95rem; text-align:center; }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="container nav-content">
+            <a class="logo" href="../index.html">✨ Angela Shen</a>
+            <div class="nav-links">
+                <a href="../index.html">Work</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="about.html">About</a>
+                <a href="../images/Angela-Shen-Resume-2026-Feb_Lab-Submission.pdf" class="nav-cta" target="_blank">Resume ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-hero">
+        <h1 style="font-size:2.4rem; font-weight:800;">Convai — Anna Frank</h1>
+        <p style="color:var(--slate-600); max-width:760px; margin:12px auto;">A showcase of a Convai-hosted conversational AI interaction. Embedded media is served from the site's <strong>images</strong> folder when available, with an external fallback.</p>
+        <div class="tag-row">
+            <div class="tag-pill">health</div>
+            <div class="tag-pill">modeling</div>
+            <div class="tag-pill">AI</div>
+            <div class="tag-pill">research</div>
+        </div>
+    </header>
+
+    <main class="media-wrap">
+        <div class="media-box">
+            <!-- Primary: local video under images/convai-anna-frank.mp4 -->
+            <video id="convai-video" controls playsinline preload="metadata" width="100%" poster="../images/convai-anna-frank-poster.png">
+                <source src="../images/convai-anna-frank.mp4" type="video/mp4">
+                <!-- Fallback: iframe to Convai-hosted player -->
+                Your browser does not support the video tag. You can <a href="https://convai.example.com/anna-frank" target="_blank">open the Convai player</a> instead.
+            </video>
+            <p class="media-caption">Embedded Convai — Anna Frank interaction. Video file expected at <strong>images/convai-anna-frank.mp4</strong>.</p>
+        </div>
+    </main>
+
+    <footer style="padding:48px 24px; text-align:center; color:var(--slate-500);">© Angela Shen — Portfolio</footer>
+
+    <script type="module" src="./convai-module.js"></script>
+</body>
+</html>
