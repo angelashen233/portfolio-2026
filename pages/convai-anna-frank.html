@@ -185,6 +185,20 @@
             </div>
         </div>
 
+        <!-- ── Passage Reading: Younger Audiences Demo ── -->
+        <div class="media-wrap" style="margin-top:0;">
+            <div class="media-box">
+                <p style="font-size:0.68rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:#7c3aed; margin:0 0 12px;">For Younger Audiences — Passage Reading</p>
+                <h2 style="font-size:1.2rem; font-weight:800; letter-spacing:-0.02em; margin:0 0 8px;">Anna Frank Reads from the Diary</h2>
+                <p style="font-size:0.9rem; color:var(--slate-500); margin:0 0 16px; line-height:1.6;">This short demonstration shows the Convai model reading a passage directly from <em>The Diary of a Young Girl</em> — designed to introduce the diary to primary and middle-school learners through a first-person, expressive reading experience rather than silent text. Lip-sync limitations noted at end of clip.</p>
+                <video id="passage-video" controls playsinline preload="metadata" width="100%" muted>
+                    <source src="../images/health-ai/Anna-Frank-passage-reading-problem with lip syn in the end-2026-04-15 133325.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="media-caption">Anna Frank reads a diary passage — Convai AI model, April 2026. <em>Note: lip-sync desync visible at end of clip; in refinement.</em></p>
+            </div>
+        </div>
+
         <!-- ── Health AI Patient Simulations ── -->
         <section class="health-ai-section" aria-labelledby="health-ai-heading">
             <h2 id="health-ai-heading">Health AI Patient Simulations</h2>
@@ -306,6 +320,14 @@
                 </div>
 
                 <div class="research-card">
+                    <p class="research-card-label">Children &amp; Historical Empathy</p>
+                    <h3>An Updated Theoretical and Practical Model of Historical Empathy</h3>
+                    <p class="citation">Endacott, J. L., &amp; Brooks, S. (2013). <em>Social Studies Research and Practice, 8</em>(1), 41–58.</p>
+                    <blockquote>"Historical empathy is not simply feeling sorry for people in the past — it is the cognitive and affective process of understanding a historical actor's perspective within their specific context, and it is developmentally accessible to younger learners when scaffolded through first-person narrative."</blockquote>
+                    <p class="card-summary">Endacott and Brooks' updated model is the key theoretical justification for using an AI Anne Frank with primary and middle-school audiences. They demonstrate that children as young as 10 can develop genuine historical empathy — the ability to understand why someone in a different era thought and acted as they did — when they engage with first-person, contextualised narrative rather than third-person summary. An AI that reads diary passages aloud and responds to student questions is precisely the scaffolded, first-person encounter their model identifies as most effective for younger cohorts.</p>
+                </div>
+
+                <div class="research-card">
                     <p class="research-card-label">AI Ethics in Education</p>
                     <h3>Ethical Considerations in Using AI to Represent Historical Figures</h3>
                     <p class="citation">UNESCO. (2021). <em>Recommendation on the Ethics of Artificial Intelligence.</em> United Nations Educational, Scientific and Cultural Organization.</p>
@@ -320,6 +342,7 @@
                 <h3>References</h3>
                 <ol>
                     <li>Economou, M., &amp; Meintani, E. (2011). Digital storytelling and historical empathy in museum contexts. In <span class="ref-title">Rethinking Technology in Museums</span> (pp. 76–93). Routledge.</li>
+                    <li>Endacott, J. L., &amp; Brooks, S. (2013). An updated theoretical and practical model of historical empathy. <span class="ref-title">Social Studies Research and Practice, 8</span>(1), 41–58.</li>
                     <li>Frank, A. (1997). <span class="ref-title">The Diary of a Young Girl</span> (Definitive ed., S. Massotty, Trans.; O. H. Frank &amp; M. Pressler, Eds.). Penguin Books. (Original Dutch work <span class="ref-title">Het Achterhuis</span> published by Contact Publishing, Amsterdam, 1947)</li>
                     <li>Graesser, A. C., VanLehn, K., Rosé, C. P., Jordan, P. W., &amp; Harter, D. (2001). Intelligent tutoring systems with conversational dialogue. <span class="ref-title">AI Magazine, 22</span>(4), 39–51.</li>
                     <li>Johnson, W. L., Rickel, J. W., &amp; Lester, J. C. (2000). Animated pedagogical agents: Face-to-face interaction in interactive learning environments. <span class="ref-title">International Journal of Artificial Intelligence in Education, 11</span>, 47–78.</li>
@@ -336,6 +359,27 @@
 
     <footer style="padding:48px 24px; text-align:center; color:var(--slate-500);">© Angela Shen — Portfolio</footer>
 
+    <script src="../script.js"></script>
+    <script>
+        // Auto-play passage video on scroll — uses the same IntersectionObserver
+        // pattern as script.js (butterfly hide observer, modal scroll observer)
+        (function () {
+            const video = document.getElementById('passage-video');
+            if (!video) return;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        video.play().catch(() => {
+                            // Autoplay blocked (e.g. unmuted); gracefully ignore
+                        });
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(video);
+        })();
+    </script>
     <script src="nav.js"></script>
 </body>
 </html>
