@@ -10,6 +10,7 @@
         { title: 'Honouring the Journey of Our Youth', href: 'honouring-youth.html' },
         { title: 'Winter Solstice Card 2022',   href: '2022_Wintersolstice.html' },
         { title: 'Convai — Anna Frank',         href: 'convai-anna-frank.html' },
+        { title: 'Convai — Health AI',           href: 'convai-health-ai.html' },
     ];
 
     const currentFile = window.location.pathname.split('/').pop();

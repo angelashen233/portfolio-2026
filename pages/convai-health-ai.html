@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/Profile_Discord.webp" type="image/webp">
+    <title>Convai — Health AI Patient Simulations</title>
+    <meta name="keywords" content="health, AI, modeling, medical education, standardized patients">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .page-hero { padding: 96px 24px 56px; text-align: center; background: linear-gradient(160deg, #ecfdf5 0%, #fff 60%); }
+        .page-hero h1 { letter-spacing: -0.03em; }
+        .tag-row { display:flex; gap:8px; justify-content:center; margin-top:14px; flex-wrap:wrap; }
+        .tag-pill { background:#f1f5f9; padding:6px 14px; border-radius:99px; font-weight:700; color:var(--slate-700); font-size:0.82rem; }
+
+        /* ── Media ── */
+        .media-wrap { max-width:900px; margin: 0 auto 56px; padding: 0 24px; }
+        .media-box { background: #fff; border-radius:16px; padding:20px; border:1px solid #d1fae5; box-shadow: 0 12px 40px rgba(2,6,23,0.06); }
+        .media-caption { margin-top:10px; color:var(--slate-500); font-size:0.88rem; text-align:center; }
+
+        /* ── Health AI Gallery ── */
+        .health-ai-section { max-width:900px; margin: 0 auto 64px; padding: 0 24px; }
+        .health-ai-section h2 {
+            font-size: 1.55rem; font-weight: 800; letter-spacing: -0.03em;
+            color: var(--slate-900); margin: 0 0 6px;
+        }
+        .health-ai-section .section-sub {
+            color: var(--slate-500); font-size: 0.92rem; margin: 0 0 32px; line-height:1.6;
+        }
+        .health-ai-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        @media (max-width:640px) { .health-ai-grid { grid-template-columns: 1fr; } }
+        .health-ai-card {
+            background: #fff;
+            border: 1.5px solid var(--slate-200);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: box-shadow 0.2s, border-color 0.2s;
+        }
+        .health-ai-card:hover {
+            border-color: #6ee7b7;
+            box-shadow: 0 8px 30px rgba(16,185,129,0.1);
+        }
+        .health-ai-card img {
+            width: 100%; display: block;
+            object-fit: cover; aspect-ratio: 16/9;
+        }
+        .health-ai-card-body { padding: 18px 20px 20px; }
+        .health-ai-card-label {
+            font-size: 0.67rem; font-weight: 800; letter-spacing: 0.12em;
+            text-transform: uppercase; color: #059669; margin: 0 0 5px;
+        }
+        .health-ai-card h3 {
+            font-size: 0.97rem; font-weight: 800; color: var(--slate-900);
+            margin: 0 0 6px; line-height: 1.35;
+        }
+        .health-ai-card p {
+            font-size: 0.85rem; color: var(--slate-600);
+            line-height: 1.65; margin: 0;
+        }
+
+        /* ── Context note box ── */
+        .context-note {
+            max-width:900px; margin: 0 auto 48px; padding: 0 24px;
+        }
+        .context-note-inner {
+            background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 14px;
+            padding: 28px 32px; font-size: 0.92rem; color: #14532d; line-height: 1.75;
+        }
+        .context-note-inner a { color: #15803d; font-weight: 700; }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="container nav-content">
+            <a class="logo" href="../index.html">✨ Angela Shen</a>
+            <div class="nav-links">
+                <a href="../index.html">Work</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="about.html">About</a>
+                <a href="../images/Angela-Shen-Resume-2026-Feb_Lab-Submission.pdf" class="nav-cta" target="_blank">Resume ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-hero">
+        <h1 style="font-size:2.4rem; font-weight:800;">Convai — Health AI Patient Simulations</h1>
+        <p style="color:var(--slate-600); max-width:760px; margin:12px auto;">Four AI-powered standardised patient characters built on the Convai platform for healthcare communication training. Each persona encodes a distinct clinical scenario, cultural context, and emotional register — letting trainees practice trauma-informed and culturally safe communication before encountering real patients.</p>
+        <div class="tag-row">
+            <div class="tag-pill">health</div>
+            <div class="tag-pill">AI</div>
+            <div class="tag-pill">modeling</div>
+            <div class="tag-pill">medical education</div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ── Context note ── -->
+        <div class="context-note">
+            <div class="context-note-inner">
+                This work is part of a broader Convai character study that also includes a historical education prototype — <a href="convai-anna-frank.html">Convai — Anne Frank ↗</a> — which explores how AI personas grounded in primary sources can make personal history emotionally vivid for learners.
+            </div>
+        </div>
+
+        <!-- ── Health AI Patient Simulations Grid ── -->
+        <section class="health-ai-section" aria-labelledby="health-ai-heading">
+            <h2 id="health-ai-heading">Patient Simulation Characters</h2>
+            <p class="section-sub">Each character was built using Convai's Core Description, Speaking Style, and Personality configuration. They are designed to reward empathetic, structured communication and surface the consequences of rushed or culturally unsafe approaches.</p>
+            <div class="health-ai-grid">
+
+                <div class="health-ai-card">
+                    <img src="../images/health-ai/Connor-Sutton-screenshoot-summary-ID-demo-2026-04-15 131509.png"
+                         alt="Convai character dashboard for Connor Sutton showing his core description and a 3D avatar in a hospital room">
+                    <div class="health-ai-card-body">
+                        <p class="health-ai-card-label">Emergency — Cardiac Presentation</p>
+                        <h3>Connor Sutton</h3>
+                        <p>23-year-old T'Sou-ke Nation Canadian Armed Forces Corporal presenting to Cowichan District Hospital ED with chest pain, nausea, speech difficulties, and disorientation while on personal leave. Simulates barriers Indigenous patients face in acute-care settings, including provider assumptions and communication gaps around military and cultural identity.</p>
+                    </div>
+                </div>
+
+                <div class="health-ai-card">
+                    <img src="../images/health-ai/Eleanor-Phillips-screenshoot-summary-ID-demo-2026-04-15 131509.png"
+                         alt="Convai character dashboard for Eleanor Phillips showing her core description and a 3D avatar of an elderly woman in a clinical setting">
+                    <div class="health-ai-card-body">
+                        <p class="health-ai-card-label">Medical Complexity — Cultural Safety</p>
+                        <h3>Eleanor Phillips</h3>
+                        <p>Elderly Indigenous Elder and residential school survivor, medevaced alone to an unfamiliar city hospital during COVID-19 protocols. Hard of hearing, with kidney and heart failure, and limited English under acute distress. Trains providers in culturally safe communication, trauma-awareness, and the compounded barriers faced by Indigenous Elders in the healthcare system.</p>
+                    </div>
+                </div>
+
+                <div class="health-ai-card">
+                    <img src="../images/health-ai/Jessica-Lee-young-SA-survivor-screenshoot-summary-ID-demo-2026-04-15 131509.png"
+                         alt="Convai character dashboard for Jessica Lee showing her core description and a 3D avatar of a young woman in a clinic lobby">
+                    <div class="health-ai-card-body">
+                        <p class="health-ai-card-label">Sexual Assault — Trauma-Informed Care</p>
+                        <h3>Jessica Lee</h3>
+                        <p>First-year university student and recent sexual assault survivor, at hospital for an STI test but uncertain whether to disclose her assault. Presents with low confidence and deflects through humour. Designed to train providers in trauma-informed disclosure conversations — building trust gradually rather than pressuring early disclosure.</p>
+                    </div>
+                </div>
+
+                <div class="health-ai-card">
+                    <img src="../images/health-ai/Maggie-Chen-BAD-News-Delievery-screenshoot-summary-ID-demo-2026-04-15 131509.png"
+                         alt="Convai character dashboard for Maggie Chen showing her core description and a 3D avatar of a person in a laboratory setting">
+                    <div class="health-ai-card-body">
+                        <p class="health-ai-card-label">Bad News Delivery — Neurological</p>
+                        <h3>Maggie Chen</h3>
+                        <p>44-year-old Chinese-Canadian project manager and sole family breadwinner, receiving brain MRI results after six weeks of unexplained visual disturbances. Polite and composed on the surface, she deflects anxiety with small jokes while suppressing fear. Trains providers in the SPIKES protocol for delivering serious diagnoses to high-performing, emotionally guarded patients.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── Maggie Chen: Bad-News Delivery Demo ── -->
+        <div class="media-wrap" style="margin-top:0;">
+            <div class="media-box">
+                <p style="font-size:0.68rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:#0e7490; margin:0 0 12px;">Clinical Training Demo — Bad News Delivery</p>
+                <h2 style="font-size:1.2rem; font-weight:800; letter-spacing:-0.02em; margin:0 0 8px;">Maggie Chen — Delivering Difficult Diagnoses (SPIKES Protocol)</h2>
+                <p style="font-size:0.9rem; color:var(--slate-500); margin:0 0 16px; line-height:1.6;">
+                    This demo is grounded in UBC's medical communication curriculum. UBC's Faculty of Medicine formally integrates bad-news delivery training using the <strong>SPIKES protocol</strong>, which is hosted and disseminated by <a href="https://ubccpd.ca/sites/default/files/documents/SPIKES_Protocol_for_Breaking_Bad_News.pdf" target="_blank" rel="noopener" style="color:inherit;">UBC Continuing Professional Development (ubccpd.ca)</a>. The British Columbia Medical Journal has confirmed SPIKES training is included in UBC's undergraduate medical curriculum. UBC's internal medicine residency program (115+ residents) supplements it with Academic Half Days and standardised patient (SP) role-play. This Convai character serves as an AI-powered SP for that final step.
+                </p>
+                <p style="font-size:0.9rem; color:var(--slate-500); margin:0 0 16px; line-height:1.6;">
+                    Maggie Chen — a 44-year-old Chinese-Canadian project manager and sole family breadwinner — is being told results of a brain MRI suggesting a small meningioma near her optic nerve. She deflects anxiety with polite humour; her fear surfaces only when the physician creates genuine safety. The student-doctor is evaluated against the six SPIKES steps: Setting, Perception, Invitation, Knowledge, Emotions, and Strategy/Summary.
+                </p>
+
+                <div style="background:#f0fdfa; border:1px solid #99f6e4; border-radius:8px; padding:14px 18px; margin:0 0 16px; font-size:0.85rem; color:#134e4a; line-height:1.6;">
+                    <strong>⚠ Technical note — current prototype limitations:</strong><br>
+                    The Convai platform does not yet animate facial expressions or body gestures for this character; the avatar holds a neutral, static pose. To compensate, the model has been prompted to <strong>verbalise physical and emotional cues</strong> that would normally be conveyed through expression — for example, announcing "You can see my hands are shaking" or "I feel a tightening in my chest." This verbal description approach maintains emotional realism without requiring avatar animation. Additionally, <strong>verbal response lag</strong> (latency between student input and character reply) is present throughout — however, the <strong>first ~3 minutes of interaction function at acceptable quality</strong>, making short structured exchanges workable for early-stage SPIKES training.
+                </div>
+
+                <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px;">
+                    <iframe src="https://www.youtube.com/embed/z8UJAOQ4fNk"
+                        title="Maggie Chen — Bad-News Delivery Demo"
+                        style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen loading="lazy"></iframe>
+                </div>
+                <p class="media-caption">Maggie Chen — bad-news delivery demo, Convai AI model, April 2026. <em>Note: avatar animated expression not yet active; verbal lag increases toward end of session; initial 3 minutes function at acceptable quality. Eye-blurring artefact visible in final segment due to rendering limitation.</em></p>
+            </div>
+        </div>
+
+        <!-- ── Connor Sutton: Emergency ED Demo ── -->
+        <div class="media-wrap" style="margin-top:0;">
+            <div class="media-box">
+                <p style="font-size:0.68rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:#b45309; margin:0 0 12px;">Clinical Training Demo — Emergency / Indigenous Patient Experience</p>
+                <h2 style="font-size:1.2rem; font-weight:800; letter-spacing:-0.02em; margin:0 0 8px;">Connor Sutton — Barriers in the Emergency Department</h2>
+                <p style="font-size:0.9rem; color:var(--slate-500); margin:0 0 16px; line-height:1.6;">
+                    Connor Sutton's case is directly rooted in the kind of incident documented in the <strong><em>In Plain Sight</em></strong> report (Turpel-Lafond, 2020) — BC's provincial review of Indigenous-specific racism in health care. The report included first-person accounts of Indigenous patients presenting to emergency departments with acute symptoms and being directed to homeless shelters or otherwise turned away rather than assessed and admitted for overnight observation. Sutton, a 23-year-old T'Sou-ke Nation Corporal presenting with chest pain, nausea, and speech difficulties, is a composite character trained to surface exactly this dynamic: a clinically serious presentation meets provider assumptions that override proper triage.
+                </p>
+                <p style="font-size:0.9rem; color:var(--slate-500); margin:0 0 16px; line-height:1.6;">
+                    In the simulation, trainees must recognise and counteract the implicit bias that led to Sutton being told — in the real cases the report documents — to seek a shelter rather than receive an ED bed for symptom monitoring overnight. The character is designed so that a dismissive or rushed interaction compounds his reluctance to advocate for himself, while a trauma-informed, culturally safe approach opens a fuller clinical picture.
+                </p>
+
+                <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:14px 18px; margin:0 0 16px; font-size:0.85rem; color:#78350f; line-height:1.6;">
+                    <strong>⚠ Technical note — short-response prototype:</strong><br>
+                    This recording captures early-stage testing where the character produces short, clipped responses. Verbal lag is present and the response depth is limited compared to longer free-form exchanges. The clip demonstrates the interaction loop and triage-scenario framing rather than a fully developed dialogue flow.
+                </div>
+
+                <video id="sutton-video" controls playsinline preload="metadata" width="100%" muted>
+                    <source src="../images/health-ai/Sutton-short-responses-emergency-屏幕录制 2026-04-15 142631.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="media-caption">Connor Sutton — emergency ED interaction demo, Convai AI model, April 2026. <em>Note: short-response prototype; verbal lag present; demonstrates triage-scenario framing.</em></p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer style="padding:48px 24px; text-align:center; color:var(--slate-500);">© Angela Shen — Portfolio</footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Auto-play Connor Sutton video on scroll
+        (function () {
+            const video = document.getElementById('sutton-video');
+            if (!video) return;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        video.play().catch(() => {});
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(video);
+        })();
+    </script>
+    <script src="nav.js"></script>
+</body>
+</html>

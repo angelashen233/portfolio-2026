@@ -132,6 +132,7 @@
                 <a href="pages/gallery.html">Gallery</a>
                 <a href="pages/about.html">About</a>
                 <a href="pages/convai-anna-frank.html">Convai</a>
+                <a href="pages/convai-health-ai.html">Health AI</a>
                 <a href="images/Angela-Shen-Resume-2026-Feb_Lab-Submission.pdf" class="nav-cta" target="_blank">Resume ↗</a>
             </div>
         </div>
@@ -164,6 +165,7 @@
                 <button class="work-filter-btn" data-filter="editorial">Editorial &amp; Content</button>
                 <button class="work-filter-btn" data-filter="brand">Brand Design</button>
                 <button class="work-filter-btn" data-filter="ui">UI Design</button>
+                <button class="work-filter-btn" data-filter="ai">AI &amp; Research</button>
             </div>
 
             <!-- Conversational prompt -->
@@ -176,10 +178,11 @@
                     <button class="work-opt-btn" data-opt="brand"><span class="opt-icon">✦</span> Brand Design</button>
                     <button class="work-opt-btn" data-opt="design"><span class="opt-icon">🎨</span> Graphic Design</button>
                     <button class="work-opt-btn" data-opt="marketing"><span class="opt-icon">📣</span> Marketing</button>
+                    <button class="work-opt-btn" data-opt="ai"><span class="opt-icon">🤖</span> AI &amp; Research</button>
                     <button class="work-opt-all active" data-opt="all">See all</button>
                 </div>
             </div>
-            <h2 class="section-title" style="margin-bottom: 0.5rem;">Case Studies</h2>
+            <h2 class="section-title" id="case-studies-heading" style="margin-bottom: 0.5rem;">Case Studies</h2>
             <!-- FEATURED -->
             <div class="featured-grid">
 
@@ -564,30 +567,63 @@
             <h3 class="work-section-label">AI &amp; Research</h3>
             <div class="project-grid">
 
-                <article class="card project-trigger" data-filter-cat="ux" data-extra-cats="ui"
+                <article class="card project-trigger" data-filter-cat="ai" data-extra-cats="ux"
                     data-title="Convai — Anna Frank"
-                    data-category="Health • AI • Research"
+                    data-category="History • AI • Education"
                     data-org="Independent Research"
                     data-year="2025–2026"
-                    data-desc="An exploration of conversational AI modeling through a Convai-powered interaction. Examining how AI can simulate historical personas for health education, research, and therapeutic modeling applications."
+                    data-desc="An AI-powered historical persona built on Convai — Anne Frank as an alternate-history character grounded in primary sources. Explores how conversational AI can make personal history emotionally vivid for learners."
                     data-link="pages/convai-anna-frank.html"
                     data-link-text="View Project ↗"
-                    data-img="images/convai-anna-frank-poster.png">
+                    data-img="images/anna-frank-call-screen-shot-2026-04-15 145122.png">
                     <a href="pages/convai-anna-frank.html" class="card-link-wrapper">
                         <div class="card-img-container">
-                            <div class="card-img" style="background-image: url('images/convai-anna-frank-poster.png'); background-color: #eef2ff; background-size: cover; background-position: center;"></div>
+                            <div class="card-img" style="background-image: url('images/anna-frank-call-screen-shot-2026-04-15 145122.png'); background-color: #eef2ff; background-size: cover; background-position: center;"></div>
                             <div class="card-overlay"><span class="overlay-text">View Project ↗</span></div>
                         </div>
                     </a>
                     <div class="card-body">
-                        <span class="tag orange">Health • AI • Research</span>
-                        <h3>Convai — Anna Frank</h3>
-                        <p>Conversational AI modeling for health education and research — a Convai-powered interaction showcase exploring therapeutic and historical persona simulation.</p>
+                        <span class="tag orange">History • AI • Education</span>
+                        <h3>Convai — Anne Frank</h3>
+                        <p>An alternate-history AI persona grounded in Anne Frank's primary sources — exploring how conversational AI can make personal history emotionally vivid for learners.</p>
                         <div style="margin-top:0.6rem; display:flex; gap:6px; flex-wrap:wrap;">
-                            <span style="background:#eff6ff; color:#1d4ed8; border-radius:99px; padding:3px 10px; font-size:0.72rem; font-weight:700;">health</span>
+                            <span style="background:#eff6ff; color:#1d4ed8; border-radius:99px; padding:3px 10px; font-size:0.72rem; font-weight:700;">history</span>
                             <span style="background:#f5f3ff; color:#6d28d9; border-radius:99px; padding:3px 10px; font-size:0.72rem; font-weight:700;">modeling</span>
                             <span style="background:#ecfdf5; color:#065f46; border-radius:99px; padding:3px 10px; font-size:0.72rem; font-weight:700;">AI</span>
-                            <span style="background:#fff7ed; color:#c2410c; border-radius:99px; padding:3px 10px; font-size:0.72rem; font-weight:700;">research</span>
+                            <span style="background:#fff7ed; color:#c2410c; border-radius:99px; padding:3px 10px; font-size:0.72rem; font-weight:700;">education</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card project-trigger" data-filter-cat="ai" data-extra-cats="ux"
+                    data-title="Convai — Health AI Patient Simulations"
+                    data-category="Health AI • Clinical Training"
+                    data-org="Independent Research"
+                    data-year="2025–2026"
+                    data-desc="Four AI-powered standardised patient characters for healthcare communication training — Connor Sutton (emergency/Indigenous barriers, In Plain Sight), Eleanor Phillips (cultural safety), Jessica Lee (trauma-informed care), and Maggie Chen (bad news delivery, SPIKES/UBC curriculum)."
+                    data-link="pages/convai-health-ai.html"
+                    data-link-text="View Project ↗"
+                    data-img="images/health-ai/Maggie-Chen-BAD-News-Delievery-screenshoot-summary-ID-demo-2026-04-15 131509.png">
+                    <a href="pages/convai-health-ai.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img" style="overflow:hidden; padding:0; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:0; background:#000;">
+                                <img src="images/health-ai/Connor-Sutton-screenshoot-summary-ID-demo-2026-04-15 131509.png" alt="Connor Sutton" style="width:100%; height:100%; object-fit:cover; display:block;">
+                                <img src="images/health-ai/Eleanor-Phillips-screenshoot-summary-ID-demo-2026-04-15 131509.png" alt="Eleanor Phillips" style="width:100%; height:100%; object-fit:cover; display:block;">
+                                <img src="images/health-ai/Jessica-Lee-young-SA-survivor-screenshoot-summary-ID-demo-2026-04-15 131509.png" alt="Jessica Lee" style="width:100%; height:100%; object-fit:cover; display:block;">
+                                <img src="images/health-ai/Maggie-Chen-BAD-News-Delievery-screenshoot-summary-ID-demo-2026-04-15 131509.png" alt="Maggie Chen" style="width:100%; height:100%; object-fit:cover; display:block;">
+                            </div>
+                            <div class="card-overlay"><span class="overlay-text">View Project ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Health AI • Clinical Training</span>
+                        <h3>Convai — Health AI Patient Simulations</h3>
+                        <p>Four AI standardised patient characters for healthcare communication training — SPIKES bad-news delivery, Indigenous patient barriers, trauma-informed care, and cultural safety.</p>
+                        <div style="margin-top:0.6rem; display:flex; gap:6px; flex-wrap:wrap;">
+                            <span style="background:#ecfdf5; color:#065f46; border-radius:99px; padding:3px 10px; font-size:0.72rem; font-weight:700;">health</span>
+                            <span style="background:#ecfdf5; color:#065f46; border-radius:99px; padding:3px 10px; font-size:0.72rem; font-weight:700;">AI</span>
+                            <span style="background:#f5f3ff; color:#6d28d9; border-radius:99px; padding:3px 10px; font-size:0.72rem; font-weight:700;">modeling</span>
+                            <span style="background:#eff6ff; color:#1d4ed8; border-radius:99px; padding:3px 10px; font-size:0.72rem; font-weight:700;">medical education</span>
                         </div>
                     </div>
                 </article>

@@ -103,49 +103,6 @@
         .references-list li span.ref-title { font-style:italic; }
         .references-list a { color:var(--slate-600); }
 
-        /* ── Health AI Gallery ── */
-        .health-ai-section { max-width:900px; margin: 0 auto 64px; padding: 0 24px; }
-        .health-ai-section h2 {
-            font-size: 1.55rem; font-weight: 800; letter-spacing: -0.03em;
-            color: var(--slate-900); margin: 0 0 6px;
-        }
-        .health-ai-section .section-sub {
-            color: var(--slate-500); font-size: 0.92rem; margin: 0 0 32px; line-height:1.6;
-        }
-        .health-ai-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-        @media (max-width:640px) { .health-ai-grid { grid-template-columns: 1fr; } }
-        .health-ai-card {
-            background: #fff;
-            border: 1.5px solid var(--slate-200);
-            border-radius: 14px;
-            overflow: hidden;
-            transition: box-shadow 0.2s, border-color 0.2s;
-        }
-        .health-ai-card:hover {
-            border-color: #6ee7b7;
-            box-shadow: 0 8px 30px rgba(16,185,129,0.1);
-        }
-        .health-ai-card img {
-            width: 100%; display: block;
-            object-fit: cover; aspect-ratio: 16/9;
-        }
-        .health-ai-card-body { padding: 18px 20px 20px; }
-        .health-ai-card-label {
-            font-size: 0.67rem; font-weight: 800; letter-spacing: 0.12em;
-            text-transform: uppercase; color: #059669; margin: 0 0 5px;
-        }
-        .health-ai-card h3 {
-            font-size: 0.97rem; font-weight: 800; color: var(--slate-900);
-            margin: 0 0 6px; line-height: 1.35;
-        }
-        .health-ai-card p {
-            font-size: 0.85rem; color: var(--slate-600);
-            line-height: 1.65; margin: 0;
-        }
     </style>
 </head>
 <body>
@@ -174,17 +131,6 @@
 
     <main>
 
-        <!-- ── Embedded video ── -->
-        <div class="media-wrap">
-            <div class="media-box">
-                <video id="convai-video" controls playsinline preload="metadata" width="100%" poster="../images/convai-anna-frank-poster.png">
-                    <source src="../images/Convai-Anna-Frank-political conversation debate_FULL 2026-03-24 131937.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p class="media-caption">Convai — Anna Frank: conversational AI historical interaction, recorded March 2026.</p>
-            </div>
-        </div>
-
         <!-- ── Passage Reading: Younger Audiences Demo ── -->
         <div class="media-wrap" style="margin-top:0;">
             <div class="media-box">
@@ -199,54 +145,15 @@
             </div>
         </div>
 
-        <!-- ── Health AI Patient Simulations ── -->
-        <section class="health-ai-section" aria-labelledby="health-ai-heading">
-            <h2 id="health-ai-heading">Health AI Patient Simulations</h2>
-            <p class="section-sub">These four Convai characters were designed as standardised patient models for healthcare communication training. Each persona encodes a distinct clinical scenario, cultural context, and emotional register — allowing trainees to practice trauma-informed and culturally safe communication before encountering real patients.</p>
-            <div class="health-ai-grid">
-
-                <div class="health-ai-card">
-                    <img src="../images/health-ai/Connor-Sutton-screenshoot-summary-ID-demo-2026-04-15 131509.png"
-                         alt="Convai character dashboard for Connor Sutton showing his core description and a 3D avatar in a hospital room">
-                    <div class="health-ai-card-body">
-                        <p class="health-ai-card-label">Emergency — Cardiac Presentation</p>
-                        <h3>Connor Sutton</h3>
-                        <p>23-year-old T'Sou-ke Nation Canadian Armed Forces Corporal presenting to Cowichan District Hospital ED with chest pain, nausea, speech difficulties, and disorientation while on personal leave. Simulates barriers Indigenous patients face in acute-care settings, including provider assumptions and communication gaps around military and cultural identity.</p>
-                    </div>
-                </div>
-
-                <div class="health-ai-card">
-                    <img src="../images/health-ai/Eleanor-Phillips-screenshoot-summary-ID-demo-2026-04-15 131509.png"
-                         alt="Convai character dashboard for Eleanor Phillips showing her core description and a 3D avatar of an elderly woman in a clinical setting">
-                    <div class="health-ai-card-body">
-                        <p class="health-ai-card-label">Medical Complexity — Cultural Safety</p>
-                        <h3>Eleanor Phillips</h3>
-                        <p>Elderly Indigenous Elder and residential school survivor, medevaced alone to an unfamiliar city hospital during COVID-19 protocols. Hard of hearing, with kidney and heart failure, and limited English under acute distress. Trains providers in culturally safe communication, trauma-awareness, and the compounded barriers faced by Indigenous Elders in the healthcare system.</p>
-                    </div>
-                </div>
-
-                <div class="health-ai-card">
-                    <img src="../images/health-ai/Jessica-Lee-young-SA-survivor-screenshoot-summary-ID-demo-2026-04-15 131509.png"
-                         alt="Convai character dashboard for Jessica Lee showing her core description and a 3D avatar of a young woman in a clinic lobby">
-                    <div class="health-ai-card-body">
-                        <p class="health-ai-card-label">Sexual Assault — Trauma-Informed Care</p>
-                        <h3>Jessica Lee</h3>
-                        <p>First-year university student and recent sexual assault survivor, at hospital for an STI test but uncertain whether to disclose her assault. Presents with low confidence and deflects through humour. Designed to train providers in trauma-informed disclosure conversations — building trust gradually rather than pressuring early disclosure.</p>
-                    </div>
-                </div>
-
-                <div class="health-ai-card">
-                    <img src="../images/health-ai/Maggie-Chen-BAD-News-Delievery-screenshoot-summary-ID-demo-2026-04-15 131509.png"
-                         alt="Convai character dashboard for Maggie Chen showing her core description and a 3D avatar of a person in a laboratory setting">
-                    <div class="health-ai-card-body">
-                        <p class="health-ai-card-label">Bad News Delivery — Neurological</p>
-                        <h3>Maggie Chen</h3>
-                        <p>44-year-old Chinese-Canadian project manager and sole family breadwinner, receiving brain MRI results after six weeks of unexplained visual disturbances. Polite and composed on the surface, she deflects anxiety with small jokes while suppressing fear. Trains providers in the SPIKES protocol for delivering serious diagnoses to high-performing, emotionally guarded patients.</p>
-                    </div>
-                </div>
-
+        <!-- ── Crosslink to Health AI Simulations ── -->
+        <div class="media-wrap" style="margin-top:0; margin-bottom:48px;">
+            <div class="media-box" style="background:#f0fdf4; border-color:#bbf7d0;">
+                <p style="font-size:0.68rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:#059669; margin:0 0 8px;">Related Project</p>
+                <h2 style="font-size:1.1rem; font-weight:800; letter-spacing:-0.02em; margin:0 0 8px; color:#14532d;">Convai — Health AI Patient Simulations</h2>
+                <p style="font-size:0.9rem; color:#166534; margin:0 0 16px; line-height:1.6;">This research also produced four AI-powered standardised patient characters for healthcare communication training — covering bad-news delivery (SPIKES protocol), Indigenous patient barriers inspired by BC's <em>In Plain Sight</em> report, trauma-informed sexual assault disclosure, and culturally safe elder care. The characters and demo recordings live on a dedicated page to keep the topic separate from the historical education work here.</p>
+                <a href="convai-health-ai.html" style="display:inline-block; background:#059669; color:#fff; padding:10px 20px; border-radius:8px; font-weight:700; font-size:0.88rem; text-decoration:none;">View Health AI Patient Simulations ↗</a>
             </div>
-        </section>
+        </div>
 
         <!-- ── Research & References ── -->
         <section class="research-section" aria-labelledby="research-heading">
@@ -371,9 +278,7 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        video.play().catch(() => {
-                            // Autoplay blocked (e.g. unmuted); gracefully ignore
-                        });
+                        video.play().catch(() => {});
                     } else {
                         video.pause();
                     }
@@ -381,6 +286,8 @@
             }, { threshold: 0.5 });
             observer.observe(video);
         })();
+
+
     </script>
     <script src="nav.js"></script>
 </body>

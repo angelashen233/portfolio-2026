@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const trigger = document.getElementById('trigger-area');
     const butterfly = document.getElementById('butterfly-art');
-    const workSection = document.getElementById('work');
+    const workSection = document.getElementById('case-studies-heading') || document.getElementById('work');
 
     if (!trigger || !butterfly) return;
 
