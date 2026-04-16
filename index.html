@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/Profile_Discord.webp" type="image/webp">
+    <title>Angela Shen | Portfolio 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .featured-grid .card-img-container {
+            height: 340px;
+        }
+        .featured-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            background: #fef3c7;
+            color: #b45309;
+            border-radius: 99px;
+            padding: 3px 10px;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+        @media (max-width: 768px) {
+            .featured-grid { grid-template-columns: 1fr; }
+        }
+        .work-section-label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--slate-600);
+            margin: 56px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--slate-200);
+        }
+        .work-section-label:first-of-type { margin-top: 0; }
+        /* ── Work prompt ── */
+        .work-prompt {
+            margin: 0 0 48px;
+            text-align: center;
+        }
+        .work-prompt-options {
+            justify-content: center;
+        }
+        .work-prompt-q {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--slate-800);
+            letter-spacing: -0.02em;
+            margin: 0 0 6px;
+        }
+        .work-prompt-sub {
+            font-size: 0.9rem;
+            color: var(--slate-500);
+            margin: 0 0 20px;
+            font-weight: 500;
+        }
+        .work-prompt-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+        .work-opt-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: #fff;
+            color: var(--slate-700);
+            border: 2px solid var(--slate-200);
+            border-radius: 99px;
+            padding: 10px 22px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            letter-spacing: 0.01em;
+        }
+        .work-opt-btn .opt-icon {
+            font-size: 1rem;
+            line-height: 1;
+        }
+        .work-opt-btn:hover {
+            border-color: #da6e30;
+            color: #da6e30;
+            background: #fff7ed;
+        }
+        .work-opt-btn.active {
+            background: #da6e30;
+            border-color: #da6e30;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(218,110,48,0.25);
+        }
+        .work-opt-all {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--slate-400);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px 8px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s;
+        }
+        .work-opt-all:hover { color: var(--slate-700); }
+        .work-opt-all.active { color: var(--slate-700); font-weight: 800; }
+
+        /* hidden legacy bar — keep for JS compat */
+        .work-filter-bar { display: none; }
+
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <div class="container nav-content">
+            <a class="logo" href="index.html">✨ Angela Shen</a>
+            <div class="nav-links">
+                <a href="index.html" class="active">Work</a>
+                <a href="pages/gallery.html">Gallery</a>
+                <a href="pages/about.html">About</a>
+                <a href="pages/convai-anna-frank.html">Convai</a>
+                <a href="pages/convai-health-ai.html">Health AI</a>
+                <a href="images/Angela-Shen-Resume-2026-Feb_Lab-Submission.pdf" class="nav-cta" target="_blank">Resume ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <span class="status-badge">✦ SFU CMNS & IAT · Incoming IAT Masters Student, SFU, Fall 2026</span>
+            <h1 class="portfolio-title">
+                <span class="designer-title">Designer &
+                    <span id="trigger-area">
+                        <span class="gradient-text">Communicator</span>
+                    </span>
+                </span>
+            </h1>
+            <p class="hero-text">Designing accessible, empathy-driven interfaces for users who depend on clarity, from mental health tools to social services software. Graduating Spring 2026.<img src="images/butterfly.svg" id="butterfly-art" class="butterfly-rest" alt="Fritillary Butterfly" width="45"></p>
+        </div>
+        <div class="scroll-hint" aria-hidden="true"><span></span><span></span></div>
+    </header>
+
+    <main class="container">
+        <section id="work">
+
+            <!-- hidden legacy bar for JS -->
+            <div class="work-filter-bar" id="work-filter-bar" aria-hidden="true">
+                <button class="work-filter-btn active" data-filter="all">All</button>
+                <button class="work-filter-btn" data-filter="ux">UX &amp; Product Design</button>
+                <button class="work-filter-btn" data-filter="marketing">Digital Marketing</button>
+                <button class="work-filter-btn" data-filter="design">Graphic Design</button>
+                <button class="work-filter-btn" data-filter="editorial">Editorial &amp; Content</button>
+                <button class="work-filter-btn" data-filter="brand">Brand Design</button>
+                <button class="work-filter-btn" data-filter="ui">UI Design</button>
+                <button class="work-filter-btn" data-filter="ai">AI &amp; Research</button>
+                <button class="work-filter-btn" data-filter="visual-storytelling">Visual Storytelling</button>
+                <button class="work-filter-btn" data-filter="character-design">Character Design</button>
+            </div>
+
+            <!-- Conversational prompt -->
+            <div class="work-prompt" id="work-prompt">
+                
+                <p class="work-prompt-q">What do you need support with?</p>
+                <div class="work-prompt-options">
+                    <button class="work-opt-btn" data-opt="ux"><span class="opt-icon">🔍</span> UX Research &amp; Design</button>
+                    <button class="work-opt-btn" data-opt="ui"><span class="opt-icon">📱</span> UI Design</button>
+                    <button class="work-opt-btn" data-opt="brand"><span class="opt-icon">✦</span> Brand Design</button>
+                    <button class="work-opt-btn" data-opt="design"><span class="opt-icon">🎨</span> Graphic Design</button>
+                    <button class="work-opt-btn" data-opt="marketing"><span class="opt-icon">📣</span> Marketing</button>
+                    <button class="work-opt-btn" data-opt="ai"><span class="opt-icon">🤖</span> AI &amp; Research</button>
+                    <button class="work-opt-btn" data-opt="visual-storytelling"><span class="opt-icon">🎭</span> Visual Storytelling</button>
+                    <button class="work-opt-btn" data-opt="character-design"><span class="opt-icon">✏️</span> Character Design</button>
+                    <button class="work-opt-all active" data-opt="all">See all</button>
+                </div>
+            </div>
+            <h2 class="section-title" id="case-studies-heading" style="margin-bottom: 0.5rem;">Case Studies</h2>
+            <!-- FEATURED -->
+            <div class="featured-grid">
+
+                <article class="card project-trigger" data-filter-cat="ux" data-extra-cats="ui"
+                    data-title="Bring Your Own Cup"
+                    data-category="UX / UI • Graphic Design"
+                    data-org="SFU Course Project"
+                    data-year="2022"
+                    data-desc="A sustainability app that turned reusable cup habits into a reward, keeping 397 single-use cups out of landfill, 100+ Play Store downloads, and 75 trees planted through the rewards program."
+                    data-link="pages/byo.html"
+                    data-link-text="Full Case Study ↗"
+                    data-img="images/byo_Mobile-interface-image.png">
+                    <a href="pages/byo.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('images/byo_Mobile-interface-image.png'); background-size: cover; background-position: center top;"></div>
+                            <div class="card-overlay">
+                                <span class="overlay-text">Full Process ↗</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="featured-badge">Featured</span><span class="tag orange">UX / UI • Graphic Design</span>
+                        <h3>Bring Your Own Cup</h3>
+                        <p>A sustainability app that turned reusable cup habits into a reward, keeping 397 single-use cups out of landfill.</p>
+                    </div>
+                </article>
+
+                <article class="card project-trigger" data-filter-cat="ux" data-extra-cats="ui"
+                    data-title="afterhours: resources chat"
+                    data-category="MedTech • Trauma-Informed UX"
+                    data-org="SFU Hackathon"
+                    data-year="2025"
+                    data-desc="Trauma-informed crisis care tool for assault survivors, with AI-guided triage, offline-first emergency access, and a UI designed to reduce cognitive load under extreme stress. Built in React in a 36-hour hackathon sprint."
+                    data-link="pages/afterhours-support.html"
+                    data-link-text="Full Case Study ↗"
+                    data-img="images/afterhours/AI-afterhour-agent-UI-design-drafts.png">
+                    <a href="pages/afterhours-support.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('images/afterhours/AI-afterhour-agent-UI-design-drafts.png'); background-size: cover; background-position: center;"></div>
+                            <div class="card-overlay">
+                                <span class="overlay-text">Full Process ↗</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="featured-badge">Featured</span><span class="tag orange">MedTech • Trauma-Informed UX</span>
+                        <h3>afterhours: resources chat</h3>
+                        <p>Trauma-informed crisis care tool for assault survivors, with AI-guided triage, offline-first emergency access, and a UI designed to reduce cognitive load under extreme stress.</p>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- ── UX & PRODUCT DESIGN ── -->
+            <h3 class="work-section-label">UX &amp; Product Design</h3>
+            <div class="project-grid">
+
+                <article class="card project-trigger" data-filter-cat="ux"
+                    data-title="VACFSS UX Research"
+                    data-category="UX Research • Accessibility"
+                    data-org="VACFSS"
+                    data-year="2024–2026"
+                    data-desc="UX research and redesign that produced a 50% increase in caregiver information inquiries on the same ad budget, through navigation testing, staff interviews, content restructuring, and a shift from stock to on-site photography."
+                    data-link="pages/vacfss_ux.html"
+                    data-link-text="Full Case Study ↗"
+                    data-img="images/VACFSS-old-caregiver-site.png">
+                    <a href="pages/vacfss_ux.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('images/VACFSS-old-caregiver-site.png'); background-size: cover; background-position: center top;"></div>
+                            <div class="card-overlay"><span class="overlay-text">Full Case Study ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">UX Research • Accessibility</span>
+                        <h3>VACFSS UX Research</h3>
+                        <p>Accessibility-led UX research for a social services organization, improving digital workflows for non-technical users navigating sensitive, high-stakes service interactions.</p>
+                    </div>
+                </article>
+
+                <article class="card project-trigger" data-filter-cat="ux" data-extra-cats="ui"
+                    data-title="Angela Shen Portfolio Website - Design system"
+                    data-category="UX Research • Accessibility"
+                    data-org="VACFSS"
+                    data-year="2024–2026"
+                    data-desc="UX research and redesign that produced a 50% increase in caregiver information inquiries on the same ad budget, through navigation testing, staff interviews, content restructuring, and a shift from stock to on-site photography."
+                    data-link="pages/design-system.html"
+                    data-link-text="Full Case Study ↗"
+                    data-img="images/Angela-portfolio-screenshot.png">
+                    <a href="pages\design-system.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('images/Angela-portfolio-screenshot.png'); background-size: cover; background-position: center top;"></div>
+                            <div class="card-overlay"><span class="overlay-text">Full Case Study ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">UX Research • Accessibility</span>
+                        <h3>Angela Shen Portfolio Website - Design system</h3>
+                        <p>Accessibility-led UX research for a social services organization, improving digital workflows for non-technical users navigating sensitive, high-stakes service interactions.</p>
+                    </div>
+                </article>
+
+
+                <article class="card project-trigger" data-filter-cat="ux" data-extra-cats="ui"
+                    data-title="Palanner"
+                    data-category="Cognitive Accessibility • UX Design"
+                    data-org="SFU Course Project"
+                    data-year="2024"
+                    data-desc="Accessibility-first mobile UX built around cognitive load reduction. Tiered task architecture and single-purpose screens designed so that neurodiverse users (and anyone under pressure) never feel lost."
+                    data-link="pages/Palanner.html"
+                    data-link-text="Full Case Study ↗"
+                    data-img="images/Palanner_To_dos_page.png">
+                    <a href="pages/Palanner.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('images/Palanner_To_dos_page.png'); background-size: cover; background-position: center top; background-color: #f5ede8;"></div>
+                            <div class="card-overlay"><span class="overlay-text">Full Process ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Cognitive Accessibility • UX Design</span>
+                        <h3>Palanner</h3>
+                        <p>Accessibility-first mobile UX built around cognitive load reduction. Tiered task architecture and single-purpose screens designed so that neurodiverse users (and anyone under pressure) never feel lost.</p>
+                    </div>
+                </article>
+
+                <article class="card project-trigger" data-filter-cat="ux" data-extra-cats="ui"
+                    data-title="BluRead"
+                    data-category="Mental Wellness • Privacy-First UX"
+                    data-org="SFU Hackathon"
+                    data-year="2024"
+                    data-desc="🏆 cmd-f 2026 Winner. A mental wellness tool giving users granular, privacy-first control over their digital environment, with all preferences stored locally and zero data sent to any server. AI-assisted keyword suggestion without compromising browsing data."
+                    data-link="pages/bluread.html"
+                    data-link-text="Full Case Study ↗"
+                    data-img="images/Bluread_ux_test_3.png">
+                    <a href="pages/bluread.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('images/Bluread_ux_test_3.png'); background-size: cover; background-position: center right;"></div>
+                            <div class="card-overlay"><span class="overlay-text">Full Process ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Mental Wellness • Privacy-First UX</span>
+                        <h3>BluRead</h3>
+                        <p>A mental wellness tool giving users granular, privacy-first control over their digital environment, with all preferences stored locally and zero data sent to any server.</p>
+                    </div>
+                </article>
+
+                <article class="card project-trigger" data-filter-cat="visual-storytelling" data-extra-cats="character-design design"
+                    data-title="Meddlesome Company"
+                    data-category="Narrative Design • 2D Puzzle Adventure"
+                    data-org="SFU IAT 313"
+                    data-year="2024"
+                    data-desc="A side-scrolling puzzle adventure where two corporate spies unknowingly work the same mission. I designed the UX and visual assets, translating a multi-perspective script into a playable experience."
+                    data-link="pages/2024_middlesome.html"
+                    data-link-text="Full Case Study ↗"
+                    data-img="images/Middlesome-company-main-digital-art.jpg">
+                    <a href="pages/2024_middlesome.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('images/Middlesome-company-main-digital-art.jpg'); background-size: cover; background-position: center;"></div>
+                            <div class="card-overlay"><span class="overlay-text">Full Process ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Visual Storytelling • Character Design</span>
+                        <h3>Meddlesome Company</h3>
+                        <p>Level design and visual assets for a 2D corporate espionage puzzle game.</p>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- ── DIGITAL MARKETING & CAMPAIGNS ── -->
+            <h3 class="work-section-label">Digital Marketing &amp; Campaigns</h3>
+            <div class="project-grid">
+
+                <article class="card project-trigger" data-filter-cat="marketing"
+                    data-title="VACFSS Recruitment Campaign"
+                    data-category="Paid Media • Meta & Google Ads"
+                    data-org="VACFSS"
+                    data-year="2023–2025"
+                    data-desc="4M+ results on a $15K budget, beating the $0.80 industry CPC with campaigns as low as $0.21 per click across Meta and Google."
+                    data-link="pages/vacfss-marketing.html"
+                    data-link-text="Full Case Study ↗"
+                    data-img="images/Jan-2025  to Dec 31 - VACFSS-ADS.jpg">
+                    <a href="pages/vacfss-marketing.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('images/Jan-2025  to Dec 31 - VACFSS-ADS.jpg'); background-size: cover; background-position: center top;"></div>
+                            <div class="card-overlay"><span class="overlay-text">Full Case Study ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Paid Media • Meta & Google Ads</span>
+                        <h3>VACFSS Recruitment Campaign</h3>
+                        <p>4M+ results on a $15K budget, beating the $0.80 industry CPC with campaigns as low as $0.21 per click.</p>
+                    </div>
+                </article>
+
+                <article class="card project-trigger" data-filter-cat="marketing"
+                    data-title="CPRS Vancouver, Board of Directors"
+                    data-category="Leadership • Publication Design • Video"
+                    data-org="CPRS Vancouver"
+                    data-year="2024–2026"
+                    data-desc="Board member overseeing the volunteer portfolio. I recruited 6 volunteers for events in 2026, designed the annual report for two consecutive years, and produced all chapter event videos for the CPRS Vancouver Instagram."
+                    data-img="images/CPRS-Vancouver-Women's day.png">
+                    <div class="card-img-container">
+                        <div class="card-img" style="background-image: url('images/CPRS-Vancouver-Women\'s day.png'); background-size: cover; background-position: center;"></div>
+                        <div class="card-overlay"><span class="overlay-text">Click to learn more</span></div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag orange">Leadership • Publication Design • Video</span>
+                        <h3>CPRS Vancouver, Board of Directors</h3>
+                        <p>Board member overseeing the volunteer portfolio. I recruited 6 volunteers for events in 2026, designed the annual report for two consecutive years, and produced all chapter event videos for the CPRS Vancouver Instagram.</p>
+                        <a href="images/CPRS-AGM-Report-2024-25_FINAL_Tobeposted.pdf" target="_blank" onclick="event.stopPropagation()" style="font-size: 0.8rem; font-weight: 600; color: var(--accent); text-decoration: none; margin-top: 0.5rem; display: inline-block;">View Annual Report ↗</a>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- ── GRAPHIC DESIGN & BRANDING ── -->
+            <h3 class="work-section-label">Graphic Design &amp; Branding</h3>
+            <div class="project-grid">
+
+                <article class="card project-trigger" data-filter-cat="design" data-extra-cats="brand"
+                    data-title="Philosophy Student Union: Visual Identity"
+                    data-category="Branding"
+                    data-org="SFU Philosophy Student Union"
+                    data-year="2025"
+                    data-desc="Full visual identity system designed for the SFU Philosophy Student Union, balancing academic tradition with modern student culture across logo, typography, and merchandise applications. Still in active use across banners, Instagram, and event booths."
+                    data-link="pages/philosophy-brand.html"
+                    data-link-text="Full Case Study ↗"
+                    data-img="images/Philosophy_Student_Union_logo_Guide_Main_1.webp">
+                    <a href="pages/philosophy-brand.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img philos-img"></div>
+                            <div class="card-overlay"><span class="overlay-text">Full Case Study ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Branding</span>
+                        <h3>Philosophy Student Union: Visual Identity</h3>
+                        <p>Identity system for SFU student life: logo, type, and merchandise guidelines. Still in active use across banners, Instagram, and events.</p>
+                    </div>
+                </article>
+
+                <article class="card project-trigger" data-filter-cat="design" data-extra-cats="brand"
+                    data-title="VACFSS Annual Reports"
+                    data-category="Publication Design"
+                    data-org="VACFSS"
+                    data-year="2023–2024"
+                    data-desc="Collaborative publication design making complex organizational data accessible and culturally grounded for Indigenous community stakeholders and funders."
+                    data-link="https://www.vacfss.com/annual-reports-publications/2023-annual-report/?sp=2023%20annual%20report"
+                    data-link-text="View 2023 Report ↗"
+                    data-img="images/2023-Annual-report-cover.jpg">
+                    <a href="https://www.vacfss.com/annual-reports-publications/2023-annual-report/?sp=2023%20annual%20report" class="card-link-wrapper" target="_blank">
+                        <div class="card-img-container">
+                            <div class="card-img annual-img"></div>
+                            <div class="card-overlay"><span class="overlay-text">View Report ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Publication Design</span>
+                        <h3>VACFSS Annual Reports</h3>
+                        <p>Design for community transparency and accountability.</p>
+                        <a href="images/2023-Annual-Report-FINAL_Back-page37.pdf" target="_blank" onclick="event.stopPropagation()" style="font-size: 0.8rem; font-weight: 600; color: var(--accent); text-decoration: none; margin-top: 0.5rem; display: inline-block;">Download PDF ↗</a>
+                    </div>
+                </article>
+
+                <article class="card project-trigger" data-filter-cat="design" data-extra-cats="brand"
+                    data-title="Winter Solstice Card 2022"
+                    data-category="Graphic Design"
+                    data-org="VACFSS"
+                    data-year="2022"
+                    data-desc="Coast Salish-inspired illustration navigating cultural research, corporate review, and print production for 500+ recipients."
+                    data-link="pages/2022_Wintersolstice.html"
+                    data-link-text="Full Process ↗"
+                    data-img="images/ws-2022/WinterSolsticeCard_2022_FINAL_DESIGN_Both-Front-smaller.webp">
+                    <a href="pages/2022_Wintersolstice.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img vacfss-img"></div>
+                            <div class="card-overlay"><span class="overlay-text">Full Process ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Graphic Design</span>
+                        <h3>Winter Solstice Card 2022</h3>
+                        <p>Coast Salish-inspired illustration navigating cultural research, corporate review, and print production for 500+ recipients.</p>
+                    </div>
+                </article>
+
+                <article class="card project-trigger" data-filter-cat="design" data-extra-cats="brand"
+                    data-title="Winter Solstice Card 2023"
+                    data-category="Graphic Design"
+                    data-org="VACFSS"
+                    data-year="2023"
+                    data-desc="A continuation of the Solstice series for 2023, deepening the visual identity with warm Coast Salish narratives and expanding distribution to new community partners."
+                    data-img="images/WinterSolsticeCard_2023_COVER_FINAL-02_With_Intials_YRS_FRONT.webp">
+                    <div class="card-img-container">
+                        <div class="card-img vacfss23-img"></div>
+                        <div class="card-overlay"><span class="overlay-text">Click to learn more</span></div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag orange">Graphic Design</span>
+                        <h3>Winter Solstice Card 2023</h3>
+                        <p>Expanding the visual identity for community outreach.</p>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- ── EDITORIAL, VIDEO & CONTENT ── -->
+            <h3 class="work-section-label">Editorial, Video &amp; Content</h3>
+            <div class="project-grid">
+
+                <article class="card project-trigger" data-filter-cat="editorial"
+                    data-title="Cedar Headband Making Workshop"
+                    data-category="Video Production • Cultural Content"
+                    data-org="VACFSS"
+                    data-year="2024"
+                    data-desc="Short video produced for VACFSS documenting the annual cedar headband making workshop, filmed, edited, and published as part of the communications role."
+                    data-link="https://www.vacfss.com/news/annual-ceder-headband-making-workshop/"
+                    data-link-text="View Article ↗"
+                    data-img="https://img.youtube.com/vi/q1W6Q3zj5D4/maxresdefault.jpg">
+                    <a href="https://www.vacfss.com/news/annual-ceder-headband-making-workshop/" class="card-link-wrapper" target="_blank">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('https://img.youtube.com/vi/q1W6Q3zj5D4/maxresdefault.jpg'); background-size: cover; background-position: center;"></div>
+                            <div class="card-overlay"><span class="overlay-text">View Article ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Video Production • Cultural Content</span>
+                        <h3>Cedar Headband Making Workshop</h3>
+                        <p>Short video produced for VACFSS documenting the annual cedar headband making workshop, filmed, edited, and published as part of the communications role.</p>
+                    </div>
+                </article>
+
+                <article class="card project-trigger" data-filter-cat="editorial"
+                    data-title="28th Anniversary of Elder April Bennett"
+                    data-category="Editorial • Interview"
+                    data-org="VACFSS"
+                    data-year="2024"
+                    data-desc="Staff spotlight interview with Elder April Bennett, honouring 28 years of restorative practice and community leadership at VACFSS."
+                    data-link="https://www.vacfss.com/restorative-practice/28th-anniversary-of-april-bennett-staff-spotlight/"
+                    data-link-text="Read the Interview ↗"
+                    data-img="images/MicrosoftTeams-image (39).png">
+                    <a href="https://www.vacfss.com/restorative-practice/28th-anniversary-of-april-bennett-staff-spotlight/" class="card-link-wrapper" target="_blank">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('images/MicrosoftTeams-image (39).png'); background-size: cover; background-position: center;"></div>
+                            <div class="card-overlay"><span class="overlay-text">Read Article ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Editorial • Interview</span>
+                        <h3>28th Anniversary of Elder April Bennett</h3>
+                        <p>Staff spotlight interview with Elder April Bennett, honouring 28 years of restorative practice and community leadership at VACFSS.</p>
+                    </div>
+                </article>
+
+                <article class="card project-trigger" data-filter-cat="editorial"
+                    data-title="Honouring the Journey of Our Youth"
+                    data-category="Editorial • Content Writing"
+                    data-org="VACFSS"
+                    data-year="2024"
+                    data-desc="Published article covering VACFSS's annual youth transition ceremony, written and photographed on-site as Communications and PR Assistant."
+                    data-link="pages/honouring-youth.html"
+                    data-link-text="Full Case Study ↗"
+                    data-img="images/honouring-youth/IMG00416-scaled.jpg">
+                    <a href="pages/honouring-youth.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('images/honouring-youth/IMG00416-scaled.jpg'); background-size: cover; background-position: center top;"></div>
+                            <div class="card-overlay"><span class="overlay-text">Read Article ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Editorial • Content Writing</span>
+                        <h3>Honouring the Journey of Our Youth</h3>
+                        <p>Published article for VACFSS covering the annual youth transition ceremony, written and photographed on-site as part of the communications role.</p>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- ── AI & RESEARCH ── -->
+            <h3 class="work-section-label">AI &amp; Research</h3>
+            <div class="project-grid">
+
+                <article class="card project-trigger" data-filter-cat="ai" data-extra-cats="ux"
+                    data-title="Convai — Anna Frank"
+                    data-category="History • AI • Education"
+                    data-org="Independent Research"
+                    data-year="2025–2026"
+                    data-desc="An AI-powered historical persona built on Convai — Anne Frank as an alternate-history character grounded in primary sources. Explores how conversational AI can make personal history emotionally vivid for learners."
+                    data-link="pages/convai-anna-frank.html"
+                    data-link-text="View Project ↗"
+                    data-img="images/anna-frank-call-screen-shot-2026-04-15 145122.png">
+                    <a href="pages/convai-anna-frank.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img" style="background-image: url('images/anna-frank-call-screen-shot-2026-04-15 145122.png'); background-color: #eef2ff; background-size: cover; background-position: center;"></div>
+                            <div class="card-overlay"><span class="overlay-text">View Project ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">History • AI • Education</span>
+                        <h3>Convai — Anne Frank</h3>
+                        <p>An alternate-history AI persona grounded in Anne Frank's primary sources — exploring how conversational AI can make personal history emotionally vivid for learners.</p>
+                        <div style="margin-top:0.6rem; display:flex; gap:6px; flex-wrap:wrap;">
+                            <span style="background:#eff6ff; color:#1d4ed8; border-radius:99px; padding:3px 10px; font-size:0.72rem; font-weight:700;">history</span>
+                            <span style="background:#f5f3ff; color:#6d28d9; border-radius:99px; padding:3px 10px; font-size:0.72rem; font-weight:700;">modeling</span>
+                            <span style="background:#ecfdf5; color:#065f46; border-radius:99px; padding:3px 10px; font-size:0.72rem; font-weight:700;">AI</span>
+                            <span style="background:#fff7ed; color:#c2410c; border-radius:99px; padding:3px 10px; font-size:0.72rem; font-weight:700;">education</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card project-trigger" data-filter-cat="ai" data-extra-cats="ux"
+                    data-title="Convai — Health AI Patient Simulations"
+                    data-category="Health AI • Clinical Training"
+                    data-org="Independent Research"
+                    data-year="2025–2026"
+                    data-desc="Four AI-powered standardised patient characters for healthcare communication training — Connor Sutton (emergency/Indigenous barriers, In Plain Sight), Eleanor Phillips (cultural safety), Jessica Lee (trauma-informed care), and Maggie Chen (bad news delivery, SPIKES/UBC curriculum)."
+                    data-link="pages/convai-health-ai.html"
+                    data-link-text="View Project ↗"
+                    data-img="images/health-ai/Maggie-Chen-BAD-News-Delievery-screenshoot-summary-ID-demo-2026-04-15 131509.png">
+                    <a href="pages/convai-health-ai.html" class="card-link-wrapper">
+                        <div class="card-img-container">
+                            <div class="card-img" style="overflow:hidden; padding:0; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:0; background:#000;">
+                                <img src="images/health-ai/Connor-Sutton-screenshoot-summary-ID-demo-2026-04-15 131509.png" alt="Connor Sutton" style="width:100%; height:100%; object-fit:cover; display:block;">
+                                <img src="images/health-ai/Eleanor-Phillips-screenshoot-summary-ID-demo-2026-04-15 131509.png" alt="Eleanor Phillips" style="width:100%; height:100%; object-fit:cover; display:block;">
+                                <img src="images/health-ai/Jessica-Lee-young-SA-survivor-screenshoot-summary-ID-demo-2026-04-15 131509.png" alt="Jessica Lee" style="width:100%; height:100%; object-fit:cover; display:block;">
+                                <img src="images/health-ai/Maggie-Chen-BAD-News-Delievery-screenshoot-summary-ID-demo-2026-04-15 131509.png" alt="Maggie Chen" style="width:100%; height:100%; object-fit:cover; display:block;">
+                            </div>
+                            <div class="card-overlay"><span class="overlay-text">View Project ↗</span></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        <span class="tag orange">Health AI • Clinical Training</span>
+                        <h3>Convai — Health AI Patient Simulations</h3>
+                        <p>Four AI standardised patient characters for healthcare communication training — SPIKES bad-news delivery, Indigenous patient barriers, trauma-informed care, and cultural safety.</p>
+                        <div style="margin-top:0.6rem; display:flex; gap:6px; flex-wrap:wrap;">
+                            <span style="background:#ecfdf5; color:#065f46; border-radius:99px; padding:3px 10px; font-size:0.72rem; font-weight:700;">health</span>
+                            <span style="background:#ecfdf5; color:#065f46; border-radius:99px; padding:3px 10px; font-size:0.72rem; font-weight:700;">AI</span>
+                            <span style="background:#f5f3ff; color:#6d28d9; border-radius:99px; padding:3px 10px; font-size:0.72rem; font-weight:700;">modeling</span>
+                            <span style="background:#eff6ff; color:#1d4ed8; border-radius:99px; padding:3px 10px; font-size:0.72rem; font-weight:700;">medical education</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+        </section>
+
+        <section id="Getintouch">
+            <h2 class="section-title">Let's work together</h2>
+            <p style="color:var(--slate-600); max-width:520px; margin-bottom:1.5rem;">Open to UX, communications, and design roles, graduating Spring 2026.</p>
+            <a href="mailto:angelashen.ca@gmail.com" class="btn-primary">Get in Touch</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <span class="footer-name">Angela Shen</span>
+                <span class="footer-copy">Joint Major: CMNS &amp; IAT @ SFU &nbsp;&middot;&nbsp; Graduating Spring 2026 &nbsp;&middot;&nbsp; *Incoming IAT Masters Student, SFU, Fall 2026</span>
+                <span class="footer-copy">&copy; 2026 Angela Shen. All photography, illustrations, and design work are the original work of Angela Shen. All rights reserved.</span>
+            </div>
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="index.html">Work</a>
+                <a href="pages/gallery.html">Gallery</a>
+                <a href="mailto:angelashen.ca@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/angelashenca/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/angelashen233" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.instagram.com/lollypuddn/" target="_blank" rel="noopener">Instagram ↗</a>
+            </nav>
+        </div>
+    </footer>
+
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header-img" id="modal-hero"></div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span id="modal-cat" class="status-badge"></span>
+                    <span class="status-badge" style="background:#fff7ed; color:#f97316;">Featured</span>
+                </div>
+                <h2 id="modal-title"></h2>
+                <div class="modal-sub-info">
+                    <span>🏢 <span id="modal-org"></span></span>
+                    <span>📅 <span id="modal-year"></span></span>
+                </div>
+                <p id="modal-desc" class="modal-description"></p>
+                <a id="modal-cta" class="btn-primary" target="_blank" style="display:none; margin: 1.5rem 0; text-decoration: none; display: none;"></a>
+                <h4 class="gallery-label">PROJECT GALLERY</h4>
+                <div class="modal-gallery" id="modal-gallery"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox">
+        <span class="close-btn">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
+
+
+<script src="script.js"></script>
+    <script>
+    // ── SCROLL HINT: down → scroll to work; up → scroll to top ──
+    (function () {
+        const hint = document.querySelector('.scroll-hint');
+        if (!hint) return;
+        const workSection = document.getElementById('work');
+        const heroEl = document.querySelector('.hero');
+
+        hint.addEventListener('click', () => {
+            if (hint.classList.contains('is-up')) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                workSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            const heroBottom = heroEl.getBoundingClientRect().bottom;
+            hint.classList.toggle('is-up', heroBottom < 0);
+        }, { passive: true });
+    })();
+    </script>
+
+    <script>
+    // ── WORK PROMPT + FILTER ──
+    (function () {
+        const allCards      = document.querySelectorAll('[data-filter-cat]');
+        const featuredGrid  = document.querySelector('.featured-grid');
+        const sectionLabels = document.querySelectorAll('.work-section-label');
+        const prompt        = document.getElementById('work-prompt');
+        if (!prompt) return;
+
+        function cardMatches(card, filter) {
+            if (filter === 'all') return true;
+            if (card.dataset.filterCat === filter) return true;
+            const extras = (card.dataset.extraCats || '').split(' ');
+            return extras.includes(filter);
+        }
+
+        function applyFilter(filter) {
+            allCards.forEach(card => {
+                card.style.display = cardMatches(card, filter) ? '' : 'none';
+            });
+
+            if (featuredGrid) {
+                featuredGrid.style.display =
+                    ['all','ux','ui','brand'].includes(filter) ? '' : 'none';
+            }
+
+            sectionLabels.forEach(label => {
+                const grid = label.nextElementSibling;
+                if (!grid) return;
+                const hasVisible = Array.from(grid.querySelectorAll('[data-filter-cat]'))
+                    .some(c => c.style.display !== 'none');
+                label.style.display = hasVisible ? '' : 'none';
+            });
+        }
+
+        prompt.addEventListener('click', e => {
+            const btn = e.target.closest('[data-opt]');
+            if (!btn) return;
+            const filter = btn.dataset.opt;
+
+            // update active state on all buttons
+            prompt.querySelectorAll('[data-opt]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            applyFilter(filter);
+        });
+    })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/Profile_Discord.webp" type="image/webp">
+    <title>BYO — Angela Shen</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: var(--slate-50);
+            border-radius: 12px;
+            border: 1px solid var(--slate-200);
+        }
+        .stat-number {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin: 0;
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--slate-600);
+            margin: 0.5rem 0 0;
+        }
+        .process-step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        .step-number {
+            flex-shrink: 0;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            font-weight: 800;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.2rem;
+        }
+        .img-caption {
+            font-size: 0.85rem;
+            color: var(--slate-500);
+            text-align: center;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        @media (max-width: 640px) {
+            .stat-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="nav-bar">
+        <div class="container nav-content">
+            <a class="logo" href="../index.html">✨ Angela Shen</a>
+            <div class="nav-links">
+                <a href="../index.html">Work</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="about.html">About</a>
+                <a href="../images/Angela-Shen-Resume-2026-Feb_Lab-Submission.pdf" class="nav-cta" target="_blank">Resume ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="case-hero">
+        <span class="status-badge">UX / UI DESIGN • GRAPHIC DESIGN • SUSTAINABILITY APP</span>
+        <h1>Bring Your <span class="gradient-text">Own Cup</span></h1>
+        <p style="max-width: 700px; margin: 0 auto; font-size: 1.25rem; color: var(--slate-600);">
+            A mobile app that turns reusable cup habits into a rewarding experience, reducing single-use waste one scan at a time.
+        </p>
+        <div class="case-meta">
+            <div class="case-meta-item">
+                <span class="case-meta-label">My Role</span>
+                <span class="case-meta-value">Color System, Graphic Assets, UI/UX Iteration</span>
+            </div>
+            <div class="case-meta-item">
+                <span class="case-meta-label">Platform</span>
+                <span class="case-meta-value">Mobile App (Android)</span>
+            </div>
+            <div class="case-meta-item">
+                <span class="case-meta-label">Disciplines</span>
+                <span class="case-meta-value">UX Design, Graphic Design, Visual Identity</span>
+            </div>
+        </div>
+        <div class="scroll-hint" aria-hidden="true"><span></span><span></span></div>
+    </header>
+
+    <!-- Progress sidebar -->
+    <nav class="cs-progress" aria-label="Page sections">
+        <a class="cs-progress-dot" href="#s-impact"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Impact</span></a>
+        <a class="cs-progress-dot" href="#s-product"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Final Product</span></a>
+        <a class="cs-progress-dot" href="#s-process"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Design Process</span></a>
+    </nav>
+
+    <main class="container">
+
+        <!-- Role strip -->
+        <div class="cs-role-strip" style="margin-top: 48px;">
+            <div class="cs-role-item">
+                <span class="cs-role-label">My Role</span>
+                <span class="cs-role-value">Color System · Graphic Assets · UI/UX Iteration · Focus Group Testing</span>
+            </div>
+            <div class="cs-role-item">
+                <span class="cs-role-label">Platform</span>
+                <span class="cs-role-value">Mobile App · Android (Google Play)</span>
+            </div>
+            <div class="cs-role-item">
+                <span class="cs-role-label">Tools</span>
+                <span class="cs-role-value">Figma · Adobe Illustrator</span>
+            </div>
+            <div class="cs-role-item">
+                <span class="cs-role-label">Key Outcome</span>
+                <span class="cs-role-value">−397 cups from landfill · 100+ downloads · 75 trees planted</span>
+            </div>
+        </div>
+
+        <!-- Mobile Interface Hero -->
+        <section class="case-section" style="padding-top: 24px;" id="s-impact">
+            <img class="case-img" src="../images/byo_Mobile-interface-image.png" alt="BYO mobile app interface — full screen showcase of core app screens" style="border-radius: 16px;">
+        </section>
+
+        <!-- Objective + Role -->
+        <section class="case-section">
+            <div class="highlight-box">
+                <h3>Project Objective</h3>
+                <p>BYO (Bring Your Own Cup) is a sustainability-focused mobile app that rewards users for choosing reusable cups over disposable ones. Our broader goal was to inspire people to reconsider their relationship with waste, making the sustainable choice feel effortless and motivating.</p>
+                <p style="margin-bottom: 0;">I was responsible for the app's <strong>color system</strong> and <strong>graphic assets</strong>, and contributed throughout the UX/UI iteration and focus-group testing cycles.</p>
+            </div>
+        </section>
+
+        <!-- Impact Stats -->
+        <section class="case-section">
+            <h2>Real-World Impact</h2>
+            <p>After launch on the Google Play Store, BYO generated measurable environmental results within its first active period.</p>
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <p class="stat-number">−397</p>
+                    <p class="stat-label">Single-use cups kept out of landfills</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-number">100+</p>
+                    <p class="stat-label">Downloads on the Play Store</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-number">+75</p>
+                    <p class="stat-label">Trees planted through the rewards program</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="cs-phase"><span class="cs-phase-label">Final Product</span></div>
+
+        <!-- Final Product -->
+        <section class="case-section" id="s-product">
+            <h2>Final Product</h2>
+            <p>The prototype walks through the full app experience, from onboarding and scanning at a café, through the rewards redemption flow and tree-planting milestones.</p>
+            <div style="margin: 1.5rem 0;">
+                <a href="https://www.figma.com/file/hUen04sUzHtd1LuwcDAiHk/BYO-prototype?node-id=2707%3A86" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 12px; border: 1.5px solid var(--slate-200); background: var(--slate-50); text-decoration: none; color: var(--slate-900); font-weight: 700; font-size: 0.95rem; transition: all 0.2s ease;">
+                    <svg width="20" height="20" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M19 28.5A9.5 9.5 0 1 1 28.5 19 9.5 9.5 0 0 1 19 28.5Z" fill="#1ABCFE"/><path d="M9.5 57A9.5 9.5 0 0 1 9.5 38H19v9.5A9.5 9.5 0 0 1 9.5 57Z" fill="#0ACF83"/><path d="M19 0H9.5A9.5 9.5 0 0 0 9.5 19H19Z" fill="#FF7262"/><path d="M28.5 19A9.5 9.5 0 0 0 19 0V19Z" fill="#F24E1E"/><path d="M38 9.5A9.5 9.5 0 0 1 28.5 19H19V0h9.5A9.5 9.5 0 0 1 38 9.5Z" fill="#FF7262"/></svg>
+                    View Interactive Prototype in Figma ↗
+                </a>
+            </div>
+
+            <img class="case-img" src="../images/byo_UI-update-how to encourage participation design.png" alt="Full spread of BYO app screens showing the participation and rewards flow">
+            <p class="img-caption">UI iteration exploring how to best encourage user participation across the app's core screens · © Angela Shen</p>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://www.behance.net/gallery/143758367/Bring-your-own-cup_-Graphics-design/modules/812171279" target="_blank" class="btn-primary" style="display: inline-block; text-decoration: none;">
+                    View Full Case Study on Behance ↗
+                </a>
+            </div>
+        </section>
+
+        <div class="cs-phase"><span class="cs-phase-label">Design Process</span></div>
+
+        <!-- Process -->
+        <section class="case-section" id="s-process">
+            <h2>Design Process</h2>
+
+            <!-- Step 1: UX Mapping -->
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div>
+                    <h3 style="margin-top: 0;">Idealization Mapping & User Flow</h3>
+                    <p>We began by mapping out every page and decision point needed to complete the user journey. This ensured the experience was coherent before any visual design work began.</p>
+                </div>
+            </div>
+
+            <img class="case-img" src="../images/BYO_User flowchart.png" alt="BYO user flow v2 — complete app journey including rewards tiers and redemption paths">
+            <p class="img-caption">User flow v2: mapping the full experience from onboarding through rewards redemption and tree-planting milestones · © Angela Shen</p>
+
+            <img class="case-img" src="../images/Byo_app_rewards.webp" alt="BYO app rewards flow — simplified diagram of the scan-to-redeem journey" style="margin-top: 1.5rem;">
+            <p class="img-caption">Rewards flow diagram — clarifying the scan → claim → redeem logic before moving into visual design · © Angela Shen</p>
+
+            <!-- Step 2: Graphic Design Research -->
+            <div class="process-step" style="margin-top: 2.5rem;">
+                <div class="step-number">2</div>
+                <div>
+                    <h3 style="margin-top: 0;">Graphic Design Research</h3>
+                    <p>Before creating any assets, I researched visual styles that would resonate with an environmentally conscious audience. Three questions guided this phase:</p>
+                    <ul style="line-height: 2; color: var(--slate-600);">
+                        <li>What are the priority assets for the app's core screens?</li>
+                        <li>Which illustration styles are least likely to alienate users?</li>
+                        <li>How can the color palette feel grounded in nature without being generic?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Moving Beyond "Corporate Memphis"</h3>
+                <p>Research showed that the <em>Corporate Memphis</em> vector style — the default for most apps and startups — is frequently rejected by users for its overly cheerful figures and hyper-saturated colors that feel hollow and disconnected from meaning.</p>
+                <p style="margin-bottom: 0;">My approach was to build a palette that is <strong>calm but purposeful</strong>: not overly saturated, and rooted in the visual language of growth and forward motion. Unlike typical Memphis graphics that are decorative without narrative, every asset in BYO was designed to reinforce the idea of environmental progress.</p>
+            </div>
+
+            <!-- Step 3: Sketching -->
+            <div class="process-step" style="margin-top: 2.5rem;">
+                <div class="step-number">3</div>
+                <div>
+                    <h3 style="margin-top: 0;">Sketching & Asset Drafting</h3>
+                    <p>I began with loose sketches to explore the range of assets needed — people, cups, trees, and environments — testing proportions and styles before committing to a digital direction.</p>
+                </div>
+            </div>
+
+            <img class="case-img" src="../images/Byo_Graphics_drafting.png" alt="Early sketches and initial color explorations for BYO graphic assets">
+            <p class="img-caption">Early drafting — from rough sketches to initial color explorations, establishing the asset vocabulary · © Angela Shen</p>
+
+            <!-- Step 4: Asset Production -->
+            <div class="process-step" style="margin-top: 2.5rem;">
+                <div class="step-number">4</div>
+                <div>
+                    <h3 style="margin-top: 0;">Asset Production</h3>
+                    <p>With the direction established, I developed the full set of graphic assets: illustrated characters in motion, a range of cup types, layered tree and foliage variations, and scenic backgrounds — all built to work modularly across different screen contexts.</p>
+                </div>
+            </div>
+
+            <img class="case-img" src="../images/byo_graphic-asset-designs.png" alt="Complete BYO asset library — people, cups, trees, and background environments">
+            <p class="img-caption">The full asset library — modular components designed to work across the app's various screens and states · © Angela Shen</p>
+
+            <img class="case-img" src="../images/BYO_tree_graphics.png" alt="Final rendered tree and forest scene used in the BYO app environment" style="margin-top: 1.5rem;">
+            <p class="img-caption">Final forest scene — the visual reward users see as their tree-planting milestones accumulate · © Angela Shen</p>
+
+        </section>
+
+        <!-- CTA -->
+        <section class="case-section" style="text-align: center;">
+            <a href="https://www.behance.net/gallery/143758367/Bring-your-own-cup_-Graphics-design/modules/812171279" target="_blank" class="btn-primary" style="display: inline-block; text-decoration: none;">
+                Full Behance Case Study ↗
+            </a>
+        </section>
+
+    </main>
+
+    <script>
+    (function() {
+        const dots = Array.from(document.querySelectorAll('.cs-progress-dot'));
+        const sections = dots.map(d => document.getElementById(d.getAttribute('href').slice(1))).filter(Boolean);
+        function update() {
+            let active = 0;
+            sections.forEach((s, i) => { if (s.getBoundingClientRect().top <= window.innerHeight * 0.5) active = i; });
+            dots.forEach((d, i) => d.classList.toggle('active', i === active));
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    })();
+    </script>
+
+    <!-- FOOTER -->
+        <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <span class="footer-name">Angela Shen</span>
+                <span class="footer-copy">Joint Major: CMNS &amp; IAT @ SFU &nbsp;&middot;&nbsp; Graduating Spring 2026 &nbsp;&middot;&nbsp; *Incoming IAT Masters Student, SFU, Fall 2026</span>
+                <span class="footer-copy">&copy; 2026 Angela Shen. All photography, illustrations, and design work are the original work of Angela Shen. All rights reserved.</span>
+            </div>
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="../index.html">Work</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="mailto:angelashen.ca@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/angelashenca/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/angelashen233" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.instagram.com/lollypuddn/" target="_blank" rel="noopener">Instagram ↗</a>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+</html>

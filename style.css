@@ -1,0 +1,1203 @@
+/* --- ANGELA'S PRO DESIGN SYSTEM V3 --- */
+:root {
+  --orange: #f97316;
+  --rose: #fb7185;
+  --slate-900: #0f172a;
+  --slate-600: #475569;
+  --slate-200: #e2e8f0;
+  --slate-50: #f8fafc;
+  
+  /* The "Tailwind Shadow" Scale */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+* { 
+  box-sizing: border-box; 
+  transition: all 0.3s ease; /* Makes everything feel smooth */
+}
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--slate-900);
+  background: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* --- GLASS NAVIGATION --- */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 68px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--slate-200);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: var(--slate-900);
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--slate-600);
+    font-weight: 600;
+    font-size: 0.875rem;
+    position: relative;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--slate-900);
+    background: var(--slate-100);
+}
+
+.nav-links a.active {
+    color: var(--slate-900);
+}
+
+/* Underline for active state */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 2px;
+    left: 12px;
+    right: 12px;
+    background-color: #da6e30;
+    transition: width 0.25s ease;
+    border-radius: 2px;
+}
+
+.nav-links a.active::after {
+    width: calc(100% - 24px);
+}
+
+.nav-links a:hover::after {
+    width: calc(100% - 24px);
+}
+
+/* Resume CTA — outlined style */
+.nav-links a.nav-cta {
+    color: var(--slate-900);
+    border: 1.5px solid var(--slate-300);
+    border-radius: 99px;
+    padding: 6px 16px;
+    font-weight: 700;
+    background: transparent;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a.nav-cta:hover {
+    background: var(--slate-900);
+    color: #fff;
+    border-color: var(--slate-900);
+}
+
+.nav-links a.nav-cta::after { display: none; }
+
+/* Logo link */
+a.logo {
+    text-decoration: none;
+    color: inherit;
+    white-space: nowrap;
+}
+
+/* Mobile nav */
+@media (max-width: 640px) {
+    .nav-bar {
+        height: auto;
+        padding: 10px 0;
+    }
+    .nav-content {
+        flex-wrap: wrap;
+        gap: 6px 0;
+        row-gap: 6px;
+    }
+    .logo {
+        font-size: 0.9rem;
+        flex: 1 0 100%;
+    }
+    .nav-links {
+        flex: 1 0 100%;
+        gap: 2px;
+        justify-content: flex-start;
+    }
+    .nav-links a { padding: 5px 8px; font-size: 0.78rem; }
+    .nav-links a.nav-cta { padding: 4px 12px; }
+}
+
+
+
+
+.btn-primary {
+  background: #da6e30;
+  color: #fff !important;
+  padding: 12px 28px;
+  border-radius: 99px;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, var(--orange), var(--rose));
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.3);
+}
+
+/* --- HERO SECTION WITH GRADIENT --- */
+.hero {
+  padding: 180px 24px 120px;
+  text-align: center;
+  /* Fixed: Visible gradient from soft peach to white */
+  background: linear-gradient(180deg, #fff7ed 0%, #ffffff 100%);
+}
+
+.hero h1 { 
+  font-size: 4.5rem; 
+  font-weight: 800; 
+  letter-spacing: -0.04em; 
+  margin: 24px 0; 
+  line-height: 1.1;
+}
+
+/* FIXED: Gradient Text that actually shows up */
+.gradient-text {
+  background: linear-gradient(90deg, var(--orange) 0%, var(--rose) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.status-badge {
+  background: #ffedd5;
+  color: #9a3412;
+  padding: 8px 18px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero-text {
+  max-width: 650px;
+  margin: 0 auto;
+  color: var(--slate-600);
+  font-size: 1.25rem;
+}
+
+/* --- CARDS & GRID --- */
+.section-title { 
+  font-size: 2.25rem; 
+  font-weight: 800; 
+  margin-top: 100px;
+  margin-bottom: 48px; 
+  letter-spacing: -0.02em;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 40px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 32px;
+  border: 1px solid var(--slate-200);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover { 
+  transform: translateY(-12px); 
+  box-shadow: var(--shadow-xl);
+  border-color: rgba(249, 115, 22, 0.2);
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--slate-50);
+  transition: transform 0.5s ease;
+}
+
+/* --- MODAL (POP-UP PAGE) STYLES --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(8px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    border-radius: 24px;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: var(--shadow-xl);
+    animation: modalSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes modalSlide {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-header-img {
+    width: 100%;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+}
+
+.modal-body {
+    padding: 40px;
+}
+
+.modal-sub-info {
+    display: flex;
+    gap: 20px;
+    color: var(--slate-600);
+    font-size: 0.9rem;
+    margin: 15px 0 25px;
+}
+
+.modal-description {
+    font-size: 1.1rem;
+    color: var(--slate-600);
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.gallery-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--slate-600);
+    border-bottom: 1px solid var(--slate-200);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    z-index: 100;
+    
+    /* THE FIX: Fixed dimensions and ratio */
+    width: 40px;
+    height: 40px;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0; /* Prevents the modal from squishing it */
+
+    /* Centering the X */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Visual Style */
+    background: white;
+    border-radius: 50%; /* Perfect circle */
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    color: #0f172a;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.close-modal:hover {
+    transform: scale(1.1);
+    background: #f8fafc;
+}
+/* Project Image Classes */
+.vacfss-img { background-image: url('https://the-peak.ca/wp-content/uploads/2024/10/Angela_Shen_Queer-Dating.png'); }
+.solidguard-img { background-color: #f3e8ff; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+
+.card-body { padding: 32px; }
+
+.tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  display: block;
+  padding: 4px 12px;
+  border-radius: 50px;
+  border: 1px solid transparent;
+}
+.orange { color: var(--orange); }
+.purple { color: #a855f7; }
+
+/* --- PHOTO MASONRY --- */
+.photo-masonry {
+  column-count: 3;
+  column-gap: 24px;
+}
+
+.photo-masonry img {
+  width: 100%;
+  margin-bottom: 24px;
+  border-radius: 24px;
+  box-shadow: var(--shadow-sm);
+  cursor: zoom-in;
+}
+
+.photo-masonry img:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 3rem; }
+  .project-grid { grid-template-columns: 1fr; }
+  .photo-masonry { column-count: 2; }
+}
+
+.footer {
+  padding: 48px 0 40px;
+  color: var(--slate-500);
+  border-top: 1px solid var(--slate-200);
+  margin-top: 120px;
+  font-size: 0.85rem;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-name {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--slate-900);
+  letter-spacing: -0.01em;
+}
+
+.footer-copy {
+  color: var(--slate-500);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.footer-links a {
+  color: var(--slate-500);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--slate-900);
+}
+
+@media (max-width: 600px) {
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer-links { gap: 16px; }
+}
+
+/* --- LIGHTBOX (EXPAND) STYLES --- */
+#lightbox {
+  position: fixed;
+  z-index: 2000; /* Higher than the nav bar */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.95); /* Deep slate blurred background */
+  backdrop-filter: blur(8px);
+  display: none; /* Hidden by default */
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  padding: 40px;
+}
+
+#lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* THE FIX: Ensures the whole image fits without cropping */
+  border-radius: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: zoomIn 0.3s ease-out;
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.close-btn {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: white;
+  font-size: 3rem;
+  font-weight: 200;
+  line-height: 1;
+}
+
+
+/* --- HOVER OVERLAY SYSTEM --- */
+.card-img-container {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+}
+
+
+
+/* The "Click to learn more" overlay */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6); /* Dark tint */
+  backdrop-filter: blur(4px); /* Blur effect */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease;
+}
+
+.overlay-text {
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  border: 2px solid white;
+  padding: 10px 20px;
+  border-radius: 99px;
+  transform: translateY(10px);
+  transition: transform 0.3s ease;
+}
+
+/* Hover Actions */
+.card:hover .card-overlay {
+  opacity: 1;
+}
+
+.card:hover .overlay-text {
+  transform: translateY(0);
+}
+
+.card:hover .card-img {
+  transform: scale(1.1); /* Subtle zoom effect on the image */
+}
+
+/*butterfly animation stuff*/
+#trigger-area {
+    position: relative;
+    display: inline-block;
+}
+
+#butterfly-art {
+    /* MUST include 'px' for live deployment */
+    width: 45px !important; 
+    height: auto;
+    
+    /* Ensure it's not restricted by the paragraph text */
+    position: fixed; 
+    z-index: 99999; 
+    pointer-events: none;
+    
+    /* Initial state */
+    opacity: 0; 
+    transition: opacity 0.5s ease;
+}
+.butterfly-rest {
+    animation: breathe 3s infinite ease-in-out;
+}
+
+.butterfly-following {
+    animation: flutter 0.12s infinite alternate ease-in-out !important;
+}
+
+#butterfly-art.hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+    transition: opacity 0.4s ease, visibility 0.4s;
+}
+
+.butterfly-hidden {
+    opacity: 0 !important;
+    transition: opacity 0.4s ease-out !important;
+    pointer-events: none;
+}
+
+@keyframes breathe {
+    0%, 100% { transform: scaleX(1); }
+    50% { transform: scaleX(0.8); }
+}
+
+@keyframes flutter {
+    from { transform: scaleX(1); }
+    to { transform: scaleX(0.5); }
+}
+
+/*modal - page` transition*/
+
+/* When this class is added, the modal fills the whole screen and removes the "pop-up" shadow */
+.modal-overlay.full-page-mode {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #fff; /* Or your portfolio's background color */
+    overflow-y: auto; /* Allow the user to scroll down the "new page" */
+    z-index: 100000;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hide the close button if you want it to feel like a real new page */
+.full-page-mode .close-modal {
+    display: none;
+}
+
+
+/*bloging style*/
+
+/* Blog Page Specific Styles */
+.blog-header {
+    padding: 100px 0 50px;
+    text-align: center;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.blog-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.blog-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.blog-img {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #eee;
+}
+
+.blog-content {
+    padding: 25px;
+}
+
+.blog-date {
+    font-size: 0.8rem;
+    color: #f89c33; /* Matching your butterfly orange */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.blog-content h3 {
+    margin: 10px 0;
+    font-size: 1.5rem;
+}
+
+/* Container to keep tags tidy */
+.tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+/* Category-Specific Colors */
+.tag-tech {
+    background: #f0f4f8; /* Soft blue */
+    color: #1a3a5a;
+}
+
+.tag-impact {
+    background: #fff8f0; /* Soft orange (Matches your butterfly) */
+    color: #d44d1e;
+    border-color: #f89c33;
+}
+
+.tag-skill {
+    background: #f3f0f7; /* Soft purple */
+    color: #5a1a5a;
+}
+
+
+/* --- JOURNAL CONTAINER --- */
+#journal-book {
+    width: 800px;
+    height: 500px;
+    position: relative;
+    perspective: 1500px; /* REQUIRED for depth */
+    margin: 50px auto;
+    font-family: 'Inter', sans-serif; /* Your portfolio font */
+    color:black
+}
+
+/* --- BASE PAGE STYLE (Acts as a container for front/back) --- */
+.page-container {
+    width: 50%; /* Book occupies half the parent width */
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform-origin: left center;
+    transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-style: preserve-3d; /* CRITICAL: Allows 3D faces */
+    z-index: 1;
+}
+
+/* --- THE FLIP ACTION (Controlled by JS) --- */
+.page-container.flipped {
+    transform: rotateY(-180deg);
+}
+
+/* --- SHARED STYLING FOR FRONTS & BACKS --- */
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* CRITICAL: Hides the mirrored side */
+    padding: 40px;
+    background: #fffcf5; /* Paper texture */
+    box-shadow: inset 3px 0px 20px rgba(0,0,0,0.1);
+    border: 1px solid #e0ddd5;
+    overflow: hidden;
+}
+
+/* --- STYLING THE FRONT FACES --- */
+.front {
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+/* --- STYLING THE BACK FACES (THE FIX!) --- */
+.back {
+    z-index: 1;
+    transform: rotateY(180deg); /* Counter-rotates so text is correct */
+    background: #fdfaf3; /* Slightly darker "aged" paper look */
+}
+
+/* --- SPECIAL COVER STYLE --- */
+.cover-page {
+    background: #000;
+    color: #fff;
+}
+.cover-page .back {
+    background: #325; /* Back of black cover */
+}
+
+.journal-controls {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 20px !important;
+    
+    /* Absolute positioning relative to the journal-book */
+    position: absolute;
+    left: 50%;
+    bottom: -100px; /* Adjust this to move them further down if needed */
+    transform: translateX(-50%);
+    
+    /* Force it to stay on the very top layer */
+    z-index: 9999; 
+    width: 400px; /* Give it a fixed width so it can't collapse */
+}
+
+.journal-controls button {
+    flex: 1; /* Makes both buttons equal width */
+    max-width: 160px;
+    height: 48px;
+    
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 90px; /* Matches your 'Get in Touch' button */
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+/* responsiveness for the blog page simluatoin  */
+@media (max-width: 768px) {
+    /* 1. Make the container fill the screen width */
+    .journal-wrapper { 
+        width: 95vw; 
+        perspective: 1000px;
+    }
+
+    /* 2. Disable the "spread" look—stack pages on top of each other */
+    .page-container {
+        width: 100%;
+        left: 0;
+    }
+
+    /* 3. Adjust the flip animation for a single-page feel */
+    .page-container.flipped {
+        transform: rotateY(-180deg) translateX(-100%); /* Moves it out of view */
+        opacity: 0; /* Optional: fades out so it doesn't overlap mobile edges */
+        pointer-events: none;
+    }
+
+    /* 4. Ensure the paper texture and padding don't cramp the text */
+    .front, .back {
+        padding: 20px;
+        box-shadow: none; /* Shadow looks weird on single pages */
+    }
+}
+
+/* This targets the headings specifically within your journal pages */
+.front h1, .front h2, .back h1, .back h2 {
+    color: #1a1a1a; /* A deep charcoal/black */
+    z-index: 10;
+    position: relative;
+}
+
+/* If you want the cover titles to stay white on the black background */
+.cover-page .front h1, .cover-page .front h2 {
+    color: #ffffff;
+}
+
+/* 1. Set a base dark color for all journal text */
+.front, .back {
+    color: #1a1a1a !important;
+}
+
+/* 2. Specifically ensure headers inside pages are dark */
+.front h2, .back h2, .front h3, .back h3 {
+    color: #1a1a1a !important;
+}
+
+/* 3. ONLY the cover page title should stay white */
+.cover-page .front .portfolio-title {
+    color: #ffffff !important;
+}
+
+
+/* --- CASE STUDY PAGES --- */
+.case-hero {
+    padding: 140px 24px 80px;
+    text-align: center;
+    background: linear-gradient(to bottom, #fff7ed, #ffffff);
+}
+
+.case-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin: 24px 0;
+    line-height: 1.1;
+}
+
+.case-meta {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+.case-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.case-meta-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--slate-600);
+}
+
+.case-meta-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--slate-900);
+}
+
+.case-section {
+    padding: 80px 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.case-section h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+}
+
+.case-section h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 48px 0 20px;
+    letter-spacing: -0.5px;
+}
+
+.case-section h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 32px 0 12px;
+    color: var(--orange);
+}
+
+.case-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--slate-600);
+    margin-bottom: 16px;
+}
+
+.case-img {
+    width: auto;
+    max-width: 100%;
+    max-height: 60vh;
+    display: block;
+    margin: 40px auto;
+    border-radius: 16px;
+    border: 1px solid var(--slate-200);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    box-shadow: 0 12px 24px -5px rgb(0 0 0 / 0.1);
+}
+
+.spirit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px;
+    margin: 48px 0;
+}
+
+.spirit-card {
+    text-align: center;
+    padding: 24px;
+    background: white;
+    border-radius: 24px;
+    border: 1px solid var(--slate-200);
+}
+
+.spirit-card h4 {
+    margin-top: 16px;
+    color: var(--slate-900);
+}
+
+.spirit-card p {
+    font-size: 0.95rem;
+    margin-top: 8px;
+}
+
+.spirit-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+}
+
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 48px 0;
+}
+
+.highlight-box {
+    background: #fff7ed;
+    border-left: 4px solid var(--orange);
+    padding: 24px;
+    border-radius: 12px;
+    margin: 32px 0;
+}
+
+.highlight-box h3 {
+    margin-top: 0;
+    color: var(--orange);
+}
+
+@media (max-width: 768px) {
+    .case-hero h1 { font-size: 2.5rem; }
+    .two-col { grid-template-columns: 1fr; }
+    .spirit-grid { grid-template-columns: 1fr; }
+}
+/* --- SCROLL HINT ARROW --- */
+.hero,
+.case-hero {
+    position: relative;
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 1.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 52px;
+    height: 32px;
+    background-image: url("data:image/svg+xml,%3Csvg width='52' height='32' viewBox='0 0 52 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6 L26 26 L48 6' stroke='%23f97316' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.3;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    animation: scroll-bounce 3.5s ease-in-out infinite;
+}
+
+.scroll-hint:hover { opacity: 0.6; }
+
+.scroll-hint span { display: none; }
+
+@keyframes scroll-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(9px); }
+}
+
+/* ── Scroll hint: fixed up-arrow state ── */
+.scroll-hint.is-up {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    opacity: 0.55;
+    background-image: url("data:image/svg+xml,%3Csvg width='52' height='32' viewBox='0 0 52 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 26 L26 6 L48 26' stroke='%23f97316' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    animation: scroll-bounce-up 3.5s ease-in-out infinite;
+    z-index: 100;
+}
+.scroll-hint.is-up:hover { opacity: 0.85; }
+
+@keyframes scroll-bounce-up {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(-9px); }
+}
+
+/* ─────────────────────────────────────────────────────────
+   CASE STUDY LAYOUT ENHANCEMENTS
+   ───────────────────────────────────────────────────────── */
+
+/* ── Role / Impact Strip ── */
+.cs-role-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--slate-200);
+    border: 1px solid var(--slate-200);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 0 0 16px;
+}
+.cs-role-item {
+    background: #fff;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.cs-role-label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate-500);
+}
+.cs-role-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--slate-900);
+    line-height: 1.4;
+}
+@media (max-width: 860px) {
+    .cs-role-strip { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 540px) {
+    .cs-role-strip { grid-template-columns: 1fr; }
+}
+
+/* ── Phase Divider ── */
+.cs-phase {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 80px 0 0;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.cs-phase-label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #da6e30;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.cs-phase::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--slate-200);
+}
+
+/* ── Sticky Progress Sidebar ── */
+.cs-progress {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: max(16px, calc(50% - 560px));
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    z-index: 100;
+    padding: 12px 8px;
+}
+
+/* vertical connecting line behind the dots */
+.cs-progress::before {
+    content: '';
+    position: absolute;
+    left: 15px; /* horizontally centred on the 8px dot (8px padding-left + 4px half-dot + 3px nudge for visual centre) */
+    top: 28px;
+    bottom: 28px;
+    width: 1.5px;
+    background: linear-gradient(to bottom, transparent 0%, var(--slate-300) 12%, var(--slate-300) 88%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+.cs-progress-dot {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+    padding: 5px 0;
+}
+.cs-progress-dot-inner {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--slate-300);
+    flex-shrink: 0;
+    transition: background 0.25s ease, transform 0.25s ease, width 0.25s ease, height 0.25s ease, border-radius 0.25s ease;
+}
+.cs-progress-dot-text {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--slate-400);
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    pointer-events: none;
+}
+.cs-progress:hover .cs-progress-dot-text {
+    opacity: 1;
+    transform: translateX(0);
+}
+.cs-progress-dot:hover .cs-progress-dot-inner {
+    background: #da6e30;
+    transform: scale(1.4);
+}
+.cs-progress-dot.active .cs-progress-dot-inner {
+    width: 16px;
+    height: 13px;
+    border-radius: 0;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 13'%3E%3Cellipse cx='4.5' cy='4' rx='4' ry='3.2' fill='%23da6e30' transform='rotate(-28 4.5 4)'/%3E%3Cellipse cx='4' cy='9.5' rx='3.2' ry='2.2' fill='%23da6e30' opacity='.7' transform='rotate(22 4 9.5)'/%3E%3Cellipse cx='11.5' cy='4' rx='4' ry='3.2' fill='%23da6e30' transform='rotate(28 11.5 4)'/%3E%3Cellipse cx='12' cy='9.5' rx='3.2' ry='2.2' fill='%23da6e30' opacity='.7' transform='rotate(-22 12 9.5)'/%3E%3Cellipse cx='8' cy='6.5' rx='1' ry='4.5' fill='%23923d12'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    transform: none;
+}
+.cs-progress-dot:hover .cs-progress-dot-text,
+.cs-progress-dot.active .cs-progress-dot-text {
+    color: #da6e30;
+    opacity: 1;
+    transform: translateX(0);
+}
+/* hide sidebar when viewport is too narrow to have room */
+@media (max-width: 1100px) {
+    .cs-progress { display: none; }
+}
+
+/* --- END OF ANGELA'S PRO DESIGN SYSTEM V3 --- */

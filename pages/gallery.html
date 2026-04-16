@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/Profile_Discord.webp" type="image/webp">
+    <title>Gallery — Angela Shen</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* ── Filter Bar ── */
+        .gallery-filter-bar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+        .filter-btn {
+            background: #f1f5f9;
+            color: var(--slate-600);
+            border: none;
+            border-radius: 99px;
+            padding: 8px 20px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            letter-spacing: 0.01em;
+        }
+        .filter-btn:hover {
+            background: #ffedd5;
+            color: #9a3412;
+        }
+        .filter-btn.active {
+            background: #da6e30;
+            color: #fff;
+        }
+
+        /* ── Section headers ── */
+        .gallery-section-label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--slate-600);
+            margin: 56px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--slate-200);
+        }
+        .gallery-section-label:first-of-type { margin-top: 0; }
+
+        /* ── Masonry Grid ── */
+        .gallery-grid {
+            columns: 3;
+            column-gap: 16px;
+        }
+        @media (max-width: 900px)  { .gallery-grid { columns: 2; } }
+        @media (max-width: 550px)  { .gallery-grid { columns: 1; } }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 16px;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: zoom-in;
+            position: relative;
+            background: var(--slate-50);
+            border: 1px solid var(--slate-200);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+        .gallery-item-caption {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15,23,42,0.75) 0%, transparent 55%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+        }
+        .gallery-item:hover .gallery-item-caption { opacity: 1; }
+        .gallery-item-caption span {
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* ── Lightbox ── */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15,23,42,0.92);
+            backdrop-filter: blur(12px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            padding: 24px;
+        }
+        .lightbox-overlay.open,
+        #lightbox.open { display: flex; }
+        .lightbox-inner {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: lbIn 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        @keyframes lbIn {
+            from { opacity: 0; transform: scale(0.94); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+        .lightbox-img {
+            max-width: 80vw;
+            max-height: 80vh;
+            border-radius: 16px;
+            display: block;
+        }
+        .lightbox-caption {
+            color: rgba(255,255,255,0.8);
+            margin-top: 16px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        .lightbox-sub {
+            color: rgba(255,255,255,0.45);
+            font-size: 0.8rem;
+            margin-top: 4px;
+            text-align: center;
+        }
+        .lightbox-close {
+            position: fixed;
+            top: 20px;
+            right: 24px;
+            background: rgba(255,255,255,0.12);
+            border: none;
+            color: #fff;
+            font-size: 1.4rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+        }
+        .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+        .lightbox-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.12);
+            border: none;
+            color: #fff;
+            font-size: 1.4rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+        }
+        .lightbox-nav:hover { background: rgba(255,255,255,0.25); }
+        .lightbox-prev { left: 16px; }
+        .lightbox-next { right: 16px; }
+        @media (max-width: 600px) {
+            .lightbox-prev { left: 4px; }
+            .lightbox-next { right: 4px; }
+        }
+
+        /* ── Hero ── */
+        .gallery-hero {
+            padding: 140px 24px 64px;
+            background: linear-gradient(180deg, #fff7ed 0%, #ffffff 100%);
+            text-align: center;
+        }
+        .gallery-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            margin: 16px 0 12px;
+            line-height: 1.1;
+        }
+        .gallery-hero p {
+            color: var(--slate-600);
+            font-size: 1.1rem;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+        @media (max-width: 600px) { .gallery-hero h1 { font-size: 2.5rem; } }
+
+        /* hide sections with no visible items */
+        .gallery-section[data-empty="true"] { display: none; }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <div class="container nav-content">
+            <a class="logo" href="../index.html">✨ Angela Shen</a>
+            <div class="nav-links">
+                <a href="../index.html">Work</a>
+                <a href="gallery.html" class="active">Gallery</a>
+                <a href="about.html">About</a>
+                <a href="../images/Angela-Shen-Resume-2026-Feb_Lab-Submission.pdf" class="nav-cta" target="_blank">Resume ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="gallery-hero">
+        <span class="status-badge">✦ Art & Photography</span>
+        <h1>Gallery</h1>
+        <p>Personal work outside the portfolio — Chinese brush painting, photography, illustration, and editorial art.</p>
+    </header>
+
+    <main class="container" style="padding-top: 56px; padding-bottom: 100px;">
+
+        <!-- Filter bar injected by JS -->
+        <div id="filter-bar" class="gallery-filter-bar"></div>
+
+        <!-- Gallery sections injected by JS -->
+        <div id="gallery-root"></div>
+
+    </main>
+
+    <!-- Lightbox injected by JS -->
+    <div id="lightbox" class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <button class="lightbox-close" id="lb-close" aria-label="Close">✕</button>
+        <button class="lightbox-nav lightbox-prev" id="lb-prev" aria-label="Previous">‹</button>
+        <button class="lightbox-nav lightbox-next" id="lb-next" aria-label="Next">›</button>
+        <div class="lightbox-inner">
+            <img class="lightbox-img" id="lb-img" src="" alt="">
+            <p class="lightbox-caption" id="lb-title"></p>
+            <p class="lightbox-sub" id="lb-sub"></p>
+        </div>
+    </div>
+
+<script>
+// ─────────────────────────────────────────────
+//  DATA
+// ─────────────────────────────────────────────
+const GALLERY_DATA = [
+    // Chinese Painting
+    {
+        src: '../images/Chinese-brush-painting-watercolor.webp',
+        title: 'Chinese Brush Painting',
+        caption: 'Traditional brush and watercolor on rice paper · © Angela Shen',
+        category: 'chinese-painting'
+    },
+    {
+        src: '../images/Lollpuddn-Chinese-watercolor-Mychildhoodpet-feifei-themoltese.png',
+        title: 'Feifei — Portrait of My Childhood Pet',
+        caption: 'Chinese watercolor · Maltese dog, personal work · © Angela Shen',
+        category: 'chinese-painting'
+    },
+
+    // Photography
+    {
+        src: '../images/honouring-youth/IMG00416-scaled.jpg',
+        title: 'Honouring the Journey — Ceremony',
+        caption: 'Youth transition ceremony · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/honouring-youth/IMG00168.jpg',
+        title: 'Honouring the Journey — Procession',
+        caption: 'Youth wrapped in cultural blankets · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/honouring-youth/IMG00244-scaled.jpg',
+        title: 'Honouring the Journey — Drumming Circle',
+        caption: 'Photography · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/honouring-youth/Group-1Edited_Blur-1.png',
+        title: 'Honouring the Journey — Drummers',
+        caption: 'Traditional drumming · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/honouring-youth/IMG00360-scaled.jpg',
+        title: 'Honouring the Journey — Dancer',
+        caption: 'Traditional dance · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/honouring-youth/IMG00079-scaled.jpg',
+        title: 'Honouring the Journey — Community',
+        caption: 'Community gathering · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/honouring-youth/IMG00292-scaled.jpg',
+        title: 'Honouring the Journey — Gift Giving',
+        caption: 'Ceremonial gift exchange · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/honouring-youth/IMG00033-1-scaled.jpg',
+        title: 'Honouring the Journey — Carved Gifts',
+        caption: 'Painted cedar boxes and feathers · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/honouring-youth/IMG00383-scaled.jpg',
+        title: 'Honouring the Journey — Program Materials',
+        caption: 'Ceremony program with smudge bowl · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/honouring-youth/IMG00269-scaled.jpg',
+        title: 'Honouring the Journey — Youth Advisory',
+        caption: 'VACFSS Youth Advisory Council hoodie · 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/honouring-youth/IMG00261-scaled.jpg',
+        title: 'Honouring the Journey — Blankets',
+        caption: 'Cultural blankets on display · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/honouring-youth/IMG00209-scaled.jpg',
+        title: 'Honouring the Journey — Receiving',
+        caption: 'Youth receiving ceremonial gifts · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/honouring-youth/IMG00205-scaled-e1718138208678.jpg',
+        title: 'Honouring the Journey — Elders',
+        caption: 'Elders present at the ceremony · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/honouring-youth/IMG00185-1-scaled-e1718138034264.jpg',
+        title: 'Honouring the Journey — Moment',
+        caption: 'Photography · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/honouring-youth/IMG00363-scaled.jpg',
+        title: 'Honouring the Journey — Gathering',
+        caption: 'Community celebration · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/honouring-youth/IMG00112-scaled.jpg',
+        title: 'Honouring the Journey — Detail',
+        caption: 'Photography · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/honouring-youth/IMG00040-scaled.jpg',
+        title: 'Honouring the Journey — Blanket Detail',
+        caption: 'Ceremonial blanket folded on steps · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/landscape-hope.jpg',
+        title: 'Landscape of Hope',
+        caption: 'Landscape photography · © Angela Shen',
+        category: 'photography'
+    },
+    {
+        src: '../images/Caregiver-cultural-camp-2024.jpg',
+        title: 'Cultural Camp — Caregiver Community',
+        caption: 'Photography · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/Caregiver-cultural-camp-drumming.png',
+        title: 'Drumming at Cultural Camp',
+        caption: 'Photography · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/Caregiver-summer-camp-cannoe-2024.jpg',
+        title: 'Canoe at Caregiver Summer Camp',
+        caption: 'Photography · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/Caregiver-summer-camp-2025.png',
+        title: 'Caregiver Summer Camp',
+        caption: 'Photography · VACFSS, 2025',
+        category: 'photography'
+    },
+    {
+        src: '../images/Sage-picking-2024.png',
+        title: 'Sage Picking',
+        caption: 'Photography · VACFSS, 2024',
+        category: 'photography'
+    },
+    {
+        src: '../images/Cultural-coordinator and elder April.png',
+        title: 'Cultural Coordinator with Elder April',
+        caption: 'Photography · VACFSS',
+        category: 'photography'
+    },
+    {
+        src: '../images/Elder-training-ceremony-2026.png',
+        title: 'Elder Training Ceremony',
+        caption: 'Photography · VACFSS, 2026',
+        category: 'photography'
+    },
+    {
+        src: '../images/Youth-advisory-councill-Summer-event.png',
+        title: 'Youth Advisory Council — Summer Event',
+        caption: 'Photography · VACFSS',
+        category: 'photography'
+    },
+
+    // Digital Art
+    {
+        src: '../images/peace_girl_illustration_illutrator.webp',
+        title: 'Peace Girl',
+        caption: 'Digital illustration · Adobe Illustrator · © Angela Shen',
+        category: 'digital-art'
+    },
+    {
+        src: '../images/The-peak-2026-April fools-Out with the old in the with the new - Robot serving food .png',
+        title: 'April Fools — Out with the Old, In with the New',
+        caption: 'Editorial illustration · The Peak, SFU · 2026 · © Angela Shen',
+        category: 'digital-art'
+    },
+    {
+        src: '../images/The-peak-2022-Cover-Representation and recognition -neurodiversity cover.png',
+        title: 'Representation & Recognition — Neurodiversity Cover',
+        caption: 'Cover illustration · The Peak, SFU · 2022 · © Angela Shen',
+        category: 'digital-art'
+    },
+    {
+        src: '../images/The-peak-2022-Cover-Representation and recognition -feature piece.png',
+        title: 'Representation & Recognition — Feature Piece',
+        caption: 'Editorial illustration · The Peak, SFU · 2022 · © Angela Shen',
+        category: 'digital-art'
+    },
+    {
+        src: '../images/The-peak-2022-Oct-gaming cafe.png',
+        title: 'Gaming Café',
+        caption: 'Editorial illustration · The Peak, SFU · October 2022 · © Angela Shen',
+        category: 'digital-art'
+    },
+    {
+        src: '../images/w10-teenwitch-angelashen-The Peak.png',
+        title: 'Teen Witch',
+        caption: 'Editorial illustration · The Peak, SFU · © Angela Shen',
+        category: 'digital-art'
+    },
+    {
+        src: '../images/w10-corncandy-angelashen-The Peak.png',
+        title: 'Corn Candy',
+        caption: 'Editorial illustration · The Peak, SFU · © Angela Shen',
+        category: 'digital-art'
+    },
+    {
+        src: '../images/Angela_Shen_SpiderBoss-450x420.jpg',
+        title: 'Spider Boss',
+        caption: 'Character design illustration · © Angela Shen',
+        category: 'digital-art'
+    },
+    {
+        src: '../images/Angela_Shen_Ghost-696x735.jpg',
+        title: 'Ghost',
+        caption: 'Character design illustration · © Angela Shen',
+        category: 'digital-art'
+    },
+    {
+        src: '../images/AngelaShen_Weather_Yes_1.png',
+        title: 'Weather — Yes!',
+        caption: 'Character illustration · © Angela Shen',
+        category: 'digital-art'
+    },
+    {
+        src: '../images/AngelaShen_Groundhog2.png',
+        title: 'Groundhog Day',
+        caption: 'Character illustration · © Angela Shen',
+        category: 'digital-art'
+    },
+
+    // Editorial
+    {
+        src: '../images/WinterSolsticeCard_2023_COVER_FINAL-02_With_Intials_YRS_FRONT.webp',
+        title: 'Winter Solstice Card 2023',
+        caption: 'Illustration & editorial design · VACFSS, 2023',
+        category: 'editorial'
+    },
+    {
+        src: '../images/2022-caregiver-appreciation-card.png',
+        title: 'Caregiver Appreciation Card',
+        caption: 'Editorial illustration · VACFSS, 2022',
+        category: 'editorial'
+    },
+    {
+        src: '../images/2022-annual-general-meeting-raven-butterfly-illustration-card.png',
+        title: 'AGM — Raven & Butterfly',
+        caption: 'Illustration for annual general meeting · VACFSS, 2022',
+        category: 'editorial'
+    },
+    {
+        src: '../images/2022-annual-general-meeting-binder-illustration.png',
+        title: 'AGM Binder Cover Illustration',
+        caption: 'Print illustration · VACFSS, 2022',
+        category: 'editorial'
+    },
+    {
+        src: '../images/Journal-short-film-conceptart-writing.png',
+        title: 'Short Film — Concept Art & Script',
+        caption: 'Concept development, illustration & writing · © Angela Shen',
+        category: 'editorial'
+    },
+];
+
+const SECTIONS = [
+    { id: 'photography',      label: 'Photography'      },
+    { id: 'chinese-painting', label: 'Chinese Painting' },
+    { id: 'digital-art',      label: 'Digital Art'      },
+    { id: 'editorial',        label: 'Editorial'         },
+];
+
+// ─────────────────────────────────────────────
+//  COMPONENTS
+// ─────────────────────────────────────────────
+
+/** Renders a single gallery <figure> element */
+function GalleryItem({ src, title, caption, index }) {
+    const fig = document.createElement('figure');
+    fig.className = 'gallery-item';
+    fig.dataset.index = index;
+    fig.setAttribute('tabindex', '0');
+    fig.setAttribute('role', 'button');
+    fig.setAttribute('aria-label', `Open ${title}`);
+
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = title;
+    img.loading = 'lazy';
+
+    const overlay = document.createElement('div');
+    overlay.className = 'gallery-item-caption';
+    const span = document.createElement('span');
+    span.textContent = title;
+    overlay.appendChild(span);
+
+    fig.appendChild(img);
+    fig.appendChild(overlay);
+
+    fig.addEventListener('click', () => openLightbox(index));
+    fig.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openLightbox(index); });
+
+    return fig;
+}
+
+/** Renders a section block (label + masonry grid) for a given category */
+function GallerySection({ id, label, items }) {
+    const section = document.createElement('section');
+    section.className = 'gallery-section';
+    section.dataset.category = id;
+
+    const heading = document.createElement('h2');
+    heading.className = 'gallery-section-label';
+    heading.textContent = label;
+    section.appendChild(heading);
+
+    const grid = document.createElement('div');
+    grid.className = 'gallery-grid';
+    items.forEach(item => grid.appendChild(GalleryItem(item)));
+    section.appendChild(grid);
+
+    return section;
+}
+
+/** Renders the filter tab bar */
+function FilterBar({ activeFilter, onChange }) {
+    const bar = document.getElementById('filter-bar');
+    bar.innerHTML = '';
+
+    const allBtn = document.createElement('button');
+    allBtn.className = 'filter-btn' + (activeFilter === 'all' ? ' active' : '');
+    allBtn.textContent = 'All';
+    allBtn.addEventListener('click', () => onChange('all'));
+    bar.appendChild(allBtn);
+
+    SECTIONS.forEach(({ id, label }) => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn' + (activeFilter === id ? ' active' : '');
+        btn.textContent = label;
+        btn.addEventListener('click', () => onChange(id));
+        bar.appendChild(btn);
+    });
+}
+
+// ─────────────────────────────────────────────
+//  RENDER
+// ─────────────────────────────────────────────
+let currentFilter = 'all';
+
+/** Flat list of items visible in the current filter (for lightbox navigation) */
+let visibleItems = [];
+
+function render(filter) {
+    currentFilter = filter;
+    visibleItems = filter === 'all'
+        ? GALLERY_DATA.map((item, i) => ({ ...item, index: i }))
+        : GALLERY_DATA.filter(item => item.category === filter).map((item, i) => ({ ...item, index: i }));
+
+    FilterBar({ activeFilter: filter, onChange: render });
+
+    const root = document.getElementById('gallery-root');
+    root.innerHTML = '';
+
+    if (filter === 'all') {
+        SECTIONS.forEach(({ id, label }) => {
+            const sectionItems = visibleItems.filter(item => item.category === id);
+            if (sectionItems.length === 0) return;
+            root.appendChild(GallerySection({ id, label, items: sectionItems }));
+        });
+    } else {
+        const sect = SECTIONS.find(s => s.id === filter);
+        root.appendChild(GallerySection({ id: filter, label: sect.label, items: visibleItems }));
+    }
+}
+
+// ─────────────────────────────────────────────
+//  LIGHTBOX
+// ─────────────────────────────────────────────
+let lbIndex = 0;
+
+function openLightbox(index) {
+    lbIndex = index;
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function updateLightbox() {
+    const item = visibleItems[lbIndex];
+    const img = document.getElementById('lb-img');
+
+    // Reset inline sizing before loading new image
+    img.style.width = '';
+    img.style.height = '';
+    img.src = item.src;
+    img.alt = item.title;
+    document.getElementById('lb-title').textContent = item.title;
+    document.getElementById('lb-sub').textContent = item.caption;
+
+    function sizeImage() {
+        if (!img.naturalWidth) return;
+        const vw80 = window.innerWidth * 0.8;
+        const vh80 = window.innerHeight * 0.8;
+        // Compare image aspect ratio to 80vw × 80vh box
+        if (img.naturalWidth / img.naturalHeight >= vw80 / vh80) {
+            // Landscape-dominant: fill width
+            img.style.width = '80vw';
+            img.style.height = 'auto';
+        } else {
+            // Portrait-dominant: fill height
+            img.style.height = '80vh';
+            img.style.width = 'auto';
+        }
+    }
+
+    if (img.complete && img.naturalWidth) {
+        sizeImage();
+    } else {
+        img.onload = sizeImage;
+    }
+}
+
+document.getElementById('lb-close').addEventListener('click', closeLightbox);
+document.getElementById('lb-prev').addEventListener('click', () => {
+    lbIndex = (lbIndex - 1 + visibleItems.length) % visibleItems.length;
+    updateLightbox();
+});
+document.getElementById('lb-next').addEventListener('click', () => {
+    lbIndex = (lbIndex + 1) % visibleItems.length;
+    updateLightbox();
+});
+document.getElementById('lightbox').addEventListener('click', e => {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+});
+document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft')  { lbIndex = (lbIndex - 1 + visibleItems.length) % visibleItems.length; updateLightbox(); }
+    if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % visibleItems.length; updateLightbox(); }
+});
+
+// ─────────────────────────────────────────────
+//  INIT
+// ─────────────────────────────────────────────
+render('all');
+</script>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <span class="footer-name">Angela Shen</span>
+                <span class="footer-copy">Joint Major: CMNS &amp; IAT @ SFU &nbsp;&middot;&nbsp; Graduating Spring 2026 &nbsp;&middot;&nbsp; *Incoming IAT Masters Student, SFU, Fall 2026</span>
+                <span class="footer-copy">&copy; 2026 Angela Shen. All photography, illustrations, and design work are the original work of Angela Shen. All rights reserved.</span>
+            </div>
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="../index.html">Work</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="mailto:angelashen.ca@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/angelashenca/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/angelashen233" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.instagram.com/lollypuddn/" target="_blank" rel="noopener">Instagram ↗</a>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+</html>

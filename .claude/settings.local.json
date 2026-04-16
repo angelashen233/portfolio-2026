@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:skinny-airship-862.notion.site)",
+      "WebFetch(domain:www.vacfss.com)"
+    ]
+  }
+}

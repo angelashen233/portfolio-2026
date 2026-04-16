@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/Profile_Discord.webp" type="image/webp">
+    <title>VACFSS Recruitment Campaign — Angela Shen</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .img-caption {
+            font-size: 0.85rem;
+            color: var(--slate-500);
+            text-align: center;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            margin: 2rem 0;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 1.75rem 1rem;
+            background: var(--slate-50);
+            border-radius: 12px;
+            border: 1px solid var(--slate-200);
+        }
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin: 0;
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--slate-600);
+            margin: 0.5rem 0 0;
+            line-height: 1.4;
+        }
+        .benchmark-bar {
+            margin: 1.5rem 0;
+        }
+        .benchmark-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        .benchmark-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            width: 180px;
+            flex-shrink: 0;
+            color: var(--slate-700);
+        }
+        .benchmark-track {
+            flex: 1;
+            height: 10px;
+            background: var(--slate-200);
+            border-radius: 99px;
+            overflow: hidden;
+        }
+        .benchmark-fill {
+            height: 100%;
+            border-radius: 99px;
+        }
+        .benchmark-fill.good { background: #22c55e; }
+        .benchmark-fill.avg  { background: #f97316; }
+        .benchmark-value {
+            font-size: 0.85rem;
+            font-weight: 800;
+            width: 60px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .process-step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        .step-number {
+            flex-shrink: 0;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            font-weight: 800;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.2rem;
+        }
+        @media (max-width: 768px) {
+            .stat-grid { grid-template-columns: repeat(2, 1fr); }
+            .benchmark-label { width: 120px; font-size: 0.75rem; }
+        }
+
+        /* ── Landing Page Cost Chart ── */
+        .cpk-wrap {
+            margin: 2.5rem 0;
+            background: #fff;
+            border: 1px solid var(--slate-200);
+            border-radius: 16px;
+            padding: 2rem 2rem 1.5rem;
+        }
+        .cpk-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .cpk-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--slate-800);
+            margin: 0;
+        }
+        .cpk-tabs {
+            display: flex;
+            gap: 6px;
+        }
+        .cpk-tab {
+            background: #f1f5f9;
+            color: var(--slate-600);
+            border: none;
+            border-radius: 99px;
+            padding: 6px 16px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .cpk-tab:hover { background: #ffedd5; color: #9a3412; }
+        .cpk-tab.active { background: #da6e30; color: #fff; }
+
+        /* Horizontal bar rows */
+        .cpk-row { margin-bottom: 1.4rem; }
+        .cpk-row:last-child { margin-bottom: 0; }
+        .cpk-row-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 7px;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        .cpk-row-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--slate-700);
+        }
+        .cpk-row-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--slate-500);
+        }
+        .cpk-savings {
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 2px 9px;
+            border-radius: 99px;
+        }
+        .cpk-savings.green  { background: #dcfce7; color: #15803d; }
+        .cpk-savings.orange { background: #ffedd5; color: #9a3412; }
+        .cpk-savings.gray   { background: #f1f5f9; color: var(--slate-500); }
+
+        .cpk-track {
+            height: 40px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        .cpk-bar {
+            height: 100%;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding: 0 14px;
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #fff;
+            width: 0;
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .cpk-bar.industry { background: #94a3b8; }
+        .cpk-bar.good     { background: #22c55e; }
+        .cpk-bar.fair     { background: #f97316; }
+        .cpk-bar.yr-2024  { background: #94a3b8; }
+        .cpk-bar.yr-2025  { background: #da6e30; }
+        .cpk-bar.eff-2024 { background: #94a3b8; }
+        .cpk-bar.eff-2025 { background: #22c55e; }
+
+        .cpk-divider {
+            border: none;
+            border-top: 1px solid var(--slate-200);
+            margin: 1.5rem 0;
+        }
+        .cpk-footnote {
+            font-size: 0.75rem;
+            color: var(--slate-500);
+            margin-top: 1.25rem;
+            line-height: 1.6;
+        }
+        .cpk-view { display: none; }
+        .cpk-view.active { display: block; }
+
+        .cpk-group-label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--slate-500);
+            margin: 0 0 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <div class="container nav-content">
+            <a class="logo" href="../index.html">✨ Angela Shen</a>
+            <div class="nav-links">
+                <a href="../index.html">Work</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="about.html">About</a>
+                <a href="../images/Angela-Shen-Resume-2026-Feb_Lab-Submission.pdf" class="nav-cta" target="_blank">Resume ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="case-hero">
+        <span class="status-badge">PAID MEDIA • META ADS • GOOGLE ADS • CONTENT STRATEGY</span>
+        <h1>VACFSS <span class="gradient-text">Recruitment Campaign</span></h1>
+        <p style="max-width: 720px; margin: 0 auto; font-size: 1.25rem; color: var(--slate-600);">
+            End-to-end ownership of paid and organic recruitment marketing for a nonprofit — generating 4M+ results on a $15K budget by outperforming industry cost benchmarks by up to 4×.
+        </p>
+        <div class="case-meta">
+            <div class="case-meta-item">
+                <span class="case-meta-label">Organization</span>
+                <span class="case-meta-value">VACFSS</span>
+            </div>
+            <div class="case-meta-item">
+                <span class="case-meta-label">Duration</span>
+                <span class="case-meta-value">Sept 2022 — Present</span>
+            </div>
+            <div class="case-meta-item">
+                <span class="case-meta-label">Channels</span>
+                <span class="case-meta-value">Meta Ads, Google Ads, LinkedIn, Organic Social</span>
+            </div>
+        </div>
+        <div class="scroll-hint" aria-hidden="true"><span></span><span></span></div>
+    </header>
+
+    <main class="container">
+
+    <!-- Progress sidebar -->
+    <nav class="cs-progress" aria-label="Page sections">
+        <a class="cs-progress-dot" href="#s-challenge"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Challenge</span></a>
+        <a class="cs-progress-dot" href="#s-results"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Results</span></a>
+        <a class="cs-progress-dot" href="#s-benchmark"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Benchmark</span></a>
+        <a class="cs-progress-dot" href="#s-performance"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Performance</span></a>
+        <a class="cs-progress-dot" href="#s-cpk"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Cost Analysis</span></a>
+        <a class="cs-progress-dot" href="#s-creative"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Creative</span></a>
+        <a class="cs-progress-dot" href="#s-organic"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Organic</span></a>
+        <a class="cs-progress-dot" href="#s-community"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Behind the Numbers</span></a>
+    </nav>
+
+        <!-- The Challenge -->
+        <section class="case-section" id="s-challenge">
+            <div class="highlight-box">
+                <h3>The Challenge</h3>
+                <p>VACFSS — the Vancouver Aboriginal Child and Family Services Society — needed to recruit specialized social workers, caregivers, and support staff from a limited talent pool. As an Indigenous-serving nonprofit, the organization competes for the same candidates as larger government agencies and private firms, but with a fraction of the marketing budget.</p>
+                <p style="margin-bottom: 0;">My role: build and run the entire recruitment marketing operation from scratch — strategy, creative, copy, media buying, and reporting — with a mandate to prove that a tight budget, used precisely, could outperform the market.</p>
+            </div>
+        </section>
+
+        <!-- Top-line Results -->
+        <section class="case-section" id="s-results">
+            <h2>Results at a Glance</h2>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <p class="stat-number">4.1M+</p>
+                    <p class="stat-label">Campaign results in 2025 across 24 active campaigns</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-number">$0.21</p>
+                    <p class="stat-label">Lowest CPC achieved — vs. $0.80 industry average</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-number">331%</p>
+                    <p class="stat-label">Increase in web traffic over two years</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-number">3M</p>
+                    <p class="stat-label">Impressions generated in a single campaign year</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-number">80K</p>
+                    <p class="stat-label">Landing page views in one year</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-number">59K+</p>
+                    <p class="stat-label">Facebook organic referrals driven to the website</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-number">117K</p>
+                    <p class="stat-label">New users to vacfss.com in 2025</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-number">$15K</p>
+                    <p class="stat-label">Annual paid media budget managed end-to-end</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beating the benchmark -->
+        <section class="case-section" id="s-benchmark">
+            <h2>Beating the Industry Benchmark</h2>
+            <p>The average cost-per-click (CPC) on Meta Ads across industries sits at <strong>$0.80</strong>. For nonprofit and social services recruitment — where audiences are specific and competition for attention is high — this benchmark is a meaningful ceiling. The campaigns I ran consistently broke through it.</p>
+
+            <div class="benchmark-bar">
+                <div class="benchmark-row">
+                    <span class="benchmark-label">Industry average CPC</span>
+                    <div class="benchmark-track">
+                        <div class="benchmark-fill avg" style="width: 100%;"></div>
+                    </div>
+                    <span class="benchmark-value" style="color: #f97316;">$0.80</span>
+                </div>
+                <div class="benchmark-row">
+                    <span class="benchmark-label">Caregiver Campaign CPC</span>
+                    <div class="benchmark-track">
+                        <div class="benchmark-fill good" style="width: 55%;"></div>
+                    </div>
+                    <span class="benchmark-value" style="color: #22c55e;">$0.44</span>
+                </div>
+                <div class="benchmark-row">
+                    <span class="benchmark-label">HR Recruitment CPC</span>
+                    <div class="benchmark-track">
+                        <div class="benchmark-fill good" style="width: 26%;"></div>
+                    </div>
+                    <span class="benchmark-value" style="color: #22c55e;">$0.21</span>
+                </div>
+            </div>
+
+            <p>A $0.21 CPC means each visit to the recruitment page cost <strong>less than a quarter</strong>. For the July Caregiver campaign alone — 855,738 link clicks for under $3,000 — that is a level of reach that most organisations at this budget tier simply do not achieve.</p>
+
+            <div class="highlight-box">
+                <h3>Why the numbers matter</h3>
+                <p>Low CPC is not just an efficiency metric — it is evidence that the creative and targeting strategy is working. When an ad costs less to click, it means the audience found it relevant enough to act. That relevance comes from the combination of strong visual design, precise audience segmentation, and copy that speaks directly to the people VACFSS needs to reach.</p>
+                <p style="margin-bottom: 0;">Every dollar saved on CPC is a dollar that extends the campaign's reach without increasing the budget — compounding the impact of a constrained spend.</p>
+            </div>
+        </section>
+
+        <!-- 2025 Campaign Dashboard -->
+        <section class="case-section" id="s-performance">
+            <h2>2025 Campaign Performance</h2>
+            <p>24 campaigns managed simultaneously across Meta's full placement suite — Feeds, Reels, Stories, and Search. $15,299 total spend. 4.1 million results.</p>
+
+            <img class="case-img" src="../images/Jan-2025  to Dec 31 - VACFSS-ADS.jpg" alt="Meta Ads Manager dashboard — Jan to Dec 2025 showing 4.1M results from 24 campaigns for $15,299">
+            <p class="img-caption">2025 Meta Ads Manager — 4,157,445 total results across 24 campaigns on a $15,299 budget</p>
+
+            <h2 style="margin-top: 2.5rem;">2024 Campaign Performance</h2>
+            <p>The year prior established the foundation: 2.5M+ results on $12,396 — a benchmark that the 2025 campaigns then surpassed by 60% without a proportional increase in budget.</p>
+
+            <img class="case-img" src="../images/Jan-2024 to Dec 31 - VACFSS-ADS.png" alt="Meta Ads Manager dashboard — Jan to Dec 2024 showing 2.5M results from 24 campaigns for $12,396">
+            <p class="img-caption">2024 Meta Ads Manager — 2,591,800 results across 24 campaigns on a $12,396 budget</p>
+        </section>
+
+        <!-- Landing Page Cost per 1,000 Chart -->
+        <section class="case-section" id="s-cpk">
+            <h2>Landing Page Cost per 1,000 Clicks</h2>
+            <p>How much does it actually cost to drive 1,000 people to the caregiver recruitment landing page? Below compares each campaign against the $0.80 industry-standard CPC — and tracks how cost efficiency improved year over year.</p>
+
+            <div class="cpk-wrap">
+                <div class="cpk-header">
+                    <p class="cpk-title">Cost per 1,000 Landing Page Clicks — Interactive</p>
+                    <div class="cpk-tabs">
+                        <button class="cpk-tab active" data-view="campaigns">Campaign vs Benchmark</button>
+                        <button class="cpk-tab" data-view="yearly">Year-over-Year</button>
+                    </div>
+                </div>
+
+                <!-- VIEW 1: Campaign vs Benchmark -->
+                <div class="cpk-view active" id="cpk-view-campaigns">
+                    <p class="cpk-group-label">Cost per 1,000 link clicks — Max = $800 (industry avg)</p>
+
+                    <div class="cpk-row" data-target-width="100" data-bar-class="industry">
+                        <div class="cpk-row-header">
+                            <span class="cpk-row-label">Industry Average (Meta Ads)</span>
+                            <div class="cpk-row-meta">
+                                <span>$800 / 1,000 clicks</span>
+                                <span class="cpk-savings gray">Benchmark</span>
+                            </div>
+                        </div>
+                        <div class="cpk-track">
+                            <div class="cpk-bar industry" style="width:0">$800 per 1,000</div>
+                        </div>
+                    </div>
+
+                    <div class="cpk-row">
+                        <div class="cpk-row-header">
+                            <span class="cpk-row-label">July Caregiver AD — 2025</span>
+                            <div class="cpk-row-meta">
+                                <span>855,738 clicks · $2,999.87 spent</span>
+                                <span class="cpk-savings orange">−45% vs industry</span>
+                            </div>
+                        </div>
+                        <div class="cpk-track">
+                            <div class="cpk-bar fair" style="width:0">$440 per 1,000</div>
+                        </div>
+                        <div style="font-size:0.75rem; color:var(--slate-500); margin-top:5px;">$0.44 CPC × 1,000 = <strong style="color:#9a3412;">$440</strong> &nbsp;·&nbsp; saves <strong style="color:#15803d;">$360</strong> per 1,000 clicks vs benchmark</div>
+                    </div>
+
+                    <div class="cpk-row">
+                        <div class="cpk-row-header">
+                            <span class="cpk-row-label">HR Recruitment — General Augmented</span>
+                            <div class="cpk-row-meta">
+                                <span>108,440 clicks · $400 spent</span>
+                                <span class="cpk-savings green">−74% vs industry</span>
+                            </div>
+                        </div>
+                        <div class="cpk-track">
+                            <div class="cpk-bar good" style="width:0">$210 per 1,000</div>
+                        </div>
+                        <div style="font-size:0.75rem; color:var(--slate-500); margin-top:5px;">$0.21 CPC × 1,000 = <strong style="color:#15803d;">$210</strong> &nbsp;·&nbsp; saves <strong style="color:#15803d;">$590</strong> per 1,000 clicks vs benchmark</div>
+                    </div>
+
+                    <hr class="cpk-divider">
+                    <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:1rem; text-align:center;">
+                        <div>
+                            <div style="font-size:1.6rem; font-weight:800; color:#94a3b8;">$800</div>
+                            <div style="font-size:0.75rem; color:var(--slate-500); font-weight:600;">Industry per 1K</div>
+                        </div>
+                        <div>
+                            <div style="font-size:1.6rem; font-weight:800; color:#f97316;">$440</div>
+                            <div style="font-size:0.75rem; color:var(--slate-500); font-weight:600;">Caregiver AD per 1K</div>
+                        </div>
+                        <div>
+                            <div style="font-size:1.6rem; font-weight:800; color:#22c55e;">$210</div>
+                            <div style="font-size:0.75rem; color:var(--slate-500); font-weight:600;">HR Recruitment per 1K</div>
+                        </div>
+                    </div>
+                    <p class="cpk-footnote">Source: Meta Ads Manager · Jan 1 – Dec 31, 2025. Cost per 1,000 = CPC × 1,000. Industry CPC benchmark: $0.80 (Meta cross-industry average).</p>
+                </div>
+
+                <!-- VIEW 2: Year-over-Year -->
+                <div class="cpk-view" id="cpk-view-yearly">
+
+                    <p class="cpk-group-label">Total results — Max = 4,157,445 (2025)</p>
+                    <div class="cpk-row">
+                        <div class="cpk-row-header">
+                            <span class="cpk-row-label">2024 — Jan to Dec</span>
+                            <div class="cpk-row-meta">
+                                <span>2,591,800 results · $12,396.58 spent</span>
+                            </div>
+                        </div>
+                        <div class="cpk-track">
+                            <div class="cpk-bar yr-2024" style="width:0">2,591,800</div>
+                        </div>
+                    </div>
+                    <div class="cpk-row">
+                        <div class="cpk-row-header">
+                            <span class="cpk-row-label">2025 — Jan to Dec</span>
+                            <div class="cpk-row-meta">
+                                <span>4,157,445 results · $15,299.99 spent</span>
+                                <span class="cpk-savings green">+60% results</span>
+                            </div>
+                        </div>
+                        <div class="cpk-track">
+                            <div class="cpk-bar yr-2025" style="width:0">4,157,445</div>
+                        </div>
+                    </div>
+
+                    <hr class="cpk-divider">
+                    <p class="cpk-group-label">Cost per 1,000 results — Max = $4.78 (2024)</p>
+                    <div class="cpk-row">
+                        <div class="cpk-row-header">
+                            <span class="cpk-row-label">2024 cost efficiency</span>
+                            <div class="cpk-row-meta">
+                                <span>$12,396.58 ÷ 2,591.8K results</span>
+                            </div>
+                        </div>
+                        <div class="cpk-track">
+                            <div class="cpk-bar eff-2024" style="width:0">$4.78 per 1,000</div>
+                        </div>
+                    </div>
+                    <div class="cpk-row">
+                        <div class="cpk-row-header">
+                            <span class="cpk-row-label">2025 cost efficiency</span>
+                            <div class="cpk-row-meta">
+                                <span>$15,299.99 ÷ 4,157.4K results</span>
+                                <span class="cpk-savings green">−23% cost per result</span>
+                            </div>
+                        </div>
+                        <div class="cpk-track">
+                            <div class="cpk-bar eff-2025" style="width:0">$3.68 per 1,000</div>
+                        </div>
+                    </div>
+
+                    <hr class="cpk-divider">
+                    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; text-align:center;">
+                        <div>
+                            <div style="font-size:1.4rem; font-weight:800; color:#94a3b8;">2.59M</div>
+                            <div style="font-size:0.75rem; color:var(--slate-500); font-weight:600;">2024 results</div>
+                        </div>
+                        <div>
+                            <div style="font-size:1.4rem; font-weight:800; color:#da6e30;">4.16M</div>
+                            <div style="font-size:0.75rem; color:var(--slate-500); font-weight:600;">2025 results</div>
+                        </div>
+                        <div>
+                            <div style="font-size:1.4rem; font-weight:800; color:#94a3b8;">$4.78</div>
+                            <div style="font-size:0.75rem; color:var(--slate-500); font-weight:600;">2024 per 1K</div>
+                        </div>
+                        <div>
+                            <div style="font-size:1.4rem; font-weight:800; color:#22c55e;">$3.68</div>
+                            <div style="font-size:0.75rem; color:var(--slate-500); font-weight:600;">2025 per 1K</div>
+                        </div>
+                    </div>
+                    <p class="cpk-footnote">Source: Meta Ads Manager · 2024 and 2025 full-year totals across 24 campaigns each year. Cost per 1,000 = (total spend ÷ total results) × 1,000.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Creative -->
+        <section class="case-section" id="s-creative">
+            <h2>Creative Strategy</h2>
+            <p>I owned the complete creative pipeline: concept, design, copy, and placement optimisation. Every ad was designed to work across Meta's three primary placement formats simultaneously — Feed (1:1 and horizontal), Stories and Reels (9:16 vertical), and Right Column search results — without losing visual clarity or message hierarchy at any size.</p>
+
+            <img class="case-img" src="../images/Vacfss-recuitment for HR ads.jpg" alt="VACFSS recruitment ad creative shown across Feed, Stories, and Right Column placements in Meta Ads Manager">
+            <p class="img-caption">Multi-format ad creative — designed for simultaneous deployment across Feeds, Stories/Reels, and Search column placements</p>
+
+            <div class="two-col" style="margin-top: 2rem;">
+                <div>
+                    <h4>Audience Targeting</h4>
+                    <p>Campaigns were segmented by role type — caregiver, social worker, administrative — with tailored creative and copy for each. Retargeting pools were built from website visitors and video viewers to capture candidates who had shown intent but not yet applied.</p>
+                </div>
+                <div>
+                    <h4>A/B Testing</h4>
+                    <p>Ad sets ran continuous creative tests — varying imagery, headline framing, and CTA language. Performance data was fed back into the design process: what clicked (literally) informed the next iteration. This loop is what drove CPC below $0.25 on the best-performing campaigns.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Organic and web impact -->
+        <section class="case-section" id="s-organic">
+            <h2>Organic Reach & Web Traffic</h2>
+            <p>Paid media drove discovery, but a parallel organic content strategy ensured that brand value compounded beyond the ad budget. LinkedIn and Facebook posts — timed around community events and cultural moments — built the kind of trust that a recruitment ad cannot buy outright.</p>
+
+            <div class="two-col" style="gap: 1.5rem; margin: 1.5rem 0;">
+                <div>
+                    <img class="case-img" src="../images/Social-Media-post-VACFSS-Linkedin-Truth-and-reconciliationeveryday.png" alt="LinkedIn post about Truth and Reconciliation — 284 organic impressions" style="margin: 0; border-radius: 12px; border: 1px solid var(--slate-200);">
+                    <p class="img-caption">Organic LinkedIn content — Truth and Reconciliation post, 284 impressions</p>
+                </div>
+                <div>
+                    <img class="case-img" src="../images/WinterSolsticeCard_2023_Socialmedia-posting-linkedin.webp" alt="LinkedIn post sharing the 2023 Winter Solstice card design" style="margin: 0; border-radius: 12px; border: 1px solid var(--slate-200);">
+                    <p class="img-caption">Winter Solstice card shared on LinkedIn — community-facing brand moment</p>
+                </div>
+            </div>
+
+            <p>The combined effect of paid and organic: Facebook alone drove <strong>59,000+ referral visits</strong> to vacfss.com — 31K from mobile and 28K from the Facebook platform directly — proof that the social presence had built genuine audience interest beyond the ad placements.</p>
+
+            <img class="case-img" src="../images/proof-of power-31+28k facebook referrals - VACFSS.jpg" alt="Google Analytics traffic source breakdown showing 31K and 28K Facebook referral users alongside organic traffic">
+            <p class="img-caption">Google Analytics traffic sources — 31K + 28K Facebook referral users, on top of organic search traffic</p>
+
+            <img class="case-img" src="../images/Google_Analytics_2025.png" alt="Google Analytics 2025 snapshot — 67K active users, 117K new users, 678K events. Top page: Become a Caregiver with 46K views" style="margin-top: 1.5rem;">
+            <p class="img-caption">Google Analytics 2025 — 67K active users, 117K new users. "Become a Caregiver" ranked #1 with 46K views and 141K events</p>
+        </section>
+
+        <!-- Community -->
+        <section class="case-section" id="s-community">
+            <h2>The Work Behind the Numbers</h2>
+            <p>Effective recruitment marketing for an Indigenous services organisation is not just a performance media problem — it requires cultural fluency in every touchpoint. The campaigns needed to communicate safety, purpose, and community belonging to an audience that is rightly cautious about institutional messaging.</p>
+
+            <div class="two-col" style="gap: 1.25rem; margin: 1.5rem 0;">
+                <img class="case-img" src="../images/MicrosoftTeams-image (39).png" alt="Elder April Bennett — community event" style="margin: 0; border-radius: 12px;">
+                <img class="case-img" src="../images/MicrosoftTeams-image (27).png" alt="Community gathering event" style="margin: 0; border-radius: 12px;">
+            </div>
+            <div class="two-col" style="gap: 1.25rem; margin: 1.5rem 0;">
+                <img class="case-img" src="../images/Caregiver-cultural-camp-2024.jpg" alt="Caregiver cultural camp 2024" style="margin: 0; border-radius: 12px;">
+                <img class="case-img" src="../images/Caregiver-summer-camp-cannoe-2024.jpg" alt="Caregiver summer camp canoe 2024" style="margin: 0; border-radius: 12px;">
+            </div>
+            <p class="img-caption">Community events I photographed and coordinated — imagery used across recruitment campaigns to show authentic organizational culture</p>
+
+            <p style="margin-top: 1.5rem;">I photographed and coordinated over 200+ attendee events across two years. That photography directly fed the ad creative library — authentic imagery of real community life, not stock photos, which is a significant part of why the ads performed: people recognized the cultural context as genuine.</p>
+
+            <div class="highlight-box" style="margin-top: 2rem;">
+                <h3>What this demonstrates</h3>
+                <p>The numbers — $0.21 CPC, 4M+ results, 331% traffic growth — are evidence of a specific skill set: the ability to translate cultural understanding into creative decisions, and creative decisions into measurable media performance.</p>
+                <p style="margin-bottom: 0;">A low CPC is not luck. It comes from designing ads that the right people actually want to click — which requires knowing who those people are, what matters to them, and how to speak to that in a single image and headline. That is the work.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+    // ── COST CHART ──
+    (function () {
+        // Bar target widths (as % of track)
+        const BARS = {
+            campaigns: [
+                { selector: '#cpk-view-campaigns .cpk-bar.industry', width: 100 },
+                { selector: '#cpk-view-campaigns .cpk-bar.fair',     width: 55  },  // 440/800
+                { selector: '#cpk-view-campaigns .cpk-bar.good',     width: 26.25 }, // 210/800
+            ],
+            yearly: [
+                { selector: '#cpk-view-yearly .cpk-bar.yr-2024',  width: 62.3  }, // 2591800/4157445
+                { selector: '#cpk-view-yearly .cpk-bar.yr-2025',  width: 100   },
+                { selector: '#cpk-view-yearly .cpk-bar.eff-2024', width: 100   }, // 4.78 = max
+                { selector: '#cpk-view-yearly .cpk-bar.eff-2025', width: 77    }, // 3.68/4.78
+            ]
+        };
+
+        function animateBars(view) {
+            // Reset all bars first
+            document.querySelectorAll('.cpk-bar').forEach(b => b.style.width = '0');
+
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    (BARS[view] || []).forEach(({ selector, width }) => {
+                        const el = document.querySelector(selector);
+                        if (el) el.style.width = width + '%';
+                    });
+                });
+            });
+        }
+
+        // Tab switching
+        document.querySelectorAll('.cpk-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const view = tab.dataset.view;
+                document.querySelectorAll('.cpk-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                document.querySelectorAll('.cpk-view').forEach(v => v.classList.remove('active'));
+                document.getElementById('cpk-view-' + view).classList.add('active');
+                animateBars(view);
+            });
+        });
+
+        // Animate on scroll into view (IntersectionObserver)
+        let animated = false;
+        const section = document.getElementById('s-cpk');
+        if (section) {
+            const obs = new IntersectionObserver(entries => {
+                if (entries[0].isIntersecting && !animated) {
+                    animated = true;
+                    animateBars('campaigns');
+                }
+            }, { threshold: 0.2 });
+            obs.observe(section);
+        }
+    })();
+    </script>
+
+    <script>
+    (function() {
+        const dots = Array.from(document.querySelectorAll('.cs-progress-dot'));
+        const sections = dots.map(d => document.getElementById(d.getAttribute('href').slice(1))).filter(Boolean);
+        function update() {
+            let active = 0;
+            sections.forEach((s, i) => { if (s.getBoundingClientRect().top <= window.innerHeight * 0.5) active = i; });
+            dots.forEach((d, i) => d.classList.toggle('active', i === active));
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    })();
+    </script>
+
+        <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <span class="footer-name">Angela Shen</span>
+                <span class="footer-copy">Joint Major: CMNS &amp; IAT @ SFU &nbsp;&middot;&nbsp; Graduating Spring 2026 &nbsp;&middot;&nbsp; *Incoming IAT Masters Student, SFU, Fall 2026</span>
+                <span class="footer-copy">&copy; 2026 Angela Shen. All photography, illustrations, and design work are the original work of Angela Shen. All rights reserved.</span>
+            </div>
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="../index.html">Work</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="mailto:angelashen.ca@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/angelashenca/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/angelashen233" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.instagram.com/lollypuddn/" target="_blank" rel="noopener">Instagram ↗</a>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+</html>
