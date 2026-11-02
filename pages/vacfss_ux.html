@@ -41,6 +41,7 @@
             color: var(--slate-600);
             margin: 0.5rem 0 0;
         }
+        :root { --accent: var(--orange); }
         .process-step {
             display: flex;
             gap: 1.5rem;
@@ -112,7 +113,7 @@
         @media (max-width: 768px) {
             .stat-grid { grid-template-columns: 1fr; }
             .before-after { grid-template-columns: 1fr; }
-            .photo-row { grid-template-columns: repeat(2, 1fr); }
+            .photo-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -155,17 +156,18 @@
 
     <!-- Progress sidebar -->
     <nav class="cs-progress" aria-label="Page sections">
+        <a class="cs-progress-dot" href="#s-summary"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">At a Glance</span></a>
         <a class="cs-progress-dot" href="#s-background"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Background</span></a>
-        <a class="cs-progress-dot" href="#s-community"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Community</span></a>
         <a class="cs-progress-dot" href="#s-research"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Staff Research</span></a>
         <a class="cs-progress-dot" href="#s-painpoints"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Pain Points</span></a>
         <a class="cs-progress-dot" href="#s-beforeafter"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Before & After</span></a>
+        <a class="cs-progress-dot" href="#s-community"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Photography</span></a>
         <a class="cs-progress-dot" href="#s-results"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Results</span></a>
+        <a class="cs-progress-dot" href="#s-round2"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Validation</span></a>
+        <a class="cs-progress-dot" href="#s-takeaways"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Takeaways</span></a>
         <a class="cs-progress-dot" href="#s-ads"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Ad Campaign</span></a>
         <a class="cs-progress-dot" href="#s-video"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Video</span></a>
         <a class="cs-progress-dot" href="#s-writing"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Writing</span></a>
-        <a class="cs-progress-dot" href="#s-round2"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Round 2</span></a>
-        <a class="cs-progress-dot" href="#s-takeaways"><span class="cs-progress-dot-inner"></span><span class="cs-progress-dot-text">Takeaways</span></a>
     </nav>
 
     <main class="container">
@@ -186,36 +188,28 @@
             </div>
             <div class="cs-role-item">
                 <span class="cs-role-label">Key Outcome</span>
-                <span class="cs-role-value">+50% caregiver inquiries on the same ad budget</span>
+                <span class="cs-role-value">+566% caregiver inquiries in the 12 months after the page and ad changes</span>
             </div>
         </div>
+
+        <!-- At a glance -->
+        <section class="case-section" id="s-summary">
+            <div class="highlight-box">
+                <h3>At a Glance</h3>
+                <p><strong>Problem:</strong> Potential caregivers were arriving from ads, but the organization's most important page was buried. Even staff who used the site regularly needed over 2 minutes to find it.</p>
+                <p><strong>What I did:</strong> Interviewed staff, reviewed how past caregivers first made contact, and turned the findings into three fixes: a more direct path to the page, scannable content, and real community photography.</p>
+                <p><strong>Outcome:</strong> Caregiver inquiries rose 566% in the 12 months after the March 2024 page and ad changes. Inquiries from sources other than Facebook rose 134%.</p>
+                <p style="margin-bottom: 0;"><strong>Validation:</strong> Follow-up caregiver interviews in 2026 confirmed that the direct ad path removed the navigation barrier and that the more descriptive content helped them take the next step.</p>
+            </div>
+        </section>
 
         <div class="cs-phase"><span class="cs-phase-label">Discovery</span></div>
 
         <!-- Context -->
         <section class="case-section" id="s-background">
-            <div class="highlight-box">
-                <h3>Background</h3>
-                <p>VACFSS (Vancouver Aboriginal Child and Family Services Society) supports Indigenous children and families in Vancouver. A critical part of their work is recruiting foster and family caregivers — yet the website's path to that information was buried, text-heavy, and filled with stock photography that looked identical to every other social services organization.</p>
-                <p style="margin-bottom: 0;">I conducted two rounds of research, staff interviews in 2024 and caregiver interviews in 2026, to measure the real impact of navigational and content changes on the site's core conversion goal: getting a potential caregiver to reach out.</p>
-            </div>
-        </section>
-
-        <!-- On-site photography section -->
-        <section class="case-section" id="s-community">
-            <h2>The Community Behind the Work</h2>
-            <p>One of the key design decisions was replacing generic stock photography with real on-site images of the VACFSS community, photos that reflect the people and culture the organization actually serves.</p>
-            <div class="photo-row">
-                <img src="../images/MicrosoftTeams-image (20).png" alt="VACFSS community event — caregivers and families gathered">
-                <img src="../images/MicrosoftTeams-image (27).png" alt="VACFSS community cultural event — participants in traditional dress">
-                <img src="../images/MicrosoftTeams-image (31).png" alt="VACFSS summer cultural gathering with community members">
-            </div>
-            <div class="photo-row">
-                <img src="../images/MicrosoftTeams-image (29).png" alt="VACFSS staff and community members at an event">
-                <img src="../images/MicrosoftTeams-image (34).png" alt="VACFSS community gathering — children and caregivers">
-                <img src="../images/MicrosoftTeams-image (38).png" alt="VACFSS event documentation — on-site photography">
-            </div>
-            <p class="img-caption">On-site photography by Angela Shen, replacing stock images to reflect the real VACFSS community rather than generic social services imagery · © Angela Shen</p>
+            <h2>Background</h2>
+            <p>VACFSS (Vancouver Aboriginal Child and Family Services Society) supports Indigenous children and families in Vancouver. A critical part of their work is recruiting foster and family caregivers — yet the website's path to that information was buried, text-heavy, and filled with stock photography that looked identical to every other social services organization.</p>
+            <p>I conducted two rounds of research, staff interviews in 2024 and caregiver interviews in 2026, to measure the impact of navigation and content changes on the site's core goal: getting a potential caregiver to reach out.</p>
         </section>
 
         <div class="cs-phase"><span class="cs-phase-label">Research</span></div>
@@ -223,25 +217,25 @@
         <!-- Round 1: Staff Interviews -->
         <section class="case-section" id="s-research">
             <h2>Round 1: Staff Interviews (2024)</h2>
-            <p>I started by testing with 3 VACFSS staff members, people who use the site regularly. The core research question was whether even internal users could efficiently navigate to the organization's most important conversion page.</p>
+            <p>I started by testing with 5 VACFSS staff members (2 communications employees, 2 social workers, and 1 caregiver), people who use the site regularly. The core research question was whether even internal users could efficiently navigate to the organization's most important conversion page.</p>
 
             <div class="quote-block">
                 "Do you know which is our Becoming a Caregiver page?"
-                <cite>— Interview prompt given to 3 staff participants</cite>
+                <cite>— Interview prompt given to 5 staff participants</cite>
             </div>
 
             <div class="process-step">
                 <div class="step-number">!</div>
                 <div>
                     <h3 style="margin-top: 0;">Critical Finding: 2+ Minutes to Navigate</h3>
-                    <p>Every participant took <strong>over 2 minutes</strong> to locate the Becoming a Caregiver page, despite working at the organization. This wasn't a user error; it was a structural flaw. If staff couldn't find it quickly, a potential caregiver arriving from an ad had almost no chance of converting organically.</p>
+                    <p>Every participant took <strong>over 2 minutes</strong> to locate the Becoming a Caregiver page, despite working at the organization. The cause was the site structure. If staff couldn't find it quickly, a potential caregiver arriving from an ad had almost no chance.</p>
                 </div>
             </div>
 
             <div class="highlight-box">
                 <h3>Supporting Data: Referral Pattern (2024)</h3>
-                <p>When reviewing how past caregivers had first made contact, <strong>3 out of 5 had been directly referred by someone they knew</strong>, meaning they never needed to navigate the site independently. The website was not functioning as a discovery or conversion tool; word of mouth was carrying the full weight of recruitment.</p>
-                <p style="margin-bottom: 0;">This confirmed that the navigation problem wasn't being caught because it was being bypassed by people who already knew where to call.</p>
+                <p><strong>3 out of 5 past caregivers were directly referred by someone they knew</strong>, so they never needed to navigate the site. Word of mouth was carrying recruitment.</p>
+                <p style="margin-bottom: 0;">Referrals hid the navigation problem because those people already knew where to call.</p>
             </div>
         </section>
 
@@ -250,48 +244,30 @@
             <h2>Pain Points Identified</h2>
 
             <!-- 1 -->
-            <div class="two-col" style="align-items: center; gap: 2.5rem; margin-bottom: 3rem;">
-                <div>
-                    <div class="process-step" style="margin-bottom: 0.75rem;">
-                        <div class="step-number">1</div>
-                        <h3 style="margin: 0;">Navigation Depth to a Critical Page</h3>
-                    </div>
-                    <p style="color: var(--slate-600); line-height: 1.75;">The Becoming a Caregiver page was buried several levels deep with no prominent calls to action on the homepage or top-level navigation. For someone arriving cold from a Facebook ad, the path was invisible.</p>
+            <div style="margin-bottom: 2rem;">
+                <div class="process-step" style="margin-bottom: 0.75rem;">
+                    <div class="step-number">1</div>
+                    <h3 style="margin: 0;">Navigation Depth to a Critical Page</h3>
                 </div>
-                <div style="text-align: center;">
-                    <img src="../images/VACFSS-old-caregiver-site.png" alt="Old VACFSS site — buried navigation, no clear path to caregiver page" style="width: 100%; border-radius: 12px; border: 1px solid var(--slate-200); box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
-                    <p class="img-caption">Original site: caregiver page buried with no visible CTA</p>
-                </div>
+                <p style="color: var(--slate-600); line-height: 1.75;">The Becoming a Caregiver page was buried several levels deep with no prominent calls to action on the homepage or top-level navigation. For someone arriving cold from a Facebook ad, the path was invisible.</p>
             </div>
 
             <!-- 2 -->
-            <div class="two-col" style="align-items: center; gap: 2.5rem; margin-bottom: 3rem;">
-                <div style="text-align: center;">
-                    <img src="../images/VACFSS-old-caregiver-site.png" alt="Old VACFSS page — dense unbroken text blocks with no visual hierarchy" style="width: 100%; border-radius: 12px; border: 1px solid var(--slate-200); box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
-                    <p class="img-caption">Dense text with no hierarchy, high drop-off for users scanning for answers</p>
+            <div style="margin-bottom: 2rem;">
+                <div class="process-step" style="margin-bottom: 0.75rem;">
+                    <div class="step-number">2</div>
+                    <h3 style="margin: 0;">Lengthy, Unbroken Blocks of Text</h3>
                 </div>
-                <div>
-                    <div class="process-step" style="margin-bottom: 0.75rem;">
-                        <div class="step-number">2</div>
-                        <h3 style="margin: 0;">Lengthy, Unbroken Blocks of Text</h3>
-                    </div>
-                    <p style="color: var(--slate-600); line-height: 1.75;">The site relied on dense paragraphs with no visual hierarchy: no headers, callouts, or scannable structure. For a potential caregiver who arrives with a question, not a research mindset, this created immediate cognitive friction and high drop-off likelihood.</p>
-                </div>
+                <p style="color: var(--slate-600); line-height: 1.75;">The site relied on dense paragraphs with no headers, callouts, or scannable structure, so potential caregivers couldn't quickly find answers.</p>
             </div>
 
             <!-- 3 -->
-            <div class="two-col" style="align-items: center; gap: 2.5rem;">
-                <div>
-                    <div class="process-step" style="margin-bottom: 0.75rem;">
-                        <div class="step-number">3</div>
-                        <h3 style="margin: 0;">Stock Photography That Erased Identity</h3>
-                    </div>
-                    <p style="color: var(--slate-600); line-height: 1.75;">The site used generic stock images that were indistinguishable from dozens of other social services organizations. For an Indigenous-led organization whose community connection is central to its mission, this represented a significant misalignment between visual identity and organizational values.</p>
+            <div>
+                <div class="process-step" style="margin-bottom: 0.75rem;">
+                    <div class="step-number">3</div>
+                    <h3 style="margin: 0;">Stock Photography That Erased Identity</h3>
                 </div>
-                <div style="text-align: center;">
-                    <img src="../images/MicrosoftTeams-image (27).png" alt="Real VACFSS community — cultural event with participants in traditional dress" style="width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 4/3; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
-                    <p class="img-caption">Real community photography, replacing the stock images · © Angela Shen</p>
-                </div>
+                <p style="color: var(--slate-600); line-height: 1.75;">The site's generic stock images looked like those of dozens of other social services organizations. They did not represent an Indigenous-led organization whose mission centres on community connection.</p>
             </div>
 
         </section>
@@ -301,20 +277,32 @@
         <!-- Before / After -->
         <section class="case-section" id="s-beforeafter">
             <h2>Before & After: The Caregiver Page</h2>
-            <p>The most impactful single improvement was restructuring the Becoming a Caregiver page, breaking up text blocks, adding visual hierarchy, and making the call to action prominent and immediate.</p>
+            <p>The biggest improvement was restructuring the Becoming a Caregiver page: shorter text blocks, clear visual hierarchy, and a prominent call to action.</p>
 
             <div class="before-after">
                 <div>
                     <span class="before-after-label label-before">Before</span>
                     <img class="case-img" src="../images/VACFSS-old-caregiver-site.png" alt="Old VACFSS Becoming a Caregiver page — dense text, no visual hierarchy, buried navigation" style="margin: 0; border-radius: 12px; border: 1px solid var(--slate-200);">
-                    <p class="img-caption">Original page: dense text blocks, no scannable structure, unclear call to action · Screenshot for research purposes</p>
+                    <p class="img-caption">Original page · Screenshot for research purposes</p>
                 </div>
                 <div>
                     <span class="before-after-label label-after">After</span>
-                    <img class="case-img" src="../images/2026-caregiver-recuitment-page.png" alt="Redesigned VACFSS Becoming a Caregiver page — structured, clear hierarchy, prominent CTA" style="margin: 0; border-radius: 12px; border: 1px solid var(--slate-200);">
-                    <p class="img-caption">Redesigned page: broken-up content, clear sections, descriptive copy alongside a visible call to action · © Angela Shen</p>
+                    <video class="case-img" src="../images/2026-caregiver-info-session-mobile-scroll.mp4" autoplay muted loop playsinline controls aria-label="Scrolling through the redesigned VACFSS Become a Caregiver page on a phone, from the information session sign-up form down to the numbered steps" style="margin: 0 auto; border-radius: 12px; border: 1px solid var(--slate-200);"></video>
+                    <p class="img-caption">Redesigned page on mobile · © Angela Shen</p>
                 </div>
             </div>
+        </section>
+
+        <!-- On-site photography section -->
+        <section class="case-section" id="s-community">
+            <h2>Design Decision: Real Community Photography</h2>
+            <p>I replaced generic stock photography with on-site images of the people and culture VACFSS serves.</p>
+            <div class="photo-row">
+                <img src="../images/Caregiver-cultural-camp-drumming.png" alt="Caregivers smiling around a painted hand drum at a VACFSS cultural camp">
+                <img src="../images/Caregiver-summer-camp-2025.png" alt="Dancers in red regalia at a VACFSS caregiver summer camp, seen from behind">
+                <img src="../images/MicrosoftTeams-image (27).png" alt="Gloved hands squeezing dye onto a tied shirt at a VACFSS community event">
+            </div>
+            <p class="img-caption">© Angela Shen</p>
         </section>
 
         <div class="cs-phase"><span class="cs-phase-label">Results</span></div>
@@ -322,31 +310,64 @@
         <!-- Results -->
         <section class="case-section" id="s-results">
             <h2>Results</h2>
-            <p>The improvements were measured against the same ongoing paid ad campaign, isolating the website changes as the variable.</p>
+            <p>Caregiver form inquiries in the 12 months after the March 2024 changes, compared with the 12 months before. Ads also began linking directly to the page, and Facebook accounted for most of the increase, so this result reflects the combined fix.</p>
 
             <div class="stat-grid">
                 <div class="stat-card">
-                    <p class="stat-number">+50%</p>
-                    <p class="stat-label">Increase in caregiver information inquiries after UX improvements</p>
+                    <p class="stat-number">+566%</p>
+                    <p class="stat-label">Caregiver inquiries in the 12 months after the changes</p>
                 </div>
                 <div class="stat-card">
-                    <p class="stat-number">Same</p>
-                    <p class="stat-label">Ad budget and campaign with no increase in spend</p>
+                    <p class="stat-number">+134%</p>
+                    <p class="stat-label">Inquiries from sources other than Facebook, same period</p>
                 </div>
                 <div class="stat-card">
-                    <p class="stat-number">3 / 5</p>
-                    <p class="stat-label">Past caregivers relied on direct referral, not the website</p>
+                    <p class="stat-number">+170%</p>
+                    <p class="stat-label">Monthly inquiries in Mar–Oct 2026 compared with before the changes</p>
                 </div>
             </div>
 
-            <img class="case-img" src="../images/Google_Analytics_2025.png" alt="Google Analytics data showing traffic and inquiry trends after VACFSS website improvements" style="margin-top: 2rem;">
-            <p class="img-caption">Google Analytics: traffic and inquiry data tracking the impact of website changes</p>
+            <img class="case-img" src="../images/Google_Analytics_2025.png" alt="Google Analytics 2025 snapshot with Become a Caregiver as the top page on the VACFSS site" style="margin-top: 2rem;">
+            <p class="img-caption">Google Analytics, 2025: Become a Caregiver was the site's top page</p>
 
             <img class="case-img" src="../images/proof-of power-31+28k facebook referrals - VACFSS.jpg" alt="Facebook referral data showing 31k and 28k referrals to the VACFSS site">
-            <p class="img-caption">Facebook referral volume: 31K and 28K referrals demonstrating the ad-to-site pipeline that the UX improvements were designed to convert</p>
+            <p class="img-caption">Facebook referral volume: 31K and 28K referrals to the site</p>
         </section>
 
-        <div class="cs-phase"><span class="cs-phase-label">Campaigns & Content</span></div>
+        <div class="cs-phase"><span class="cs-phase-label">Validation</span></div>
+
+        <!-- Round 2: Caregiver Interviews -->
+        <section class="case-section" id="s-round2">
+            <h2>Round 2: Caregiver Interviews (2026)</h2>
+            <p>In 2026, I followed up with caregivers who had come through the Facebook recruitment pipeline to understand their actual experience navigating from ad to inquiry.</p>
+
+            <div class="quote-block">
+                "Was it easy to find the Becoming a Caregiver page?"
+                <cite>— Follow-up interview question, 2026</cite>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Finding: Direct Ad Path Removed the Navigation Problem</h3>
+                <p>Of the caregivers interviewed in 2026, <strong>3 had come directly through the Facebook page</strong>. When asked about finding the caregiver page, they said the process felt simple because the ad linked directly to it, removing the navigation barrier entirely.</p>
+                <p>They said the <strong>more descriptive content</strong> on the redesigned page answered their questions and gave them enough context to take the next step.</p>
+                <p style="margin-bottom: 0;">Both fixes worked: the ad reduced navigation friction, and the page content turned interest into action.</p>
+            </div>
+        </section>
+
+        <div class="cs-phase"><span class="cs-phase-label">Takeaways</span></div>
+
+        <!-- Key Takeaways -->
+        <section class="case-section" id="s-takeaways">
+            <div class="highlight-box">
+                <h3>Key Takeaways</h3>
+                <p>Staff who knew the site still needed 2+ minutes, so the problem was the site structure. The fix had two parts: make the page discoverable (direct ad links and improved navigation) and make it worth staying on (restructured content and on-site photography).</p>
+                <p>Inquiries rose 566% in the 12 months after the changes, and 134% from sources other than Facebook, which suggests the page and the ads worked together.</p>
+                <p>On-site photography shows the real community of an Indigenous-led organization, which builds the trust someone needs before becoming a caregiver.</p>
+                <p style="margin-bottom: 0;"><strong>Limits of this evidence:</strong> Both interview rounds were small, starting with 5 staff in 2024, and the ad path and page content changed together. The next step would be task-based testing with people who have never seen the site.</p>
+            </div>
+        </section>
+
+        <div class="cs-phase"><span class="cs-phase-label">Supporting Communications Work</span></div>
 
         <!-- Ad Campaign Context -->
         <section class="case-section" id="s-ads">
@@ -356,11 +377,11 @@
             <div class="two-col">
                 <div>
                     <img class="case-img" src="../images/Jan-2024 to Dec 31 - VACFSS-ADS.png" alt="VACFSS ad campaign performance — Jan to Dec 2024" style="margin: 0;">
-                    <p class="img-caption">2024 campaign performance, baseline period before UX changes</p>
+                    <p class="img-caption">2024 campaign performance</p>
                 </div>
                 <div>
                     <img class="case-img" src="../images/Jan-2025  to Dec 31 - VACFSS-ADS.jpg" alt="VACFSS ad campaign performance — Jan to Dec 2025" style="margin: 0;">
-                    <p class="img-caption">2025 campaign performance, measuring impact of improved landing experience</p>
+                    <p class="img-caption">2025 campaign performance</p>
                 </div>
             </div>
 
@@ -371,7 +392,7 @@
         <!-- Video Production -->
         <section class="case-section" id="s-video">
             <h2>Day in the Life of a Social Worker: Recruitment Video</h2>
-            <p>Beyond digital and print, I researched, produced, and edited an original recruitment video designed to give prospective social work students an authentic window into the role before committing to the field.</p>
+            <p>I researched, produced, and edited a recruitment video that shows prospective social work students what the role is like before they commit.</p>
 
             <div style="margin: 1.5rem 0;">
                 <iframe
@@ -404,7 +425,7 @@
                 <div class="step-number">1</div>
                 <div>
                     <h3 style="margin-top: 0;">Market Research</h3>
-                    <p>Before picking up a camera, I researched the landscape of "day in the life" recruitment videos across social services, healthcare, and non-profit sectors, identifying what made them land or fall flat. Most failed because they felt scripted or promotional rather than honest. The benchmark was authenticity: show the real work, not a brochure version of it.</p>
+                    <p>I researched "day in the life" recruitment videos across social services, healthcare, and non-profit sectors. Most failed because they felt scripted or promotional, so I set the benchmark at showing the real work.</p>
                 </div>
             </div>
 
@@ -412,7 +433,7 @@
                 <div class="step-number">2</div>
                 <div>
                     <h3 style="margin-top: 0;">Equipment Decisions</h3>
-                    <p>Based on the research, I made targeted equipment purchases to achieve a documentary-style look that matched the tone: handheld warmth over polished corporate. The goal was production quality that felt intentional without feeling over-produced.</p>
+                    <p>Based on the research, I bought equipment for a handheld, documentary-style look.</p>
                 </div>
             </div>
 
@@ -420,7 +441,7 @@
                 <div class="step-number">3</div>
                 <div>
                     <h3 style="margin-top: 0;">Co-Direction & Scripting</h3>
-                    <p>I co-directed and scripted the video, working with VACFSS staff to balance the narrative arc, giving enough structure to be informative while leaving room for the genuine, unscripted moments that make recruitment content believable. The script mapped key questions a prospective social worker would actually have, then built answers around real footage rather than narration.</p>
+                    <p>I co-directed and scripted the video with VACFSS staff. The script mapped the questions a prospective social worker would have, then answered them with real footage.</p>
                 </div>
             </div>
 
@@ -428,14 +449,13 @@
                 <div class="step-number">4</div>
                 <div>
                     <h3 style="margin-top: 0;">Filming & Editing</h3>
-                    <p>I handled both filming and post-production editing, pacing the cut to feel approachable rather than overwhelming, and shaping the story so it ends with the emotional case for the role, not just the practical description of it.</p>
+                    <p>I filmed and edited the video, ending on the emotional case for the role.</p>
                 </div>
             </div>
 
             <div class="highlight-box" style="margin-top: 2rem;">
                 <h3>How It Was Used</h3>
-                <p>The video was screened during <strong>in-person recruitment visits to social work colleges</strong>, giving students a concrete, honest preview of what the role looks like day-to-day. It extended the reach of those sessions beyond the room: students who attended could share the video, and students who didn't attend could still access it organically.</p>
-                <p style="margin-bottom: 0;">200+ organic views with no paid promotion demonstrates that the content was compelling enough to travel on its own, the clearest signal that the authenticity-first approach worked.</p>
+                <p style="margin-bottom: 0;">The video was screened during <strong>in-person recruitment visits to social work colleges</strong> to preview the role day-to-day. Students who attended could share it, and students who didn't could still watch it.</p>
             </div>
         </section>
 
@@ -477,7 +497,7 @@
 
             <div class="highlight-box">
                 <h3>Context</h3>
-                <p>Cedar headbands carry cultural significance within the communities VACFSS serves, and they were also part of the youth transition ceremony covered in the written article above. Producing this video required the same sensitivity as the editorial work: documenting a meaningful cultural practice accurately and respectfully, without reducing it to content.</p>
+                <p>Cedar headbands carry cultural significance for the communities VACFSS serves and were part of the youth transition ceremony covered above. I documented the practice accurately and respectfully.</p>
                 <a href="https://www.vacfss.com/news/annual-ceder-headband-making-workshop/" class="btn-primary" target="_blank" style="display: inline-block; margin-top: 1rem; text-decoration: none;">View on VACFSS ↗</a>
             </div>
         </section>
@@ -495,42 +515,10 @@
                 <div>
                     <div class="highlight-box" style="margin: 0;">
                         <h3>About the Piece</h3>
-                        <p>A staff spotlight interview in the Restorative Practice section of the VACFSS website, honouring Elder April Bennett's 28 years of service. Conducting an interview with an Elder required cultural sensitivity, careful listening, and an editorial approach that centred her voice rather than summarizing it.</p>
+                        <p>A staff spotlight interview in the Restorative Practice section of the VACFSS website, honouring Elder April Bennett's 28 years of service. The piece centres her voice.</p>
                         <a href="https://www.vacfss.com/restorative-practice/28th-anniversary-of-april-bennett-staff-spotlight/" class="btn-primary" target="_blank" style="display: inline-block; margin-top: 1rem; text-decoration: none;">Read the Interview ↗</a>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <div class="cs-phase"><span class="cs-phase-label">Validation</span></div>
-
-        <!-- Round 2: Caregiver Interviews -->
-        <section class="case-section" id="s-round2">
-            <h2>Round 2: Caregiver Interviews (2026)</h2>
-            <p>In 2026, I followed up with caregivers who had come through the Facebook recruitment pipeline to understand their actual experience navigating from ad to inquiry.</p>
-
-            <div class="quote-block">
-                "Was it easy to find the Becoming a Caregiver page?"
-                <cite>— Follow-up interview question, 2026</cite>
-            </div>
-
-            <div class="highlight-box">
-                <h3>Finding: Direct Ad Path Removed the Navigation Problem</h3>
-                <p>Of the caregivers interviewed in 2026, <strong>3 had come directly through the Facebook page</strong>. When asked about finding the caregiver page, they said the process felt simple because the ad linked directly to it, removing the navigation barrier entirely.</p>
-                <p>Importantly, they noted that the <strong>more descriptive content</strong> on the page after the redesign was valuable. It answered the questions they arrived with and gave them enough context to take the next step. The text improvement wasn't just visual polish; it was the difference between someone understanding the process and someone leaving to look elsewhere.</p>
-                <p style="margin-bottom: 0;">This confirmed that the two-part fix worked: the ad reduced navigation friction, and the improved page content converted the interest into action.</p>
-            </div>
-        </section>
-
-        <div class="cs-phase"><span class="cs-phase-label">Takeaways</span></div>
-
-        <!-- Key Takeaways -->
-        <section class="case-section" id="s-takeaways">
-            <div class="highlight-box">
-                <h3>Key Takeaways</h3>
-                <p>The 2-minute navigation finding from staff who knew the site was the clearest signal that the problem was structural, not behavioral. Fixing it required two things: making the page discoverable (through direct ad links and improved navigation), and making the page worth staying on (through restructured content and authentic photography).</p>
-                <p>The 50% increase in inquiries on the same ad budget shows that UX improvements are a multiplier on existing marketing investment. The audience was always there; the website just wasn't converting them.</p>
-                <p style="margin-bottom: 0;">The shift from stock photography to on-site imagery also matters beyond aesthetics. For an Indigenous-led organization, showing the real community signals cultural authenticity in a way that stock images actively undermine, and that trust is foundational to someone making the decision to become a caregiver.</p>
             </div>
         </section>
 
@@ -540,7 +528,7 @@
         <div class="container footer-inner">
             <div class="footer-left">
                 <span class="footer-name">Angela Shen</span>
-                <span class="footer-copy">Joint Major: CMNS &amp; IAT @ SFU &nbsp;&middot;&nbsp; Graduating Spring 2026 &nbsp;&middot;&nbsp; *Incoming IAT Masters Student, SFU, Fall 2026</span>
+                <span class="footer-copy">IAT Master's Student @ SFU &nbsp;&middot;&nbsp; BA, Joint Major: CMNS &amp; IAT @ SFU, 2026</span>
                 <span class="footer-copy">&copy; 2026 Angela Shen. All photography, illustrations, and design work are the original work of Angela Shen. All rights reserved.</span>
             </div>
             <nav class="footer-links" aria-label="Footer navigation">
